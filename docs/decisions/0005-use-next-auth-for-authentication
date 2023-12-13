@@ -1,0 +1,37 @@
+# Use Next-Auth for Authentication
+
+## Context
+
+Nextjs is a framework containing a server and a front. Actions and calls can be done on both sides thank to the React Server Components.
+We need to have a robust authentication system that provides a unified authentication experience for both the server and client components of the Next.js application.
+
+## Considered options
+
+Two options were considered for implementing authentication in our project:
+
+- Custom Authentication : We could build a custom authentication system from scratch. This would provide us with complete control over the authentication to our Vendure app but would be time-consuming and error-prone.
+
+- NextAuth.js Integration: We can integrate NextAuth.js into our Next.js project. NextAuth.js is a popular authentication library for Next.js applications and provides a flexible and extensible solution.
+
+## Decision
+
+We have decided to integrate NextAuth.js for authentication in our Next.js 13 project linked to Vendure. This decision is based on the following factors:
+
+- Seamless Integration: NextAuth.js is designed to work seamlessly with Next.js applications, making it an ideal choice for our project.
+- Customization: NextAuth.js offers a high degree of customization, allowing us to adapt the authentication process to our specific needs.
+- Community Support: NextAuth.js has an active community and is well-maintained, ensuring that we can rely on ongoing support and updates.
+- Security: NextAuth.js includes built-in security features, such as CSRF protection and secure session management, reducing the risk of security vulnerabilities.
+
+## Consequences
+
+With the integration of NextAuth.js for authentication, the following consequences are expected:
+
+-Easier Authentication: Implementing authentication in our Next.js 13 project will be more straightforward and less time-consuming thanks to NextAuth.js's built-in features and clear documentation.
+
+-Scalability: NextAuth.js is designed to scale with our project, accommodating future authentication requirements and user growth; It provides easy connexion to third party auth providers like Google, Facebook, or even Web3 / Ethereum blockchain.
+
+-Maintenance: We will need to ensure that we keep NextAuth.js and its dependencies up to date to benefit from the latest security patches and features.
+
+-Learning Curve: Team members who are not familiar with NextAuth.js may need to invest time in learning the library, but this is expected to be a reasonable investment due to its clear documentation and community resources.
+
+By adopting NextAuth.js, we aim to streamline the authentication process within our Next.js 13 application linked to Vendure, providing a secure and extensible solution for our users.

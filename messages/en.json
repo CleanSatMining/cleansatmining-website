@@ -1,0 +1,92 @@
+{
+  "HomePage": {
+    "title": "REALT CSM",
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes."
+  },
+  "CartPage": {
+    "title": "CartPage",
+    "description": "<p>The routing is internationalized too.</p><p>If you're using the default language English, you'll see <code>/about</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is prefixed with the locale and localized accordingly (<code>/de/über</code>).</p>",
+    "text": {
+      "cartEmpty": "The cart is empty"
+    },
+    "buttons": {
+      "validate": "Place order"
+    }
+  },
+  "ConfirmCartPage": {
+    "title": "Cart confirmation"
+  },
+  "ProductPage": {
+    "title": "ProductPage",
+    "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
+    "AddToCartBanner": {
+      "buttons": {
+        "invest": "Invest"
+      },
+      "form": {
+        "minInvestmentAmountError": "The amount must be greater than",
+        "maxInvestmentAmountError": "The amount must be less than",
+        "maxDecimalError": "The amount cannot have more than two decimal places.",
+        "requiredError": "An amount is required"
+      },
+      "investQuestion": "Do you want to invest in this project?"
+    },
+    "MainInformationCard": {
+      "estimatedNetApy": "Estimated APY:",
+      "investment": "Investment",
+      "minInvestmentAmount": "Min. :",
+      "maxInvestmentAmount": "Max. :",
+      "funding": "Funding",
+      "energy": "Energy",
+      "solar": "Solar",
+      "wind": "Wind",
+      "nuclear": "Nuclear",
+      "flaring": "Flaring",
+      "hydro": "Hydro",
+      "electricityPrice": "Electricity Price:",
+      "availablePower": "Available Power:",
+      "contractDuration": "Contract Duration:",
+      "operator": "Operator",
+      "engine": "Engine",
+      "engineType": "Type:",
+      "engineQuantity": "Quantity:",
+      "estimatedDeliveryDate": "Estimated Delivery Date:",
+      "estimatedLaunchDate": "Estimated Launch Date:"
+    }
+  },
+  "LoginPage": {
+    "title": "LoginPage",
+    "description": "Please double-check the browser address bar or use the navigation to go to a known page."
+  },
+  "Header": {
+    "logo": "Clean Sat Mining - Homepage",
+    "nav": "Main navigation",
+    "links": {
+      "marketplace": "Marketplace",
+      "CSM": "Cleansat Mining"
+    },
+    "buttons": {
+      "login": "Login",
+      "account": "My account"
+    },
+    "externalLink": "New tab"
+  },
+  "Footer": {
+    "nav": "Footer navigation",
+    "links": {
+      "blog": "Blog",
+      "contact": "Contact",
+      "legalNotices": "Legal notices",
+      "TCS": "Terms and Conditions of Sale",
+      "privacy": "Privacy"
+    },
+    "externalLink": "New tab",
+    "socialMedia": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "logo": "Clean Sat Mining - Homepage",
+    "copyright": "Copyright © 2023 RealT‍ - CSM",
+    "legal": "Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus."
+  }
+}
