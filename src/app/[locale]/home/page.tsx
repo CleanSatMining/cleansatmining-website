@@ -1,4 +1,9 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
+
+import SignatureComponent from '@/components/web3/wallet/SignatureComponent'
+import Web3Provider from '@/components/web3/provider/Web3Provider'
 
 export default function HomeDefault() {
   const t = useTranslations('HomePage')
@@ -17,6 +22,9 @@ export default function HomeDefault() {
       <p className="text-xxl font-title lg:text-2xl xl:text-3xl">
         {t('description')}
       </p>
+      <Web3Provider>
+        <SignatureComponent></SignatureComponent>
+      </Web3Provider>
     </div>
   )
 }
