@@ -1,11 +1,20 @@
+import Footer from '@/app/_shared/_components/_mainLayout/Footer'
+import Header from '@/app/_shared/_components/_mainLayout/Header'
 import '@testing-library/jest-dom'
 import { screen } from '@testing-library/react'
+import { useSession } from 'next-auth/react'
 import { renderWithNextIntl } from './utils/test-utils'
-import Header from '@/app/[locale]/layout/Header'
-import Footer from '@/app/[locale]/layout/Footer'
+
+jest.mock('next-auth/react')
 
 describe('Header', () => {
   it('renders a navigation', () => {
+    // @ts-ignore
+    useSession.mockReturnValue({
+      data: { user: { name: 'John' } },
+      status: 'authenticated',
+    })
+
     renderWithNextIntl(<Header />)
 
     const nav = screen.getByRole('navigation')

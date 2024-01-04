@@ -19,10 +19,10 @@ VENDURE_SHOP_API_URL=https://demo.vendure.io/shop-api
 Run the command:
 
 ```bash
-npm install.
+npm install
 ```
 
- Installation of nodes modules should run smoothly.
+Installation of nodes modules should run smoothly.
 If any issue is encountered, please document it for the next persons.
 
 ## Starting the application

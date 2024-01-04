@@ -1,20 +1,16 @@
+import ProductCard from '@/app/[locale]/(main)/home/@signedIn/_components/ProductCard'
+import { Product } from '@/graphql/common/generated-types'
 import '@testing-library/jest-dom'
+import closedMockedProduct from '../../../../../__mocks__/products/closedProductMock'
+import incomingMockedProduct from '../../../../../__mocks__/products/incomingProductMock'
+import lastOpportunityMockedProduct from '../../../../../__mocks__/products/lastOpportunityProductMock'
+import runningMockedProduct from '../../../../../__mocks__/products/runningProductMock'
 import { renderWithApolloProviderAndNextIntl } from '../../../../utils/test-utils'
-import ProductCard from '@/app/[locale]/home/@signedIn/components/ProductCard'
-import { Product } from '@/models/Product'
 
-const incomingProduct: Product = jest.genMockFromModule(
-  '../../../../../__mocks__/products/incomingProductMock',
-)
-const closedProduct: Product = jest.genMockFromModule(
-  '../../../../../__mocks__/products/closedProductMock',
-)
-const runningProduct: Product = jest.genMockFromModule(
-  '../../../../../__mocks__/products/runningProductMock',
-)
-const lastOpportunityProduct: Product = jest.genMockFromModule(
-  '../../../../../__mocks__/products/lastOpportunityProductMock',
-)
+const incomingProduct: Product = incomingMockedProduct
+const closedProduct: Product = closedMockedProduct
+const runningProduct: Product = runningMockedProduct
+const lastOpportunityProduct: Product = lastOpportunityMockedProduct
 
 let status: HTMLElement
 let countdown: HTMLElement | null

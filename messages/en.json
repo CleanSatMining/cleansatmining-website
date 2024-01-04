@@ -7,7 +7,7 @@
     "title": "CartPage",
     "description": "<p>The routing is internationalized too.</p><p>If you're using the default language English, you'll see <code>/about</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is prefixed with the locale and localized accordingly (<code>/de/über</code>).</p>",
     "text": {
-      "cartEmpty": "The cart is empty"
+      "emptyCart": "The cart is empty"
     },
     "buttons": {
       "validate": "Place order"

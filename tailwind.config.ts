@@ -11,15 +11,31 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     // if you install other Next-UI Components, you can add their style import in the following line like this (input|button|etc...)
     './node_modules/@nextui-org/theme/dist/components/input.js',
+    './node_modules/@nextui-org/theme/dist/components/select.js',
+    './node_modules/@nextui-org/theme/dist/components/scroll-shadow.js',
+    './node_modules/@nextui-org/theme/dist/components/checkbox.js',
     './node_modules/@nextui-org/theme/dist/components/tabs.js',
     './node_modules/@nextui-org/theme/dist/components/progress.js',
+    './node_modules/@nextui-org/theme/dist/components/listbox.js',
+    './node_modules/@nextui-org/theme/dist/components/popover.js',
   ],
   theme: {
     colors: {
+      light: {
+        primary: '#333333',
+        secondary: '#BDBDBD',
+        // Ajoutez plus de couleurs si nécessaire
+      },
+      dark: {
+        primary: '#1D1D1B',
+        secondary: '#262626',
+        // Ajoutez plus de couleurs si nécessaire
+      },
       transparent: 'transparent',
       current: 'currentColor',
       grey: {
         800: '#1D1D1B',
+        700: '#262626',
         600: '#333333',
         400: '#666666',
         300: '#BDBDBD',
@@ -31,6 +47,9 @@ const config: Config = {
       yellow: '#FFD542',
       white: colors.white,
       black: colors.black,
+      red: {
+        500: '#FC4F4F',
+      },
     },
     fontFamily: {
       sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],

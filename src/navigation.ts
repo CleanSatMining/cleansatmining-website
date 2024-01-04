@@ -1,15 +1,17 @@
 import {
-  createLocalizedPathnamesNavigation,
   Pathnames,
+  createLocalizedPathnamesNavigation,
 } from 'next-intl/navigation'
 
 export const locales = ['fr', 'en'] as const
 
+export const publicPages = ['/home', '/sign-up', '/sign-in']
+
 export const pathnames = {
   '/': '/',
-  '/cart': {
-    fr: '/panier',
-    en: '/cart',
+  '/investment-summary': {
+    fr: '/resume-investissement',
+    en: '/investment-summary',
   },
   '/confirm-cart': {
     fr: '/confirmation-panier',

@@ -1,6 +1,6 @@
+import HomeSignedOut from '@/app/[locale]/(main)/home/@signedOut/page'
 import '@testing-library/jest-dom'
 import { renderWithApolloProviderAndNextIntl } from '../../../utils/test-utils'
-import HomeSignedOut from '@/app/[locale]/home/@signedOut/page'
 
 let signedOutHome: HTMLElement
 let productsList: HTMLElement | null

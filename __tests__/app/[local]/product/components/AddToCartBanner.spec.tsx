@@ -1,3 +1,4 @@
+import AddToCartBanner from '@/app/[locale]/(main)/product/_components/AddToCartBanner'
 import {
   Matcher,
   SelectorMatcherOptions,
@@ -5,7 +6,6 @@ import {
   waitFor,
 } from '@testing-library/react'
 import { renderWithApolloProviderAndNextIntl } from '../../../../utils/test-utils'
-import AddToCartBanner from '@/app/[locale]/product/components/AddToCartBanner'
 
 let AddToCartBannerForm: HTMLElement
 let investmentAmountInput: HTMLInputElement
@@ -32,6 +32,7 @@ describe('AddToCartBanner', () => {
     const { container, getByTestId, getByText } =
       renderWithApolloProviderAndNextIntl(
         <AddToCartBanner
+          productId={'0'}
           salesStatus={'open'}
           minInvestmentAmount={1}
           maxInvestmentAmount={10}
@@ -56,6 +57,7 @@ describe('AddToCartBanner', () => {
   it('should render nothing', () => {
     const { container } = renderWithApolloProviderAndNextIntl(
       <AddToCartBanner
+        productId={'0'}
         salesStatus={'commingSoon'}
         minInvestmentAmount={1}
         maxInvestmentAmount={10}

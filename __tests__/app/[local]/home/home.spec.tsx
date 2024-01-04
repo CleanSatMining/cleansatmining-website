@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react'
+import HomePage from '@/app/[locale]/(main)/home/page'
 import '@testing-library/jest-dom'
+import { screen } from '@testing-library/react'
 import { renderWithNextIntl } from '../../../utils/test-utils'
-import HomePage from '@/app/[locale]/home/page'
 
 describe('Home', () => {
   it('renders a heading', () => {

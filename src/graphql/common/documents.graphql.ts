@@ -3,7 +3,7 @@ import {
   ADDRESS_FRAGMENT,
   ASSET_FRAGMENT,
   COUNTRY_FRAGMENT,
-} from './fragments.graphql'
+} from './fragments/globalFragments.graphql'
 
 export const GET_CUSTOMER_ADDRESSES = gql`
   query GetCustomerAddresses {
@@ -37,6 +37,17 @@ export const GET_ACTIVE_CUSTOMER = gql`
     }
   }
 `
+
+export const GET_ACTIVE_CUSTOMER_BLOCKED_STATUS = gql`
+  query GetActiveCustomerBlockedStatus {
+    activeCustomer {
+      customFields {
+        isBlocked
+      }
+    }
+  }
+`
+
 export const GET_COLLECTIONS = gql`
   query GetCollections($options: CollectionListOptions) {
     collections(options: $options) {

@@ -1,4 +1,4 @@
-import { ASSET_FRAGMENT } from '@/graphql/common/fragments.graphql'
+import { ASSET_FRAGMENT } from '@/graphql/common/fragments/globalFragments.graphql'
 import { gql } from '@apollo/client'
 
 export const SEARCH_PRODUCTS = gql`
@@ -51,10 +51,32 @@ export const GET_PRODUCTS = gql`
           id
           name
         }
+        assets {
+          ...Asset
+        }
+        customFields {
+          availablePower
+          blockchainNetwork
+          energySources
+          estimatedNetApy
+          locationCountry
+          locationName
+          maxInvestmentAmount
+          minInvestmentAmount
+          operatorLogo {
+            source
+          }
+          operatorName
+          operatorUrl
+          saleStatus
+          secondaryProductName
+          siteUrl
+        }
       }
       totalItems
     }
   }
+  ${ASSET_FRAGMENT}
 `
 
 export const GET_COLLECTION = gql`

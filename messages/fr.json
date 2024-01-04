@@ -3,7 +3,8 @@
     "defaultServerErrorMessage": "Une erreur est survenue",
     "connexionError": "Connexion impossible",
     "invalidCredentialsError": "Aucun compte ne correspond à ces identifiants.",
-    "invalidCredentialsError2": "Veuillez vérifiez vos identifiants et réessayer"
+    "invalidCredentialsError2": "Veuillez vérifiez vos identifiants et réessayer.",
+    "notVerifiedError": "Merci de vérifier votre email avant de vous connecter"
   },
   "HomePage": {
     "title": "La <span>marketplace</span> qui nous réunit",
@@ -13,18 +14,60 @@
       "cta": "Se connecter"
     },
     "signedIn": {
-      "empty": "Aucun produit à afficher"
+      "empty": "Aucun produit à afficher",
+      "title": "En raison de restrictions locales, vous n'êtes pas autorisé à accéder à nos offres."
     }
   },
-  "CartPage": {
-    "title": "Résumé de l'investissement",
-    "description": "<p>The routing is internationalized too.</p><p>If you're using the default language English, you'll see <code>/about</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is prefixed with the locale and localized accordingly (<code>/de/über</code>).</p>",
+  "CartGlobal": {
     "text": {
-      "cartEmpty": "Le panier est vide"
+      "emptyCart": "Le panier est vide"
+    }
+  },
+  "AccountPage": {
+    "personalInformations": "Informations personelles",
+    "dividendAddress": "Adresse de réception des dividendes",
+    "tokenAddress": "Adresses de réception des tokens",
+    "order": "Mes commandes",
+    "dashboard": "Tableau de bord",
+    "logOut": "Déconnexion"
+  },
+  "InvestmentSummaryPage": {
+    "title": "Résumé de l'investissement",
+    "intro": "Revoyez les détails de votre investissement avant de passer à l'étape suivante.",
+    "text": {
+      "emptyCart": "Le panier est vide",
+      "investmentAmount": "Montant de l'investissement",
+      "offerIssuer": "Emetteur de l'offre",
+      "summarySentence": "Soit {numberToken} {tokenName} tokens estimés"
+    },
+    "next": {
+      "title": "Étape suivante",
+      "detail": "vers Adresses de réception"
     },
     "buttons": {
       "validate": "Passer la commande"
     }
+  },
+  "CartAddressPage": {
+    "title": "Adresse de réception",
+    "intro": "Indiquez l’adresse ou le portefeuille où vous souhaitez recevoir les bénéfices de votre investissement en toute sécurité.",
+    "prev": {
+      "title": "Étape précédente",
+      "detail": "vers Résumé"
+    },
+    "next": {
+      "title": "Étape suivante",
+      "detail": "vers Signature des documents"
+    },
+    "step1": {
+      "number": "Étape 1 :",
+      "label": "Renseignez votre adresse de réception de vos CSM Tokens"
+    },
+    "step2": {
+      "number": "Étape 2 :",
+      "label": "Vérifiez votre adresse de réception des dividendes"
+    },
+    "countdown": "Votre demande est réservée pendant"
   },
   "ConfirmCartPage": {
     "title": "Confirmation du panier"
@@ -32,7 +75,7 @@
   "ProductPage": {
     "title": "ProductPage",
     "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-    "backLink": "Retourner aux offres",
+    "homeLink": "Retourner aux offres",
     "AddToCartBanner": {
       "buttons": {
         "invest": "Investir"
@@ -54,18 +97,57 @@
     },
     "ProductTab": {
       "productInformation": "informations du produit",
-      "tokenName": "Nom du token",
-      "tokenSymbol": "Symbole du token",
-      "smartContractAddress": "Adresse du Smart Contract",
-      "blockchain": "Blockchain",
-      "tokenQuantity": "Nombre de token",
-      "shareOfTokenizedCompany": "Part de la société tokenisée",
-      "seeTokenizationDocuments": "Voir documents de tokenisation (IPFS)",
-      "descriptionPicture": "Image d'illustration",
-      "seeMore": "Voir plus",
-      "seeLess": "Voir moins",
-      "visitSite": "Voir le site",
-      "externalTab": "Nouvel onglet"
+      "formatNumber": "fr-FR",
+      "description": "Description",
+      "finances": "Finances",
+      "documents": "Documents",
+      "tokenisation": "Tokenisation",
+      "simulation": "Simulation",
+      "DescriptionTab": {
+        "seeMore": "Voir plus",
+        "seeLess": "Voir moins",
+        "visitSite": "Voir le site",
+        "externalTab": "Nouvel onglet"
+      },
+      "TokenisationTab": {
+        "tokenName": "Nom du token",
+        "tokenSymbol": "Symbole du token",
+        "smartContractAddress": "Adresse du Smart Contract",
+        "blockchain": "Blockchain",
+        "tokenQuantity": "Nombre de token",
+        "shareOfTokenizedCompany": "Part de la société tokenisée",
+        "seeTokenizationDocuments": "Voir documents de tokenisation (IPFS)",
+        "formatNumber": "fr-FR"
+      },
+      "FinancesTab": {
+        "externalTab": "Nouvel onglet",
+        "netProfit": "Résultat net",
+        "totalInvestment": "Investissement total",
+        "totalIncome": "Revenus",
+        "minedBtc": "BTC minés",
+        "otherIncome": "Autres revenus",
+        "totalCost": "Charges",
+        "electricityCost": "Électricité",
+        "operatingCosts": "Frais d'exploitation",
+        "csmOperationalFees": "Frais CSM",
+        "otherCosts": "Autres frais",
+        "grossProfit": "Bénéfice brut",
+        "equipmentDepreciationCost": "Amortissement du matériel",
+        "is": "IS",
+        "asics": "ASICS",
+        "vat": "TVA",
+        "miscellaneousEquipment": "Équipement divers",
+        "transportation": "Transport",
+        "electricityDeposit": "Dépot électricité",
+        "other": "Autres",
+        "estimatedGrossApy": "APY BRUT *",
+        "estimatedNetApy": "APY NET *",
+        "capitalGainsNotIncluded": "* Plus-value du capital non incluse",
+        "clickForMoreInfo": "Cliquez ici pour plus d'informations concernant ces données financières"
+      },
+      "DocumentsTab": {
+        "noDocumentsMessage": "Pas de documents associés"
+      }
     }
   },
   "SignInPage": {
@@ -90,9 +172,24 @@
       "email": "Votre email",
       "password": "Votre mot de passe",
       "passwordConfirmation": "Confirmez votre mot de passe",
-      "passwordConfirmationError": "Les mots de passe ne correspondent pas.",
-      "submit": "Inscription"
+      "country": "Pays de résidence",
+      "citizenship": "Nationalité",
+      "termsConditions": {
+        "label": "Je confirme avoir lu les ",
+        "link": "conditions générales"
+      },
+      "submit": "Inscription",
+      "successMessage": "Veuillez vérifier vos emails pour finaliser votre inscription.",
+      "errors": {
+        "required": "Ce champ est obligatoire",
+        "emailFormat": "L'email n'est pas bien formé",
+        "passwordConfirmation": "Les mots de passe ne correspondent pas."
+      }
     }
+  },
+  "ErrorPage": {
+    "403": "Forbidden",
+    "404": "Not Found"
   },
   "Header": {
     "logo": "Clean Sat Mining - Accueil",
@@ -169,5 +266,32 @@
     "ctaOpen": "Voir l'offre",
     "ctaClosed": "Voir le site",
     "externalLink": "Nouvel onglet"
+  },
+  "checkout": {
+    "stepper": {
+      "step1": {
+        "title": "Résumé",
+        "subTitle": "de votre investissement"
+      },
+      "step2": {
+        "title": "Addresses",
+        "subTitle": "de réception"
+      },
+      "step3": {
+        "title": "Signature",
+        "subTitle": "des documents"
+      },
+      "step4": {
+        "title": "Paiement",
+        "subTitle": ""
+      },
+      "step5": {
+        "title": "Confirmation",
+        "subTitle": ""
+      }
+    }
+  },
+  "externalUrl": {
+    "csmHome": "https://cleansatmining.com/"
   }
 }
