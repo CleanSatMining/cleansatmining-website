@@ -2,9 +2,6 @@ import { FC } from 'react'
 
 import { GnosisLogo, Chain as RealtChains } from '@realtoken/realt-commons'
 
-import { realTokenYamUpgradeableABI } from './abis/types'
-
-import { Contracts, ContractsID } from './contracts'
 import { Currency, DAI } from './currencies'
 
 export enum ChainsID {
@@ -18,7 +15,6 @@ export type Chain = Omit<RealtChains, 'blockExplorerUrl'> & {
   nativeCurrency: Currency
   rpcUrl: string
   blockExplorerUrl: string
-  contracts: Contracts
 }
 
 export const CHAINS: Record<ChainsID, Chain> = {
@@ -30,13 +26,6 @@ export const CHAINS: Record<ChainsID, Chain> = {
     rpcUrl: 'https://rpc.ankr.com/gnosis',
     blockExplorerUrl: 'https://gnosisscan.io/',
     isTestnet: false,
-    contracts: {
-      [ContractsID.realTokenYamUpgradeable]: {
-        abi: realTokenYamUpgradeableABI,
-        address: '0x7ac028f8fe6e7705292dc13e46a609dd95fc84ba',
-        metadata: { fromBlock: 27516835 },
-      },
-    },
   },
 }
 

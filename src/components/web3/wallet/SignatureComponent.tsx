@@ -9,13 +9,11 @@ import {
 } from '@/components/utils/auth'
 import { useWeb3React } from '@web3-react/core'
 
-const message =
-  'Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer. Message à signer'
+const message = 'Message à signer.'
 
 const SignatureComponent: React.FC = () => {
   const [result, setResult] = useState('')
 
-  //const [connector, setConnector] = useState<Connector | undefined>(undefined)
   const { account, provider } = useWeb3React()
 
   const handleSign = async () => {
@@ -27,14 +25,14 @@ const SignatureComponent: React.FC = () => {
         const signer = provider.getSigner()
         const signedMessage = await signer.signMessage(message)
 
-        const isValid = await isValidSignature(message, signedMessage, account)
+        //const isValid = await isValidSignature(message, signedMessage, account)
         const isValidServer = isValidSignatureServer(
           message,
           signedMessage,
           account,
         )
 
-        console.log(signedMessage, isValid, isValidServer)
+        console.log(signedMessage, isValidServer)
         setResult(isValidServer ? 'Signature valide' : 'Signature non valide')
       } catch (error) {
         console.error(error)

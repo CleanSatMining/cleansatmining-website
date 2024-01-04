@@ -11,7 +11,6 @@ const ConnectWallet: React.FC = () => {
   const { account: accountConnected } = useWeb3React()
   const [account, setAccount] = useState<string>(accountConnected ?? '')
 
-  //const connector = useAtomValue(providerAtom);
   const onMetamaskConnect = useCallback(async () => {
     try {
       await disconnectWalletConnect()
