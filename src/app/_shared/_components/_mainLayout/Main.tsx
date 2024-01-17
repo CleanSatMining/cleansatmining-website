@@ -1,9 +1,9 @@
 'use client'
-import { NextUIProvider } from '@nextui-org/system'
+import { NextUIProvider } from '@nextui-org/react'
 
 export default function Main({ children }: { children: React.ReactNode }) {
   return (
-    <NextUIProvider className="container mx-auto flex grow flex-col p-4 lg:p-8 xl:p-14">
+    <NextUIProvider className="mx-auto flex grow flex-col">
       <main className="flex grow flex-col gap-14">{children}</main>
     </NextUIProvider>
   )

@@ -11,6 +11,7 @@ interface ButtonLinkProps extends LinkProps {
   animation?: boolean
   isExternal?: boolean
   className?: string
+  colorSheme?: 'light' | 'dark'
   children: React.ReactNode
 }
 
@@ -23,6 +24,7 @@ export default function ButtonLink({
   animation = true,
   isExternal = false,
   className,
+  colorSheme = 'light',
   children,
   ...rest
 }: ButtonLinkProps) {
@@ -40,9 +42,13 @@ export default function ButtonLink({
         center ? 'justify-center' : '',
         disabled
           ? 'bg-grey-300'
-          : `${buttonBG[theme]} ${
-              animation ? 'transition  ease-in-out hover:font-bold' : ''
-            }`,
+          : colorSheme === 'light'
+            ? theme === 'grey600'
+              ? `${buttonBG[theme]} transition  ease-in-out hover:opacity-80`
+              : `${buttonBG[theme]} hover:brightness-75`
+            : `${buttonBG[theme]} ${
+                animation ? 'transition  ease-in-out hover:font-bold' : ''
+              }`,
         'inline-flex items-center gap-2 rounded-2xl p-3 text-center font-semibold text-grey-800',
         className,
       )}

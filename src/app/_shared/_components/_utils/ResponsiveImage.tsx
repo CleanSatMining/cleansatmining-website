@@ -35,3 +35,23 @@ export default function ResponsiveImage({
     </picture>
   )
 }
+
+interface ResponsiveImageSrcProps {
+  src: string
+  alt: string
+  className?: string
+}
+
+export function ResponsiveImageSrc({
+  src,
+  alt,
+  className,
+}: ResponsiveImageSrcProps) {
+  return (
+    <picture className={className}>
+      <source media="(max-width: 779px)" src={src} />
+      <source media="(min-width: 780px)" src={src} />
+      <img alt={alt} src={src} className={className} />
+    </picture>
+  )
+}

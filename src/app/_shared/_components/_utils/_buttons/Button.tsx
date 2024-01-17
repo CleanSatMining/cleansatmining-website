@@ -2,18 +2,20 @@ import classNames from 'classnames'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   minWidth?: boolean
-  theme?: 'green' | 'yellow' | 'white'
+  theme?: 'green' | 'yellow' | 'white' | 'dark'
   block?: boolean
   center?: boolean
   className?: string
+  colorSheme?: 'light' | 'dark'
   children: React.ReactNode
 }
 
 export default function Button({
   minWidth = false,
   theme = 'green',
-  center = true, 
+  center = true,
   block = false,
+  colorSheme = 'light',
   className,
   children,
   ...rest
@@ -22,6 +24,7 @@ export default function Button({
     green: 'bg-green',
     yellow: 'bg-yellow',
     white: 'bg-white',
+    dark: 'bg-grey-800',
   }
   return (
     <button
@@ -29,8 +32,16 @@ export default function Button({
         `bg-${theme}`,
         minWidth ? 'min-w-[200px]' : '',
         center ? 'justify-center' : '',
-        rest.disabled ? 'bg-grey-300' : `${buttonBG[theme]} hover:font-bold`,
-        'inline-flex items-center gap-2 rounded-2xl p-3 text-center font-semibold text-grey-800 transition ease-in-out',
+        rest.disabled
+          ? 'bg-grey-300'
+          : colorSheme === 'light'
+            ? theme === 'dark'
+              ? `${buttonBG[theme]} transition  ease-in-out hover:opacity-80`
+              : `${buttonBG[theme]} transition  ease-in-out hover:brightness-90`
+            : `${buttonBG[theme]} hover:font-bold`,
+        'inline-flex items-center gap-2 rounded-2xl p-3 text-center font-semibold transition ease-in-out',
+        theme === 'dark' ? 'text-white' : 'text-grey-800',
+
         className,
       )}
       {...rest}

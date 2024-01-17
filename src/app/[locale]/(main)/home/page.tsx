@@ -1,22 +1,36 @@
+'use client'
+import { Hero } from '@/app/[locale]/(main)/home/_components/Hero'
 import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { Counters } from './_components/Counters'
+import { Sites } from './_components/Sites'
+import { Why } from './_components/Why'
 
 export default function HomeDefault() {
   const t = useTranslations('HomePage')
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.body.classList.contains('dark')
+      setIsDarkMode(isDark)
+    }
+
+    window.addEventListener('DOMContentLoaded', checkDarkMode)
+    window.addEventListener('classChange', checkDarkMode)
+
+    return () => {
+      window.removeEventListener('DOMContentLoaded', checkDarkMode)
+      window.removeEventListener('classChange', checkDarkMode)
+    }
+  }, [])
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4 text-center md:py-8 xl:py-16">
-      <h1 className="font-title text-4xl font-extrabold !leading-tight lg:text-5xl xl:text-7xl">
-        {t.rich('title', {
-          span: (chunks) => (
-            <span className="inline-block rounded-2xl bg-green px-4 text-grey-800 drop-shadow-green">
-              {chunks}
-            </span>
-          ),
-        })}
-      </h1>
-      <p className="text-xxl font-title lg:text-2xl xl:text-3xl">
-        {t('description')}
-      </p>
+    <div className={` ${isDarkMode ? 'bg-dark-color' : 'bg-light-color'}`}>
+      <Hero></Hero>
+      <Counters></Counters>
+      <Why></Why>
+      <Sites></Sites>
     </div>
   )
 }

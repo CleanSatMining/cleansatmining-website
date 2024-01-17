@@ -1,10 +1,10 @@
-import { BlurredProductsList } from '@/app/[locale]/(main)/home/_components/BlurredProductsList'
-
 export default function HomeSignedOut() {
   return (
-    <BlurredProductsList
+    <>
+      {/* <BlurredProductsList
       pathTranslateKey={'HomePage.signedOut'}
       enableLoginButton={true}
-    />
+    /> */}
+    </>
   )
 }

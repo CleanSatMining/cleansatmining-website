@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+const { nextui: nextuiReact } = require('@nextui-org/react')
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 const { nextui } = require('@nextui-org/theme')
@@ -40,6 +41,7 @@ const config: Config = {
         400: '#666666',
         300: '#BDBDBD',
         200: '#E0E1E4',
+        100: '#EFEFEF',
       },
       green: '#B5CD30',
       'light-green': '#E9F2B9',
@@ -51,6 +53,9 @@ const config: Config = {
         500: '#FC4F4F',
       },
     },
+    palette: {
+      primary: '#333333',
+    },
     fontFamily: {
       sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
       title: ['var(--font-cairo)', ...defaultTheme.fontFamily.sans],
@@ -59,8 +64,97 @@ const config: Config = {
       dropShadow: {
         green: '0 0 35px rgba(181, 205, 48, 0.60)',
       },
+      spacing: {
+        '-300': '-300px',
+      },
     },
   },
-  plugins: [nextui()],
+  variants: {
+    extend: {
+      brightness: ['hover'],
+    },
+  },
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            background: '#FFFFFF', // or DEFAULT
+            foreground: '#11181C', // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#FFFFFF',
+            },
+            // ... rest of the colors
+          },
+        },
+        dark: {
+          colors: {
+            background: '#000000', // or DEFAULT
+            foreground: '#ECEDEE', // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#FFFFFF',
+            },
+          },
+          // ... rest of the colors
+        },
+        mytheme: {
+          // custom theme
+          extend: 'dark',
+          colors: {
+            primary: {
+              DEFAULT: '#BEF264',
+              foreground: '#000000',
+            },
+            focus: '#BEF264',
+          },
+        },
+      },
+    }),
+    nextuiReact({
+      themes: {
+        light: {
+          colors: {
+            background: '#FFFFFF', // or DEFAULT
+            foreground: '#11181C', // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#333333',
+            },
+            secondary: '#b5cd30',
+            // ... rest of the colors
+          },
+        },
+        dark: {
+          colors: {
+            background: '#000000', // or DEFAULT
+            foreground: '#ECEDEE', // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#333333',
+            },
+            secondary: '#b5cd30',
+          },
+          // ... rest of the colors
+        },
+        mytheme: {
+          // custom theme
+          extend: 'dark',
+          colors: {
+            primary: {
+              DEFAULT: '#BEF264',
+              foreground: '#000000',
+            },
+            focus: '#BEF264',
+          },
+        },
+      },
+    }),
+  ],
 }
 export default config

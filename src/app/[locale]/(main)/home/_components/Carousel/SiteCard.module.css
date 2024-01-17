@@ -1,0 +1,13 @@
+.card:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #b5cd30, transparent);
+  z-index: 10;
+  pointer-events: none;
+}

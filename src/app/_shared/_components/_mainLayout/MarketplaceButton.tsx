@@ -3,7 +3,14 @@ import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import ButtonLink from '../_utils/_buttons/ButtonLink'
 
-export default function SignInButton() {
+interface MarketplaceButtonProps {
+  colorScheme: 'dark' | 'light'
+}
+
+const MarketplaceButton: React.FC<MarketplaceButtonProps> = ({
+  colorScheme,
+  ...otherProps
+}) => {
   const t = useTranslations('Header.buttons')
   const session = useSession()
 
@@ -12,7 +19,9 @@ export default function SignInButton() {
       href={session.status === 'authenticated' ? '/account/user' : '/sign-in'}
       className="lg:w-48"
     >
-      {session.status === 'authenticated' ? t('account') : t('login')}
+      {t('marketplace')}
     </ButtonLink>
   )
 }
+
+export default MarketplaceButton

@@ -7,8 +7,8 @@
     "notVerifiedError": "Merci de vérifier votre email avant de vous connecter"
   },
   "HomePage": {
-    "title": "La <span>marketplace</span> qui nous réunit",
-    "description": "Avec CleanSat Mining, l’investissement Bitcoin n’a plus de frontière.",
+    "title": "Le minage green\nde <span>Bitcoin</span> à impact positif",
+    "description": "Investir c'est bien, miner c'est mieux !",
     "signedOut": {
       "title": "Connectez-vous pour accéder aux offres",
       "cta": "Se connecter"
@@ -195,12 +195,14 @@
     "logo": "Clean Sat Mining - Accueil",
     "nav": "Navigation principale",
     "links": {
-      "marketplace": "Marketplace",
-      "CSM": "Cleansat Mining"
+      "home": "Accueil",
+      "understand": "Comprendre",
+      "sites": "Sites",
+      "about": "À propos",
+      "contact": "Contact"
     },
     "buttons": {
-      "login": "Connexion",
-      "account": "Mon compte"
+      "marketplace": "Marketplace"
     },
     "externalLink": "Nouvel onglet"
   },

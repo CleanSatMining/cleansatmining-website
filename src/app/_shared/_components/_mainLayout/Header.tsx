@@ -3,18 +3,34 @@ import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useMemo } from 'react'
-import SignInButton from './SignInButton'
+import { useEffect, useMemo, useState } from 'react'
+import DropdownMenu from './DropdownMenu'
+import MarketplaceButton from './MarketplaceButton'
 
 const headerLinks: NavLink[] = [
   {
     href: '/',
-    label: 'links.marketplace',
+    label: 'links.home',
+    external: false,
+  },
+  {
+    href: '/',
+    label: 'links.understand',
+    external: false,
+  },
+  {
+    href: '/',
+    label: 'links.sites',
+    external: false,
+  },
+  {
+    href: '/',
+    label: 'links.about',
     external: false,
   },
   {
     href: 'https://cleansatmining.com/',
-    label: 'links.CSM',
+    label: 'links.contact',
     external: true,
   },
 ]
@@ -22,37 +38,66 @@ const headerLinks: NavLink[] = [
 export default function HeaderComponent() {
   const t = useTranslations('Header')
   const tUrl = useTranslations('externalUrl')
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isChevronUp, setIsChevronUp] = useState(false)
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.body.classList.contains('dark')
+      setIsDarkMode(isDark)
+    }
+
+    window.addEventListener('DOMContentLoaded', checkDarkMode)
+    window.addEventListener('classChange', checkDarkMode)
+
+    return () => {
+      window.removeEventListener('DOMContentLoaded', checkDarkMode)
+      window.removeEventListener('classChange', checkDarkMode)
+    }
+  }, [])
 
   const headerLinksElements = useMemo(
     () =>
       headerLinks.map((link, index) => {
         return (
           <li key={link.label} className="hidden lg:block">
-            <Link
-              href={link.href}
-              className={classNames(
-                'border-b-[1px] py-1',
-                index === 0 ? 'border-green' : 'border-transparent',
-                'font-semibold leading-5 hover:text-green',
+            <div className="flex items-center">
+              {index !== 2 ? (
+                <Link
+                  href={link.href}
+                  className={classNames(
+                    'border-b-[1px] py-1',
+                    index === 0 ? 'border-green' : 'border-transparent',
+                    isDarkMode
+                      ? 'font-semibold leading-5 hover:text-green'
+                      : 'font-semibold leading-5 hover:border-green',
+                  )}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  title={
+                    link.external
+                      ? `${t(link.label)} - ${t('externalLink')}`
+                      : undefined
+                  }
+                >
+                  {t(link.label)}
+                </Link>
+              ) : (
+                <DropdownMenu></DropdownMenu>
               )}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
-              title={
-                link.external
-                  ? `${t(link.label)} - ${t('externalLink')}`
-                  : undefined
-              }
-            >
-              {t(link.label)}
-            </Link>
+            </div>
           </li>
         )
       }),
-    [t],
+    [t, headerLinks, isDarkMode, isChevronUp],
   )
 
   return (
-    <header className="flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-12 py-8">
+    <header
+      className={`flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] ${
+        isDarkMode ? 'border-green/20' : 'border-grey-300'
+      } px-12 py-8`}
+    >
       <Link href={tUrl('csmHome')}>
         <Image src="/CSM-logo.svg" width={226} height={80} alt={t('logo')} />
       </Link>
@@ -60,7 +105,7 @@ export default function HeaderComponent() {
         <ul className="flex items-center gap-12">
           {headerLinksElements}
           <li>
-            <SignInButton />
+            <MarketplaceButton colorScheme={isDarkMode ? 'dark' : 'light'} />
           </li>
         </ul>
       </nav>

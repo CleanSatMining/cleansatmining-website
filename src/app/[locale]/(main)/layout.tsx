@@ -1,15 +1,9 @@
-import Footer from '@/app/_shared/_components/_mainLayout/Footer'
-import Header from '@/app/_shared/_components/_mainLayout/Header'
-import Main from '@/app/_shared/_components/_mainLayout/Main'
-import { intlFormats } from '@/app/_shared/_format/format'
 import '@/app/globals.css'
-import { ApolloWrapper } from '@/config/ApolloProvider'
-import { AuthProvider } from '@/config/AuthProvider'
-import ToastProvider from '@/config/ToastProvider'
 import type { Metadata } from 'next'
-import { NextIntlClientProvider, useLocale } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { Cairo, Poppins } from 'next/font/google'
 import { notFound } from 'next/navigation'
+import HtmlLayout from './HtmlLayout'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -50,26 +44,13 @@ export default async function RootLayout({
   }
 
   return (
-    <html
-      lang={locale}
-      className={`h-full dark ${poppins.variable} ${cairo.variable}`}
+    <HtmlLayout
+      locale={locale}
+      messages={messages}
+      cairo={cairo.variable}
+      poppins={poppins.variable}
     >
-      <body className="flex min-h-screen flex-col dark:bg-grey-600 dark:text-white">
-        <ApolloWrapper>
-          <NextIntlClientProvider
-            locale={locale}
-            messages={messages}
-            formats={intlFormats}
-          >
-            <AuthProvider>
-              <Header />
-              <Main>{children}</Main>
-              <Footer />
-            </AuthProvider>
-            <ToastProvider />
-          </NextIntlClientProvider>
-        </ApolloWrapper>
-      </body>
-    </html>
+      {children}
+    </HtmlLayout>
   )
 }
