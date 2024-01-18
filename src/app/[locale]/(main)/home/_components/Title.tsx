@@ -70,7 +70,7 @@ export function Title() {
         isDarkMode ? 'bg-dark-color' : 'bg-light-color'
       }`}
     >
-      <h1 className="font-title text-5xl font-extrabold leading-loose lg:text-7xl xl:text-7xl">
+      <h1 className="font-title text-3xl font-extrabold leading-loose sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
         {parts.map((node, index) =>
           typeof node === 'string' ? (
             <span key={index} className="leading-snug">
@@ -81,19 +81,19 @@ export function Title() {
           ),
         )}
       </h1>
-      <p className="text-xxl font-title lg:text-2xl xl:text-3xl">
+      <p className="md:text-xxl font-title text-lg sm:text-xl lg:text-2xl xl:text-3xl">
         {t('description')}
       </p>
       <Button
         data-testid="submitAddToCartForm"
         theme="dark"
         type="submit"
-        className="hover-group group flex h-12 w-full max-w-[230px] flex-row items-start justify-center gap-2 pt-3 "
+        className="hover-group group flex h-12 w-full max-w-[230px] flex-row items-start justify-center gap-2 pt-3 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 "
         disabled={false}
       >
         <div
           id="Labeltext"
-          className="text-center text-lg font-normal leading-[19.2px] text-white"
+          className="text-center text-sm font-normal leading-[19.2px] text-white sm:text-base "
         >
           Découvrir les offres
         </div>

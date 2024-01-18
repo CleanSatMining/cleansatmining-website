@@ -32,3 +32,44 @@ export const IconInfo = ({
     </div>
   )
 }
+
+interface CounterProps {
+  iconSrc: string
+  iconAlt: string
+  label: string
+  value: string
+}
+
+export const IconCounter: React.FC<CounterProps> = ({
+  iconSrc,
+  iconAlt,
+  label,
+  value,
+}) => {
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row">
+      <div className="flex flex-col items-start">
+        <Avatar
+          className="h-16 w-16"
+          isBordered
+          color="primary"
+          icon={<Image src={iconSrc} alt={iconAlt} width={40} height={40} />}
+        />
+      </div>
+      <div className="mt-1 flex w-full flex-col items-start  sm:w-2/3">
+        <div
+          id="Label"
+          className="sm:text-md text-sm leading-[19.2px] text-grey-600 lg:text-lg"
+        >
+          {label}
+        </div>
+        <div
+          id="Donne"
+          className="text-xl font-semibold leading-[33.6px] text-grey-600 sm:text-2xl lg:text-3xl"
+        >
+          {value}
+        </div>
+      </div>
+    </div>
+  )
+}

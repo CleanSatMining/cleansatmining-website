@@ -84,7 +84,6 @@ export function Carousel() {
             </div>
           ))}
         </Slider>
-        <p>Slide actuel : {currentSlide}</p>
       </div>
     </div>
   )
