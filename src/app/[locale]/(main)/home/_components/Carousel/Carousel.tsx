@@ -48,6 +48,8 @@ const SiteData = [
 
 export function Carousel() {
   const settings = {
+    className: 'center',
+    centerMode: true,
     dots: false,
     speed: 1000,
     slidesToShow: 3,
@@ -55,10 +57,15 @@ export function Carousel() {
     infinite: true,
     autoplay: true,
     autoplaySpeed: 5000,
+    centerPadding: '60px',
   }
   return (
-    <div className="content">
-      <div className="container">
+    <div
+      id="content"
+      className="content"
+      style={{ padding: 0, margin: 0, width: '100%' }}
+    >
+      <div id="container" className="" style={{ width: '100%' }}>
         <Slider {...settings}>
           {SiteData.map((item) => (
             <div key={item.id} style={{ padding: '20px' }}>
