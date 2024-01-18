@@ -28,7 +28,7 @@ export function StepCard({
       <div className="flex w-full items-center justify-center">
         <div
           id="Step"
-          className="flex h-6 w-24 flex-row justify-center rounded-bl-[24px] rounded-br-[24px] bg-grey-600 pt-1 text-center text-sm font-semibold uppercase leading-[16.8px] text-white"
+          className="flex h-6 w-24 flex-row justify-center rounded-bl-[24px] rounded-br-[24px] bg-grey-600 pt-1 text-center text-xs font-semibold uppercase leading-[16.8px] text-white sm:w-32 sm:text-sm"
         >
           {step}
         </div>
@@ -41,10 +41,10 @@ export function StepCard({
           icon={<Image src={icon} alt={alt} width={40} height={40} />}
         />
       </div>
-      <div className="ml-5 w-5/6 text-2xl font-bold leading-[28.8px] text-grey-600">
+      <div className="ml-5 w-5/6 text-xl font-bold leading-[28.8px] text-grey-600 sm:text-2xl">
         {title}
       </div>
-      <div className="font-poppins ml-5 w-5/6 text-sm leading-[21px] text-grey-600">
+      <div className="font-poppins ml-5 w-5/6 text-xs leading-[21px] text-grey-600 sm:text-sm">
         {text}
       </div>
     </div>

@@ -7,7 +7,7 @@ export function Counters() {
   return (
     <div
       id="CompteurRoot"
-      className="bg-50%_50% relative mt-[-300] mt-[-400px]  grid w-full items-start gap-5 bg-[#efefef] bg-no-repeat px-4 pb-[60px] pt-16 bg-blend-normal sm:grid-cols-2 sm:px-12 lg:grid-cols-4"
+      className="bg-50%_50% relative mt-[-300] mt-[-400px]  grid w-full grid-cols-2 items-start gap-5 bg-grey-100 bg-no-repeat px-4 pb-[60px] pt-16 bg-blend-normal sm:px-12 lg:grid-cols-4"
       style={{
         //marginTop: '-400px',
         columnGap: '5%',

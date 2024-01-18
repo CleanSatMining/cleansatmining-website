@@ -8,19 +8,18 @@ export function Why() {
   return (
     <div
       id="TitleRoot"
-      className=" relative flex w-full flex-col items-center  bg-no-repeat bg-blend-normal"
+      className="relative flex w-full flex-col items-center bg-no-repeat px-4 py-4 bg-blend-normal sm:px-[12px] lg:px-[52px]"
       style={{
-        padding: '60px 52px',
         background: `url(${background}) no-repeat center center, #FFF`,
         backgroundSize: '70%',
       }}
     >
-      <div className="font-cairo w-full text-3xl font-extrabold leading-[38.4px] text-green">
+      <div className="font-cairo w-full text-xl font-extrabold leading-[38.4px] text-green sm:text-2xl lg:text-3xl">
         {
           "N'importe quel investisseur peut participer à l'industrie du minage Bitcoin."
         }
       </div>
-      <div className="font-poppins mt-2 w-full text-base font-normal leading-[19.2px] text-grey-600">
+      <div className="font-poppins mt-2 w-full text-sm font-normal leading-[19.2px] text-grey-600 sm:text-base lg:text-lg">
         {
           "Pour la toute première fois, et grâce à un système d'actions tokenisées parfaitement conformes au cadre réglementaire Suisse."
         }
@@ -29,10 +28,10 @@ export function Why() {
           "En possédant des CSM tokens, vous êtes légalement propriétaire d'une part d'une société Suisse détenant des ASICs en exploitation sur un site bien particulier !"
         }
       </div>
-      <div className="font-cairo mb-5 mt-10 w-full text-3xl font-extrabold leading-[32px] text-grey-600">
+      <div className="font-cairo mb-5 mt-10 w-full text-xl font-extrabold leading-[32px] text-grey-600 sm:text-2xl lg:text-3xl">
         {'4 raisons d’investir avec CleanSat Mining'}
       </div>
-      <div className="grid w-full grid-cols-4 items-start gap-5">
+      <div className="grid w-full grid-cols-1 items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <IconInfo
           alt="trophy"
           icon="https://file.rendit.io/n/g2HYyKDyt81nRIxlPSNY.svg"

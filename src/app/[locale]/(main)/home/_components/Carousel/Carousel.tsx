@@ -62,6 +62,32 @@ export function Carousel() {
     autoplaySpeed: 5000,
     centerPadding: '60px',
     afterChange: (index: number) => setCurrentSlide(index),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 680,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
   return (
     <div
@@ -72,7 +98,7 @@ export function Carousel() {
       <div id="container" className="" style={{ width: '100%' }}>
         <Slider {...settings}>
           {SiteData.map((item, index) => (
-            <div key={item.id} style={{ padding: '20px' }}>
+            <div key={item.id}>
               <SiteCard
                 alt={item.alt}
                 src={item.src}
