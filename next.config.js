@@ -10,8 +10,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/fr',
-        destination: '/home',
+        source: '/',
+        destination: '/fr/home',
         permanent: true,
       },
     ]
