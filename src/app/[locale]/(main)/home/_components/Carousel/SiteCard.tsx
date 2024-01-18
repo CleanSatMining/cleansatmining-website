@@ -2,6 +2,7 @@ import Button from '@/app/_shared/_components/_utils/_buttons/Button'
 import { Card, CardHeader } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import { ResponsiveImageSrc } from '../../../../../_shared/_components/_utils/ResponsiveImage'
+import './SiteCard.module.css'
 import styles from './SiteCard.module.css'
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   title: string
   subtitle: string
   alt: string
+  selected?: boolean
 }
 
 export function SiteCard({
@@ -18,6 +20,7 @@ export function SiteCard({
   title = 'title',
   subtitle = 'subtitle',
   alt = 'icon',
+  selected = false,
 }: Props) {
   const t = useTranslations('HomePage.signedOut')
   const background = '/assets/alpha-cover.jpg'
@@ -56,7 +59,12 @@ export function SiteCard({
         </div>
       </CardHeader>
 
-      <ResponsiveImageSrc src={src} alt="" className="h-[400px] object-cover" />
+      <ResponsiveImageSrc
+        src={src}
+        alt={alt}
+        className={`${selected ? styles['zoom-animation'] : styles['zoom-animation']} h-full w-full object-cover object-center`}
+        containerClassName="h-[400px]"
+      />
       <CardHeader
         className="absolute bottom-10 z-10 ml-1 w-[calc(100%_-_8px)] justify-center overflow-hidden  py-1 "
         style={{ cursor: 'pointer' }}

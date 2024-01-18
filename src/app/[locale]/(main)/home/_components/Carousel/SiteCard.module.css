@@ -11,3 +11,30 @@
   z-index: 10;
   pointer-events: none;
 }
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-paused {
+  0%,
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.zoom-animation {
+  animation: zoom 50s infinite;
+}
+
+.pause-animation {
+  animation-play-state: paused;
+}

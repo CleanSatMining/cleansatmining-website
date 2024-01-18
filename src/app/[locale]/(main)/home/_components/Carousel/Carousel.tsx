@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
@@ -47,6 +48,8 @@ const SiteData = [
 ]
 
 export function Carousel() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
   const settings = {
     className: 'center',
     centerMode: true,
@@ -58,6 +61,7 @@ export function Carousel() {
     autoplay: true,
     autoplaySpeed: 5000,
     centerPadding: '60px',
+    afterChange: (index: number) => setCurrentSlide(index),
   }
   return (
     <div
@@ -67,7 +71,7 @@ export function Carousel() {
     >
       <div id="container" className="" style={{ width: '100%' }}>
         <Slider {...settings}>
-          {SiteData.map((item) => (
+          {SiteData.map((item, index) => (
             <div key={item.id} style={{ padding: '20px' }}>
               <SiteCard
                 alt={item.alt}
@@ -75,10 +79,12 @@ export function Carousel() {
                 title={item.title}
                 subtitle={item.description}
                 status={item.status}
+                selected={index === currentSlide}
               ></SiteCard>
             </div>
           ))}
         </Slider>
+        <p>Slide actuel : {currentSlide}</p>
       </div>
     </div>
   )

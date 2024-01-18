@@ -1,7 +1,7 @@
 {
   "HomePage": {
-    "title": "REALT CSM",
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes."
+    "title": "CleanSat Mining",
+    "description": "Le minage green de Bitcoin accessible à tous."
   },
   "CartPage": {
     "title": "CartPage",
