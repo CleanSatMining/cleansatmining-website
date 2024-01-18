@@ -2,7 +2,7 @@
 import { NavLink } from '@/models/NavLink'
 import { LinkedinLogo, TwitterLogo } from '@phosphor-icons/react'
 import classNames from 'classnames'
-import { useTranslations } from 'next-intl'
+import { MessageKeys, useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -78,11 +78,30 @@ export default function Footer() {
               rel={link.external ? 'noopener noreferrer' : undefined}
               title={
                 link.external
-                  ? `${t(link.label)} - ${t('externalLink')}`
+                  ? `${t(link.label as MessageKeys<{ nav: string; links: { blog: string; contact: string; legalNotices: string; TCS: string; privacy: string }; externalLink: string; socialMedia: { linkedin: string; twitter: string }; logo: string; copyright: string; legal: string }, 'links.privacy' | 'legal'>)} - ${t('externalLink')}`
                   : undefined
               }
             >
-              {t(link.label)}
+              {t(
+                link.label as MessageKeys<
+                  {
+                    nav: string
+                    links: {
+                      blog: string
+                      contact: string
+                      legalNotices: string
+                      TCS: string
+                      privacy: string
+                    }
+                    externalLink: string
+                    socialMedia: { linkedin: string; twitter: string }
+                    logo: string
+                    copyright: string
+                    legal: string
+                  },
+                  'links.privacy' | 'legal'
+                >,
+              )}
             </Link>
           </li>
         )
@@ -102,12 +121,31 @@ export default function Footer() {
               rel={link.external ? 'noopener noreferrer' : ''}
               title={
                 link.external
-                  ? `${t(link.label)} - ${t('externalLink')}`
+                  ? `${t(link.label as MessageKeys<{ nav: string; links: { blog: string; contact: string; legalNotices: string; TCS: string; privacy: string }; externalLink: string; socialMedia: { linkedin: string; twitter: string }; logo: string; copyright: string; legal: string }, 'links.privacy' | 'legal'>)} - ${t('externalLink')}`
                   : undefined
               }
             >
               <span className={classNames(link.icon ? 'sr-only' : '')}>
-                {t(link.label)}
+                {t(
+                  link.label as MessageKeys<
+                    {
+                      nav: string
+                      links: {
+                        blog: string
+                        contact: string
+                        legalNotices: string
+                        TCS: string
+                        privacy: string
+                      }
+                      externalLink: string
+                      socialMedia: { linkedin: string; twitter: string }
+                      logo: string
+                      copyright: string
+                      legal: string
+                    },
+                    'links.privacy' | 'legal'
+                  >,
+                )}
               </span>
               {link.icon && <link.icon size={24} role="img" />}
             </Link>
@@ -118,21 +156,28 @@ export default function Footer() {
   )
 
   return (
-    <footer className="flex flex-col gap-16 rounded-t-[48px] border-t-[1px] border-green/20 px-12 py-8">
-      <div className="flex flex-wrap items-center justify-between gap-8 lg:gap-4">
-        <Link href={tUrl('csmHome')}>
-          <Image src="/CSM-logo.svg" width={226} height={80} alt={t('logo')} />
-        </Link>
-        <nav aria-label={t('nav')}>
-          <ul className="flex flex-col flex-wrap gap-y-2 lg:flex-row lg:items-center lg:justify-center">
-            {footerLinksElements}
-          </ul>
-        </nav>
-        <ul className="flex items-center gap-6">{socialLinksElements}</ul>
-      </div>
-      <div className="flex flex-col items-center text-center dark:text-grey-300">
-        <p className="mb-3 text-sm font-semibold">{t('copyright')}</p>
-        <p className="text-xs">{t('legal')}</p>
+    <footer className="bg-grey-600">
+      <div className="flex flex-col gap-16 rounded-t-[48px] border-t-[1px] border-grey-600 bg-grey-100 px-12 py-8">
+        <div className="flex flex-wrap items-center justify-between gap-8 lg:gap-4">
+          <Link href={tUrl('csmHome')}>
+            <Image
+              src="/CSM-logo.svg"
+              width={226}
+              height={80}
+              alt={t('logo')}
+            />
+          </Link>
+          <nav aria-label={t('nav')}>
+            <ul className="flex flex-col flex-wrap gap-y-2 lg:flex-row lg:items-center lg:justify-center">
+              {footerLinksElements}
+            </ul>
+          </nav>
+          <ul className="flex items-center gap-6">{socialLinksElements}</ul>
+        </div>
+        <div className="flex flex-col items-center text-center dark:text-grey-300">
+          <p className="mb-3 text-sm font-semibold">{t('copyright')}</p>
+          <p className="text-xs">{t('legal')}</p>
+        </div>
       </div>
     </footer>
   )

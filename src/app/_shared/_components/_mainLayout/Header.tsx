@@ -1,6 +1,6 @@
 import { NavLink } from '@/models/NavLink'
 import classNames from 'classnames'
-import { useTranslations } from 'next-intl'
+import { MessageKeys, useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
@@ -76,11 +76,11 @@ export default function HeaderComponent() {
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   title={
                     link.external
-                      ? `${t(link.label)} - ${t('externalLink')}`
+                      ? `${t(link.label as MessageKeys<any, any>)} - ${t('externalLink')}`
                       : undefined
                   }
                 >
-                  {t(link.label)}
+                  {t(link.label as MessageKeys<any, any>)}
                 </Link>
               ) : (
                 <DropdownMenu></DropdownMenu>

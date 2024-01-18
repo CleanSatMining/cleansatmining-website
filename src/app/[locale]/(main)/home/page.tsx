@@ -3,6 +3,8 @@ import { Hero } from '@/app/[locale]/(main)/home/_components/Hero'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Counters } from './_components/Counters'
+import { HowTo } from './_components/HowTo'
+import { KeepInformed } from './_components/KeepInformed'
 import { Sites } from './_components/Sites'
 import { Why } from './_components/Why'
 
@@ -31,6 +33,8 @@ export default function HomeDefault() {
       <Counters></Counters>
       <Why></Why>
       <Sites></Sites>
+      <HowTo></HowTo>
+      <KeepInformed></KeepInformed>
     </div>
   )
 }

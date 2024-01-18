@@ -6,7 +6,7 @@ export function Hero() {
   const t = useTranslations('HomePage.signedOut')
 
   return (
-    <div className="bg-50%_50% relative flex w-full flex-col items-start items-center gap-4  bg-cover bg-no-repeat px-32  text-center font-['Cairo'] bg-blend-normal">
+    <div className="bg-50%_50% font-cairo relative flex w-full flex-col items-start items-center  gap-4 bg-cover bg-no-repeat  px-32 text-center bg-blend-normal">
       <Image
         src="https://file.rendit.io/n/rqTURJwtAXKSXb0R0kdq.svg"
         alt="Frame7"
@@ -52,7 +52,7 @@ export function Hero() {
           width={100}
           height={100}
         />
-        <div className="flex w-2/3 flex-col items-start font-['Poppins']">
+        <div className="font-poppins flex w-2/3 flex-col items-start">
           <Image
             src="https://file.rendit.io/n/bolBqL8SeimxYdpzJCz9.svg"
             alt="ArrowRight"
