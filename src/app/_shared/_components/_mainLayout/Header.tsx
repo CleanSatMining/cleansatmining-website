@@ -89,7 +89,7 @@ export default function HeaderComponent() {
           </li>
         )
       }),
-    [t, headerLinks, isDarkMode, isChevronUp],
+    [t, isDarkMode],
   )
 
   return (

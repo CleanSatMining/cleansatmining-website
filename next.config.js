@@ -9,6 +9,11 @@ const nextConfig = {
         destination: '/home',
         permanent: true,
       },
+      {
+        source: '/fr',
+        destination: '/home',
+        permanent: true,
+      },
     ]
   },
   //TODO update domain list after dynamization and prod launch
