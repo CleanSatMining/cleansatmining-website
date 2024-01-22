@@ -1,18 +1,17 @@
+import { LogoLayout } from '@/app/_shared/_components/_mainLayout/LogoLayout'
 import { useTranslations } from 'next-intl'
-import { IconInfo } from './IconInfo'
+import { IconInfo } from './IconInfo/IconInfo'
 
 export function Why() {
   const t = useTranslations('HomePage.signedOut')
   const background = '/assets/background-logo.svg'
 
   return (
-    <div
+    <LogoLayout
+      theme="light"
+      backgroundSize="70%"
       id="TitleRoot"
-      className="relative flex w-full flex-col items-center bg-no-repeat px-4 py-4 bg-blend-normal sm:px-[12px] lg:px-[52px]"
-      style={{
-        background: `url(${background}) no-repeat center center, #FFF`,
-        backgroundSize: '70%',
-      }}
+      className="relative flex w-full flex-col items-center  px-4 py-4  sm:px-[12px] sm:py-[12px] lg:px-[60px] lg:py-[52px] "
     >
       <div className="font-cairo w-full text-xl font-extrabold leading-[38.4px] text-green sm:text-2xl lg:text-3xl">
         {
@@ -53,6 +52,6 @@ export function Why() {
           text="Contribuez à l’impact sur l’économie locale"
         ></IconInfo>
       </div>
-    </div>
+    </LogoLayout>
   )
 }

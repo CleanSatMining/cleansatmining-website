@@ -1,18 +1,16 @@
+import { LogoLayout } from '@/app/_shared/_components/_mainLayout/LogoLayout'
 import { useTranslations } from 'next-intl'
-import { StepCard } from './StepCard/StepCard'
+import { StepCard } from './HowTo/StepCard'
 
-export function HowTo() {
+export function HowToSection() {
   const t = useTranslations('HomePage.signedOut')
-  const background = '/assets/background-logo.svg'
 
   return (
-    <div
-      id="TitleRoot"
-      className="relative flex w-full flex-col items-center bg-no-repeat px-4 py-4 bg-blend-normal sm:px-12 sm:py-12 lg:px-52 lg:py-60"
-      style={{
-        background: `url(${background}) no-repeat center center, #FFF`,
-        backgroundSize: '70%',
-      }}
+    <LogoLayout
+      id="HowToRoot"
+      theme="light"
+      className="relative flex w-full flex-col items-center px-4 py-4 sm:px-6 sm:py-6 lg:px-[52px] lg:py-[60px]"
+      backgroundSize="70%"
     >
       <div className="font-cairo w-full text-xl font-extrabold leading-[38.4px] text-grey-600 sm:text-2xl lg:text-3xl">
         {'Investir dans le minage green du Bitcoin'}
@@ -52,6 +50,6 @@ export function HowTo() {
           title="Revendez !"
         ></StepCard>
       </div>
-    </div>
+    </LogoLayout>
   )
 }

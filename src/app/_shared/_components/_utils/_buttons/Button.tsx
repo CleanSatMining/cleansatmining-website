@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   minWidth?: boolean
-  theme?: 'green' | 'yellow' | 'white' | 'dark'
+  theme?: 'green' | 'yellow' | 'white' | 'dark' | 'blue' | 'grey' | 'red'
   block?: boolean
   center?: boolean
   className?: string
@@ -25,6 +25,9 @@ export default function Button({
     yellow: 'bg-yellow',
     white: 'bg-white',
     dark: 'bg-grey-800',
+    grey: 'bg-grey-300',
+    blue: 'bg-blue',
+    red: 'bg-red-500',
   }
   return (
     <button

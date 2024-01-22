@@ -32,7 +32,9 @@ export default async function middleware(req: NextRequest) {
     `^(/(${locales.join('|')}))?(${publicPages.join('|')})?/?$`,
     'i',
   )
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
+  //const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
+
+  const isPublicPage = true
   if (isPublicPage) {
     return intlMiddleware(req)
   } else {

@@ -1,13 +1,13 @@
 import { useTranslations } from 'next-intl'
-import { IconCounter } from './IconInfo'
+import { IconCounter } from './IconInfo/IconInfo'
 
-export function Counters() {
+export function CountersSection() {
   const t = useTranslations('HomePage.signedOut')
 
   return (
     <div
       id="CompteurRoot"
-      className="bg-50%_50% relative mt-[-300] mt-[-400px]  grid w-full grid-cols-2 items-start gap-5 bg-grey-100 bg-no-repeat px-4 pb-[60px] pt-16 bg-blend-normal sm:px-12 lg:grid-cols-4"
+      className="bg-50%_50% relative mt-[-400px]  grid w-full grid-cols-2 items-start gap-5 bg-grey-100 bg-no-repeat px-4 py-8 bg-blend-normal sm:px-8 sm:py-8 lg:grid-cols-4 lg:py-16"
       style={{
         //marginTop: '-400px',
         columnGap: '5%',

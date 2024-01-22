@@ -4,6 +4,7 @@ import { MessageKeys, useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import DropdownMenu from './DropdownMenu'
 import MarketplaceButton from './MarketplaceButton'
 
@@ -14,12 +15,12 @@ const headerLinks: NavLink[] = [
     external: false,
   },
   {
-    href: '/',
+    href: '/sites',
     label: 'links.understand',
     external: false,
   },
   {
-    href: '/',
+    href: '/sites',
     label: 'links.sites',
     external: false,
   },
@@ -37,9 +38,9 @@ const headerLinks: NavLink[] = [
 
 export default function HeaderComponent() {
   const t = useTranslations('Header')
+  const location = useLocation()
   const tUrl = useTranslations('externalUrl')
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [isChevronUp, setIsChevronUp] = useState(false)
 
   useEffect(() => {
     const checkDarkMode = () => {
@@ -55,6 +56,8 @@ export default function HeaderComponent() {
       window.removeEventListener('classChange', checkDarkMode)
     }
   }, [])
+
+  console.log('Header location', location.pathname)
 
   const headerLinksElements = useMemo(
     () =>
@@ -83,7 +86,7 @@ export default function HeaderComponent() {
                   {t(link.label as MessageKeys<any, any>)}
                 </Link>
               ) : (
-                <DropdownMenu></DropdownMenu>
+                <DropdownMenu navLink={link}></DropdownMenu>
               )}
             </div>
           </li>
@@ -93,22 +96,24 @@ export default function HeaderComponent() {
   )
 
   return (
-    <header
-      className={`flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] ${
-        isDarkMode ? 'border-green/20' : 'border-grey-300'
-      } px-12 py-8`}
-    >
-      <Link href={tUrl('csmHome')}>
-        <Image src="/CSM-logo.svg" width={226} height={80} alt={t('logo')} />
-      </Link>
-      <nav aria-label={t('nav')}>
-        <ul className="flex items-center gap-12">
-          {headerLinksElements}
-          <li>
-            <MarketplaceButton colorScheme={isDarkMode ? 'dark' : 'light'} />
-          </li>
-        </ul>
-      </nav>
+    <header className={location.pathname.includes('site') ? 'bg-grey-600' : ''}>
+      <div
+        className={`flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] bg-grey-100 ${
+          isDarkMode ? 'border-green/20' : 'border-grey-300'
+        } px-12 py-8`}
+      >
+        <Link href={tUrl('csmHome')}>
+          <Image src="/CSM-logo.svg" width={226} height={80} alt={t('logo')} />
+        </Link>
+        <nav aria-label={t('nav')}>
+          <ul className="flex items-center gap-12">
+            {headerLinksElements}
+            <li>
+              <MarketplaceButton colorScheme={isDarkMode ? 'dark' : 'light'} />
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   )
 }

@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import React, { ReactNode, useEffect, useState } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
-export function Title() {
+export function HeroSection() {
   const t = useTranslations('HomePage')
   const [isDarkMode, setIsDarkMode] = useState(false)
 

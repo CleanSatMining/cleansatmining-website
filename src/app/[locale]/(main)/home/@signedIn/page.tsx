@@ -1,4 +1,4 @@
-import { BlurredProductsList } from '@/app/[locale]/(main)/home/_components/BlurredProductsList'
+import { BlurredProductsList } from '@/app/[locale]/(main)/home/_components/Utils/BlurredProductsList'
 import getProducts from '@/app/_shared/_services/_product/getProducts'
 import { ProductListOptions } from '@/graphql/common/generated-types'
 import { NoProducts } from './_components/NoProducts'

@@ -3,7 +3,7 @@ import { Input } from '@nextui-org/input'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-export function KeepInformed() {
+export function KeepInformedSection() {
   const t = useTranslations('HomePage.signedOut')
 
   return (

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { Title } from './Title'
+import { HeroSection } from '../HeroSection'
 
 export function Hero() {
   const t = useTranslations('HomePage.signedOut')
@@ -42,7 +42,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <Title />
+      <HeroSection />
 
       <div className="relative flex w-full flex-row items-start justify-between sm:w-3/4 md:w-2/3 lg:w-2/3">
         <Image

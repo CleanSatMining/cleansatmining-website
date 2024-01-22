@@ -4,10 +4,10 @@ import Header from '@/app/_shared/_components/_mainLayout/Header'
 import Main from '@/app/_shared/_components/_mainLayout/Main'
 import { intlFormats } from '@/app/_shared/_format/format'
 import { ApolloWrapper } from '@/config/ApolloProvider'
-import { AuthProvider } from '@/config/AuthProvider'
 import ToastProvider from '@/config/ToastProvider'
 import { NextIntlClientProvider } from 'next-intl'
 import { useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 export default function HtmlLayout({
   children,
@@ -46,13 +46,14 @@ export default function HtmlLayout({
             messages={messages}
             formats={intlFormats}
           >
-            <AuthProvider>
+            <Router>
               <div>
                 <Header />
                 <Main>{children}</Main>
                 <Footer />
               </div>
-            </AuthProvider>
+            </Router>
+
             <ToastProvider />
           </NextIntlClientProvider>
         </ApolloWrapper>

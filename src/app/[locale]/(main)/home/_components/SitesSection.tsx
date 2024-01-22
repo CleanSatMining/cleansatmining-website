@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { Carousel } from './Carousel/Carousel'
 
-export function Sites() {
+export function SitesSection() {
   const t = useTranslations('HomePage.signedOut')
 
   return (
