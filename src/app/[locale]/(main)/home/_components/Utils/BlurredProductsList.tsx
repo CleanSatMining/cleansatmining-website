@@ -1,8 +1,5 @@
 import ButtonLink from '@/app/_shared/_components/_utils/_buttons/ButtonLink'
 import { useTranslations } from 'next-intl'
-import ResponsiveImage from '../../../../../_shared/_components/_utils/ResponsiveImage'
-import desktopImg from './csm-signed-out-desktop.png'
-import mobileImg from './csm-signed-out-mobile.png'
 
 interface BlurredProductsListProps {
   pathTranslateKey: 'HomePage.signedOut' | 'HomePage.signedIn'
@@ -27,12 +24,6 @@ export function BlurredProductsList({
           </ButtonLink>
         )}
       </div>
-      <ResponsiveImage
-        src={mobileImg}
-        mobileImg={mobileImg}
-        desktopImg={desktopImg}
-        alt=""
-      />
     </div>
   )
 }

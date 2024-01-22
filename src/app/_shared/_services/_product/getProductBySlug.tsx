@@ -1,4 +1,4 @@
-import { GET_PRODUCT_DETAIL } from '@/app/[locale]/(main)/product/[slug]/product.graphql'
+import { GET_PRODUCT_DETAIL } from '@/app/[locale]/(main)/sites/[slug]/product.graphql'
 import { getClient } from '@/config/client'
 import { GET_ACTIVE_CUSTOMER_BLOCKED_STATUS } from '@/graphql/common/documents.graphql'
 import { Product } from '@/graphql/common/generated-types'
