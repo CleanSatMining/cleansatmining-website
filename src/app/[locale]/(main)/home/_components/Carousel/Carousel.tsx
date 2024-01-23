@@ -20,7 +20,7 @@ export function Carousel() {
     infinite: true,
     autoplay: true,
     autoplaySpeed: 5000,
-    centerPadding: '60px',
+    centerPadding: '0px',
     afterChange: (index: number) => setCurrentSlide(index),
     responsive: [
       {
