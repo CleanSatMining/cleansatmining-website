@@ -1,6 +1,7 @@
 'use client'
 import Footer from '@/app/_shared/_components/_mainLayout/Footer'
-import Header from '@/app/_shared/_components/_mainLayout/Header'
+//import Header from '@/app/_shared/_components/_mainLayout/Header'
+import Header from '@/app/_shared/_components/_mainLayout/HeaderTailwind'
 import Main from '@/app/_shared/_components/_mainLayout/Main'
 import { intlFormats } from '@/app/_shared/_format/format'
 import { ApolloWrapper } from '@/config/ApolloProvider'

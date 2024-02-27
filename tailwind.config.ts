@@ -35,6 +35,7 @@ const config: Config = {
       transparent: 'transparent',
       current: 'currentColor',
       grey: {
+        900: '#1D1D1B',
         800: '#1D1D1B',
         700: '#262626',
         600: '#333333',
@@ -42,6 +43,7 @@ const config: Config = {
         300: '#BDBDBD',
         200: '#E0E1E4',
         100: '#EFEFEF',
+        50: '#F5F5F5',
       },
       green: '#B5CD30',
       'light-green': '#E9F2B9',

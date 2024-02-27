@@ -69,7 +69,7 @@ export function HeroSection() {
       className={`flex flex-col items-center gap-6 text-center  ${
         isDarkMode ? 'bg-dark-color' : 'bg-light-color'
       }`}
-      style={{ zIndex: '9999' }}
+      style={{ zIndex: '2' }}
     >
       <h1 className="font-title text-3xl font-extrabold leading-loose sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
         {parts.map((node, index) =>
