@@ -1,0 +1,5 @@
+.bg-image {
+    background-image: url('/image/feature-mining-illustration.svg');
+    background-size: cover;
+    background-position: center;
+  }

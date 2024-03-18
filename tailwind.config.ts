@@ -1,162 +1,82 @@
-import type { Config } from 'tailwindcss'
-const { nextui: nextuiReact } = require('@nextui-org/react')
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
-const { nextui } = require('@nextui-org/theme')
+/** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
-const config: Config = {
-  darkMode: 'class',
+module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    // if you install other Next-UI Components, you can add their style import in the following line like this (input|button|etc...)
-    './node_modules/@nextui-org/theme/dist/components/input.js',
-    './node_modules/@nextui-org/theme/dist/components/select.js',
-    './node_modules/@nextui-org/theme/dist/components/scroll-shadow.js',
-    './node_modules/@nextui-org/theme/dist/components/checkbox.js',
-    './node_modules/@nextui-org/theme/dist/components/tabs.js',
-    './node_modules/@nextui-org/theme/dist/components/progress.js',
-    './node_modules/@nextui-org/theme/dist/components/listbox.js',
-    './node_modules/@nextui-org/theme/dist/components/popover.js',
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      light: {
-        primary: '#333333',
-        secondary: '#BDBDBD',
-        // Ajoutez plus de couleurs si nécessaire
-      },
-      dark: {
-        primary: '#1D1D1B',
-        secondary: '#262626',
-        // Ajoutez plus de couleurs si nécessaire
-      },
-      transparent: 'transparent',
-      current: 'currentColor',
-      grey: {
-        900: '#1D1D1B',
-        800: '#1D1D1B',
-        700: '#262626',
-        600: '#333333',
-        400: '#666666',
-        300: '#BDBDBD',
-        200: '#E0E1E4',
-        100: '#EFEFEF',
-        50: '#F5F5F5',
-      },
-      green: '#B5CD30',
-      'light-green': '#E9F2B9',
-      blue: '#A1D3FF',
-      yellow: '#FFD542',
-      white: colors.white,
-      black: colors.black,
-      red: {
-        500: '#FC4F4F',
-      },
-    },
-    palette: {
-      primary: '#333333',
-    },
-    fontFamily: {
-      sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
-      title: ['var(--font-cairo)', ...defaultTheme.fontFamily.sans],
-    },
     extend: {
-      dropShadow: {
-        green: '0 0 35px rgba(181, 205, 48, 0.60)',
+      colors: {
+        brand: {
+          700: "#152E0A",
+          600: "#459420",
+          500: "#B5CD30",
+          400: "#B5CD30",
+          200: "#FFF500",
+        },
+        grey: {
+          900: "#111111",
+          800: "#1D1D1B",
+          700: "#262626",
+          600: "#333333",
+          500: "#444444",
+          400: "#666666",
+          300: "#BDBDBD",
+          200: "#E0E1E4",
+          100: "#EFEFEF",
+          50: "#F5F5F5",
+        },
+        light: {
+          primary: "#333333",
+          secondary: "#BDBDBD",
+        },
+        dark: {
+          primary: "#1D1D1B",
+          secondary: "#262626",
+        },
+        transparent: "transparent",
+        current: "currentColor",
+        green: "#B5CD30",
+        "light-green": "#E9F2B9",
+        yellow: "#FFD542",
+        white: colors.white,
+        black: colors.black,
+        red: {
+          500: "#FC4F4F",
+        },
       },
-      spacing: {
-        '-300': '-300px',
+      fontFamily: {
+        sans: ["var(--font-poppins)", ...defaultTheme.fontFamily.sans],
+        title: ["var(--font-cairo)", ...defaultTheme.fontFamily.sans],
+        inter: ["var(--font-poppins)", "sans-serif"],
+        "uncut-sans": ["var(--font-cairo)", "sans-serif"],
+      },
+      fontSize: {
+        xs: ["0.75rem", { lineHeight: "1.5" }],
+        sm: ["0.875rem", { lineHeight: "1.5715" }],
+        base: ["1rem", { lineHeight: "1.5", letterSpacing: "-0.01em" }],
+        lg: ["1.125rem", { lineHeight: "1.5", letterSpacing: "-0.01em" }],
+        xl: ["1.25rem", { lineHeight: "1.5", letterSpacing: "-0.01em" }],
+        "2xl": ["1.5rem", { lineHeight: "1.415", letterSpacing: "-0.01em" }],
+        "3xl": ["1.875rem", { lineHeight: "1.333", letterSpacing: "-0.01em" }],
+        "4xl": ["2.25rem", { lineHeight: "1.277", letterSpacing: "-0.01em" }],
+        "5xl": ["3rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        "6xl": ["3.75rem", { lineHeight: "1.166", letterSpacing: "-0.01em" }],
+        "7xl": ["5rem", { lineHeight: "1", letterSpacing: "-0.01em" }],
+      },
+      letterSpacing: {
+        tighter: "-0.02em",
+        tight: "-0.01em",
+        normal: "0",
+        wide: "0.01em",
+        wider: "0.02em",
+        widest: "0.4em",
       },
     },
   },
-  variants: {
-    extend: {
-      brightness: ['hover'],
-    },
-  },
-  plugins: [
-    nextui({
-      themes: {
-        light: {
-          colors: {
-            background: '#FFFFFF', // or DEFAULT
-            foreground: '#11181C', // or 50 to 900 DEFAULT
-            primary: {
-              //... 50 to 900
-              foreground: '#FFFFFF',
-              DEFAULT: '#FFFFFF',
-            },
-            // ... rest of the colors
-          },
-        },
-        dark: {
-          colors: {
-            background: '#000000', // or DEFAULT
-            foreground: '#ECEDEE', // or 50 to 900 DEFAULT
-            primary: {
-              //... 50 to 900
-              foreground: '#FFFFFF',
-              DEFAULT: '#FFFFFF',
-            },
-          },
-          // ... rest of the colors
-        },
-        mytheme: {
-          // custom theme
-          extend: 'dark',
-          colors: {
-            primary: {
-              DEFAULT: '#BEF264',
-              foreground: '#000000',
-            },
-            focus: '#BEF264',
-          },
-        },
-      },
-    }),
-    nextuiReact({
-      themes: {
-        light: {
-          colors: {
-            background: '#FFFFFF', // or DEFAULT
-            foreground: '#11181C', // or 50 to 900 DEFAULT
-            primary: {
-              //... 50 to 900
-              foreground: '#FFFFFF',
-              DEFAULT: '#333333',
-            },
-            secondary: '#b5cd30',
-            // ... rest of the colors
-          },
-        },
-        dark: {
-          colors: {
-            background: '#000000', // or DEFAULT
-            foreground: '#ECEDEE', // or 50 to 900 DEFAULT
-            primary: {
-              //... 50 to 900
-              foreground: '#FFFFFF',
-              DEFAULT: '#333333',
-            },
-            secondary: '#b5cd30',
-          },
-          // ... rest of the colors
-        },
-        mytheme: {
-          // custom theme
-          extend: 'dark',
-          colors: {
-            primary: {
-              DEFAULT: '#BEF264',
-              foreground: '#000000',
-            },
-            focus: '#BEF264',
-          },
-        },
-      },
-    }),
-  ],
-}
-export default config
+  plugins: [require("@tailwindcss/forms")],
+};

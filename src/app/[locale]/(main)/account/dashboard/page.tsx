@@ -1,9 +1,0 @@
-import Box from '@/app/_shared/_components/_utils/Box'
-
-export default async function UserPage() {
-  return (
-    <Box className="h-full w-full p-8">
-      Tableau de bord
-    </Box>
-  )
-}
