@@ -50,11 +50,11 @@ export default function Home() {
       <FeaturesReasons />
       <FeaturesFacilities />
       <FeaturesHow />
-      <Features02 />
+      {/* <Features02 />
       <Pricing />
       <Testimonials />
       <Resources />
-      <Cta />
+      <Cta /> */}
     </>
   );
 }

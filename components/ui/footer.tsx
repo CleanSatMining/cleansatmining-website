@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "./logo";
 
 export default function Footer() {
   return (
@@ -11,7 +12,10 @@ export default function Footer() {
             <div className="mb-2">
               {/* Logo */}
               <Link className="inline-flex" href="/" aria-label="Cruip">
-                <svg
+                <div className="shrink-0 mr-4">
+                  <Logo />
+                </div>
+                {/* <svg
                   className="w-8 h-8"
                   viewBox="0 0 32 32"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -76,7 +80,7 @@ export default function Footer() {
                       xlinkHref="#logo2-c"
                     />
                   </g>
-                </svg>
+                </svg> */}
               </Link>
             </div>
             <div className="text-sm text-grey-600">
