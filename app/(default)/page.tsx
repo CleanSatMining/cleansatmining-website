@@ -3,14 +3,10 @@
 //   title: "Home - CSM",
 //   description: "Le minage green de Bitcoinà impact positif",
 // };
+
 import { useState } from "react";
 import Hero from "@/components/hero";
 import FeaturesReasons from "@/components/features-reasons";
-import Features02 from "@/components/features-02";
-import Pricing from "@/components/pricing";
-import Testimonials from "@/components/testimonials";
-import Resources from "@/components/resources";
-import Cta from "@/components/cta";
 import StatsBlock from "@/components/stats-block";
 import StatsSquare from "@/components/stats-square";
 import StatsSimple from "@/components/stats-simple";

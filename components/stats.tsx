@@ -7,7 +7,7 @@ import Funds from "@/public/images/funds.svg";
 
 export default function Stats() {
   return (
-    <section>
+    <section className="relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-6 border-b border-grey-400">
           {/* Items */}

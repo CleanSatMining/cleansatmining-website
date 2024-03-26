@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 
-import Illustration from "@/public/images/features-illustration.svg";
+import Blur from "@/public/images/blur-brand.svg";
 
 import { IconMapPin, IconPointFilled } from "@tabler/icons-react";
 
@@ -83,7 +83,7 @@ export default function Features() {
         aria-hidden="true"
       >
         <Image
-          src={Illustration}
+          src={Blur}
           className="max-w-none"
           width="1440"
           height="440"

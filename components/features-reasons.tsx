@@ -2,7 +2,33 @@ import Image from "next/image";
 
 export default function Features() {
   return (
-    <section>
+    <section className="relative overflow-hidden">
+      {/* Blurred shape */}
+      <div
+        className="absolute top-0  left-20 -translate-x blur-2xl opacity-50 pointer-events-none -z-10"
+        aria-hidden="true"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
+          <defs>
+            <linearGradient
+              id="bs3-a"
+              x1="19.609%"
+              x2="50%"
+              y1="14.544%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#B5CD30" />
+              <stop offset="100%" stopColor="#B5CD30" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#bs3-a)"
+            fillRule="evenodd"
+            d="m410 0 461 369-284 58z"
+            transform="matrix(1 0 0 -1 -410 427)"
+          />
+        </svg>
+      </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}

@@ -58,21 +58,20 @@ export default function Header({ nav = true }: { nav?: boolean }) {
   );
 
   return (
-    <header>
-      <div
-        className={`flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-12 py-8`}
-      >
-        <Link href={"/"}>
-          <Image src={Logo} width={226} height={80} alt={"logo"} />
-        </Link>
+    <header
+      className={`bg-grey-600 flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-12 py-8`}
+    >
+      <Link href={"/"}>
+        <Image src={Logo} width={226} height={80} alt={"logo"} />
+      </Link>
 
-        {/* Desktop navigation */}
-        {nav && (
-          <nav className="flex grow">
-            {/* Desktop sign in links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
-              {headerLinksElements}
-              {/* <li>
+      {/* Desktop navigation */}
+      {nav && (
+        <nav className="flex grow">
+          {/* Desktop sign in links */}
+          <ul className="flex grow justify-end flex-wrap items-center">
+            {headerLinksElements}
+            {/* <li>
                 <Link
                   className="font-medium text-grey-100 hover:text-brand-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
                   href="/signin"
@@ -80,13 +79,12 @@ export default function Header({ nav = true }: { nav?: boolean }) {
                   Sign in
                 </Link>
               </li> */}
-              <li className="ml-3">
-                <MarketplaceButton colorScheme="dark"></MarketplaceButton>
-              </li>
-            </ul>
-          </nav>
-        )}
-      </div>
+            <li className="ml-3">
+              <MarketplaceButton colorScheme="dark"></MarketplaceButton>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

@@ -42,7 +42,7 @@ export default function Stats() {
       <section className="relative">
         {/* Bg gradient */}
         <div
-          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-grey-800 to-grey-600 opacity-60 h-[10rem] pointer-events-none -z-10"
+          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-grey-800 to-transparent opacity-60 h-[10rem] pointer-events-none -z-10"
           aria-hidden="true"
         />
         {/* Counters */}
