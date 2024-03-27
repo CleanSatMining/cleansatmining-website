@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import HeaderHome from "@/components/ui/header-home";
+//import HeaderHome from "@/components/ui/header-home";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function DefaultLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isHome, setIsHome] = useState(false);
+  //const [isHome, setIsHome] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -40,13 +40,13 @@ export default function DefaultLayout({
           alt="Blur Illustration"
         />
       </div>
-
-      {
+      <Header />
+      {/* {
         <div onClick={() => setIsHome(!isHome)}>
           {isHome && <HeaderHome />}
           {!isHome && <Header />}
         </div>
-      }
+      } */}
 
       <main className="grow">{children}</main>
 
