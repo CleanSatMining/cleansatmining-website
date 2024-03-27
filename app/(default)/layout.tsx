@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,7 +16,7 @@ export default function DefaultLayout({
 }: {
   children: React.ReactNode;
 }) {
-  //const [isHome, setIsHome] = useState(false);
+  const [isHome, setIsHome] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -41,10 +41,12 @@ export default function DefaultLayout({
         />
       </div>
 
-      {/* <div onClick={() => setIsHome(!isHome)}>
-        {isHome && <HeaderHome />}
-        {!isHome && <Header />}
-      </div> */}
+      {
+        <div onClick={() => setIsHome(!isHome)}>
+          {isHome && <HeaderHome />}
+          {!isHome && <Header />}
+        </div>
+      }
 
       <main className="grow">{children}</main>
 
