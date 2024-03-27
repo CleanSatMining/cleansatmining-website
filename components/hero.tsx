@@ -35,7 +35,7 @@ export default function Hero() {
             className=" max-w-xl mx-auto md:max-w-[640px] md:mx-0 text-center md:justify-center"
           >
             <h1
-              className="h2 font-title mb-2"
+              className="h2 font-title mb-2 text-3xl sm:text-auto"
               data-aos="zoom-out"
               data-aos-delay="100"
             >
@@ -43,7 +43,7 @@ export default function Hero() {
               <br></br>à impact positif
             </h1>
             <p
-              className="text-xl  mb-10 font-normal"
+              className="text-lg sm:text-xl  mb-10 font-normal"
               data-aos="zoom-out"
               data-aos-delay="200"
             >

@@ -51,13 +51,13 @@ export default function FeaturesHow() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2
-              className="mb-4 h2 font-title text-green uppercase"
+              className="mb-4 h2 font-title text-green uppercase text-xl sm:text-4xl"
               data-aos="fade-up"
             >
               Investir dans le minage green du Bitcoin
             </h2>
             <p
-              className="text-xl text-grey-200"
+              className="text-md sm:text-xl text-grey-200"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -134,10 +134,10 @@ export default function FeaturesHow() {
                           {/* Text */}
                           <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8 flex-grow">
                             <div>
-                              <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-grey-100/60 via-grey-100 to-grey-100/60 pb-1 flex-grow">
+                              <h3 className="inline-flex text-md sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-grey-100/60 via-grey-100 to-grey-100/60 pb-1 flex-grow">
                                 <span>{index + 1}</span>. {step.title}
                               </h3>
-                              <p className="text-grey-300 font-light">
+                              <p className="text-sm sm:text-xl text-grey-300 font-light">
                                 {step.description}
                               </p>
                             </div>

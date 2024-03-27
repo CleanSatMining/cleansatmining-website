@@ -11,7 +11,7 @@ export default function Features() {
       >
         <Image
           src={PathLeftToRight}
-          className="xs:w-[100px]"
+          className="hidden md:block"
           priority
           alt="path Illustration"
         />
@@ -47,7 +47,7 @@ export default function Features() {
           {/* Section header */}
           <div className="text-center pb-12 md:pb-20">
             <h2
-              className="h2 font-title text-green uppercase"
+              className="h2 font-title text-green uppercase text-xl sm:text-4xl"
               data-aos="zoom-out"
             >
               4 raisons d'investir avec CleanSat Mining
@@ -75,7 +75,7 @@ export default function Features() {
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Rentabilité</h4>
-              <p className="text-lg text-grey-400 text-center">
+              <p className="text-sm sm:text-lg text-grey-300 text-center">
                 Obtenez une espérance de gain incroyable.
               </p>
             </div>
@@ -107,7 +107,7 @@ export default function Features() {
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Liquidité</h4>
-              <p className="text-lg text-grey-400 text-center">
+              <p className="text-sm sm:text-lg text-grey-300 text-center">
                 Garder une liquidité sur votre capital.
               </p>
             </div>
@@ -139,7 +139,7 @@ export default function Features() {
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Ecologie</h4>
-              <p className="text-lg text-grey-400 text-center">
+              <p className="text-sm sm:text-lg text-grey-300 text-center">
                 Diminuer le gâchis énergétique.
               </p>
             </div>
@@ -171,7 +171,7 @@ export default function Features() {
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Social</h4>
-              <p className="text-lg text-grey-400 text-center">
+              <p className="text-sm sm:text-lg text-grey-300 text-center">
                 Contribuez à l'impact sur l'économie locale.
               </p>
             </div>

@@ -174,62 +174,6 @@ export default function MobileMenu() {
             </Link>
             {/* Links */}
             <ul>
-              {/* <li>
-                <Link
-                  href="/about"
-                  className="flex text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 py-2"
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="flex text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 py-2"
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/testimonials"
-                  className="flex text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-white py-2"
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  Testimonials
-                </Link>
-              </li>
-              <li className="py-2 my-2 border-t border-b border-grey-200 dark:border-grey-800">
-                <Link
-                  href="/help"
-                  className="flex text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-white py-2"
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  Resources
-                </Link>
-                <ul className="pl-4">
-                  <li>
-                    <Link
-                      href="/help"
-                      className="text-sm flex font-medium text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 py-2"
-                      onClick={() => setMobileNavOpen(false)}
-                    >
-                      Help center
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/404"
-                      className="text-sm flex font-medium text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 py-2"
-                      onClick={() => setMobileNavOpen(false)}
-                    >
-                      404
-                    </Link>
-                  </li>
-                </ul>
-              </li> */}
               {headerLinksElements}
               <li>
                 <MarketplaceButton

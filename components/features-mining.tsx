@@ -33,21 +33,21 @@ export default function FeaturesMining() {
               data-aos-delay="200"
             >
               <div className="text-center md:text-left">
-                <h2 className="h3 font-title text-4xl mb-4 text-green uppercase">
+                <h2 className="h3 font-title text-xl sm:text-4xl mb-4 text-green uppercase">
                   N'importe quel investisseur peut participer à l'industrie du
                   minage Bitcoin.
                 </h2>
-                <p className="text-xl text-grey-100 mb-6">
+                <p className="text-sm sm:text-xl text-grey-100 mb-6">
                   Pour la toute première fois, et grâce à un système d'actions
                   tokenisées parfaitement conformes au cadre réglementaire
                   Suisse.
                 </p>
-                <p className="text-xl text-grey-100 mb-6">
+                <p className="text-sm sm:text-xl text-grey-100 mb-6">
                   En possédant des CSM tokens, vous êtes légalement propriétaire
                   d'une part d'une société Suisse détenant des ASICs en
                   exploitation sur un site bien particulier !
                 </p>
-                <ul className="inline-flex flex-col text-lg text-grey-100 space-y-3">
+                <ul className="inline-flex flex-col text-sm sm:text-lg text-grey-100 space-y-3">
                   <li className="flex items-center">
                     <svg
                       className="w-3 h-3 fill-current text-emerald-500 mr-3 shrink-0"
@@ -82,33 +82,18 @@ export default function FeaturesMining() {
               </div>
             </div>
             {/* Image */}
-            {/* <div className="md:w-5/12 lg:w-1/2" data-aos="zoom-out">
-              <Image
-                className="mx-auto md:max-w-none"
-                src={FeaturesImage}
-                width={540}
-                height={581}
-                alt="Features"
-              />
-            </div> */}
+
             <div
               className="md:w-5/12 lg:w-1/2"
               data-aos="fade-up"
               data-aos-delay="100"
             >
               <div className="relative py-24 -mt-12">
-                {/* Particles animation */}
-                {/* <Particles
-                  className="absolute inset-0 -z-10"
-                  quantity={8}
-                  staticity={30}
-                /> */}
-
                 <div className="flex items-center justify-center">
-                  <div className="relative w-48 h-48 flex justify-center items-center">
+                  <div className="relative w-24 h-24 flex justify-center items-center">
                     {/* Halo effect */}
                     <svg
-                      className="absolute inset-0 left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 will-change-transform pointer-events-none blur-md"
+                      className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 will-change-transform pointer-events-none blur-md"
                       width="480"
                       height="480"
                       viewBox="0 0 480 480"
@@ -168,9 +153,9 @@ export default function FeaturesMining() {
                       leaveFrom="opacity-100 rotate-0"
                       leaveTo="opacity-0 rotate-[60deg]"
                     >
-                      <div className="relative flex items-center justify-center  -rotate-[14deg] transform -tr">
+                      <div className="relative flex items-center justify-center -rotate-[14deg] transform -tr">
                         <Image
-                          className="max-w-none sm:max-w-[350px]"
+                          className="max-w-[200px] max-w-none sm:max-w-[350px]"
                           src={FeaturesImage}
                           width={500}
                           height={400}

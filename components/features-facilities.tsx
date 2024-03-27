@@ -79,13 +79,15 @@ export default function Features() {
     <section className="relative">
       {/* Transition */}
       <div
-        className="flex justify-center items-center w-full mt-5 md:mt-10 -mb-[110px]"
+        className="hidden md:block flex justify-center items-center w-full mt-5 md:mt-10 -mb-[110px] w-100"
         data-aos="fade-up"
+        style={{ paddingLeft: "25%", paddingRight: "25%" }}
       >
         <Image
           src={PathLeft}
-          className="xs:w-[100px]"
-          priority
+          className=" w-full h-full"
+          //layout="fill"
+          objectFit="fill"
           alt="path Illustration"
         />
       </div>
@@ -106,11 +108,11 @@ export default function Features() {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="max-w-3xl   pb-12 md:pb-20">
-            <h2 className="h2 font-title text-green uppercase">
+            <h2 className="h2 font-title text-green uppercase text-xl sm:text-4xl">
               Nos sites CSM
             </h2>
             <div className="max-w-2xl ">
-              <p className="text-xl text-grey-200">
+              <p className="text-md sm:text-xl text-grey-200">
                 Explorez nos sites de minage, leurs avantages pour vos
                 investissements et vos opportunités.
               </p>

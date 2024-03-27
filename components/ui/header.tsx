@@ -87,7 +87,13 @@ export default function Header({ nav = true }: { nav?: boolean }) {
           className={`bg-grey-600 bg-opacity-60 flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-12 py-8`}
         >
           <Link href={"/"}>
-            <Image src={Logo} width={226} height={80} alt={"logo"} />
+            <Image
+              className="w-[150px] h-[40px] sm:w-[226px] sm:h-[80px]"
+              src={Logo}
+              width={226}
+              height={80}
+              alt={"logo"}
+            />
           </Link>
 
           {/* Desktop navigation */}
@@ -109,7 +115,7 @@ export default function Header({ nav = true }: { nav?: boolean }) {
           <MobileMenu />
         </header>
       </div>
-      <div className="h-[150px]"></div>
+      <div className="h-[100px] sm:h-[150px]"></div>
     </>
   );
 }
