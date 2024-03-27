@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Logo from "@/public/images/csm-logo.svg";
+import Logo from "@/public/images/logo-csm.svg";
 import Image from "next/image";
 import MarketplaceButton from "../tools/buttons/MarketplaceButton";
 import { headerLinks, fetchSitesMenu } from "@/constants/header";
