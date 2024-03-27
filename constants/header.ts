@@ -1,5 +1,6 @@
 import { NavLink } from "@/models/NavLink";
 import fetchTokens from "./sites";
+import { CleanSatMiningSite } from "@/models/Site";
 
 export const headerLinks: NavLink[] = [
   {
@@ -26,18 +27,20 @@ export const headerLinks: NavLink[] = [
 
 export async function fetchSitesMenu(): Promise<NavLink[]> {
   try {
-    const tokens = await fetchTokens();
-    const navLink = tokens.map(
-      (token: { fullName: string; shortName: string }) => {
-        const link: NavLink = {
-          href: `/sites/${token.shortName.toLowerCase()}`,
-          label: token.fullName,
-          external: false,
-          parent: "/sites",
-        };
-        return link;
-      }
-    );
+    const tokens: CleanSatMiningSite[] = await fetchTokens();
+    console.log("tokens", tokens);
+    const navLink = tokens.map((token: CleanSatMiningSite) => {
+      const link: NavLink = {
+        href: `/sites/${token.shortName
+          .trim()
+          .replace(" ", "-")
+          .toLowerCase()}`,
+        label: token.shortName,
+        external: false,
+        parent: "/sites",
+      };
+      return link;
+    });
     return navLink;
   } catch (error) {
     console.error("Error fetching tokens full names:", error);

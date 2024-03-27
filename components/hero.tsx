@@ -1,7 +1,6 @@
 import Image from "next/image";
 import "@/app/css/text.css";
 import Illustration from "@/public/images/hero-illustration.svg";
-import Blur from "@/public/images/blur-homepage.svg";
 
 export default function Hero() {
   return (

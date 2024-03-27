@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Logo from "@/public/images/CSM-logo.svg";
+import Logo from "@/public/images/csm-logo.svg";
 import Image from "next/image";
 import MarketplaceButton from "../tools/buttons/MarketplaceButton";
 import { headerLinks, fetchSitesMenu } from "@/constants/header";
@@ -10,24 +10,20 @@ import Dropdown from "@/components/utils/dropdown";
 export default function Header({ nav = true }: { nav?: boolean }) {
   const [sitesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
 
-  console.log(sitesNavLink);
-
   const headerLinksElements = useMemo(
     () =>
       headerLinks.map((link, index) => {
         return (
-          <>
+          <div key={"div" + index}>
             {sitesNavLink.find((value) => {
-              console.log(index, value.parent, link.href);
               return value.parent === link.href;
             }) ? (
               <Dropdown title="Sites" key={link.label}>
                 {/* 2nd level: hover */}
                 {sitesNavLink.map((site) => {
                   return (
-                    <li>
+                    <li key={site.label}>
                       <Link
-                        key={site.label}
                         href={site.href}
                         target={link.external ? "_blank" : undefined}
                         rel={link.external ? "noopener noreferrer" : undefined}
@@ -65,7 +61,7 @@ export default function Header({ nav = true }: { nav?: boolean }) {
                 </div>
               </li>
             )}
-          </>
+          </div>
         );
       }),
     [sitesNavLink]
@@ -93,11 +89,14 @@ export default function Header({ nav = true }: { nav?: boolean }) {
 
           {/* Desktop navigation */}
           {nav && (
-            <nav className="hidden md:flex md:grow">
+            <nav className="hidden md:flex md:grow" key={"nav"}>
               {/* Desktop sign in links */}
-              <ul className="flex grow justify-end flex-wrap items-center">
+              <ul
+                className="flex grow justify-end flex-wrap items-center"
+                key={"ul header"}
+              >
                 {headerLinksElements}
-                <li className="ml-3">
+                <li className="ml-3" key={"MarketplaceButton"}>
                   <MarketplaceButton colorScheme="dark"></MarketplaceButton>
                 </li>
               </ul>

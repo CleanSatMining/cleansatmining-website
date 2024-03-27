@@ -2,8 +2,7 @@ import Highlighter, { HighlighterItem } from "./highlighter";
 import Image from "next/image";
 import FeatureImg01 from "@/public/images/features-02.png";
 import FeatureImg02 from "@/public/images/feature-image-02.png";
-import FeatureImg03 from "@/public/images/feature-image-03.png";
-import { IconArrowRight } from "@tabler/icons-react";
+import PathDown from "@/public/images/path/path-down.svg";
 
 const steps = [
   {
@@ -35,6 +34,18 @@ const steps = [
 export default function FeaturesHow() {
   return (
     <section className="relative">
+      {/* Transition */}
+      <div
+        className="flex justify-center items-center w-full "
+        data-aos="fade-up"
+      >
+        <Image
+          src={PathDown}
+          className="xs:w-[100px]"
+          priority
+          alt="path Illustration"
+        />
+      </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-10 pb-12 md:pt-16 md:pb-20">
           {/* Section header */}

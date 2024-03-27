@@ -9,7 +9,7 @@ import HeaderHome from "@/components/ui/header-home";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
-import Blur from "@/public/images/blur-homepage.svg";
+import Blur from "@/public/images/blur/blur-homepage.svg";
 
 export default function DefaultLayout({
   children,

@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-
-import Blur from "@/public/images/blur-brand.svg";
+import PathLeft from "@/public/images/path/path-down-left.svg";
+import Blur from "@/public/images/blur/blur-brand.svg";
 
 import { IconMapPin, IconPointFilled } from "@tabler/icons-react";
 
@@ -77,6 +77,18 @@ export default function Features() {
 
   return (
     <section className="relative">
+      {/* Transition */}
+      <div
+        className="flex justify-center items-center w-full mt-5 md:mt-10 -mb-[110px]"
+        data-aos="fade-up"
+      >
+        <Image
+          src={PathLeft}
+          className="xs:w-[100px]"
+          priority
+          alt="path Illustration"
+        />
+      </div>
       {/* Bg illustration */}
       <div
         className="absolute left-1/2 -translate-x-1/2 pointer-events-none -mt-20 -z-10"

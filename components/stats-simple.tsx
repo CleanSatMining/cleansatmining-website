@@ -1,5 +1,5 @@
 import "@/app/css/text.css";
-import PathRightToLeft from "@/public/images/path-down-right-to-left.svg";
+import PathRightToLeft from "@/public/images/path/path-down-right-to-left.svg";
 import Image from "next/image";
 
 export default function Stats() {

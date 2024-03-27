@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import CSM from "@/public/images/CSM-logo.svg";
+import CSM from "@/public/images/csm-logo.svg";
 
 export default function Logo() {
   return (

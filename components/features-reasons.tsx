@@ -1,8 +1,21 @@
 import Image from "next/image";
+import PathLeftToRight from "@/public/images/path/path-down-left-to-right.svg";
 
 export default function Features() {
   return (
     <section className="relative overflow-hidden">
+      {/* Transition */}
+      <div
+        className="flex justify-center items-center w-full mt-5 md:mt-10"
+        data-aos="fade-up"
+      >
+        <Image
+          src={PathLeftToRight}
+          className="xs:w-[100px]"
+          priority
+          alt="path Illustration"
+        />
+      </div>
       {/* Blurred shape */}
       <div
         className="absolute top-0  left-20 -translate-x blur-2xl opacity-50 pointer-events-none -z-10"
