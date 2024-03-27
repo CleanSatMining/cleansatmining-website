@@ -155,7 +155,7 @@ export default function FeaturesMining() {
                     >
                       <div className="relative flex items-center justify-center -rotate-[14deg] transform -tr">
                         <Image
-                          className="max-w-[200px] max-w-none sm:max-w-[350px]"
+                          className="w-[200px] max-w-none sm:w-[350px]"
                           src={FeaturesImage}
                           width={500}
                           height={400}

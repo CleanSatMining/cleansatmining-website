@@ -14,7 +14,7 @@ export default function Hero() {
       </div> */}
 
       <div
-        className="absolute left-1/2 -translate-x-1/2 translate-y-[100px] pointer-events-none mt-10"
+        className="absolute left-1/2 -translate-x-1/2 translate-y-[120px] pointer-events-none mt-10"
         aria-hidden="true"
       >
         <Image
@@ -24,7 +24,7 @@ export default function Hero() {
           alt="Hero Illustration"
         />
       </div>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 xxs:mb-10 xs:mb-0 xl:mb-10">
         <div className="flex items-center justify-center pt-10 pb-[200px] md:pt-20 md:pb-[300px] lg:pb-[400px] xl:pb-[500px]">
           {/* Hero content */}
 
@@ -35,7 +35,7 @@ export default function Hero() {
             className=" max-w-xl mx-auto md:max-w-[640px] md:mx-0 text-center md:justify-center"
           >
             <h1
-              className="h2 font-title mb-2 text-3xl sm:text-auto"
+              className="h2 font-title mb-2 text-3xl sm:text-5xl"
               data-aos="zoom-out"
               data-aos-delay="100"
             >

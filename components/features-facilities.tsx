@@ -83,13 +83,15 @@ export default function Features() {
         data-aos="fade-up"
         style={{ paddingLeft: "25%", paddingRight: "25%" }}
       >
-        <Image
-          src={PathLeft}
-          className=" w-full h-full"
-          //layout="fill"
-          objectFit="fill"
-          alt="path Illustration"
-        />
+        <div className="xl:px-20">
+          <Image
+            src={PathLeft}
+            className=" w-full h-full"
+            //layout="fill"
+            objectFit="fill"
+            alt="path Illustration"
+          />
+        </div>
       </div>
       {/* Bg illustration */}
       <div

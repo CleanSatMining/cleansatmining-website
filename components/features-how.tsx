@@ -39,12 +39,7 @@ export default function FeaturesHow() {
         className="flex justify-center items-center w-full "
         data-aos="fade-up"
       >
-        <Image
-          src={PathDown}
-          className="xs:w-[100px]"
-          priority
-          alt="path Illustration"
-        />
+        <Image src={PathDown} className="" priority alt="path Illustration" />
       </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-10 pb-12 md:pt-16 md:pb-20">

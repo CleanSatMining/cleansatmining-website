@@ -66,7 +66,7 @@ export default function Stats() {
       </section>
       {/* Transition */}
       <div
-        className="flex justify-center items-center w-full mt-5 md:mt-10 min-h-[100px]"
+        className="flex justify-center items-center w-full mt-5 md:mt-10 min-h-[50px] sm:min-h-[100px]"
         data-aos="fade-up"
       >
         <Image
