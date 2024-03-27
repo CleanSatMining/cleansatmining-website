@@ -19,13 +19,13 @@ export default function Hero() {
       >
         <Image
           src={Illustration}
-          className="max-w-none transform "
+          className="w-[600px] xl:w-auto  lg:w-[1000px] md:w-[800px] max-w-none md:transform "
           priority
           alt="Hero Illustration"
         />
       </div>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-center pt-10 pb-12 md:pt-20 md:pb-[560px] ">
+        <div className="flex items-center justify-center pt-10 pb-[200px] md:pt-20 md:pb-[300px] lg:pb-[400px] xl:pb-[500px]">
           {/* Hero content */}
 
           <div
