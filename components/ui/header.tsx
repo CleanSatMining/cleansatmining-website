@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Logo from "@/public/images/csm-logo.svg";
