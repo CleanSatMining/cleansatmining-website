@@ -9,7 +9,7 @@ export const headerLinks: NavLink[] = [
     external: false,
   },
   {
-    href: "https://cleansat-mining.gitbook.io/gitbook-cleansat-mining",
+    href: "https://cleansat-mining.gitbook.io/gitbook-cleansat-mining#comment-ca-marche",
     label: "Comprendre",
     external: true,
   },
@@ -19,9 +19,9 @@ export const headerLinks: NavLink[] = [
     external: false,
   },
   {
-    href: "/about",
-    label: "En savoir plus",
-    external: false,
+    href: "https://cleansat-mining.gitbook.io/gitbook-cleansat-mining",
+    label: "L'équipe",
+    external: true,
   },
 ];
 

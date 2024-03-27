@@ -8,6 +8,7 @@ import MarketplaceButton from "../tools/buttons/MarketplaceButton";
 import { headerLinks, fetchSitesMenu } from "@/constants/header";
 import { NavLink } from "@/models/NavLink";
 import Dropdown from "@/components/utils/dropdown";
+import MobileMenu from "./mobile-menu";
 
 export default function Header({ nav = true }: { nav?: boolean }) {
   const [sitesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
@@ -104,6 +105,8 @@ export default function Header({ nav = true }: { nav?: boolean }) {
               </ul>
             </nav>
           )}
+
+          <MobileMenu />
         </header>
       </div>
       <div className="h-[150px]"></div>
