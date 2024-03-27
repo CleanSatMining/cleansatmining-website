@@ -19,7 +19,9 @@ export type NavLink = {
     | "Acceuil"
     | "Comprendre"
     | "Sites"
-    | "En savoir plus";
+    | "En savoir plus"
+    | string;
   external: boolean;
   icon?: Icon;
+  parent?: string;
 };

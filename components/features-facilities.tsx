@@ -111,7 +111,7 @@ export default function Features() {
               {/* Carousel items */}
               {facilities.map((facility, index) => (
                 <div
-                  key={index}
+                  key={index + facility.title}
                   className="swiper-slide h-auto flex flex-col bg-grey-800 p-6 rounded"
                   style={{
                     backgroundImage: `linear-gradient(220deg, rgba(54, 61, 13, 0) 0, rgba(54, 61, 13, .7) 80%), url(${facility.image})`,

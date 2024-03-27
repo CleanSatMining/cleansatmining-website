@@ -65,7 +65,7 @@ export default function FeaturesHow() {
               <div
                 className="relative flex flex-col items-center flex-grow h-full"
                 data-aos="fade-up"
-                key={index}
+                key={index + step.title}
               >
                 {index < steps.length - 1 && (
                   <div
