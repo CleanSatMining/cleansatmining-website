@@ -87,6 +87,40 @@ module.exports = {
         wider: "0.02em",
         widest: "0.4em",
       },
+      animation: {
+        endless: "endless 20s linear infinite",
+        shine: "shine 5s linear 500ms infinite",
+        float: "float 2s ease-in-out infinite",
+      },
+      keyframes: {
+        endless: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-245px)" },
+        },
+        shine: {
+          "0%": {
+            top: "0",
+            transform: "translateY(-100%) scaleY(10)",
+            opacity: "0",
+          },
+          "2%": { opacity: ".5" },
+          "40%": {
+            top: "100%",
+            transform: "translateY(0) scaleY(200)",
+            opacity: "0",
+          },
+          "100%": {
+            top: "100%",
+            transform: "translateY(0) scaleY(1)",
+            opacity: "0",
+          },
+        },
+        float: {
+          "0%": { transform: "translateY(3%)" },
+          "50%": { transform: "translateY(-3%)" },
+          "100%": { transform: "translateY(3%)" },
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

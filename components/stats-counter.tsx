@@ -1,4 +1,4 @@
-import Counter from "@/components/counter";
+import Counter from "@/components/tools/features/counter";
 import PathRightToLeft from "@/public/images/path/path-down-right-to-left.svg";
 import Image from "next/image";
 

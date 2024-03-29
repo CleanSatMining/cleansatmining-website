@@ -1,8 +1,10 @@
-import Highlighter, { HighlighterItem } from "./highlighter";
+import Highlighter, { HighlighterItem } from "./tools/features/highlighter";
 import Image from "next/image";
 import FeatureImg01 from "@/public/images/features-02.png";
 import FeatureImg02 from "@/public/images/feature-image-02.png";
 import PathDown from "@/public/images/path/path-down.svg";
+import PostItem from "@/components/tools/features/post-item";
+import { allUpdates, allOnBoardings } from "@/.contentlayer/generated";
 
 const steps = [
   {
@@ -32,6 +34,11 @@ const steps = [
 ];
 
 export default function FeaturesHow() {
+  // Sort posts by date
+  allOnBoardings.sort((a, b) => {
+    return a.order < b.order ? -1 : 1;
+  });
+
   return (
     <section className="relative">
       {/* Transition */}
@@ -63,97 +70,17 @@ export default function FeaturesHow() {
             </p>
           </div>
 
-          {/* Items */}
-          <div
-            className={`max-w-sm mx-auto grid gap-8 md:grid-cols-${steps.length} lg:gap-16 items-start md:max-w-none`}
-          >
-            {steps.map((step, index) => (
+          {/* Content */}
+          <div className="max-w-3xl mx-auto">
+            <div className="relative">
               <div
-                className="relative flex flex-col items-center flex-grow h-full"
-                data-aos="fade-up"
-                key={index + step.title}
-              >
-                {index < steps.length - 1 && (
-                  <div
-                    aria-hidden="true"
-                    className="absolute h-1 border-t border-dashed border-grey-400 hidden md:block"
-                    style={{
-                      width: "calc(100% - 32px)",
-                      left: "calc(50% + 48px)",
-                      top: "32px",
-                    }}
-                    data-aos="fade-in"
-                    data-aos-delay="200"
-                  ></div>
-                )}
-                <svg
-                  className="w-16 h-16 mb-4"
-                  viewBox="0 0 64 64"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    className="fill-current text-brand-400"
-                    width="64"
-                    height="64"
-                    rx="32"
-                  />
-                  <path
-                    className="stroke-current text-brand-100"
-                    strokeWidth="2"
-                    strokeLinecap="square"
-                    d="M21 23h22v18H21z"
-                    fill="none"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    className="stroke-current text-brand-100"
-                    d="M26 28h12M26 32h12M26 36h5"
-                    strokeWidth="2"
-                    strokeLinecap="square"
-                  />
-                </svg>
-
-                <Highlighter className="grid md:grid-cols-12 gap-6 group flex-grow">
-                  {/* Box #1 */}
-                  <div className="md:col-span-12" data-aos="fade-down">
-                    <HighlighterItem>
-                      <div className="relative h-full bg-grey-600 rounded-[inherit] z-20 overflow-hidden flex-grow">
-                        <div className="flex flex-col h-full">
-                          {/* Radial gradient */}
-                          <div
-                            className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/2 aspect-square flex-grow"
-                            aria-hidden="true"
-                          >
-                            <div className="absolute inset-0 translate-z-0 bg-grey-600 rounded-full blur-[80px] flex-grow" />
-                          </div>
-                          {/* Text */}
-                          <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8 flex-grow">
-                            <div>
-                              <h3 className="inline-flex text-md sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-grey-100/60 via-grey-100 to-grey-100/60 pb-1 flex-grow">
-                                <span>{index + 1}</span>. {step.title}
-                              </h3>
-                              <p className="text-sm sm:text-xl text-grey-300 font-light">
-                                {step.description}
-                              </p>
-                            </div>
-                          </div>
-                          {/* Image */}
-                          <div className="relative w-full h-64 md:h-auto overflow-hidden md:pb-8">
-                            <Image
-                              className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0"
-                              src={FeatureImg02}
-                              width={536}
-                              height={230}
-                              alt="Feature 02"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </HighlighterItem>
-                  </div>
-                </Highlighter>
-              </div>
-            ))}
+                className="absolute h-full top-4 left-[2px] w-0.5 bg-grey-400 [mask-image:_linear-gradient(0deg,transparent,theme(colors.white)_150px,theme(colors.white))] -z-10 overflow-hidden after:absolute after:h-4 after:top-0 after:-translate-y-full after:left-0 after:w-0.5 after:bg-[linear-gradient(180deg,_transparent,_theme(colors.brand.500/.65)_25%,_theme(colors.brand.200)_50%,_theme(colors.brand.500/.65)_75%,_transparent)] after:animate-shine"
+                aria-hidden="true"
+              ></div>
+              {allOnBoardings.map((post, postIndex) => (
+                <PostItem key={postIndex} {...post} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
