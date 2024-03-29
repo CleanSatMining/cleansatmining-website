@@ -40,16 +40,16 @@
 }
 
 /* Buttons Round*/
-.btnRound,
+.btn-round,
 .btn-sm {
     @apply text-sm font-medium inline-flex items-center justify-center border border-transparent rounded-full whitespace-nowrap transition duration-150 ease-in-out;
 }
 
-.btnRound {
+.btn-round {
     @apply px-4 py-1.5;
 }
 
-.btnRound-sm {
+.btn-round-sm {
     @apply px-3 py-1;
 }
 
@@ -87,7 +87,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form-input,
 .form-textarea {
-    @apply placeholder-grey-500 leading-snug;
+    @apply placeholder-grey-400 leading-snug;
 }
 
 .form-select {

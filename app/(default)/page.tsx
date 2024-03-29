@@ -15,6 +15,7 @@ import StatsCounter from "@/components/stats-counter";
 import FeaturesMining from "@/components/features-mining";
 import FeaturesFacilities from "@/components/features-facilities";
 import FeaturesHow from "@/components/features-how";
+import Cta from "@/components/cta";
 
 export default function Home() {
   const [statsMode, setStatsMode] = useState("counter");
@@ -46,6 +47,7 @@ export default function Home() {
       <FeaturesReasons />
       <FeaturesFacilities />
       <FeaturesHow />
+      <Cta />
     </>
   );
 }

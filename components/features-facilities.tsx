@@ -95,14 +95,14 @@ export default function Features() {
       </div>
       {/* Bg illustration */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 pointer-events-none -mt-20 -z-10"
+        className="absolute left-1/2 -translate-x-1/2 translate-y-1/4 pointer-events-none -mt-20 -z-10"
         aria-hidden="true"
       >
         <Image
           src={Blur}
           className="max-w-none"
-          width="1440"
-          height="440"
+          width="1000"
+          height="300"
           alt="Illustration"
         />
       </div>
@@ -157,7 +157,7 @@ export default function Features() {
 
                   <div className="text-right w-[200px]">
                     <a
-                      className="btnRound text-white bg-gradient-to-r from-grey-900/80 via-grey-900 to-grey-900/80 hover:bg-white w-full transition duration-150 ease-in-out group"
+                      className="btn-round text-white bg-gradient-to-r from-grey-900/80 via-grey-900 to-grey-900/80 hover:bg-white w-full transition duration-150 ease-in-out group"
                       href="#0"
                     >
                       Plus d'informations{" "}
