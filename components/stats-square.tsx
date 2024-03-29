@@ -58,7 +58,7 @@ export default function Stats() {
               <div className="font-red-hat-display text-3xl font-black tracking-tighter mb-1">
                 8
               </div>
-              <div className="text-grey-300">Sites de minage</div>
+              <div className="text-grey-300">facilities de minage</div>
             </div>
             {/* 5th item */}
             <div

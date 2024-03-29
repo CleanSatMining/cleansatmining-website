@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 
@@ -25,7 +25,10 @@ export default function Dropdown({ children, title }: DropdownProps) {
         aria-expanded={dropdownOpen}
         onClick={(e) => e.preventDefault()}
       >
-        {title}
+        <Link href={"/facilities"} title={title}>
+          {title}
+        </Link>
+
         <svg
           className="w-3 h-3 fill-current text-grey-200 cursor-pointer ml-1 shrink-0"
           viewBox="0 0 12 12"

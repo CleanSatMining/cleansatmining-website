@@ -1,12 +1,12 @@
 import { CleanSatMiningSite } from "@/models/Site";
 
-export const JSON_CONFIG_SITES_URL =
+export const JSON_CONFIG_facilities_URL =
   "https://data.cleansatmining.com/tokens.json";
-export const API_CONFIG_SITES_URL = "/api/sites";
+export const API_CONFIG_facilities_URL = "/api/facilities";
 
 async function fetchJSONTokens(): Promise<any[]> {
   try {
-    const response = await fetch(JSON_CONFIG_SITES_URL);
+    const response = await fetch(JSON_CONFIG_facilities_URL);
     if (!response.ok) {
       throw new Error("Failed to fetch tokens");
     }
@@ -20,7 +20,7 @@ async function fetchJSONTokens(): Promise<any[]> {
 
 async function fetchTokens(): Promise<CleanSatMiningSite[]> {
   try {
-    const response = await fetch(API_CONFIG_SITES_URL);
+    const response = await fetch(API_CONFIG_facilities_URL);
     if (!response.ok) {
       throw new Error("Failed to fetch tokens");
     }

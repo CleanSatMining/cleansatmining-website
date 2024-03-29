@@ -5,7 +5,7 @@ export type NavLink = {
   label:
     | "links.home"
     | "links.understand"
-    | "links.sites"
+    | "links.facilities"
     | "links.about"
     | "links.contact"
     | "links.blog"
@@ -18,7 +18,7 @@ export type NavLink = {
     //todo: to remove
     | "Acceuil"
     | "Comprendre"
-    | "Sites"
+    | "facilities"
     | "En savoir plus"
     | string;
   external: boolean;

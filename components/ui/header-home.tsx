@@ -55,7 +55,7 @@ export default function Header() {
                 </li>
 
                 {/* 1st level: hover */}
-                <Dropdown title="Sites">
+                <Dropdown title="facilities">
                   {/* 2nd level: hover */}
                   <li>
                     <Link

@@ -6,21 +6,21 @@ import Link from "next/link";
 import Logo from "./logo";
 import MarketplaceButton from "../tools/buttons/MarketplaceButton";
 import { NavLink } from "@/models/NavLink";
-import { headerLinks, fetchSitesMenu } from "@/constants/header";
+import { headerLinks, fetchfacilitiesMenu } from "@/constants/header";
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
 
   const trigger = useRef<HTMLButtonElement>(null);
   const mobileNav = useRef<HTMLDivElement>(null);
-  const [sitesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
+  const [facilitiesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
 
   const headerLinksElements = useMemo(
     () =>
       headerLinks.map((link, index) => {
         return (
           <div key={"div" + index}>
-            {sitesNavLink.find((value) => {
+            {facilitiesNavLink.find((value) => {
               return value.parent === link.href;
             }) ? (
               <li className="py-2 my-2 border-t border-b border-grey-200 dark:border-grey-800">
@@ -40,7 +40,7 @@ export default function MobileMenu() {
                 </Link>
                 {/* 2nd level: hover */}
                 <ul className="pl-4">
-                  {sitesNavLink.map((site) => {
+                  {facilitiesNavLink.map((site) => {
                     return (
                       <li key={site.label}>
                         <Link
@@ -87,7 +87,7 @@ export default function MobileMenu() {
           </div>
         );
       }),
-    [sitesNavLink]
+    [facilitiesNavLink]
   );
 
   // close the mobile menu on click outside
@@ -118,8 +118,8 @@ export default function MobileMenu() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchSitesMenu();
-      console.log(sitesNavLink);
+      const data = await fetchfacilitiesMenu();
+      console.log(facilitiesNavLink);
       setSiteNavLink(data);
     };
 

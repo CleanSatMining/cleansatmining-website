@@ -16,11 +16,13 @@ import FeaturesMining from "@/components/features-mining";
 import FeaturesFacilities from "@/components/features-facilities";
 import FeaturesHow from "@/components/features-how";
 import Cta from "@/components/cta";
+import PageBlur from "@/components/ui/PageBlur";
 
 export default function Home() {
   const [statsMode, setStatsMode] = useState("counter");
   return (
     <>
+      <PageBlur />
       <Hero />
       <div
         onClick={() =>

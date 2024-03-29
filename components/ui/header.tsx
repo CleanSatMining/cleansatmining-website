@@ -5,25 +5,25 @@ import Link from "next/link";
 import Logo from "@/public/images/logo-csm.svg";
 import Image from "next/image";
 import MarketplaceButton from "../tools/buttons/MarketplaceButton";
-import { headerLinks, fetchSitesMenu } from "@/constants/header";
+import { headerLinks, fetchfacilitiesMenu } from "@/constants/header";
 import { NavLink } from "@/models/NavLink";
 import Dropdown from "@/components/utils/dropdown";
 import MobileMenu from "./mobile-menu";
 
 export default function Header({ nav = true }: { nav?: boolean }) {
-  const [sitesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
+  const [facilitiesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
 
   const headerLinksElements = useMemo(
     () =>
       headerLinks.map((link, index) => {
         return (
           <div key={"div" + index}>
-            {sitesNavLink.find((value) => {
+            {facilitiesNavLink.find((value) => {
               return value.parent === link.href;
             }) ? (
-              <Dropdown title="Sites" key={link.label}>
+              <Dropdown title="facilities" key={link.label}>
                 {/* 2nd level: hover */}
-                {sitesNavLink.map((site) => {
+                {facilitiesNavLink.map((site) => {
                   return (
                     <li key={site.label}>
                       <Link
@@ -67,13 +67,13 @@ export default function Header({ nav = true }: { nav?: boolean }) {
           </div>
         );
       }),
-    [sitesNavLink]
+    [facilitiesNavLink]
   );
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchSitesMenu();
-      console.log(sitesNavLink);
+      const data = await fetchfacilitiesMenu();
+      console.log(facilitiesNavLink);
       setSiteNavLink(data);
     };
 

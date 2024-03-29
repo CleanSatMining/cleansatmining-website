@@ -29,17 +29,6 @@ export default function DefaultLayout({
 
   return (
     <div className="relative">
-      <div
-        className="absolute inset-0 pointer-events-none -z-10"
-        aria-hidden="true"
-      >
-        <Image
-          src={Blur}
-          priority
-          className="object-cover w-full h-full"
-          alt="Blur Illustration"
-        />
-      </div>
       <Header />
       {/* {
         <div onClick={() => setIsHome(!isHome)}>

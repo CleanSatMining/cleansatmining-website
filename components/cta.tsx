@@ -55,14 +55,14 @@ export default function Cta() {
                 <input
                   type="email"
                   className="form-input py-1.5 w-full mb-3 sm:mb-0 sm:mr-2 rounded-full bg-grey-600 border-grey-500"
-                  placeholder="Your email"
-                  aria-label="Your email"
+                  placeholder="Votre email"
+                  aria-label="Votre email"
                 />
                 <button
                   className="btn-round text-grey-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white transition duration-150 ease-in-out group"
                   type="submit"
                 >
-                  Subscribe{" "}
+                  Rester informé{" "}
                   <span className="tracking-normal text-brand-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                     -&gt;
                   </span>

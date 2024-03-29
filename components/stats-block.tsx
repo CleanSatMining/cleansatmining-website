@@ -76,7 +76,7 @@ export default function Stats() {
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                Sites de minage
+                facilities de minage
               </div>
             </div>
             {/* 5rd item */}
