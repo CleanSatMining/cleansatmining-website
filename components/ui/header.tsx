@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Logo from "@/public/images/logo-csm.svg";
+import Logo from "@/public/logo.svg";
 import Image from "next/image";
 import MarketplaceButton from "../tools/buttons/MarketplaceButton";
 import { headerLinks, fetchfacilitiesMenu } from "@/constants/header";
@@ -21,7 +21,7 @@ export default function Header({ nav = true }: { nav?: boolean }) {
             {facilitiesNavLink.find((value) => {
               return value.parent === link.href;
             }) ? (
-              <Dropdown title="facilities" key={link.label}>
+              <Dropdown title={link.label} key={link.label}>
                 {/* 2nd level: hover */}
                 {facilitiesNavLink.map((site) => {
                   return (
@@ -84,13 +84,13 @@ export default function Header({ nav = true }: { nav?: boolean }) {
     <>
       <div className={`absolute w-full z-30`}>
         <header
-          className={`bg-grey-600 bg-opacity-60 flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-12 py-8`}
+          className={`bg-grey-600 bg-opacity-60 flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-6 md:px-12 py-2 md:py-4`}
         >
           <Link href={"/"}>
             <Image
-              className="w-[150px] h-[40px] sm:w-[226px] sm:h-[80px]"
+              className="w-[120px] h-[40px] sm:w-[160px] sm:h-[60px]"
               src={Logo}
-              width={226}
+              width={80}
               height={80}
               alt={"logo"}
             />
@@ -115,7 +115,7 @@ export default function Header({ nav = true }: { nav?: boolean }) {
           <MobileMenu />
         </header>
       </div>
-      <div className="h-[100px] sm:h-[150px]"></div>
+      <div className="h-[60px] sm:h-[100px]"></div>
     </>
   );
 }

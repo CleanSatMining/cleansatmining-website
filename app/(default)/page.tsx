@@ -1,30 +1,26 @@
-"use client";
-// export const metadata = {
-//   title: "Home - CSM",
-//   description: "Le minage green de Bitcoinà impact positif",
-// };
+export const metadata = {
+  title: "Home - CSM",
+  description: "Le minage green de Bitcoinà impact positif",
+};
 
-import { useState } from "react";
 import Hero from "@/components/hero";
 import FeaturesReasons from "@/components/features-reasons";
-import StatsBlock from "@/components/stats-block";
-import StatsSquare from "@/components/stats-square";
-import StatsSimple from "@/components/stats-simple";
-import Stats from "@/components/stats";
+
 import StatsCounter from "@/components/stats-counter";
 import FeaturesMining from "@/components/features-mining";
 import FeaturesFacilities from "@/components/features-facilities";
 import FeaturesHow from "@/components/features-how";
 import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
+import FeatureCSM from "@/components/features-csm";
 
 export default function Home() {
-  const [statsMode, setStatsMode] = useState("counter");
+  //const [statsMode, setStatsMode] = useState("counter");
   return (
     <>
       <PageBlur />
       <Hero />
-      <div
+      {/* <div
         onClick={() =>
           setStatsMode(
             statsMode === "default"
@@ -44,7 +40,9 @@ export default function Home() {
         {statsMode === "square" && <StatsSquare />}
         {statsMode === "simple" && <StatsSimple />}
         {statsMode === "counter" && <StatsCounter />}
-      </div>
+      </div> */}
+      <StatsCounter />
+      <FeatureCSM />
       <FeaturesMining />
       <FeaturesReasons />
       <FeaturesFacilities />

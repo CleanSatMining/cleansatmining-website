@@ -1,4 +1,4 @@
-import { CleanSatMiningSite } from "@/models/Site";
+import { CleanSatMiningFacility } from "@/models/Site";
 
 export const JSON_CONFIG_facilities_URL =
   "https://data.cleansatmining.com/tokens.json";
@@ -18,7 +18,7 @@ async function fetchJSONTokens(): Promise<any[]> {
   }
 }
 
-async function fetchTokens(): Promise<CleanSatMiningSite[]> {
+async function fetchTokens(): Promise<CleanSatMiningFacility[]> {
   try {
     const response = await fetch(API_CONFIG_facilities_URL);
     if (!response.ok) {

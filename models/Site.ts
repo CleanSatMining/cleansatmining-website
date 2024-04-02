@@ -1,8 +1,8 @@
-export type CleanSatMiningSite = {
+export type CleanSatMiningFacility = {
   id: string;
   name: string;
   shortName: string;
-  data?: SiteData;
+  data?: FacilityData;
 };
 
 export type Operator = {
@@ -11,7 +11,7 @@ export type Operator = {
   website: string;
 };
 
-export type SiteData = {
+export type FacilityData = {
   name: string;
   operator: Operator;
   location: {

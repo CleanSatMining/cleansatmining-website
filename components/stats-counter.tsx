@@ -1,6 +1,4 @@
 import Counter from "@/components/tools/features/counter";
-import PathRightToLeft from "@/public/images/path/path-down-right-to-left.svg";
-import Image from "next/image";
 
 interface StatProps {
   number: number;
@@ -64,18 +62,6 @@ export default function Stats() {
           </div>
         </div>
       </section>
-      {/* Transition */}
-      <div
-        className="flex justify-center items-center w-full mt-5 md:mt-10 min-h-[50px] sm:min-h-[100px]"
-        data-aos="fade-up"
-      >
-        <Image
-          src={PathRightToLeft}
-          className="hidden md:block"
-          priority
-          alt="path Illustration"
-        />
-      </div>
     </>
   );
 }

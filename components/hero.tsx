@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "@/app/css/text.css";
 import Illustration from "@/public/images/hero-illustration.svg";
+import Logo from "@/public/logo.svg";
 
 export default function Hero() {
   return (
@@ -25,7 +26,7 @@ export default function Hero() {
         />
       </div>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 xxs:mb-10 xs:mb-0 xl:mb-10">
-        <div className="flex items-center justify-center pt-10 pb-[200px] md:pt-20 md:pb-[300px] lg:pb-[400px] xl:pb-[500px]">
+        <div className="flex items-center justify-center pt-5 pb-[200px] md:pt-10 md:pb-[300px] lg:pb-[400px] xl:pb-[500px]">
           {/* Hero content */}
 
           <div
@@ -34,21 +35,42 @@ export default function Hero() {
             }}
             className=" max-w-xl mx-auto md:max-w-[640px] md:mx-0 text-center md:justify-center"
           >
-            <h1
-              className="h2 font-title mb-2 text-3xl sm:text-5xl"
+            <div
+              className="flex items-center justify-center mb-0 mt-8 md:mt-10"
               data-aos="zoom-out"
               data-aos-delay="100"
             >
-              Le minage green de <span className="gradient-text">Bitcoin</span>
-              <br></br>à impact positif
+              <Image
+                src={Logo}
+                className="w-[40px] lg:w-[80px] md:w-[60px] opacity-80"
+                priority
+                alt="Logo Illustration"
+              />
+            </div>
+            <h1
+              className=" h2 font-title text-2xl sm:text-[40px] mb-2 font-semibold"
+              data-aos="zoom-out"
+              data-aos-delay="100"
+            >
+              Acheter du{" "}
+              <span className="gradient-text font-bold">Bitcoin</span>, c'est
+              bien...
             </h1>
-            <p
+            <h1
+              className="h2 font-title mb-2 text-3xl sm:text-5xl"
+              data-aos="zoom-out"
+              data-aos-delay="800"
+            >
+              Le Miner, c’est encore mieux !
+            </h1>
+
+            {/* <p
               className="text-lg sm:text-xl  mb-10 font-normal"
               data-aos="zoom-out"
               data-aos-delay="200"
             >
               Investir, c'est bien, miner, c'est mieux !
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

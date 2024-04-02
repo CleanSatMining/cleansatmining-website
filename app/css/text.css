@@ -3,3 +3,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .gradient-text-orange {
+    background: linear-gradient(to right, #F7931A 0%, #f7cf1a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

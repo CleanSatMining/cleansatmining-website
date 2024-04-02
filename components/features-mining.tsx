@@ -2,12 +2,9 @@
 
 import { useState } from "react";
 
-import Image from "next/image";
 import { Transition } from "@headlessui/react";
-import Particles from "./tools/features/particles";
-//import Illustration from "@/public/images/blur/glow-top.svg";
-//import Image from "next/image";
-import Illustration from "@/public/images/features-illustration.svg";
+import PathRightToLeft from "@/public/images/path/path-down-right-to-left.svg";
+import Image from "next/image";
 import FeaturesImage from "@/public/images/feature-mining-illustration.svg";
 
 export default function FeaturesMining() {
@@ -15,6 +12,18 @@ export default function FeaturesMining() {
 
   return (
     <section className="relative">
+      {/* Transition */}
+      <div
+        className="flex justify-center items-center w-full mt-5 md:mt-10 min-h-[50px] sm:min-h-[100px]"
+        data-aos="fade-up"
+      >
+        <Image
+          src={PathRightToLeft}
+          className="hidden md:block"
+          priority
+          alt="path Illustration"
+        />
+      </div>
       {/* Bg illustration */}
       {/*   <div
         className="absolute top-0 left-1/2 -z-10 ml-[390px]"
