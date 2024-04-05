@@ -2,6 +2,7 @@ export type CleanSatMiningFacility = {
   id: string;
   name: string;
   shortName: string;
+  slug: string;
   data?: FacilityData;
 };
 

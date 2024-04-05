@@ -1,10 +1,10 @@
 export const metadata = {
-  title: "Wall of Love (Single Post) - Tidy",
-  description: "Page description",
+  title: "CSM - Sites",
+  description: "Nos sites CSM",
 };
 
 import Hero from "@/components/hero-facilities";
-import { FacilitesGrid, Inspiration } from "@/components/features-facilities";
+import { FacilitesGrid } from "@/components/features-facilities";
 
 export default function facilitiesPage() {
   return (

@@ -1,11 +1,14 @@
 import "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore/lite";
 import { CleanSatMiningFacility } from "@/models/Site";
+import { useParams } from "next/navigation";
 
 import { db } from "@/firebase.config";
 
 export async function GET(request: Request) {
   try {
+    const { slug } = useParams();
+
     const data = await getfacilities();
 
     return new Response(JSON.stringify(data));

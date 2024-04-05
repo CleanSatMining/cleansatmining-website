@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - CSM",
-  description: "Le minage green de Bitcoinà impact positif",
+  title: "CleanSat Mining",
+  description: "Le minage green de Bitcoin à impact positif",
 };
 
 import Hero from "@/components/hero";
