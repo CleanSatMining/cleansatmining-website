@@ -1,6 +1,6 @@
 import { NavLink } from "@/models/NavLink";
-import fetchTokens from "./facilities";
-import { CleanSatMiningFacility } from "@/models/Site";
+import fetchFacilities from "./facilities";
+import { CleanSatMiningFacility } from "@/models/Facility";
 
 export const headerLinks: NavLink[] = [
   {
@@ -27,11 +27,11 @@ export const headerLinks: NavLink[] = [
 
 export async function fetchfacilitiesMenu(): Promise<NavLink[]> {
   try {
-    const tokens: CleanSatMiningFacility[] = await fetchTokens();
+    const tokens: CleanSatMiningFacility[] = await fetchFacilities();
     console.log("tokens", tokens);
     const navLink = tokens.map((token: CleanSatMiningFacility) => {
       const link: NavLink = {
-        href: `/facilities/${token.shortName
+        href: `/facilities/${token.slug
           .trim()
           .replace(" ", "-")
           .toLowerCase()}`,

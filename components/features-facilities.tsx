@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { GetServerSideProps, GetStaticProps } from "next";
 import Image from "next/image";
 import PathLeft from "@/public/images/path/path-down-left.svg";
 import Blur from "@/public/images/blur/blur-brand.svg";
@@ -22,58 +23,116 @@ import Swiper from "swiper";
 import { Navigation, Autoplay } from "swiper/modules";
 import "@/app/css/image.css";
 import "swiper/css";
+import {
+  CleanSatMiningFacility,
+  FacilityStatus,
+  EnergyType,
+} from "@/models/Facility";
+import { formatNumber } from "@/utils/format";
 
 Swiper.use([Autoplay, Navigation]);
 
-const facilities = [
-  {
-    title: "CleanSat Mining Alpha",
-    location: "Parc des Virunga, RDC",
-    status: "Operationel",
-    image: "/images/facilities/csm-alpha.jpg",
-  },
-  {
-    title: "CleanSat Mining Beta",
-    location: "Barrage d'Itaipu, Paraguay",
-    status: "Operationel",
-    image: "/images/facilities/csm-beta.jpg",
-  },
-  {
-    title: "CleanSat Mining Omega",
-    location: "Carélie du Sud, Finlande",
-    status: "Operationel",
-    image: "/images/facilities/csm-omega.jpg",
-  },
-  {
-    title: "CleanSat Mining Gamma",
-    location: "Åsele, Suède",
-    status: "Operationel",
-    image: "/images/facilities/csm-gamma.jpg",
-  },
-  {
-    title: "CleanSat Mining Delta",
-    location: "Oregon, USA",
-    status: "Operationel",
-    image: "/images/facilities/csm-delta.jpg",
-  },
-];
+export interface FacilitiesProps {
+  data: CleanSatMiningFacility[];
+}
 
-const facilitiesToCome = [
+const facilitiesInit: CleanSatMiningFacility[] = [
   {
-    title: "CleanSat Mining Theta",
-    location: "A confirmer",
-    status: "En attente",
-    image: "/images/facilities/facility-to-come.jpg",
+    id: "1",
+    name: "CleanSat Mining Alpha",
+    shortName: "CSM Alpha",
+    image: "/images/facilities/csm-alpha.jpg",
+    slug: "csm-alpha",
+    status: FacilityStatus.operational,
+    location: {
+      aera: "Parc des Virunga",
+      country: "RDC",
+      countryCode: "CD",
+    },
+    energies: [EnergyType.hydro],
   },
   {
-    title: "CleanSat Mining iota",
-    location: "A confirmer",
-    status: "En attente",
-    image: "/images/facilities/facility-to-come.jpg",
+    id: "2",
+    name: "CleanSat Mining Beta",
+    shortName: "CSM Beta",
+    image: "/images/facilities/csm-beta.jpg",
+    slug: "csm-beta",
+    status: FacilityStatus.operational,
+    location: {
+      aera: "Barrage d'Itaipu",
+      country: "Paraguay",
+      countryCode: "PY",
+    },
+    energies: [EnergyType.hydro],
   },
+  // {
+  //   id: "3",
+  //   name: "CleanSat Mining Omega",
+  //   shortName: "CSM Omega",
+  //   image: "/images/facilities/csm-omega.jpg",
+  //   slug: "csm-omega",
+  //   status: FacilityStatus.operational,
+  //   location: {
+  //     aera: "Carélie du Sud",
+  //     country: "Finlande",
+  //     countryCode: "FI",
+  //   },
+  //   energies: [EnergyType.hydro],
+  // },
+  // {
+  //   id: "4",
+  //   name: "CleanSat Mining Gamma",
+  //   shortName: "CSM Gamma",
+  //   image: "/images/facilities/csm-gamma.jpg",
+  //   slug: "csm-gamma",
+  //   status: FacilityStatus.operational,
+  //   location: {
+  //     aera: "Åsele",
+  //     country: "Suède",
+  //     countryCode: "SE",
+  //   },
+  //   energies: [EnergyType.hydro, EnergyType.wind],
+  // },
+
+  // {
+  //   id: "5",
+  //   name: "CleanSat Mining Delta",
+  //   shortName: "CSM Delta",
+  //   image: "/images/facilities/csm-delta.jpg",
+  //   slug: "csm-delta",
+  //   status: FacilityStatus.operational,
+  //   location: {
+  //     aera: "Oregon",
+  //     country: "USA",
+  //     countryCode: "US",
+  //   },
+  //   energies: [EnergyType.hydro, EnergyType.nuclear],
+  // },
 ];
 
 export default function FacilitesCarousel() {
+  const [facilities, setFacilities] = useState<CleanSatMiningFacility[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/facilities?withLocation=true");
+        const fetchedData: CleanSatMiningFacility[] = await res.json();
+        setFacilities(fetchedData);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+        // Gérer les erreurs ici
+      }
+    };
+
+    fetchData();
+
+    // Nettoyage de l'effet
+    return () => {
+      // Nettoyer les ressources si nécessaire
+    };
+  }, []);
+
   useEffect(() => {
     const carousel = new Swiper(".carousel", {
       breakpoints: {
@@ -154,7 +213,7 @@ export default function FacilitesCarousel() {
               {/* Carousel items */}
               {facilities.map((facility, index) => (
                 <div
-                  key={index + facility.title}
+                  key={index + facility.name}
                   className="swiper-slide h-auto flex flex-col bg-grey-800 p-6 rounded"
                   style={{
                     backgroundImage: `linear-gradient(220deg, rgba(54, 61, 13, 0) 0, rgba(54, 61, 13, .7) 80%), url(${facility.image})`,
@@ -164,12 +223,14 @@ export default function FacilitesCarousel() {
                 >
                   <div className="grow pt-40">
                     <div className="font-hkgrotesk font-bold text-xl">
-                      {facility.title}
+                      {facility.name}
                     </div>
                     <div className="flex items-center">
                       <IconMapPin width={16} className="mr-1 mb-3" />
                       <div className="text-white font-light mb-3 text-xs">
-                        {facility.location}
+                        {facility?.location?.aera +
+                          ", " +
+                          facility?.location?.country}
                       </div>
                       <IconPointFilled
                         width={16}
@@ -227,8 +288,30 @@ export default function FacilitesCarousel() {
 }
 
 export function FacilitesGrid() {
-  const [category, setCategory] = useState<string>("0");
+  const [category, setCategory] = useState<string>("");
   const [isMobile, setIsMobile] = useState(false);
+  const [facilities, setFacilities] =
+    useState<CleanSatMiningFacility[]>(facilitiesInit);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/facilities?full=true");
+        const fetchedData: CleanSatMiningFacility[] = await res.json();
+        setFacilities(fetchedData);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+        // Gérer les erreurs ici
+      }
+    };
+
+    fetchData();
+
+    // Nettoyage de l'effet
+    return () => {
+      // Nettoyer les ressources si nécessaire
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -257,17 +340,17 @@ export function FacilitesGrid() {
               <div className="flex flex-wrap justify-center -m-1.5">
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "0"
+                    category === ""
                       ? "bg-brand-500 border-brand-500 font-semibold shadow-xl border-0 hover:opacity-90"
                       : "text-grey-100 bg-grey-800 hover:bg-grey-700 shadow-xl border-0"
                   }`}
-                  onClick={() => setCategory("0")}
+                  onClick={() => setCategory("")}
                 >
                   <div className="flex items-center justify-center">
                     <span>Tout voir</span>
                     <span
                       className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === "0"
+                        category === EnergyType.hydro
                           ? "text-grey-800 bg-brand-500 hover:opacity-90"
                           : "text-green bg-grey-800 hover:bg-grey-700 shadow-sm border-0"
                       }`}
@@ -278,11 +361,11 @@ export function FacilitesGrid() {
                 </button>
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "1"
+                    category === EnergyType.hydro
                       ? "bg-brand-500 border-brand-500 font-semibold shadow-xl border-0 hover:opacity-90"
                       : "text-grey-100 bg-grey-800 hover:bg-grey-700 shadow-xl border-0"
                   }`}
-                  onClick={() => setCategory("1")}
+                  onClick={() => setCategory(EnergyType.hydro)}
                 >
                   <div className="flex items-center justify-center">
                     <span>Hydroélectricité</span>
@@ -299,11 +382,11 @@ export function FacilitesGrid() {
                 </button>
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "2"
+                    category === EnergyType.wind
                       ? "bg-brand-500 border-brand-500 font-semibold shadow-xl border-0 hover:opacity-90"
                       : "text-grey-100 bg-grey-800 hover:bg-grey-700 shadow-xl border-0"
                   }`}
-                  onClick={() => setCategory("2")}
+                  onClick={() => setCategory(EnergyType.wind)}
                 >
                   <div className="flex items-center justify-center">
                     <span>Eolien</span>
@@ -320,11 +403,11 @@ export function FacilitesGrid() {
                 </button>
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "3"
+                    category === EnergyType.nuclear
                       ? "bg-brand-500 border-brand-500 font-semibold shadow-xl border-0 hover:opacity-90"
                       : "text-grey-100 bg-grey-800 hover:bg-grey-700 shadow-xl border-0"
                   }`}
-                  onClick={() => setCategory("3")}
+                  onClick={() => setCategory(EnergyType.nuclear)}
                 >
                   <div className="flex items-center justify-center">
                     <span>Nucléaire</span>
@@ -341,11 +424,11 @@ export function FacilitesGrid() {
                 </button>
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "4"
+                    category === EnergyType.solar
                       ? "bg-brand-500 border-brand-500 font-semibold shadow-xl border-0 hover:opacity-90"
                       : "text-grey-100 bg-grey-800 hover:bg-grey-700 shadow-xl border-0"
                   }`}
-                  onClick={() => setCategory("4")}
+                  onClick={() => setCategory(EnergyType.solar)}
                 >
                   <div className="flex items-center justify-center">
                     <span>Solaire</span>
@@ -372,10 +455,12 @@ export function FacilitesGrid() {
                 {/* facility items */}
                 {facilities.map((facility, index) => (
                   <div
-                    key={index + facility.title}
+                    key={index + facility.name}
                     className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                     style={
-                      !["0", "1", "2", "3"].includes(category)
+                      !facility.energies
+                        .map((e) => e.toString())
+                        .includes(category) && category !== ""
                         ? { display: "none" }
                         : {}
                     }
@@ -410,12 +495,14 @@ export function FacilitesGrid() {
                         {/* Up side */}
                         <div className="relative">
                           <div className="font-hkgrotesk font-bold text-xl md:text-3xl">
-                            {facility.title}
+                            {facility.name}
                           </div>
                           <div className="flex items-center">
                             <IconMapPin width={16} className="mr-1 mb-3" />
                             <div className="text-white font-light mb-3 text-xs md:text-sm">
-                              {facility.location}
+                              {facility.location?.aera +
+                                ", " +
+                                facility.location?.country}
                             </div>
                             <IconPointFilled
                               width={16}
@@ -431,7 +518,7 @@ export function FacilitesGrid() {
                         <div className="relative w-[200px] items-center h-full z-0">
                           <Link
                             className="btn-round text-white bg-grey-800 hover:bg-grey-700 shadow-sm"
-                            href="/#"
+                            href={"/facilities/" + facility.slug}
                             style={{ cursor: "pointer" }}
                           >
                             Plus d'informations{" "}
@@ -454,55 +541,78 @@ export function FacilitesGrid() {
                       <div className="relative flex justify-between">
                         {/* Left side */}
                         <div className="flex items-center">
-                          <div className="truncate">
+                          <div className="">
                             <div className="relative flex justify-center">
-                              <IconWindmill></IconWindmill>
-                              <IconDroplet></IconDroplet>
+                              {facility.energies.map((energy) =>
+                                getEnergyIcon(energy)
+                              )}
                             </div>
-                            <div className="ml-1 text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
+                            <div className="ml-1 text-xs text-white opacity-60 justify-center w-full items-center text-center">
                               Energie
                             </div>
                           </div>
-                          <div className="truncate ml-4 items-center">
-                            <div className="relative flex justify-center">
-                              <IconBolt></IconBolt>
-                              <div className="whitespace-nowrap text-white ml-1">
-                                150 MW
+                          {facility.data && (
+                            <div className="truncate ml-4 items-center">
+                              <div className="relative flex justify-center">
+                                <IconBolt></IconBolt>
+                                <div className="whitespace-nowrap text-white ml-1">
+                                  {formatNumber(
+                                    getFacilityPower(facility) ?? 0,
+                                    1,
+                                    "M"
+                                  )}
+                                  {""}W
+                                </div>
+                              </div>
+                              <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
+                                Puissance
                               </div>
                             </div>
-                            <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
-                              Puissance
-                            </div>
-                          </div>
-                          <div className="truncate ml-4 items-center">
-                            <div className="relative flex justify-center">
-                              <IconBrandSpeedtest></IconBrandSpeedtest>
-                              <div className="ml-1 whitespace-nowrap text-white">
-                                36 TH
+                          )}
+                          {facility.data && (
+                            <div className="truncate ml-4 items-center">
+                              <div className="relative flex justify-center">
+                                <IconBrandSpeedtest></IconBrandSpeedtest>
+                                <div className="ml-1 whitespace-nowrap text-white">
+                                  {formatNumber(
+                                    getFacilityHashrate(facility) ?? 0,
+                                    1,
+                                    "P",
+                                    1
+                                  )}
+                                  {""}H
+                                </div>
+                              </div>
+                              <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
+                                Hashrate
                               </div>
                             </div>
-                            <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
-                              Hashrate
-                            </div>
-                          </div>
+                          )}
                         </div>
                         {/* Right side */}
-                        <div className="truncate ml-4 items-center">
-                          <div className="flex flex-nowrap items-center ml-1">
-                            <button className="text-brand-500 hover:text-brand-100 font-bold">
-                              <span className="sr-only">Levée</span>
-                              <IconCurrencyDollar
-                                size={isMobile ? 20 : 32}
-                              ></IconCurrencyDollar>
-                            </button>
-                            <div className="whitespace-nowrap  text-lg md:text-2xl text-white font-bold opacity-90 ml-0">
-                              4 M
+                        {facility.data && (
+                          <div className="truncate ml-4 items-center">
+                            <div className="flex flex-nowrap items-center ml-1">
+                              <button className="text-brand-500 hover:text-brand-100 font-bold">
+                                <span className="sr-only">Levée</span>
+                                <IconCurrencyDollar
+                                  size={isMobile ? 20 : 32}
+                                ></IconCurrencyDollar>
+                              </button>
+                              <div className="whitespace-nowrap  text-lg md:text-2xl text-white font-bold opacity-90 ml-0">
+                                {formatNumber(
+                                  getFacilityFundraising(facility) ?? 0,
+                                  1,
+                                  "M"
+                                )}
+                                {""}+
+                              </div>
+                            </div>
+                            <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
+                              Levée
                             </div>
                           </div>
-                          <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
-                            Levée
-                          </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -515,3 +625,64 @@ export function FacilitesGrid() {
     </section>
   );
 }
+
+function getEnergyIcon(energyType: EnergyType): React.ReactNode {
+  switch (energyType) {
+    case "solar":
+      return <IconSun />;
+    case "hydro":
+      return <IconDroplet />;
+    case "wind":
+      return <IconWindmill />;
+    case "nuclear":
+      return <IconBuildingFactory />;
+    case "fossil":
+      return <IconBuildingFactory />;
+    case "geothermal":
+      return <IconBuildingFactory />;
+    case "biomass":
+      return <IconBuildingFactory />;
+    default:
+      return <IconWorldBolt />;
+  }
+}
+
+function getFacilityPower(
+  facility: CleanSatMiningFacility
+): number | undefined {
+  const p = facility.data?.mining.containers.reduce(
+    (acc, energy) => acc + energy.asics.powerW * energy.units,
+    0
+  );
+
+  return p ? Math.round(p) : p;
+}
+
+function getFacilityHashrate(
+  facility: CleanSatMiningFacility
+): number | undefined {
+  const h = facility.data?.mining.containers.reduce(
+    (acc, energy) => acc + energy.asics.hashrateTHs * energy.units,
+    0
+  );
+  return h ? Math.round(h) : h;
+}
+
+function getFacilityFundraising(
+  facility: CleanSatMiningFacility
+): number | undefined {
+  const f = facility.data?.fundraisings.reduce(
+    (acc, fundraising) => acc + fundraising.amount,
+    0
+  );
+  return f ? Math.round(f) : f;
+}
+
+export const getServerSideProps: GetServerSideProps<
+  FacilitiesProps
+> = async () => {
+  const res = await fetch("/api/facilities?full=true");
+  const data: CleanSatMiningFacility[] = await res.json();
+
+  return { props: { data } };
+};

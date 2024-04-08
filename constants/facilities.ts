@@ -1,4 +1,4 @@
-import { CleanSatMiningFacility } from "@/models/Site";
+import { CleanSatMiningFacility } from "@/models/Facility";
 
 export const JSON_CONFIG_facilities_URL =
   "https://data.cleansatmining.com/tokens.json";
@@ -18,7 +18,7 @@ async function fetchJSONTokens(): Promise<any[]> {
   }
 }
 
-async function fetchTokens(): Promise<CleanSatMiningFacility[]> {
+async function fetchFacilities(): Promise<CleanSatMiningFacility[]> {
   try {
     const response = await fetch(API_CONFIG_facilities_URL);
     if (!response.ok) {
@@ -27,9 +27,9 @@ async function fetchTokens(): Promise<CleanSatMiningFacility[]> {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching tokens:", error);
+    console.error("Error fetching facilities:", error);
     return [];
   }
 }
 
-export default fetchTokens;
+export default fetchFacilities;

@@ -2,7 +2,11 @@ export type CleanSatMiningFacility = {
   id: string;
   name: string;
   shortName: string;
+  image: string;
   slug: string;
+  status: FacilityStatus;
+  location?: Location;
+  energies: EnergyType[];
   data?: FacilityData;
 };
 
@@ -15,15 +19,11 @@ export type Operator = {
 export type FacilityData = {
   name: string;
   operator: Operator;
-  location: {
-    countryCode: string;
-    name: string;
-  };
   image: string;
   token: Token;
-  status: MiningStatus;
   api: Api;
   mining: Mining;
+  fundraisings: Fundraising[];
   fees: Fees;
   vault: {
     btcAddress: string;
@@ -31,9 +31,20 @@ export type FacilityData = {
   };
 };
 
+export type Location = {
+  aera: string;
+  country: string;
+  countryCode: string;
+};
+
+export type Fundraising = {
+  amount: number;
+  date: string;
+};
+
 export type Token = {
   address: string;
-  price: number;
+  initialPrice: number;
   supply: number;
   symbol: string;
   gnosisscanUrl: string;
@@ -53,10 +64,21 @@ export type Api = {
   contractor: Contractor | undefined;
 };
 
-export enum MiningStatus {
-  active = "active",
-  inactive = "inactive",
+export enum FacilityStatus {
+  operational = "operational",
+  funding = "funding",
+  tocome = "tocome",
   stopped = "stopped",
+}
+
+export enum EnergyType {
+  solar = "solar",
+  hydro = "hydro",
+  wind = "wind",
+  nuclear = "nuclear",
+  fossil = "fossil",
+  geothermal = "geothermal",
+  biomass = "biomass",
 }
 
 export enum Contractor {
@@ -74,14 +96,22 @@ export type Mining = {
   electricity: {
     usdPricePerKWH: number;
   };
-  asics: {
-    powerW: number;
-    units: number;
-    hashrateHs: number;
-  };
+  containers: Container[];
+};
+
+export type Container = {
+  asics: Asic;
+  start: string;
+  units: number;
   intallationCosts: {
     equipement: number;
   };
+};
+
+export type Asic = {
+  name: string;
+  powerW: number;
+  hashrateTHs: number;
 };
 
 export type Yield = {

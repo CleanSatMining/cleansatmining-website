@@ -1,9 +1,9 @@
-import Highlighter, { HighlighterItem } from "./tools/features/highlighter";
+import Highlighter, { HighlighterItem } from "./ui/features/highlighter";
 import Image from "next/image";
 import FeatureImg01 from "@/public/images/features-02.png";
 import FeatureImg02 from "@/public/images/feature-image-02.png";
 import PathDown from "@/public/images/path/path-down.svg";
-import PostItem from "@/components/tools/features/post-item";
+import PostItem from "@/components/ui/features/post-item";
 import { allUpdates, allOnBoardings } from "@/.contentlayer/generated";
 
 const steps = [

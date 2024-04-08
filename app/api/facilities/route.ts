@@ -1,14 +1,21 @@
 import "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore/lite";
-import { CleanSatMiningFacility } from "@/models/Site";
-
-import { db } from "@/firebase.config";
+import { getfacilitiesShort, getfacilities } from "@/database/facility";
 
 export async function GET(request: Request) {
   try {
-    const data = await getfacilities();
+    // Utiliser req.query pour obtenir les paramètres de la requête
+    const queryParams = new URLSearchParams(request.url.split("?")[1]);
+    const withLocation = queryParams.get("withLocation") === "true";
+    const full = queryParams.get("full") === "true";
+    console.log("withLocation", queryParams);
 
-    return new Response(JSON.stringify(data));
+    if (full) {
+      const data = await getfacilities();
+      return new Response(JSON.stringify(data));
+    } else {
+      const data = await getfacilitiesShort(withLocation);
+      return new Response(JSON.stringify(data));
+    }
   } catch (error) {
     console.error("Erreur lors de la récupération des facilities :", error);
     return new Response(
@@ -18,25 +25,4 @@ export async function GET(request: Request) {
       { status: 500 }
     );
   }
-}
-
-async function getfacilities(): Promise<CleanSatMiningFacility[]> {
-  const facilitiesCol = collection(db, "sites");
-  const facilitiesSnapshot = await getDocs(facilitiesCol);
-  const facilitiesList = facilitiesSnapshot.docs.map((doc) => doc.data());
-
-  console.log(facilitiesList);
-
-  const ret = facilitiesList.map((site) => {
-    const s: CleanSatMiningFacility = {
-      id: site.id,
-      name: site.name as string,
-      shortName: site.shortName as string,
-      slug: site.slug as string,
-    };
-
-    return s;
-  });
-
-  return ret;
 }

@@ -1,4 +1,4 @@
-import Counter from "@/components/tools/features/counter";
+import Counter from "@/components/ui/features/counter";
 
 interface StatProps {
   number: number;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ButtonLink from "@/components/tools/buttons/ButtonLink";
+import ButtonLink from "@/components/ui/buttons/ButtonLink";
 
 import Link from "next/link";
 import Logo from "./logo";
