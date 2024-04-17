@@ -1,4 +1,4 @@
-import Highlighter, { HighlighterItem } from "./ui/features/highlighter";
+import Highlighter, { HighlighterItem } from "../../ui/features/highlighter";
 import Image from "next/image";
 import FeatureImg01 from "@/public/images/features-02.png";
 import FeatureImg02 from "@/public/images/feature-image-02.png";

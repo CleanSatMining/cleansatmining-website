@@ -2,13 +2,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
+import classNames from "classnames";
 
 type DropdownProps = {
   children: React.ReactNode;
   title: string;
+  className?: string;
 };
 
-export default function Dropdown({ children, title }: DropdownProps) {
+export default function Dropdown({
+  children,
+  title,
+  className,
+}: DropdownProps) {
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   return (
@@ -20,7 +26,7 @@ export default function Dropdown({ children, title }: DropdownProps) {
       onBlur={() => setDropdownOpen(false)}
     >
       <a
-        className="text-grey-100 hover:text-green px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
+        className={`${className} text-grey-100 hover:text-green px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out`}
         href="#0"
         aria-expanded={dropdownOpen}
         onClick={(e) => e.preventDefault()}
@@ -30,7 +36,7 @@ export default function Dropdown({ children, title }: DropdownProps) {
         </Link>
 
         <svg
-          className="w-3 h-3 fill-current text-grey-200 cursor-pointer ml-1 shrink-0"
+          className="w-3 h-3 fill-current  cursor-pointer ml-1 shrink-0 "
           viewBox="0 0 12 12"
           xmlns="http://www.w3.org/2000/svg"
         >

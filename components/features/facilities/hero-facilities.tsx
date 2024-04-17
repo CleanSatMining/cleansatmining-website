@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/public/images/map.svg";
-import Stats from "@/components/stats-facilities";
+import Stats from "@/components/features/stats/stats-facilities";
 
 export function Herofacilities1() {
   return (

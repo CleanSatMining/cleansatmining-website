@@ -3,8 +3,8 @@ export const metadata = {
   description: "Nos sites CSM",
 };
 
-import Hero from "@/components/hero-facilities";
-import { FacilitesGrid } from "@/components/features-facilities";
+import Hero from "@/components/features/facilities/hero-facilities";
+import { FacilitesGrid } from "@/components/features/facilities/section-facilities";
 
 export default function facilitiesPage() {
   return (

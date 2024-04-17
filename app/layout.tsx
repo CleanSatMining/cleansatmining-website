@@ -2,6 +2,7 @@ import "./css/style.css";
 
 import { Inter, Cairo, Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import AppProvider from "./app-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,9 +63,11 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${cairo.variable}  font-sans antialiased bg-grey-600 text-grey-100 tracking-tight`}
       >
-        <div className="flex flex-col min-h-screen overflow-hidden">
-          {children}
-        </div>
+        <AppProvider>
+          <div className="flex flex-col min-h-screen overflow-hidden">
+            {children}
+          </div>
+        </AppProvider>
       </body>
     </html>
   );

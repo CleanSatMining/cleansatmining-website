@@ -3,16 +3,16 @@ export const metadata = {
   description: "Le minage green de Bitcoin à impact positif",
 };
 
-import Hero from "@/components/hero";
-import FeaturesReasons from "@/components/features-reasons";
+import Hero from "@/components/features/home/hero";
+import FeaturesReasons from "@/components/features/home/features-reasons";
 
-import StatsCounter from "@/components/stats-counter";
-import FeaturesMining from "@/components/features-mining";
-import FeaturesFacilities from "@/components/features-facilities";
-import FeaturesHow from "@/components/features-how";
+import StatsCounter from "@/components/features/home/stats-counter";
+import FeaturesMining from "@/components/features/home/features-mining";
+import FeaturesFacilities from "@/components/features/facilities/section-facilities";
+import FeaturesHow from "@/components/features/home/features-how";
 import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
-import FeatureCSM from "@/components/features-csm";
+import FeatureCSM from "@/components/features/home/features-csm";
 
 export default function Home() {
   //const [statsMode, setStatsMode] = useState("counter");

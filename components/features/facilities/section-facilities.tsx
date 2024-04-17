@@ -42,7 +42,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
     name: "CleanSat Mining Alpha",
     shortName: "CSM Alpha",
     image: "/images/facilities/csm-alpha.jpg",
-    slug: "csm-alpha",
+    slug: "alpha",
     status: FacilityStatus.operational,
     location: {
       aera: "Parc des Virunga",
@@ -56,7 +56,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
     name: "CleanSat Mining Beta",
     shortName: "CSM Beta",
     image: "/images/facilities/csm-beta.jpg",
-    slug: "csm-beta",
+    slug: "beta",
     status: FacilityStatus.operational,
     location: {
       aera: "Barrage d'Itaipu",
@@ -629,21 +629,21 @@ export function FacilitesGrid() {
 function getEnergyIcon(energyType: EnergyType): React.ReactNode {
   switch (energyType) {
     case "solar":
-      return <IconSun />;
+      return <IconSun key="solar" />;
     case "hydro":
-      return <IconDroplet />;
+      return <IconDroplet key="hydro" />;
     case "wind":
-      return <IconWindmill />;
+      return <IconWindmill key="wind" />;
     case "nuclear":
-      return <IconBuildingFactory />;
+      return <IconBuildingFactory key="nuclear" />;
     case "fossil":
-      return <IconBuildingFactory />;
+      return <IconBuildingFactory key="fossil" />;
     case "geothermal":
-      return <IconBuildingFactory />;
+      return <IconBuildingFactory key="geothermal" />;
     case "biomass":
-      return <IconBuildingFactory />;
+      return <IconBuildingFactory key="biomass" />;
     default:
-      return <IconWorldBolt />;
+      return <IconWorldBolt key="default energy" />;
   }
 }
 

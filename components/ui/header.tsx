@@ -9,9 +9,14 @@ import { headerLinks, fetchfacilitiesMenu } from "@/constants/header";
 import { NavLink } from "@/models/NavLink";
 import Dropdown from "@/components/utils/dropdown";
 import MobileMenu from "./mobile-menu";
+import { usePathname } from "next/navigation";
 
 export default function Header({ nav = true }: { nav?: boolean }) {
   const [facilitiesNavLink, setSiteNavLink] = useState<NavLink[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [opacity, setOpacity] = useState("60");
+  const path = usePathname();
+  //console.log("header path", path);
 
   const headerLinksElements = useMemo(
     () =>
@@ -21,7 +26,13 @@ export default function Header({ nav = true }: { nav?: boolean }) {
             {facilitiesNavLink.find((value) => {
               return value.parent === link.href;
             }) ? (
-              <Dropdown title={link.label} key={link.label}>
+              <Dropdown
+                title={link.label}
+                key={link.label}
+                className={`${
+                  index === currentIndex ? "border-green" : "border-transparent"
+                } border-b-[1px] py-1 font-medium text-grey-100 hover:text-brand-500 hover:border-green  py-2 flex items-center transition duration-150 ease-in-out`}
+              >
                 {/* 2nd level: hover */}
                 {facilitiesNavLink.map((site) => {
                   return (
@@ -35,7 +46,9 @@ export default function Header({ nav = true }: { nav?: boolean }) {
                             ? `${link.label} - ${"externalLink"}`
                             : undefined
                         }
-                        className="font-medium text-sm text-grey-100 hover:text-green flex py-2 px-5 leading-tight"
+                        className={
+                          "font-medium text-sm text-grey-100 hover:text-green flex py-2 px-5 leading-tight"
+                        }
                       >
                         {site.label}
                       </Link>
@@ -49,7 +62,9 @@ export default function Header({ nav = true }: { nav?: boolean }) {
                   <Link
                     href={link.href}
                     className={`${
-                      index === 0 ? "border-green" : "border-transparent"
+                      index === currentIndex
+                        ? "border-green"
+                        : "border-transparent"
                     } border-b-[1px] py-1 font-medium text-grey-100 hover:text-brand-500 hover:border-green px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out`}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
@@ -67,8 +82,21 @@ export default function Header({ nav = true }: { nav?: boolean }) {
           </div>
         );
       }),
-    [facilitiesNavLink]
+    [facilitiesNavLink, currentIndex]
   );
+
+  useEffect(() => {
+    headerLinks.forEach((link, index) => {
+      if (path === "/" && link.href === "/") {
+        setCurrentIndex(index);
+        setOpacity("60");
+      } else if (path.includes(link.href)) {
+        setCurrentIndex(index);
+        setOpacity("90");
+      }
+    });
+    console.log("header path", path);
+  }, [setCurrentIndex, path, headerLinks]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +112,7 @@ export default function Header({ nav = true }: { nav?: boolean }) {
     <>
       <div className={`absolute w-full z-30`}>
         <header
-          className={`bg-grey-600 bg-opacity-60 flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-6 md:px-12 py-2 md:py-4`}
+          className={`bg-grey-600 bg-opacity-${opacity} flex items-center justify-between gap-4 rounded-b-[48px] border-b-[1px] border-green/20 px-6 md:px-12 py-2 md:py-4`}
         >
           <Link href={"/"}>
             <Image
