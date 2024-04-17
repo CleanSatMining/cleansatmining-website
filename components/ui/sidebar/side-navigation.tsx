@@ -1,11 +1,16 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { menuFacilityAtom } from "@/states/store";
+import { MenuFacilityOptions } from "@/models/NavLink";
 
 export default function SideNavigation() {
-  const pathname = usePathname();
   const [top, setTop] = useState(0);
+  const [menu, setMenu] = useAtom(menuFacilityAtom);
+
+  const handleMenuChange = (value: string) => {
+    setMenu(value);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +36,7 @@ export default function SideNavigation() {
     <div
       className={
         top > 300
-          ? "w-10 sm:w-24 md:w-32 shrink-0 border-r border-grey-400"
+          ? "w-10 sm:w-12 md:w-36 shrink-0 border-r border-grey-400"
           : ""
       }
     >
@@ -40,7 +45,7 @@ export default function SideNavigation() {
           (top > 300
             ? "fixed top-[200px] "
             : "sticky top-0 border-r border-grey-400 ") +
-          "w-10 sm:w-24 md:w-32 shrink-0 h-screen overflow-y-auto no-scrollbar"
+          "w-10 sm:w-12 md:w-36 shrink-0 h-screen overflow-y-auto no-scrollbar"
         }
       >
         <div className="h-full flex flex-col justify-between after:flex-1 after:mt-auto">
@@ -48,13 +53,12 @@ export default function SideNavigation() {
             <nav className="w-full">
               <ul className="space-y-4">
                 <li className="py-2">
-                  <Link
-                    href="/"
-                    className={`w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
-                      pathname !== "/about" &&
-                      pathname !== "/subscribe" &&
-                      pathname !== "/projects" &&
-                      pathname !== "/resume"
+                  <div
+                    onClick={() =>
+                      handleMenuChange(MenuFacilityOptions.DESCRIPTION)
+                    }
+                    className={`cursor-pointer w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
+                      menu === MenuFacilityOptions.DESCRIPTION
                         ? "text-brand-500 after:bg-brand-500"
                         : "text-grey-300 hover:text-grey-200"
                     }`}
@@ -68,14 +72,16 @@ export default function SideNavigation() {
                       <path fillOpacity=".16" d="M4 7v11h13V7l-6.5-5z" />
                       <path d="m10.433 3.242-8.837 6.56L.404 8.198l10.02-7.44L20.59 8.194l-1.18 1.614-8.977-6.565ZM16 17V9h2v10H3V9h2v8h11Z" />
                     </svg>
-                    <span className="hidden sm:block ml-2">Home </span>
-                  </Link>
+                    <span className="hidden md:block ml-2">Description</span>
+                  </div>
                 </li>
                 <li className="py-2">
-                  <Link
-                    href="/about"
-                    className={`w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
-                      pathname === "/about"
+                  <div
+                    onClick={() =>
+                      handleMenuChange(MenuFacilityOptions.INSTALLATION)
+                    }
+                    className={`cursor-pointer w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
+                      menu === MenuFacilityOptions.INSTALLATION
                         ? "text-brand-500 after:bg-brand-500"
                         : "text-grey-300 hover:text-grey-200"
                     }`}
@@ -92,14 +98,14 @@ export default function SideNavigation() {
                       />
                       <path d="M9 5h2v2H9V5Zm0 4h2v6H9V9Zm1-9C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z" />
                     </svg>
-                    <span className="hidden sm:block ml-2">About</span>
-                  </Link>
+                    <span className="hidden md:block ml-2">Installation</span>
+                  </div>
                 </li>
                 <li className="py-2">
-                  <Link
-                    href="/projects"
-                    className={`w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
-                      pathname === "/projects"
+                  <div
+                    onClick={() => handleMenuChange(MenuFacilityOptions.TEAM)}
+                    className={`cursor-pointer w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
+                      menu === MenuFacilityOptions.TEAM
                         ? "text-brand-500 after:bg-brand-500"
                         : "text-grey-300 hover:text-grey-200"
                     }`}
@@ -113,14 +119,16 @@ export default function SideNavigation() {
                       <path fillOpacity=".16" d="M1 4h18v10H1z" />
                       <path d="M8 3h4V2H8v1ZM6 3V0h8v3h6v12H0V3h6ZM2 5v8h16V5H2Zm14 13v-2h2v4H2v-4h2v2h12Z" />
                     </svg>
-                    <span className="hidden sm:block ml-2">Projects</span>
-                  </Link>
+                    <span className="hidden md:block ml-2">Equipe</span>
+                  </div>
                 </li>
                 <li className="py-2">
-                  <Link
-                    href="/resume"
-                    className={`w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
-                      pathname === "/resume"
+                  <div
+                    onClick={() =>
+                      handleMenuChange(MenuFacilityOptions.SPECIFICATION)
+                    }
+                    className={`cursor-pointer w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
+                      menu === MenuFacilityOptions.SPECIFICATION
                         ? "text-brand-500 after:bg-brand-500"
                         : "text-grey-300 hover:text-grey-200"
                     }`}
@@ -141,10 +149,10 @@ export default function SideNavigation() {
                         d="M2 6v12h14V6H2Zm16-2v16H0V4h18ZM2 2V0h14v2H2Z"
                       />
                     </svg>
-                    <span className="hidden sm:block ml-2">Resume</span>
-                  </Link>
+                    <span className="hidden md:block ml-2">Specification</span>
+                  </div>
                 </li>
-                <li className="py-2">
+                {/* <li className="py-2">
                   <Link
                     href="/subscribe"
                     className={`w-full h-6 flex items-center justify-start pr-2 relative after:absolute after:w-0.5 after:right-0 after:top-0 after:bottom-0 ${
@@ -164,7 +172,7 @@ export default function SideNavigation() {
                     </svg>
                     <span className="hidden sm:block ml-2">Sub</span>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

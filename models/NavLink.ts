@@ -25,3 +25,10 @@ export type NavLink = {
   icon?: Icon;
   parent?: string;
 };
+
+export enum MenuFacilityOptions {
+  DESCRIPTION = "description",
+  INSTALLATION = "installation",
+  TEAM = "team",
+  SPECIFICATION = "specification",
+}

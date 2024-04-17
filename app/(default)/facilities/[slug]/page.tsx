@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 // };
 
 import Hero from "@/components/features/facility/hero-facility";
-import Sections from "@/components/features/facility/feature-facility-sections";
+import Sections from "@/components/features/facility/section-features";
 import Sidebar from "@/components/ui/sidebar/sidebar";
 import WidgetSkills from "@/components/ui/widgets/widget-skills";
 import SideNavigation from "@/components/ui/sidebar/side-navigation";

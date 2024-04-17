@@ -3,12 +3,12 @@
 import Image from "next/image";
 import AboutImg from "@/public/images/facilities/csm-alpha[1].jpg";
 
-export default function Features() {
+export default function Section() {
   return (
     <section>
       {/* Page title */}
       <h2 className="h2 font-aspekta mb-5">Le parc des Virunga</h2>
-      <div className="mb-4" style={{ paddingLeft: "10%", paddingRight: "10%" }}>
+      <div className="mb-4" style={{ paddingLeft: "0%", paddingRight: "20%" }}>
         <Image
           className="w-full rounded-3xl"
           src={AboutImg}
