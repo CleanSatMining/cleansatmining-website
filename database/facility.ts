@@ -53,6 +53,30 @@ export async function getfacilitiesShort(
   }
 }
 
+export async function getfacilityId(slug: string): Promise<string | undefined> {
+  const facilitiesCol = collection(db, "sites");
+  const facilitiesSnapshot = await getDocs(facilitiesCol);
+  const facilitiesDb = facilitiesSnapshot.docs.map(
+    (doc) => doc.data() as FaciltyDb
+  );
+
+  const f = facilitiesDb.map((facility) => {
+    const s: CleanSatMiningFacility = {
+      id: facility.id,
+      name: facility.name as string,
+      shortName: facility.shortName as string,
+      slug: facility.slug as string,
+      image: facility.image as string,
+      status: facility.status as FacilityStatus,
+      energies: facility.energies as EnergyType[],
+    };
+
+    return s;
+  });
+
+  return f.find((f) => f.slug === slug)?.id;
+}
+
 export async function getfacilities(): Promise<CleanSatMiningFacility[]> {
   const facilitiesCol = collection(db, "sites");
   const facilitiesSnapshot = await getDocs(facilitiesCol);
@@ -70,7 +94,13 @@ export async function getfacilities(): Promise<CleanSatMiningFacility[]> {
   return facilitiesCSM;
 }
 
-export async function getfacility(id: string): Promise<CleanSatMiningFacility> {
+export async function getfacility(
+  slug: string
+): Promise<CleanSatMiningFacility> {
+  const id = await getfacilityId(slug);
+  if (!id) {
+    throw new Error("Facility not found");
+  }
   const document = doc(db, "sites", id);
   const docf = await getDoc(document);
   //console.log("document", docf.data());

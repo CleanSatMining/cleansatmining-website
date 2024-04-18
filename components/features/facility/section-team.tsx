@@ -1,19 +1,14 @@
 "use client";
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo } from "react";
 
 import Image from "next/image";
 import AboutImg from "@/public/images/facilities/csm-alpha[1].jpg";
 import Markdown from "@/components/ui/features/markdown";
-import { usePathname } from "next/navigation";
-
-const FILE = "about.md";
 
 export default function Section() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").pop();
   const markdownComponent = useMemo(
-    () => <Markdown url={"/api/facilities/" + slug + "/files/" + FILE} />,
-    [slug]
+    () => <Markdown url="/api/facilities/1/files?file=about.md&slug=alpha" />,
+    []
   );
 
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 // export const metadata = {
 //   title: "CSM - Sites",
 //   description: "Nos sites CSM",
@@ -10,18 +11,15 @@ import Sidebar from "@/components/ui/sidebar/sidebar";
 import WidgetSkills from "@/components/ui/widgets/widget-skills";
 import SideNavigation from "@/components/ui/sidebar/side-navigation";
 
-export async function generateStaticParams() {
-  return ["alpha", "beta", "gamma"].map((slug) => ({ params: { slug } }));
-}
-
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata | undefined> {
+  console.log("Metadata", params.slug);
   const { title, summary: description } = {
-    title: "CSM - Alpha",
-    summary: "CleanSat Mining - Alpha Facility",
+    title: "CSM - " + params.slug.toUpperCase(),
+    summary: "CleanSat Mining - " + params.slug + " Facility",
   };
 
   return {

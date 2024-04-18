@@ -26,6 +26,7 @@ export default function DefaultLayout({
   return (
     <div className="relative">
       <Header />
+
       <AppProvider>
         <main className="grow">{children}</main>
       </AppProvider>
