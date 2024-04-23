@@ -35,25 +35,33 @@ export default function Markdown({ url }: MarkdownProps) {
         children={markdownContent}
         components={{
           h1: ({ node, ...props }) => (
-            <h1 {...props} className="text-6xl font-bold" />
+            <h1 {...props} className="text-6xl font-bold" data-aos="fade-up" />
           ),
           h2: ({ node, ...props }) => (
-            <h2 {...props} className="text-4xl font-bold" />
+            <h2 {...props} className="text-4xl font-bold" data-aos="fade-up" />
           ),
           h3: ({ node, ...props }) => (
-            <h3 {...props} className="text-3xl font-bold" />
+            <h3 {...props} className="text-3xl font-bold" data-aos="fade-up" />
           ),
           h4: ({ node, ...props }) => (
-            <h4 {...props} className="text-2xl font-bold" />
+            <h4 {...props} className="text-2xl font-bold" data-aos="fade-up" />
           ),
           ul: ({ node, ...props }) => (
-            <ul {...props} className="list-disc ml-8" />
+            <ul {...props} className="list-disc ml-8" data-aos="fade-up" />
           ),
           ol: ({ node, ...props }) => (
-            <ol {...props} className="list-decimal ml-8" />
+            <ol {...props} className="list-decimal ml-8" data-aos="fade-up" />
+          ),
+          p: ({ node, ...props }) => (
+            <p {...props} className="text-grey-200" data-aos="fade-up" />
           ),
           img: ({ node, ...props }) => (
-            <img {...props} className="w-full rounded-3xl" />
+            <img
+              {...props}
+              className="w-full rounded-3xl"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            />
           ),
         }}
       />

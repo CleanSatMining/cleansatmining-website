@@ -4,13 +4,15 @@ import React, { useMemo, useEffect } from "react";
 import Image from "next/image";
 import AboutImg from "@/public/images/facilities/csm-alpha[1].jpg";
 import Markdown from "@/components/ui/features/markdown";
-import { usePathname } from "next/navigation";
+//import { usePathname } from "next/navigation";
 
 const FILE = "about.md";
 
-export default function Section() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").pop();
+interface SectionProps {
+  slug: string;
+}
+
+export default function Section({ slug }: SectionProps) {
   const markdownComponent = useMemo(
     () => <Markdown url={"/api/facilities/" + slug + "/files/" + FILE} />,
     [slug]

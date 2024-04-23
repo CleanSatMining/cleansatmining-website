@@ -5,10 +5,16 @@ import Image from "next/image";
 import AboutImg from "@/public/images/facilities/csm-alpha[1].jpg";
 import Markdown from "@/components/ui/features/markdown";
 
-export default function Section() {
+const FILE = "team.md";
+
+interface SectionProps {
+  slug: string;
+}
+
+export default function Section({ slug }: SectionProps) {
   const markdownComponent = useMemo(
-    () => <Markdown url="/api/facilities/1/files?file=about.md&slug=alpha" />,
-    []
+    () => <Markdown url={"/api/facilities/" + slug + "/files/" + FILE} />,
+    [slug]
   );
 
   return (

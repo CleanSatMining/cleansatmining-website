@@ -16,7 +16,6 @@ export async function GET(request: Request) {
     const queryParams = new URLSearchParams(request.url.split("?")[1]);
     const withLocation = queryParams.get("withLocation") === "true";
     const full = queryParams.get("full") === "true";
-    console.log("withLocation", queryParams);
 
     const cacheKey = `facilities_${full ? "full" : "short"}_${
       withLocation ? "withLocation" : "withoutLocation"

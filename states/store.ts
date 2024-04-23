@@ -8,3 +8,4 @@ export const facilitiesAtom = atomWithStorage<CleanSatMiningFacility[]>(
   "facilities",
   []
 );
+export const facilityAtom = atom<CleanSatMiningFacility | undefined>(undefined);

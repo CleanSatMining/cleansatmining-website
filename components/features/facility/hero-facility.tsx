@@ -1,12 +1,25 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import TypingAnimation from "@/components/ui/animations/typing-animation";
+import { useAtomValue } from "jotai";
+import { facilityAtom } from "@/states/store";
+import { CleanSatMiningFacility } from "@/models/Facility";
 
-export default function Facility() {
-  const imageHero = "/images/facilities/csm-alpha.jpg";
+interface SectionProps {
+  slug: string;
+  facility: CleanSatMiningFacility | undefined;
+}
+
+export default function Section({ facility, slug }: SectionProps) {
+  const imageHero = "/images/facilities/csm-" + slug + ".jpg";
+
+  //const facility = useAtomValue(facilityAtom);
+  const country = facility?.location?.countryCode ?? "";
+
   const flag =
     "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-    "CD" +
+    country +
     ".svg";
 
   return (
@@ -31,7 +44,7 @@ export default function Facility() {
           </div>
         )}
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="pt-32 pb-12 md:pt-40 md:pb-16">
+          <div className="pt-10 pb-10 md:pt-[110px] md:pb-[100px]">
             {/* Featured article */}
             <div className="" data-aos="fade-down">
               <article>
@@ -39,8 +52,8 @@ export default function Facility() {
                   {/* Title and excerpt */}
                   <div className="text-center">
                     <Link href={`/facilities/${"alpha"}`}>
-                      <h1 className="h1 font-red-hat-display mb-4">
-                        CSM ALPHA
+                      <h1 className="h1 text-4xl md:text-6xl font-red-hat-display mb-4 font-semibold">
+                        {"CleanSat Mining " + slug}
                       </h1>
                     </Link>
                     <div className="flex items-center justify-center">
@@ -53,7 +66,7 @@ export default function Facility() {
                           alt={"featuredPost.author"}
                         />
                       </a>
-                      <p className="text-xl text-grey-300">
+                      <p className="text-md md:text-xl text-grey-300">
                         Parc des Virunga, RDC
                       </p>
                     </div>
@@ -64,7 +77,7 @@ export default function Facility() {
                     <div className="flex items-center justify-center">
                       <div>
                         <a
-                          className="font-medium text-grey-200 hover:underline"
+                          className="text-md md:text-md font-medium text-grey-200 hover:underline"
                           href="#0"
                         >
                           <TypingAnimation
