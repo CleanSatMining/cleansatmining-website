@@ -2,25 +2,27 @@
 import Link from "next/link";
 import Image from "next/image";
 import TypingAnimation from "@/components/ui/animations/typing-animation";
-import { useAtomValue } from "jotai";
-import { facilityAtom } from "@/states/store";
 import { CleanSatMiningFacility } from "@/models/Facility";
 
 interface SectionProps {
   slug: string;
-  facility: CleanSatMiningFacility | undefined;
+  facility: CleanSatMiningFacility;
 }
 
 export default function Section({ facility, slug }: SectionProps) {
-  const imageHero = "/images/facilities/csm-" + slug + ".jpg";
-
-  //const facility = useAtomValue(facilityAtom);
-  const country = facility?.location?.countryCode ?? "";
-
-  const flag =
-    "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-    country +
+  const countryCode = facility.location?.countryCode ?? undefined;
+  const country = facility.location?.country ?? undefined;
+  const aera = facility.location?.aera ?? undefined;
+  const flag = countryCode
+    ? "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+      countryCode +
+      ".svg"
+    : undefined;
+  "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+    countryCode +
     ".svg";
+  const location = aera && country ? aera + ", " + country : undefined;
+  const imageHero = "/images/facilities/csm-" + slug + ".jpg";
 
   return (
     <>
@@ -53,21 +55,23 @@ export default function Section({ facility, slug }: SectionProps) {
                   <div className="text-center">
                     <Link href={`/facilities/${"alpha"}`}>
                       <h1 className="h1 text-4xl md:text-6xl font-red-hat-display mb-4 font-semibold">
-                        {"CleanSat Mining " + slug}
+                        {facility.name}
                       </h1>
                     </Link>
                     <div className="flex items-center justify-center">
                       <a href="#0">
-                        <Image
-                          className="rounded-full shrink-0 mr-3"
-                          src={flag}
-                          width={32}
-                          height={32}
-                          alt={"featuredPost.author"}
-                        />
+                        {flag && (
+                          <Image
+                            className="rounded-full shrink-0 mr-3"
+                            src={flag}
+                            width={32}
+                            height={32}
+                            alt={"featuredPost.author"}
+                          />
+                        )}
                       </a>
                       <p className="text-md md:text-xl text-grey-300">
-                        Parc des Virunga, RDC
+                        {location}
                       </p>
                     </div>
                   </div>

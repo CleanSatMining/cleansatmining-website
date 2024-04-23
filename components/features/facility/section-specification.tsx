@@ -8,8 +8,14 @@ import Icon01 from "@/public/images/icons/project-icon-01.svg";
 import Icon06 from "@/public/images/icons/project-icon-06.svg";
 import Icon07 from "@/public/images/icons/project-icon-07.svg";
 import Icon08 from "@/public/images/icons/project-icon-08.svg";
+import { CleanSatMiningFacility } from "@/models/Facility";
 
-export default function Section() {
+interface SectionProps {
+  slug: string;
+  facility: CleanSatMiningFacility;
+}
+
+export default function Section({ facility, slug }: SectionProps) {
   const items01 = [
     {
       id: 0,

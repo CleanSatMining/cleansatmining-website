@@ -4,7 +4,6 @@ import React, { useMemo, useEffect } from "react";
 import Image from "next/image";
 import AboutImg from "@/public/images/facilities/csm-alpha[1].jpg";
 import Markdown from "@/components/ui/features/markdown";
-//import { usePathname } from "next/navigation";
 
 const FILE = "about.md";
 
@@ -21,7 +20,7 @@ export default function Section({ slug }: SectionProps) {
   return (
     <section>
       {/* Page title */}
-      <h2 className="h2 font-aspekta mb-5">Le parc des Virunga</h2>
+      {/* <h2 className="h2 font-aspekta mb-5">Le parc des Virunga</h2>
       <div className="mb-4" style={{ paddingLeft: "0%", paddingRight: "20%" }}>
         <Image
           className="w-full rounded-3xl"
@@ -30,10 +29,10 @@ export default function Section({ slug }: SectionProps) {
           height={390}
           alt="About"
         />
-      </div>
+      </div> */}
       {/* Page content */}
       {markdownComponent}
-      <div className="text-slate-500 dark:text-slate-400 space-y-8">
+      {/* <div className="text-slate-500 dark:text-slate-400 space-y-8">
         <div className="space-y-4">
           <h2 className="h3 font-aspekta text-slate-800 dark:text-slate-100">
             Short Bio
@@ -102,7 +101,7 @@ export default function Section({ slug }: SectionProps) {
             collaborating if it's a good fit.
           </p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

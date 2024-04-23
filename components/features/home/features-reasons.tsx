@@ -1,5 +1,9 @@
 import Image from "next/image";
 import PathLeftToRight from "@/public/images/path/path-down-left-to-right.svg";
+import SocialImage from "@/public/images/icons/SOCIAL.webp";
+import EcoImage from "@/public/images/icons/ECOLOGY.webp";
+import MoneyImage from "@/public/images/icons/MONEY.webp";
+import MessageImage from "@/public/images/icons/MESSAGE.webp";
 
 export default function Features() {
   return (
@@ -59,8 +63,13 @@ export default function Features() {
             {/* 1st item */}
             <div className="flex flex-col items-center" data-aos="zoom-out">
               <div className="mb-4">
-                <div className="inline-flex items-center justify-center h-16 w-16 rounded-full border border-transparent [background:linear-gradient(theme(colors.grey.800),_theme(colors.grey.800))_padding-box,_conic-gradient(theme(colors.grey.400),_theme(colors.grey.700)_25%,_theme(colors.grey.700)_75%,_theme(colors.grey.400)_100%)_border-box] mb-3">
-                  <svg
+                <div className="inline-flex items-center justify-center h-16 w-16  mb-3">
+                  <Image
+                    src={MoneyImage}
+                    className="w-128 h-128 object-cover scale-[300%]"
+                    alt="path Illustration"
+                  ></Image>
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
                     height="40"
@@ -71,7 +80,7 @@ export default function Features() {
                       d="M9.423 12.278H.87L11.614.458l-1.037 7.264h8.553L8.386 19.542l1.037-7.264Zm-6.293-1h7.447l-.74 5.18 7.033-7.736H9.423l.74-5.18-7.033 7.736Z"
                       opacity=".8"
                     />
-                  </svg>
+                  </svg> */}
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Rentabilité</h4>
@@ -86,8 +95,13 @@ export default function Features() {
               data-aos-delay="200"
             >
               <div className="mb-4">
-                <div className="inline-flex items-center justify-center h-16 w-16 rounded-full border border-transparent [background:linear-gradient(theme(colors.grey.800),_theme(colors.grey.800))_padding-box,_conic-gradient(theme(colors.grey.400),_theme(colors.grey.700)_25%,_theme(colors.grey.700)_75%,_theme(colors.grey.400)_100%)_border-box] mb-3">
-                  <svg
+                <div className="inline-flex items-center justify-center h-16 w-16 mb-3">
+                  <Image
+                    src={MessageImage}
+                    className="w-128 h-128 object-cover scale-[300%]"
+                    alt="path Illustration"
+                  ></Image>
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
                     height="40"
@@ -103,7 +117,7 @@ export default function Features() {
                         d="M12 23.5C5.649 23.5.5 18.351.5 12S5.649.5 12 .5 23.5 5.649 23.5 12 18.351 23.5 12 23.5Zm0-1c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5Zm0-8a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Zm0-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
                       />
                     </g>
-                  </svg>
+                  </svg> */}
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Liquidité</h4>
@@ -118,8 +132,13 @@ export default function Features() {
               data-aos-delay="400"
             >
               <div className="mb-4">
-                <div className="inline-flex items-center justify-center h-16 w-16 rounded-full border border-transparent [background:linear-gradient(theme(colors.grey.800),_theme(colors.grey.800))_padding-box,_conic-gradient(theme(colors.grey.400),_theme(colors.grey.700)_25%,_theme(colors.grey.700)_75%,_theme(colors.grey.400)_100%)_border-box] mb-3">
-                  <svg
+                <div className="inline-flex items-center justify-center h-16 w-16 mb-3">
+                  <Image
+                    src={EcoImage}
+                    className="w-128 h-128 object-cover scale-[300%]"
+                    alt="path Illustration"
+                  ></Image>
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
                     height="40"
@@ -135,7 +154,7 @@ export default function Features() {
                         d="M9.483 14.562A6.495 6.495 0 0 1 15 11.5h4.5v.5a8.5 8.5 0 0 1-8.5 8.5H9.5v3h-1v-7H7A6.5 6.5 0 0 1 .5 10v-.5H4c2.89 0 5.26 2.23 5.483 5.062Zm-.485.938H8.5v1h.174a6.45 6.45 0 0 1 .324-1Zm.502 4H11a7.5 7.5 0 0 0 7.484-7H15A5.5 5.5 0 0 0 9.5 18v1.5Zm-1-4V15A4.5 4.5 0 0 0 4 10.5H1.522A5.5 5.5 0 0 0 7 15.5h1.5Z"
                       />
                     </g>
-                  </svg>
+                  </svg> */}
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Ecologie</h4>
@@ -150,8 +169,13 @@ export default function Features() {
               data-aos-delay="400"
             >
               <div className="mb-4">
-                <div className="inline-flex items-center justify-center h-16 w-16 rounded-full border border-transparent [background:linear-gradient(theme(colors.grey.800),_theme(colors.grey.800))_padding-box,_conic-gradient(theme(colors.grey.400),_theme(colors.grey.700)_25%,_theme(colors.grey.700)_75%,_theme(colors.grey.400)_100%)_border-box] mb-3">
-                  <svg
+                <div className="inline-flex items-center justify-center h-16 w-16 mb-3">
+                  <Image
+                    src={SocialImage}
+                    className="w-128 h-128 object-cover scale-[300%]"
+                    alt="path Illustration"
+                  ></Image>
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
                     height="40"
@@ -167,7 +191,7 @@ export default function Features() {
                         d="M9.483 14.562A6.495 6.495 0 0 1 15 11.5h4.5v.5a8.5 8.5 0 0 1-8.5 8.5H9.5v3h-1v-7H7A6.5 6.5 0 0 1 .5 10v-.5H4c2.89 0 5.26 2.23 5.483 5.062Zm-.485.938H8.5v1h.174a6.45 6.45 0 0 1 .324-1Zm.502 4H11a7.5 7.5 0 0 0 7.484-7H15A5.5 5.5 0 0 0 9.5 18v1.5Zm-1-4V15A4.5 4.5 0 0 0 4 10.5H1.522A5.5 5.5 0 0 0 7 15.5h1.5Z"
                       />
                     </g>
-                  </svg>
+                  </svg> */}
                 </div>
               </div>
               <h4 className="h4 text-grey-200 text-center mb-2">Social</h4>

@@ -7,12 +7,16 @@ import SpecificationSection from "@/components/features/facility/section-specifi
 import { useAtomValue } from "jotai";
 import { menuFacilityAtom } from "@/states/store";
 import { MenuFacilityOptions } from "@/models/NavLink";
-import { usePathname } from "next/navigation";
+import { CleanSatMiningFacility } from "@/models/Facility";
 
-export default function FacilitySections() {
+interface SectionProps {
+  slug: string;
+  facility: CleanSatMiningFacility;
+}
+
+export default function FacilitySections({ facility, slug }: SectionProps) {
   const menuFacility = useAtomValue(menuFacilityAtom);
-  const pathname = usePathname();
-  const slug = pathname.split("/").pop() ?? "";
+
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -26,7 +30,10 @@ export default function FacilitySections() {
           <PlantSection slug={slug}></PlantSection>
         )}
         {menuFacility === MenuFacilityOptions.SPECIFICATION && (
-          <SpecificationSection></SpecificationSection>
+          <SpecificationSection
+            facility={facility}
+            slug={slug}
+          ></SpecificationSection>
         )}
       </div>
     </section>

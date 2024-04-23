@@ -10,8 +10,14 @@ import {
   IconBrandSpeedtest,
   IconCurrencyDollar,
 } from "@tabler/icons-react";
+import { CleanSatMiningFacility } from "@/models/Facility";
 
-export default function Widget() {
+interface SectionProps {
+  slug: string;
+  facility: CleanSatMiningFacility;
+}
+
+export default function Widget({ facility, slug }: SectionProps) {
   return (
     <div>
       <div className="min-w-[250px] xl:min-w-[300px] rounded-lg border border-grey-200 dark:border-grey-500 dark:bg-gradient-to-t dark:from-grey-500 dark:to-grey-500/30 odd:rotate-1 even:-rotate-1 p-5">
