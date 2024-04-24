@@ -16,13 +16,16 @@ export async function GET(request: Request) {
     const queryParams = new URLSearchParams(request.url.split("?")[1]);
     const withLocation = queryParams.get("withLocation") === "true";
     const full = queryParams.get("full") === "true";
+    const noCache = queryParams.get("noCache") === "true";
+
+    console.log("queryParams", JSON.stringify(queryParams));
 
     const cacheKey = `facilities_${full ? "full" : "short"}_${
       withLocation ? "withLocation" : "withoutLocation"
     }`;
     const cachedData = cache.get(cacheKey);
 
-    if (cachedData) {
+    if (cachedData && !noCache) {
       return new Response(JSON.stringify(cachedData));
     }
 

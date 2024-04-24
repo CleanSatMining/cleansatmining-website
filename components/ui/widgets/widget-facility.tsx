@@ -1,16 +1,19 @@
 import {
-  IconMapPin,
-  IconPointFilled,
-  IconWindmill,
-  IconDroplet,
-  IconWorldBolt,
-  IconSun,
-  IconBuildingFactory,
   IconBolt,
   IconBrandSpeedtest,
   IconCurrencyDollar,
 } from "@tabler/icons-react";
 import { CleanSatMiningFacility } from "@/models/Facility";
+import {
+  getFacilityEnergiesIcon,
+  getFacilityEnergiesLabel,
+  getFacilityPower,
+  getFacilityHashrate,
+  getFacilityFundraising,
+  formatFacilityFundraisingToM,
+  formatFacilityHashrateTHsToPHs,
+  formatFacilityPowerWToMW,
+} from "@/utils/facility";
 
 interface SectionProps {
   slug: string;
@@ -18,6 +21,12 @@ interface SectionProps {
 }
 
 export default function Widget({ facility, slug }: SectionProps) {
+  const energiesIcon = getFacilityEnergiesIcon(facility);
+  const energiesLabel = getFacilityEnergiesLabel(facility);
+  const power = getFacilityPower(facility);
+  const hashrate = getFacilityHashrate(facility);
+  const funds = getFacilityFundraising(facility);
+
   return (
     <div>
       <div className="min-w-[250px] xl:min-w-[300px] rounded-lg border border-grey-200 dark:border-grey-500 dark:bg-gradient-to-t dark:from-grey-500 dark:to-grey-500/30 odd:rotate-1 even:-rotate-1 p-5">
@@ -32,68 +41,77 @@ export default function Widget({ facility, slug }: SectionProps) {
               </div>
               <div className="mr-1.5">
                 <div className="font-aspekta font-[650] text-sm flex justify-end">
-                  Hydro, Eolien
+                  {energiesLabel}
                 </div>
               </div>
               <div className="flex justify-end mr-1.5">
-                <div className="flex text-brand-500">
-                  <IconDroplet></IconDroplet>
-                  <IconWindmill></IconWindmill>
-                </div>
+                <div className="flex text-brand-500">{energiesIcon}</div>
               </div>
             </div>
           </li>
-          <li className="flex justify-between items-center">
-            <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
-              <div className="grow inline-flex mr-1.5 truncate">
-                <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
-                  Puissance
-                </span>
-              </div>
-              <div className="mr-1.5 flex justify-end">
-                <div className="font-aspekta font-[650] text-sm">1.8MW</div>
-              </div>
-              <div className="flex justify-end mr-1.5">
-                <div className="flex text-brand-500">
-                  <IconBolt></IconBolt>
+          {power && (
+            <li className="flex justify-between items-center">
+              <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
+                <div className="grow inline-flex mr-1.5 truncate">
+                  <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                    Puissance
+                  </span>
+                </div>
+                <div className="mr-1.5 flex justify-end">
+                  <div className="font-aspekta font-[650] text-sm">
+                    {formatFacilityPowerWToMW(power)}
+                  </div>
+                </div>
+                <div className="flex justify-end mr-1.5">
+                  <div className="flex text-brand-500">
+                    <IconBolt></IconBolt>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li className="flex justify-between items-center">
-            <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
-              <div className="grow inline-flex mr-1.5 truncate">
-                <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
-                  Hashrate
-                </span>
-              </div>
-              <div className="mr-1.5 flex justify-end">
-                <div className="font-aspekta font-[650] text-sm">60PH</div>
-              </div>
-              <div className="flex justify-end mr-1.5">
-                <div className="flex text-brand-500">
-                  <IconBrandSpeedtest></IconBrandSpeedtest>
+            </li>
+          )}
+          {hashrate && (
+            <li className="flex justify-between items-center">
+              <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
+                <div className="grow inline-flex mr-1.5 truncate">
+                  <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                    Hashrate
+                  </span>
+                </div>
+                <div className="mr-1.5 flex justify-end">
+                  <div className="font-aspekta font-[650] text-sm">
+                    {formatFacilityHashrateTHsToPHs(hashrate)}
+                  </div>
+                </div>
+                <div className="flex justify-end mr-1.5">
+                  <div className="flex text-brand-500">
+                    <IconBrandSpeedtest></IconBrandSpeedtest>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li className="flex justify-between items-center">
-            <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
-              <div className="grow inline-flex mr-1.5 truncate">
-                <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
-                  Levée
-                </span>
-              </div>
-              <div className="mr-1.5 flex justify-end">
-                <div className="font-aspekta font-[650] text-sm">1.9M$+</div>
-              </div>
-              <div className="flex justify-end mr-1.5">
-                <div className="flex text-brand-500">
-                  <IconCurrencyDollar></IconCurrencyDollar>
+            </li>
+          )}
+          {funds && (
+            <li className="flex justify-between items-center">
+              <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
+                <div className="grow inline-flex mr-1.5 truncate">
+                  <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                    Levée
+                  </span>
+                </div>
+                <div className="mr-1.5 flex justify-end">
+                  <div className="font-aspekta font-[650] text-sm">
+                    {formatFacilityFundraisingToM(funds)}
+                  </div>
+                </div>
+                <div className="flex justify-end mr-1.5">
+                  <div className="flex text-brand-500">
+                    <IconCurrencyDollar></IconCurrencyDollar>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
+          )}
         </ul>
       </div>
     </div>

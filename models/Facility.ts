@@ -5,8 +5,11 @@ export type CleanSatMiningFacility = {
   image: string;
   slug: string;
   status: FacilityStatus;
+
+  // short data
   location?: Location;
-  energies: EnergyType[];
+
+  // full data
   data?: FacilityData;
 };
 
@@ -18,6 +21,7 @@ export type Operator = {
 
 export type FacilityData = {
   name: string;
+  location: Location;
   operator: Operator;
   image: string;
   token: Token;
@@ -29,6 +33,12 @@ export type FacilityData = {
     btcAddress: string;
     xpub: string;
   };
+  powerPlant: PowerPlant;
+  society: Society;
+};
+
+export type Pool = {
+  name: string;
 };
 
 export type Location = {
@@ -37,17 +47,38 @@ export type Location = {
   countryCode: string;
 };
 
+export type Society = {
+  name: string;
+  registrationNumber: string;
+  shareCapital: number; // in CHF
+  tokenization: number; // in %
+  csmSaShare: number; // in %
+  location: Location;
+};
+
+export type PowerPlant = {
+  contractDuration: number; // in years
+  electricityPrice: number; // in $/kWh
+  powerMW: number; // in MW
+  renewableContract: boolean;
+  energies: EnergyType[];
+  spotPrice?: boolean;
+  spotLink?: string; // url
+};
+
 export type Fundraising = {
   amount: number;
-  date: string;
+  date: number;
 };
 
 export type Token = {
-  address: string;
-  initialPrice: number;
-  supply: number;
+  name: string;
   symbol: string;
+  supply: number;
+  decimals: number;
+  initialPrice: number;
   gnosisscanUrl: string;
+  address: string;
 };
 
 export type TokenBalance = {
@@ -84,6 +115,7 @@ export enum EnergyType {
 export enum Contractor {
   LUXOR = "LUXOR",
   ANTPOOL = "ANTPOOL",
+  FOUNDRY = "FOUNDRY",
 }
 
 export type Income = {
@@ -92,16 +124,16 @@ export type Income = {
 };
 
 export type Mining = {
-  startingDate: string;
-  electricity: {
-    usdPricePerKWH: number;
-  };
+  startingDate: number;
+  safety: string;
+  cooling: COOLING;
   containers: Container[];
+  pool: Pool;
 };
 
 export type Container = {
   asics: Asic;
-  start: string;
+  start: number;
   units: number;
   intallationCosts: {
     equipement: number;
@@ -126,13 +158,13 @@ export type Fees = {
   };
   operational: {
     operator: {
-      includeWithElectricity: boolean;
-      rate: number; //BBGS, OP
+      powerTax: number; // $/kWh
+      rate: number; // %
     };
-    csm: number;
-    pool: number;
-    taxe: number;
-    provision: number;
+    csm: number; // %
+    pool: number; // %
+    tax: number; // %
+    provision: number; // %
   };
 };
 
@@ -145,4 +177,8 @@ export enum FilterStatus {
 export enum FilterSite {
   my = "my-site",
   all = "all-status",
+}
+
+export enum COOLING {
+  AIR = "air",
 }

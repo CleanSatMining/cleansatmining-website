@@ -3,7 +3,7 @@ import { BigNumber } from "bignumber.js";
 export const formatUsd = (
   tvl: number,
   digit = 0,
-  symbol = "$",
+  symbol = "$US",
   currency = "USD",
   oraclePrice = 1,
   hasData = true
@@ -25,12 +25,12 @@ export const formatUsd = (
     num = tvl / 1000 ** order;
     unitToDisplay = units[order];
   }
-  const prefix = symbol;
+  const currencySymbol = symbol;
   const digitSmallNumber = digit === 0 ? 2 : digit;
 
   return num < 999
-    ? prefix + num.toFixed(digitSmallNumber) + unitToDisplay
-    : tvl.toLocaleString("en-US", {
+    ? num.toFixed(digitSmallNumber) + unitToDisplay + " " + currencySymbol
+    : tvl.toLocaleString("fr-FR", {
         style: "currency",
         currency: currency,
         maximumFractionDigits: digit,
@@ -309,4 +309,15 @@ export function formatTimestampHour(timestamp: number): string {
 
   // Retourner l'heure formatée en UTC
   return `${hours}:${minutes}:${seconds} UTC`;
+}
+
+export function formatAddress(address: string): string {
+  if (address.length < 12) {
+    // Si la chaîne est trop courte pour être masquée, retourne la chaîne d'origine
+    return address;
+  }
+
+  const maskedAddress = address.slice(0, 6) + "..." + address.slice(-4); // Garde les 6 premiers caractères et les 4 derniers caractères
+
+  return maskedAddress;
 }

@@ -29,6 +29,14 @@ import {
   EnergyType,
 } from "@/models/Facility";
 import { formatNumber } from "@/utils/format";
+import { getFacilityEnergiesIcon } from "@/utils/facility";
+import { getFacilityPower } from "@/utils/facility";
+import { getFacilityHashrate } from "@/utils/facility";
+import {
+  getFacilityFundraising,
+  formatFacilityPowerWToMW,
+  formatFacilityHashrateTHsToPHs,
+} from "@/utils/facility";
 
 Swiper.use([Autoplay, Navigation]);
 
@@ -49,7 +57,6 @@ const facilitiesInit: CleanSatMiningFacility[] = [
       country: "RDC",
       countryCode: "CD",
     },
-    energies: [EnergyType.hydro],
   },
   {
     id: "2",
@@ -63,51 +70,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
       country: "Paraguay",
       countryCode: "PY",
     },
-    energies: [EnergyType.hydro],
   },
-  // {
-  //   id: "3",
-  //   name: "CleanSat Mining Omega",
-  //   shortName: "CSM Omega",
-  //   image: "/images/facilities/csm-omega.jpg",
-  //   slug: "csm-omega",
-  //   status: FacilityStatus.operational,
-  //   location: {
-  //     aera: "Carélie du Sud",
-  //     country: "Finlande",
-  //     countryCode: "FI",
-  //   },
-  //   energies: [EnergyType.hydro],
-  // },
-  // {
-  //   id: "4",
-  //   name: "CleanSat Mining Gamma",
-  //   shortName: "CSM Gamma",
-  //   image: "/images/facilities/csm-gamma.jpg",
-  //   slug: "csm-gamma",
-  //   status: FacilityStatus.operational,
-  //   location: {
-  //     aera: "Åsele",
-  //     country: "Suède",
-  //     countryCode: "SE",
-  //   },
-  //   energies: [EnergyType.hydro, EnergyType.wind],
-  // },
-
-  // {
-  //   id: "5",
-  //   name: "CleanSat Mining Delta",
-  //   shortName: "CSM Delta",
-  //   image: "/images/facilities/csm-delta.jpg",
-  //   slug: "csm-delta",
-  //   status: FacilityStatus.operational,
-  //   location: {
-  //     aera: "Oregon",
-  //     country: "USA",
-  //     countryCode: "US",
-  //   },
-  //   energies: [EnergyType.hydro, EnergyType.nuclear],
-  // },
 ];
 
 export default function FacilitesCarousel() {
@@ -458,7 +421,7 @@ export function FacilitesGrid() {
                     key={index + facility.name}
                     className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                     style={
-                      !facility.energies
+                      !facility.data?.powerPlant.energies
                         .map((e) => e.toString())
                         .includes(category) && category !== ""
                         ? { display: "none" }
@@ -543,9 +506,7 @@ export function FacilitesGrid() {
                         <div className="flex items-center">
                           <div className="">
                             <div className="relative flex justify-center">
-                              {facility.energies.map((energy) =>
-                                getEnergyIcon(energy)
-                              )}
+                              {getFacilityEnergiesIcon(facility)}
                             </div>
                             <div className="ml-1 text-xs text-white opacity-60 justify-center w-full items-center text-center">
                               Energie
@@ -556,12 +517,9 @@ export function FacilitesGrid() {
                               <div className="relative flex justify-center">
                                 <IconBolt></IconBolt>
                                 <div className="whitespace-nowrap text-white ml-1">
-                                  {formatNumber(
-                                    getFacilityPower(facility) ?? 0,
-                                    1,
-                                    "M"
+                                  {formatFacilityPowerWToMW(
+                                    getFacilityPower(facility) ?? 0
                                   )}
-                                  {""}W
                                 </div>
                               </div>
                               <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
@@ -574,13 +532,9 @@ export function FacilitesGrid() {
                               <div className="relative flex justify-center">
                                 <IconBrandSpeedtest></IconBrandSpeedtest>
                                 <div className="ml-1 whitespace-nowrap text-white">
-                                  {formatNumber(
-                                    getFacilityHashrate(facility) ?? 0,
-                                    1,
-                                    "P",
-                                    1
+                                  {formatFacilityHashrateTHsToPHs(
+                                    getFacilityHashrate(facility) ?? 0
                                   )}
-                                  {""}H
                                 </div>
                               </div>
                               <div className="text-xs text-white opacity-60 truncate justify-center w-full items-center text-center">
@@ -624,58 +578,6 @@ export function FacilitesGrid() {
       </div>
     </section>
   );
-}
-
-function getEnergyIcon(energyType: EnergyType): React.ReactNode {
-  switch (energyType) {
-    case "solar":
-      return <IconSun key="solar" />;
-    case "hydro":
-      return <IconDroplet key="hydro" />;
-    case "wind":
-      return <IconWindmill key="wind" />;
-    case "nuclear":
-      return <IconBuildingFactory key="nuclear" />;
-    case "fossil":
-      return <IconBuildingFactory key="fossil" />;
-    case "geothermal":
-      return <IconBuildingFactory key="geothermal" />;
-    case "biomass":
-      return <IconBuildingFactory key="biomass" />;
-    default:
-      return <IconWorldBolt key="default energy" />;
-  }
-}
-
-function getFacilityPower(
-  facility: CleanSatMiningFacility
-): number | undefined {
-  const p = facility.data?.mining.containers.reduce(
-    (acc, energy) => acc + energy.asics.powerW * energy.units,
-    0
-  );
-
-  return p ? Math.round(p) : p;
-}
-
-function getFacilityHashrate(
-  facility: CleanSatMiningFacility
-): number | undefined {
-  const h = facility.data?.mining.containers.reduce(
-    (acc, energy) => acc + energy.asics.hashrateTHs * energy.units,
-    0
-  );
-  return h ? Math.round(h) : h;
-}
-
-function getFacilityFundraising(
-  facility: CleanSatMiningFacility
-): number | undefined {
-  const f = facility.data?.fundraisings.reduce(
-    (acc, fundraising) => acc + fundraising.amount,
-    0
-  );
-  return f ? Math.round(f) : f;
 }
 
 export const getServerSideProps: GetServerSideProps<

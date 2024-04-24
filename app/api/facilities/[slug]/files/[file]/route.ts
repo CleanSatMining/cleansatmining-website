@@ -61,7 +61,7 @@ export async function GET(request: Request, context: { params: Params }) {
   }
 }
 
-export async function downloadFile(slug: string, file: string) {
+async function downloadFile(slug: string, file: string) {
   const storage = getStorage(app);
   // Create a storage reference from our storage service
   const storageRef = ref(storage, "facilities/" + slug + "/" + file);

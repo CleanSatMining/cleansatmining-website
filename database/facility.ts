@@ -10,11 +10,20 @@ import {
   FacilityStatus,
   EnergyType,
   Fundraising,
+  PowerPlant,
+  Society,
+  COOLING,
 } from "@/models/Facility";
 import {
   Facility as FaciltyDb,
   Container as ContainerDb,
   Fundraising as FundraisingDb,
+  PowerPlant as PowerPlantDb,
+  Society as SocietyDb,
+  OperatorFees as OperatorFeesDb,
+  Pool as PoolDb,
+  CsmFees as CsmFeesDb,
+  Vault as VaultDb,
 } from "@/models/Database";
 
 import { db } from "@/firebase.config";
@@ -45,7 +54,6 @@ export async function getfacilitiesShort(
         slug: facility.slug as string,
         image: facility.image as string,
         status: facility.status as FacilityStatus,
-        energies: facility.energies as EnergyType[],
       };
 
       return s;
@@ -68,7 +76,6 @@ export async function getfacilityId(slug: string): Promise<string | undefined> {
       slug: facility.slug as string,
       image: facility.image as string,
       status: facility.status as FacilityStatus,
-      energies: facility.energies as EnergyType[],
     };
 
     return s;
@@ -83,8 +90,6 @@ export async function getfacilities(): Promise<CleanSatMiningFacility[]> {
   const facilitiesDb = facilitiesSnapshot.docs.map(
     (doc) => doc.data() as FaciltyDb
   );
-
-  console.log(facilitiesDb);
 
   const facilitiesCSM: CleanSatMiningFacility[] = [];
   for (const facilityDb of facilitiesDb) {
@@ -101,10 +106,10 @@ export async function getfacility(
   if (!id) {
     throw new Error("Facility not found");
   }
-  const document = doc(db, "sites", id);
-  const docf = await getDoc(document);
+  const documentReference = doc(db, "sites", id);
+  const docSnapshot = await getDoc(documentReference);
   //console.log("document", docf.data());
-  const facilityDb = docf.data() as FaciltyDb;
+  const facilityDb = docSnapshot.data() as FaciltyDb;
 
   const facilityCSM: CleanSatMiningFacility = await getFacilityCSMFromDb(
     facilityDb
@@ -116,11 +121,54 @@ export async function getfacility(
 async function getFacilityCSMFromDb(
   facilityDb: FaciltyDb
 ): Promise<CleanSatMiningFacility> {
-  const operator = await getDoc(facilityDb.operator);
+  const operatorSnapshot = await getDoc(facilityDb.operator);
   //console.log("operator", operator.data());
-  const location = await getDoc(facilityDb.location);
+  const locationSnapshot = await getDoc(facilityDb.location);
   //console.log("location", location.data());
-  const token = await getDoc(facilityDb.token);
+  const tokenSnapshot = await getDoc(facilityDb.token);
+
+  const powerPlantDb: PowerPlantDb = (
+    await getDoc(facilityDb.powerPlant)
+  ).data() as PowerPlantDb;
+
+  const powerPlant: PowerPlant = {
+    contractDuration: powerPlantDb.contractDuration,
+    electricityPrice: powerPlantDb.electricityPrice,
+    powerMW: powerPlantDb.powerMW,
+    renewableContract: powerPlantDb.renewableContract,
+    energies: powerPlantDb.energies as EnergyType[],
+    spotLink: powerPlantDb.spotLink,
+    spotPrice: powerPlantDb.spotPrice,
+  };
+
+  const societyDb = (await getDoc(facilityDb.society)).data() as SocietyDb;
+
+  const societyLocationSnapshot = await getDoc(societyDb.location);
+  //console.log("societyLocation", societyDb.location, societyLocationDb.data());
+
+  const society: Society = {
+    name: societyDb.name,
+    registrationNumber: societyDb.registrationNumber,
+    shareCapital: societyDb.shareCapital,
+    tokenization: societyDb.tokenization,
+    csmSaShare: societyDb.csmSaShare,
+    location: societyLocationSnapshot.data() as Location,
+  };
+
+  //console.log("hello", facilityDb.name);
+
+  const operatorFeesDbDocument = await getDoc(facilityDb.operatorFees);
+  const operatorFeesDb = operatorFeesDbDocument.data() as OperatorFeesDb;
+
+  const poolSnapshot = await getDoc(facilityDb.pool);
+  const poolDb = poolSnapshot.data() as PoolDb;
+
+  const csmFeesSnapshot = await getDoc(facilityDb.csmFees);
+  const csmFeesDb = csmFeesSnapshot.data() as CsmFeesDb;
+
+  const vaultSnapshot = await getDoc(facilityDb.vault);
+  const vaultDb = vaultSnapshot.data() as VaultDb;
+
   //console.log("token", token.data());
   const containers = await Promise.all(
     facilityDb.containers.map((container) => getDoc(container))
@@ -134,10 +182,10 @@ async function getFacilityCSMFromDb(
     const asics = await getDoc(container.asics);
     const containerCSM: CleanSatMiningContainer = {
       asics: asics.data() as Asic,
-      start: container.start,
+      start: container.start.seconds,
       units: container.units,
       intallationCosts: {
-        equipement: 0,
+        equipement: container.cost,
       },
     };
     containersCSM.push(containerCSM);
@@ -158,10 +206,15 @@ async function getFacilityCSMFromDb(
   const fundraisingsCSM = fundraisingsDb.map((fundraising) => {
     const f: Fundraising = {
       amount: fundraising.amount,
-      date: fundraising.date,
+      date: fundraising.date.seconds,
     };
     return f;
   });
+
+  const miningDate: number = containersCSM.reduce((oldest, container) => {
+    const containerDate = container.start;
+    return containerDate < oldest ? containerDate : oldest;
+  }, new Date().getTime());
 
   const facilityCSM: CleanSatMiningFacility = {
     id: facilityDb.id,
@@ -170,18 +223,21 @@ async function getFacilityCSMFromDb(
     image: facilityDb.image,
     slug: facilityDb.slug,
     status: facilityDb.status as FacilityStatus,
-    location: location.data() as Location,
-    energies: facilityDb.energies as EnergyType[],
+    location: locationSnapshot.data() as Location,
     data: {
-      operator: operator.data() as Operator,
-
-      token: token.data() as Token,
+      operator: operatorSnapshot.data() as Operator,
+      location: locationSnapshot.data() as Location,
+      token: tokenSnapshot.data() as Token,
+      powerPlant: powerPlant,
+      society: society,
       mining: {
-        containers: containersCSM,
-        startingDate: "",
-        electricity: {
-          usdPricePerKWH: 0,
+        cooling: facilityDb.cooling as COOLING,
+        pool: {
+          name: poolDb.name,
         },
+        containers: containersCSM,
+        startingDate: miningDate,
+        safety: facilityDb.safety,
       },
       api: {
         enable: false,
@@ -191,29 +247,30 @@ async function getFacilityCSMFromDb(
       },
       fees: {
         crowdfunding: {
-          csm: 0,
+          csm: csmFeesDb.crowdfunding,
         },
         operational: {
           operator: {
-            includeWithElectricity: false,
-            rate: 0,
+            powerTax: operatorFeesDb.powerTax,
+            rate: operatorFeesDb.fees,
           },
-          csm: 0,
-          pool: 0,
-          provision: 0,
-          taxe: 0,
+          csm: csmFeesDb.operational,
+          pool: poolDb.fees,
+          provision: csmFeesDb.provision,
+          tax: csmFeesDb.tax,
         },
       },
       fundraisings: fundraisingsCSM,
-      image: "",
-      name: "",
+      image: facilityDb.image,
+      name: facilityDb.name,
 
       vault: {
         btcAddress: "",
-        xpub: "",
+        xpub: vaultDb.xpub,
       },
     },
   };
+
   return facilityCSM;
 }
 
@@ -230,7 +287,6 @@ async function getFacilityWithLocationCSMFromDb(
     slug: facilityDb.slug,
     status: facilityDb.status as FacilityStatus,
     location: location.data() as Location,
-    energies: facilityDb.energies as EnergyType[],
   };
   return facilityCSM;
 }

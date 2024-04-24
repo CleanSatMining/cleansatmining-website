@@ -30,7 +30,6 @@ export default function Markdown({ url }: MarkdownProps) {
 
   return (
     <div>
-      <div>Chargement ...</div>
       <ReactMarkdown
         children={markdownContent}
         components={{
