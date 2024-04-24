@@ -1,5 +1,5 @@
 import ProjectCard, { Item } from "@/components/ui/features/project-card";
-
+import BigNumber from "bignumber.js";
 import Icon02 from "@/public/images/icons/project-icon-02.svg";
 import Icon03 from "@/public/images/icons/project-icon-03.svg";
 import Icon04 from "@/public/images/icons/project-icon-04.svg";
@@ -9,7 +9,12 @@ import Icon06 from "@/public/images/icons/project-icon-06.svg";
 import Icon07 from "@/public/images/icons/project-icon-07.svg";
 import Icon08 from "@/public/images/icons/project-icon-08.svg";
 import { CleanSatMiningFacility } from "@/models/Facility";
-import { formatTimestampDay, formatUsd, formatAddress } from "@/utils/format";
+import {
+  formatTimestampDay,
+  formatUsd,
+  formatAddress,
+  formatNumber,
+} from "@/utils/format";
 import {
   getFacilityHashrateTHs,
   getFacilityPowerW,
@@ -88,8 +93,43 @@ export default function Section({ facility, slug }: SectionProps) {
             getFacilityFundraisingUsd(facilityData)
           ),
         },
+      ]
+    : [];
+
+  const itemsToken: Item[] = facilityData
+    ? [
         {
-          id: 3,
+          id: 0,
+          icon: Icon06,
+          slug: "#0",
+          title: facilityData.token.name,
+          data: [
+            {
+              description: "symbole",
+              value: facilityData.token.symbol,
+            },
+            {
+              description: "Total en circulation",
+              value: `${formatNumber(facilityData.token.supply, 0, "", 0)}`,
+            },
+            {
+              description: "Adresse du contrat",
+              value: formatAddress(facilityData.token.address),
+              link: facilityData.token.gnosisscanUrl,
+            },
+            {
+              description: "Prix de vente initial",
+              value: formatUsd(facilityData.token.initialPrice),
+            },
+          ],
+        },
+      ]
+    : [];
+
+  const itemsOperating: Item[] = facilityData
+    ? [
+        {
+          id: 1,
           icon: Icon05,
           slug: "#0",
           title: "Exploitation",
@@ -102,13 +142,78 @@ export default function Section({ facility, slug }: SectionProps) {
               description: "Mise en route de la ferme",
               value: formatTimestampDay(facilityData.mining.startingDate),
             },
+            {
+              description: "Operateur",
+              value: facilityData.operator.name,
+              link: facilityData.operator.website,
+            },
+            {
+              description: "Pool de minage",
+              value: facilityData.mining.pool.name,
+            },
+          ],
+        },
+
+        {
+          id: 3,
+          icon: Icon07,
+          slug: "#0",
+          title: "Frais",
+          data: [
+            {
+              description: "Frais operateur sur production",
+              value: `${facilityData.fees.operational.operator.rate * 100}%`,
+            },
+            {
+              description: "Taxe operateur sur electricité",
+              value: `${facilityData.fees.operational.operator.powerTax} $/kWh`,
+            },
+            {
+              description: "Frais opérationnels CSM",
+              value: `${facilityData.fees.operational.csm * 100}%`,
+            },
+            {
+              description: "Frais de provision",
+              value: `${facilityData.fees.operational.provision * 100}%`,
+            },
+            {
+              description: "Taxe",
+              value: `${facilityData.fees.operational.tax * 100}%`,
+            },
+          ],
+        },
+        {
+          id: 4,
+          icon: Icon07,
+          slug: "#0",
+          title: "Electricité",
+          data: [
+            {
+              description: "Capacité du site",
+              value: `Environ ${facilityData.powerPlant.powerMW}MW`,
+            },
+            {
+              description: "Prix de l'électricité",
+              value: `${facilityData.powerPlant.spotLink ? "Spot + " : ""} ${
+                facilityData.powerPlant.electricityPrice
+              } $/kWh`,
+              link: facilityData.powerPlant.spotLink,
+            },
+            {
+              description: "Durée du contrat",
+              value: `${facilityData.powerPlant.contractDuration} ans ${
+                facilityData.powerPlant.renewableContract
+                  ? "(renouvelable)"
+                  : ""
+              }`,
+            },
           ],
         },
       ]
     : [];
 
   if (facilityData && facilityData.mining.safety !== "") {
-    itemsSociety.push({
+    itemsOperating.push({
       id: 4,
       icon: Icon05,
       slug: "#0",
@@ -121,7 +226,16 @@ export default function Section({ facility, slug }: SectionProps) {
       ],
     });
   }
-
+  const machines: string = formatNumber(
+    facilityData
+      ? facilityData.mining.containers
+          .reduce(
+            (acc, container) => acc.plus(container.units),
+            new BigNumber(0)
+          )
+          .toNumber()
+      : new BigNumber(0).toNumber()
+  );
   const itemsMining: Item[] = facilityData
     ? [
         {
@@ -129,12 +243,13 @@ export default function Section({ facility, slug }: SectionProps) {
           icon: Icon03,
           slug: "#0",
           title: "Containeurs",
+          description: formatFacilityHashrateTHsToPHs(
+            getFacilityHashrateTHs(facilityData)
+          ),
           data: [
             {
               description: "Nombre de machines",
-              value: facilityData.mining.containers
-                .reduce((acc, container) => acc + container.units, 0)
-                .toString(),
+              value: `${machines}`,
             },
             {
               description: "Puissance de calcul",
@@ -152,43 +267,60 @@ export default function Section({ facility, slug }: SectionProps) {
             },
           ],
         },
-        {
-          id: 1,
-          icon: Icon04,
-          slug: "#0",
-          title: "Storybook",
-          data: [{ description: "lieu", value: "Lieu" }],
-        },
-        {
-          id: 2,
-          icon: Icon05,
-          slug: "#0",
-          title: "Knowledge AI",
-          data: [{ description: "lieu", value: "Lieu" }],
-        },
-        {
-          id: 3,
-          icon: Icon06,
-          slug: "#0",
-          title: "Security Frame",
-          data: [{ description: "lieu", value: "Lieu" }],
-        },
-        {
-          id: 4,
-          icon: Icon07,
-          slug: "#0",
-          title: "KanbanOK",
-          data: [{ description: "lieu", value: "Lieu" }],
-        },
-        {
-          id: 5,
-          icon: Icon08,
-          slug: "#0",
-          title: "T Analytics",
-          data: [{ description: "lieu", value: "Lieu" }],
-        },
       ]
     : [];
+
+  if (facilityData && facilityData.mining.containers.length > 0) {
+    var index = 0;
+    for (const container of facilityData.mining.containers) {
+      const dateFunds =
+        index < facilityData.fundraisings.length
+          ? facilityData.fundraisings[index].date
+          : container.start;
+      itemsMining.push({
+        id: 1,
+        icon: Icon04,
+        slug: "#0",
+        title: "Levée du " + formatTimestampDay(dateFunds),
+        description: formatUsd(container.intallationCosts.equipement),
+        data: [
+          {
+            description: "Puissance de calcul",
+            value: `${formatFacilityHashrateTHsToPHs(
+              container.asics.hashrateTHs * container.units
+            )}`,
+          },
+          {
+            description: "Puissance électrique",
+            value: `${formatFacilityPowerWToMW(
+              container.asics.powerW * container.units
+            )}`,
+          },
+          {
+            description: "Nombre de machines",
+            value: `${container.units}`,
+          },
+          {
+            description: "Type de machines",
+            value: `${container.asics.name}`,
+          },
+          {
+            description: "Caracteristique machine",
+            value: `${container.asics.hashrateTHs} TH/s - ${container.asics.powerW} W`,
+          },
+          {
+            description: "Cout d'installation",
+            value: formatUsd(container.intallationCosts.equipement),
+          },
+          {
+            description: "Date de mise en service",
+            value: formatTimestampDay(container.start),
+          },
+        ],
+      });
+      index++;
+    }
+  }
 
   return (
     <section>
@@ -196,7 +328,7 @@ export default function Section({ facility, slug }: SectionProps) {
       <h2 className="h2 font-aspekta mb-12">Spécifications</h2>
       {/* Page content */}
       <div className="space-y-10">
-        {/* Side Hustles cards */}
+        {/* Society cards */}
         <section>
           <h2 className="font-aspekta text-xl font-[650] mb-6">La société</h2>
           {/* Cards */}
@@ -206,12 +338,34 @@ export default function Section({ facility, slug }: SectionProps) {
             ))}
           </div>
         </section>
-        {/* Client Projects cards */}
+        {/* Token cards */}
+        <section>
+          <h2 className="font-aspekta text-xl font-[650] mb-6">Le Token</h2>
+          {/* Cards */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+            {itemsToken.map((item) => (
+              <ProjectCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+        {/* Mining cards */}
         <section>
           <h2 className="font-aspekta text-xl font-[650] mb-6">Le Mining</h2>
           {/* Cards */}
           <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
             {itemsMining.map((item) => (
+              <ProjectCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+        {/* Operating cards */}
+        <section>
+          <h2 className="font-aspekta text-xl font-[650] mb-6">
+            L'exploitation
+          </h2>
+          {/* Cards */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+            {itemsOperating.map((item) => (
               <ProjectCard key={item.id} item={item} />
             ))}
           </div>

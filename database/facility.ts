@@ -24,6 +24,7 @@ import {
   Pool as PoolDb,
   CsmFees as CsmFeesDb,
   Vault as VaultDb,
+  Asic as AsicDb,
 } from "@/models/Database";
 
 import { db } from "@/firebase.config";
@@ -179,10 +180,16 @@ async function getFacilityCSMFromDb(
 
   const containersCSM = [];
   for (const container of containersDb) {
-    const asics = await getDoc(container.asics);
+    const asicSnapshot = await getDoc(container.asics);
+    const asicDb = asicSnapshot.data() as AsicDb;
+    const asic: Asic = {
+      hashrateTHs: asicDb.hashrateTHs,
+      powerW: asicDb.powerW,
+      name: asicDb.model,
+    };
     const containerCSM: CleanSatMiningContainer = {
-      asics: asics.data() as Asic,
-      start: container.start.seconds,
+      asics: asic,
+      start: container.start.seconds * 1000,
       units: container.units,
       intallationCosts: {
         equipement: container.cost,
@@ -206,7 +213,7 @@ async function getFacilityCSMFromDb(
   const fundraisingsCSM = fundraisingsDb.map((fundraising) => {
     const f: Fundraising = {
       amount: fundraising.amount,
-      date: fundraising.date.seconds,
+      date: fundraising.date.seconds * 1000,
     };
     return f;
   });

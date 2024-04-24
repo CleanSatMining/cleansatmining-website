@@ -25,6 +25,12 @@ export type Vault = {
   xpub: string;
 };
 
+export type Asic = {
+  hashrateTHs: number;
+  model: string;
+  powerW: number;
+};
+
 export type CsmFees = {
   crowdfunding: number;
   operational: number;
