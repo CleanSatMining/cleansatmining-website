@@ -18,11 +18,27 @@ export default function Content() {
   );
 
   useEffect(() => {
+    const fetchFacility = async (slug: string) => {
+      const response = await fetch(`/api/facilities/${slug}`);
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des données");
+      }
+      const data = await response.json();
+      return data;
+    };
+
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/facilities?full=true");
+        const res = await fetch("/api/facilities");
         const fetchedData: CleanSatMiningFacility[] = await res.json();
         setFacilities(fetchedData);
+
+        const promises = fetchedData.map((d) => d.slug).map(fetchFacility);
+        const allFacilities: CleanSatMiningFacility[] = await Promise.all(
+          promises
+        );
+
+        setFacilities(allFacilities);
         console.log("Données récupérées", slug);
       } catch (error) {
         console.error(
