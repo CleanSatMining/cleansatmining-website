@@ -1,7 +1,7 @@
 import "firebase/firestore";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { app } from "@/firebase.config";
 import { LRUCache } from "lru-cache";
+import { downloadFile } from "@/database/facility";
+export const dynamic = "force-static";
 
 const CACHE_DURATION_SECONDS = 8 * 60 * 60; // 8 heures
 /* eslint-disable */
@@ -58,28 +58,5 @@ export async function GET(request: Request, context: { params: Params }) {
       }),
       { status: 500 }
     );
-  }
-}
-
-async function downloadFile(slug: string, file: string) {
-  const storage = getStorage(app);
-  // Create a storage reference from our storage service
-  const storageRef = ref(storage, "facilities/" + slug + "/" + file);
-
-  // Get the download URL
-  try {
-    const url = await getDownloadURL(storageRef);
-    console.log("url", url);
-
-    // Fetch the JSON data at the URL
-    const response = await fetch(url);
-
-    const data = await response.text();
-
-    return data;
-  } catch (error) {
-    // Handle any errors
-    console.error(error);
-    throw error;
   }
 }

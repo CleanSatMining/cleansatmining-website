@@ -28,7 +28,8 @@ import {
   Asic as AsicDb,
 } from "@/models/Database";
 
-import { db } from "@/firebase.config";
+import { app, db } from "@/firebase.config";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export async function getfacilitiesShort(
   withLocation?: boolean
@@ -303,4 +304,27 @@ async function getFacilityWithLocationCSMFromDb(
     mode: FacilityDataMode.Location,
   };
   return facilityCSM;
+}
+
+export async function downloadFile(slug: string, file: string) {
+  const storage = getStorage(app);
+  // Create a storage reference from our storage service
+  const storageRef = ref(storage, "facilities/" + slug + "/" + file);
+
+  // Get the download URL
+  try {
+    const url = await getDownloadURL(storageRef);
+    console.log("downloadFile facility", url);
+
+    // Fetch the JSON data at the URL
+    const response = await fetch(url);
+
+    const data = await response.text();
+
+    return data;
+  } catch (error) {
+    // Handle any errors
+    console.error(error);
+    throw error;
+  }
 }

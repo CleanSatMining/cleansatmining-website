@@ -1,16 +1,26 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Content from "@/components/features/facility/page-content";
-import { CleanSatMiningFacility } from "@/models/Facility";
-import { getfacilitiesShort } from "@/database/facility";
+import { getfacilitiesShort, getfacility } from "@/database/facility";
+import Markdown from "@/components/ui/features/markdownStatic";
+import { downloadFile } from "@/database/facility";
+import { MenuFacilityOptionsFiles } from "@/constants/content";
+import { MenuFacilityOptions } from "@/models/NavLink";
 
-export async function generateStaticParams() {
+interface Params {
+  slug: string;
+  image: string;
+}
+
+export async function generateStaticParams(): Promise<Params[]> {
   const facilities = await getfacilitiesShort();
 
-  return facilities.map((facilities) => ({
+  const params: Params[] = facilities.map((facilities) => ({
     slug: facilities.slug,
     image: facilities.image,
   }));
+
+  return params;
 }
 
 export async function generateMetadata({
@@ -30,15 +40,28 @@ export async function generateMetadata({
   };
 }
 
-interface Params {
-  slug: string;
-  image: string;
-}
-
-export default function FacilityPage(facility: { params: Params }) {
-  console.log("FacilityPage", facility, facility.params.slug);
-  const slug = facility.params.slug;
+export default async function FacilityPage(facilityParams: { params: Params }) {
+  console.log("FacilityPage", facilityParams, facilityParams.params.slug);
+  const slug = facilityParams.params.slug;
   const image = "/images/facilities/csm-" + slug + ".jpg";
+  const facility = await getfacility(slug);
+
+  const descriptionContent = await downloadFile(
+    slug,
+    MenuFacilityOptionsFiles[MenuFacilityOptions.DESCRIPTION]
+  );
+  const installationContent = await downloadFile(
+    slug,
+    MenuFacilityOptionsFiles[MenuFacilityOptions.INSTALLATION]
+  );
+  const teamContent = await downloadFile(
+    slug,
+    MenuFacilityOptionsFiles[MenuFacilityOptions.TEAM]
+  );
+
+  const markdownDescription = <Markdown content={descriptionContent} />;
+  const markdownInstallation = <Markdown content={installationContent} />;
+  const markdownTeam = <Markdown content={teamContent} />;
 
   const HeroImage = (
     <Image
@@ -51,5 +74,14 @@ export default function FacilityPage(facility: { params: Params }) {
     />
   );
 
-  return <Content slug={slug} image={HeroImage} />;
+  return (
+    <Content
+      slug={slug}
+      image={HeroImage}
+      facility={facility}
+      description={markdownDescription}
+      installation={markdownInstallation}
+      team={markdownTeam}
+    />
+  );
 }
