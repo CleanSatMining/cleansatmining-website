@@ -67,8 +67,8 @@ export default async function FacilityPage(facilityParams: { params: Params }) {
     <Image
       className="absolute inset-0 w-full h-full object-cover opacity-50"
       src={image}
-      width={1440}
-      height={577}
+      width={700}
+      height={300}
       priority
       alt={slug}
     />
