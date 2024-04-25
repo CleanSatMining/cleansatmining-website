@@ -21,6 +21,8 @@ export default function Hero() {
         <Image
           src={Illustration}
           className="w-[600px] xl:w-auto  lg:w-[1000px] md:w-[800px] max-w-none md:transform "
+          width={700}
+          height={300}
           priority
           alt="Hero Illustration"
         />

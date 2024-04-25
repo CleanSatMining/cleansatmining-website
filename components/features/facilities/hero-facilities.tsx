@@ -16,8 +16,8 @@ export function Herofacilities1() {
             <Image
               className="opacity-10 w-full h-full object-cover"
               src={PageHero}
-              width={1440}
-              height={497}
+              width={700}
+              height={300}
               alt="Hero"
             />
           </div>
@@ -62,8 +62,8 @@ export default function Herofacilities() {
         <Image
           className="absolute inset-0 w-full h-full object-cover opacity-100"
           src={PageHero}
-          width={1440}
-          height={577}
+          width={700}
+          height={300}
           priority
           alt="Testimonials"
         />
