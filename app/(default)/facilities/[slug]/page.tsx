@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import Image from "next/image";
 import Content from "@/components/features/facility/page-content";
 import { CleanSatMiningFacility } from "@/models/Facility";
 import { getfacilitiesShort } from "@/database/facility";
@@ -38,7 +38,18 @@ interface Params {
 export default function FacilityPage(facility: { params: Params }) {
   console.log("FacilityPage", facility, facility.params.slug);
   const slug = facility.params.slug;
-  return (
-    <Content slug={slug} image={"/images/facilities/csm-" + slug + ".jpg"} />
+  const image = "/images/facilities/csm-" + slug + ".jpg";
+
+  const HeroImage = (
+    <Image
+      className="absolute inset-0 w-full h-full object-cover opacity-50"
+      src={image}
+      width={1440}
+      height={577}
+      priority
+      alt={slug}
+    />
   );
+
+  return <Content slug={slug} image={HeroImage} />;
 }

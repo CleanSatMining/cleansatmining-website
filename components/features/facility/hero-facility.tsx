@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import TypingAnimation from "@/components/ui/animations/typing-animation";
 import { CleanSatMiningFacility } from "@/models/Facility";
+import React from "react";
 
 interface SectionProps {
   slug: string;
-  image: string;
+  image: React.ReactNode;
   facility: CleanSatMiningFacility;
 }
 
@@ -32,14 +33,15 @@ export default function Section({ facility, image }: SectionProps) {
         {/* Background image */}
         {image && (
           <div className="absolute inset-0 h-228 pt-16 box-content -z-1 -mt-[100px]">
-            <Image
+            {image}
+            {/* <Image
               className="absolute inset-0 w-full h-full object-cover opacity-50"
               src={image}
               width={1440}
               height={577}
               priority
               alt={"featuredPost.title"}
-            />
+            /> */}
             <div
               className="absolute inset-0 bg-gradient-to-t from-grey-600"
               aria-hidden="true"

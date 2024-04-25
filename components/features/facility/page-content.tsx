@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "@/components/features/facility/hero-facility";
 import Facility from "@/components/features/facility/section-features";
 import WidgetFacility from "@/components/ui/widgets/widget-facility";
@@ -14,7 +14,7 @@ export default function Content({
   image,
 }: {
   slug: string;
-  image: string;
+  image: React.ReactNode;
 }) {
   //const pathname = usePathname();
   //const slug = pathname.split("/").pop() ?? "";
@@ -22,7 +22,7 @@ export default function Content({
   const [facility, setFacility] = useState<CleanSatMiningFacility | undefined>(
     undefined
   );
-  console.log("Content", slug, image);
+  console.log("Content", slug);
 
   useEffect(() => {
     const fetchFacility = async (slug: string) => {
