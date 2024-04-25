@@ -1,15 +1,20 @@
 export type CleanSatMiningFacility = {
+  // short data
   id: string;
   name: string;
   shortName: string;
   image: string;
   slug: string;
   status: FacilityStatus;
+  mode: FacilityDataMode;
 
-  // short data
+  // mode location
   location?: Location;
 
-  // full data
+  // mode mining
+  mining?: Mining;
+
+  // mode full
   data?: FacilityData;
 };
 
@@ -181,4 +186,11 @@ export enum FilterSite {
 
 export enum COOLING {
   AIR = "air",
+}
+
+export enum FacilityDataMode {
+  Short = "short",
+  Location = "location",
+  Mining = "mining",
+  Full = "data",
 }

@@ -13,6 +13,7 @@ import {
   PowerPlant,
   Society,
   COOLING,
+  FacilityDataMode,
 } from "@/models/Facility";
 import {
   Facility as FaciltyDb,
@@ -55,6 +56,7 @@ export async function getfacilitiesShort(
         slug: facility.slug as string,
         image: facility.image as string,
         status: facility.status as FacilityStatus,
+        mode: FacilityDataMode.Short,
       };
 
       return s;
@@ -77,6 +79,7 @@ export async function getfacilityId(slug: string): Promise<string | undefined> {
       slug: facility.slug as string,
       image: facility.image as string,
       status: facility.status as FacilityStatus,
+      mode: FacilityDataMode.Short,
     };
 
     return s;
@@ -85,7 +88,9 @@ export async function getfacilityId(slug: string): Promise<string | undefined> {
   return f.find((f) => f.slug === slug)?.id;
 }
 
-export async function getfacilities(): Promise<CleanSatMiningFacility[]> {
+export async function getFullDatafacilities(): Promise<
+  CleanSatMiningFacility[]
+> {
   const facilitiesCol = collection(db, "sites");
   const facilitiesSnapshot = await getDocs(facilitiesCol);
   const facilitiesDb = facilitiesSnapshot.docs.map(
@@ -231,6 +236,7 @@ async function getFacilityCSMFromDb(
     slug: facilityDb.slug,
     status: facilityDb.status as FacilityStatus,
     location: locationSnapshot.data() as Location,
+    mode: FacilityDataMode.Full,
     data: {
       operator: operatorSnapshot.data() as Operator,
       location: locationSnapshot.data() as Location,
@@ -294,6 +300,7 @@ async function getFacilityWithLocationCSMFromDb(
     slug: facilityDb.slug,
     status: facilityDb.status as FacilityStatus,
     location: location.data() as Location,
+    mode: FacilityDataMode.Location,
   };
   return facilityCSM;
 }

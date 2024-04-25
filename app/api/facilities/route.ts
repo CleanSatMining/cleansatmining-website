@@ -1,5 +1,5 @@
 import "firebase/firestore";
-import { getfacilitiesShort, getfacilities } from "@/database/facility";
+import { getfacilitiesShort, getFullDatafacilities } from "@/database/facility";
 import { LRUCache } from "lru-cache";
 
 const CACHE_DURATION_SECONDS = 8 * 60 * 60; // 8 heures
@@ -14,15 +14,12 @@ export async function GET(request: Request) {
   try {
     // Utiliser req.query pour obtenir les paramètres de la requête
     const queryParams = new URLSearchParams(request.url.split("?")[1]);
-    const withLocation = queryParams.get("withLocation") === "true";
-    const full = queryParams.get("full") === "true";
     const noCache = queryParams.get("noCache") === "true";
+    const mode = queryParams.get("mode") ?? "short"; // short ou full ou location
 
     console.log("queryParams", JSON.stringify(queryParams));
 
-    const cacheKey = `facilities_${full ? "full" : "short"}_${
-      withLocation ? "withLocation" : "withoutLocation"
-    }`;
+    const cacheKey = `facilities_${mode}`;
     const cachedData = cache.get(cacheKey);
 
     if (cachedData && !noCache) {
@@ -31,10 +28,16 @@ export async function GET(request: Request) {
 
     var data = undefined;
 
-    if (full) {
-      data = await getfacilities();
-    } else {
-      data = await getfacilitiesShort(withLocation);
+    switch (mode) {
+      case "location":
+        data = await getfacilitiesShort(true);
+        break;
+      case "full":
+        data = await getFullDatafacilities();
+        break;
+      default:
+        data = await getfacilitiesShort();
+        break;
     }
 
     // Mettre en cache la réponse pour la durée spécifiée

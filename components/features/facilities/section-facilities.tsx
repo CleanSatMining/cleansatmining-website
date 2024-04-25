@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { GetServerSideProps, GetStaticProps } from "next";
 import Image from "next/image";
 import PathLeft from "@/public/images/path/path-down-left.svg";
 import Blur from "@/public/images/blur/blur-brand.svg";
@@ -27,6 +26,7 @@ import {
   CleanSatMiningFacility,
   FacilityStatus,
   EnergyType,
+  FacilityDataMode,
 } from "@/models/Facility";
 import { formatNumber } from "@/utils/format";
 import { getFacilityEnergiesIcon } from "@/utils/facility";
@@ -52,6 +52,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
     image: "/images/facilities/csm-alpha.jpg",
     slug: "alpha",
     status: FacilityStatus.operational,
+    mode: FacilityDataMode.Location,
     location: {
       aera: "Parc des Virunga",
       country: "RDC",
@@ -65,6 +66,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
     image: "/images/facilities/csm-beta.jpg",
     slug: "beta",
     status: FacilityStatus.operational,
+    mode: FacilityDataMode.Location,
     location: {
       aera: "Barrage d'Itaipu",
       country: "Paraguay",
@@ -79,7 +81,7 @@ export default function FacilitesCarousel() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/facilities?withLocation=true");
+        const res = await fetch("/api/facilities?mode=location");
         const fetchedData: CleanSatMiningFacility[] = await res.json();
         setFacilities(fetchedData);
       } catch (error) {
@@ -259,7 +261,7 @@ export function FacilitesGrid() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/facilities?full=true");
+        const res = await fetch("/api/facilities?mode=full");
         const fetchedData: CleanSatMiningFacility[] = await res.json();
         setFacilities(fetchedData);
       } catch (error) {
@@ -579,12 +581,3 @@ export function FacilitesGrid() {
     </section>
   );
 }
-
-export const getServerSideProps: GetServerSideProps<
-  FacilitiesProps
-> = async () => {
-  const res = await fetch("/api/facilities?full=true");
-  const data: CleanSatMiningFacility[] = await res.json();
-
-  return { props: { data } };
-};
