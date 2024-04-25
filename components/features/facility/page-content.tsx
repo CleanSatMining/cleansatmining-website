@@ -9,13 +9,20 @@ import { CleanSatMiningFacility } from "@/models/Facility";
 import { useAtom } from "jotai";
 import { facilitiesAtom } from "@/states/store";
 
-export default function Content() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").pop() ?? "";
+export default function Content({
+  slug,
+  image,
+}: {
+  slug: string;
+  image: string;
+}) {
+  //const pathname = usePathname();
+  //const slug = pathname.split("/").pop() ?? "";
   const [facilities, setFacilities] = useAtom(facilitiesAtom);
   const [facility, setFacility] = useState<CleanSatMiningFacility | undefined>(
     undefined
   );
+  console.log("Content", slug, image);
 
   useEffect(() => {
     const fetchFacility = async (slug: string) => {
@@ -49,7 +56,16 @@ export default function Content() {
       }
     };
 
-    fetchData();
+    if (
+      facilities.length === 0 ||
+      !facilities.find((f) => f.slug === slug) ||
+      facilities.filter((f) => f.data === undefined).length > 0
+    ) {
+      // fetch data if not already fetched
+      // or if a facility is not already in the store
+      // or if a facility data detail is missing
+      fetchData();
+    }
 
     // Nettoyage de l'effet
     return () => {
@@ -70,7 +86,7 @@ export default function Content() {
     <>
       {facility ? (
         <>
-          <Hero slug={slug} facility={facility} />
+          <Hero slug={slug} facility={facility} image={image} />
 
           <div className="">
             <div className="max-w-[1600px] mx-auto px-4 sm:px-6">

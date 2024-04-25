@@ -18,7 +18,7 @@ export default function Markdown({ url }: MarkdownProps) {
           throw new Error("Erreur lors de la récupération du contenu");
         }
         const data = await response.text();
-        console.log("data", data);
+        //console.log("data", data);
         setMarkdownContent(data);
       } catch (error) {
         console.error("Erreur :", error);

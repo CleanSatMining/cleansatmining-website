@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
+
 import Content from "@/components/features/facility/page-content";
+import { CleanSatMiningFacility } from "@/models/Facility";
+import { getfacilitiesShort } from "@/database/facility";
+
+export async function generateStaticParams() {
+  const facilities = await getfacilitiesShort();
+
+  return facilities.map((facilities) => ({
+    slug: facilities.slug,
+    image: facilities.image,
+  }));
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; image: string };
 }): Promise<Metadata | undefined> {
   console.log("Metadata", params.slug);
   const { title, summary: description } = {
@@ -18,12 +30,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function FacilityPage({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) {
-  return <Content />;
+interface Params {
+  slug: string;
+  image: string;
+}
+
+export default function FacilityPage(facility: { params: Params }) {
+  console.log("FacilityPage", facility, facility.params.slug);
+  const slug = facility.params.slug;
+  return (
+    <Content slug={slug} image={"/images/facilities/csm-" + slug + ".jpg"} />
+  );
 }

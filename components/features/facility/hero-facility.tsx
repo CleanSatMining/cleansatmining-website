@@ -6,10 +6,11 @@ import { CleanSatMiningFacility } from "@/models/Facility";
 
 interface SectionProps {
   slug: string;
+  image: string;
   facility: CleanSatMiningFacility;
 }
 
-export default function Section({ facility, slug }: SectionProps) {
+export default function Section({ facility, image }: SectionProps) {
   const countryCode = facility.location?.countryCode ?? undefined;
   const country = facility.location?.country ?? undefined;
   const aera = facility.location?.aera ?? undefined;
@@ -22,18 +23,18 @@ export default function Section({ facility, slug }: SectionProps) {
     countryCode +
     ".svg";
   const location = aera && country ? aera + ", " + country : undefined;
-  const imageHero = "/images/facilities/csm-" + slug + ".jpg";
+  //const imageHero = "/images/facilities/csm-" + slug + ".jpg";
 
   return (
     <>
       {/* Featured post */}
       <section className="relative">
         {/* Background image */}
-        {imageHero && (
+        {image && (
           <div className="absolute inset-0 h-228 pt-16 box-content -z-1 -mt-[100px]">
             <Image
               className="absolute inset-0 w-full h-full object-cover opacity-50"
-              src={imageHero}
+              src={image}
               width={1440}
               height={577}
               priority
