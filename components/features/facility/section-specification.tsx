@@ -332,7 +332,7 @@ export default function Section({ facility, slug }: SectionProps) {
         <section>
           <h2 className="font-aspekta text-xl font-[650] mb-6">La société</h2>
           {/* Cards */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsSociety.map((item) => (
               <ProjectCard key={item.id} item={item} />
             ))}
@@ -342,7 +342,7 @@ export default function Section({ facility, slug }: SectionProps) {
         <section>
           <h2 className="font-aspekta text-xl font-[650] mb-6">Le Token</h2>
           {/* Cards */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsToken.map((item) => (
               <ProjectCard key={item.id} item={item} />
             ))}
@@ -352,7 +352,7 @@ export default function Section({ facility, slug }: SectionProps) {
         <section>
           <h2 className="font-aspekta text-xl font-[650] mb-6">Le Mining</h2>
           {/* Cards */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsMining.map((item) => (
               <ProjectCard key={item.id} item={item} />
             ))}
@@ -364,7 +364,7 @@ export default function Section({ facility, slug }: SectionProps) {
             L'exploitation
           </h2>
           {/* Cards */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsOperating.map((item) => (
               <ProjectCard key={item.id} item={item} />
             ))}

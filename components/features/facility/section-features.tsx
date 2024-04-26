@@ -25,7 +25,7 @@ export default function FacilitySections({
 
   return (
     <section>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="w-full mx-auto px-4 sm:px-6">
         {menuFacility === MenuFacilityOptions.DESCRIPTION && <>{description}</>}
         {menuFacility === MenuFacilityOptions.TEAM && <>{installation}</>}
         {menuFacility === MenuFacilityOptions.INSTALLATION && <>{team}</>}

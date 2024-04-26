@@ -33,15 +33,24 @@ export default function Content({
             {/* <Sidebar slug={params.slug} /> */}
 
             {/* Page container */}
-            <div className="block lg:flex">
-              <Facility
-                slug={slug}
-                facility={facility}
-                description={description}
-                installation={installation}
-                team={team}
-              />
-              <WidgetFacility slug={slug} facility={facility} />
+            <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
+              {/* Middle area */}
+              <div className="grow">
+                <Facility
+                  slug={slug}
+                  facility={facility}
+                  description={description}
+                  installation={installation}
+                  team={team}
+                />
+              </div>
+
+              {/* Right sidebar */}
+              <aside className="md:w-[240px] lg:w-[300px] shrink-0">
+                <div className="space-y-6">
+                  <WidgetFacility slug={slug} facility={facility} />
+                </div>
+              </aside>
             </div>
           </div>
         </div>
