@@ -10,7 +10,8 @@ import {
 import {
   CleanSatMiningFacility,
   EnergyType,
-  FacilityData,
+  Mining,
+  Fundraising,
 } from "@/models/Facility";
 import { formatNumber } from "@/utils/format";
 
@@ -36,10 +37,9 @@ export function getEnergyIcon(energyType: EnergyType): React.ReactNode {
 }
 
 export function getFacilityEnergiesLabel(
-  facility: CleanSatMiningFacility
+  energyTypes: EnergyType[]
 ): React.ReactNode {
-  if (!facility.data) return "";
-  return facility.data?.powerPlant.energies.reduce((acc, energy) => {
+  return energyTypes.reduce((acc, energy) => {
     const separator = acc === "" ? "" : ", ";
     switch (energy) {
       case EnergyType.hydro:
@@ -63,10 +63,9 @@ export function getFacilityEnergiesLabel(
 }
 
 export function getFacilityEnergiesIcon(
-  facility: CleanSatMiningFacility
+  energyTypes: EnergyType[]
 ): React.ReactNode[] {
-  if (!facility.data) return [];
-  return facility.data?.powerPlant.energies.map((energy) => {
+  return energyTypes.map((energy) => {
     return getEnergyIcon(energy);
   });
 }
@@ -74,13 +73,13 @@ export function getFacilityEnergiesIcon(
 export function getFacilityPower(
   facility: CleanSatMiningFacility
 ): number | undefined {
-  const p = facility.data ? getFacilityPowerW(facility.data) : undefined;
+  const p = facility.data ? getFacilityPowerW(facility.data.mining) : undefined;
 
   return p ? Math.round(p) : p;
 }
 
-export function getFacilityPowerW(data: FacilityData) {
-  return data.mining.containers.reduce(
+export function getFacilityPowerW(mining: Mining) {
+  return mining.containers.reduce(
     (acc, energy) => acc + energy.asics.powerW * energy.units,
     0
   );
@@ -89,13 +88,15 @@ export function getFacilityPowerW(data: FacilityData) {
 export function getFacilityHashrate(
   facility: CleanSatMiningFacility
 ): number | undefined {
-  const h = facility.data ? getFacilityHashrateTHs(facility.data) : undefined;
+  const h = facility.data
+    ? getFacilityHashrateTHs(facility.data.mining)
+    : undefined;
 
   return h ? Math.round(h) : h;
 }
 
-export function getFacilityHashrateTHs(data: FacilityData) {
-  return data.mining.containers.reduce(
+export function getFacilityHashrateTHs(mining: Mining) {
+  return mining.containers.reduce(
     (acc, energy) => acc + energy.asics.hashrateTHs * energy.units,
     0
   );
@@ -105,16 +106,13 @@ export function getFacilityFundraising(
   facility: CleanSatMiningFacility
 ): number | undefined {
   const f = facility.data
-    ? getFacilityFundraisingUsd(facility.data)
+    ? getFacilityFundraisingUsd(facility.data.fundraisings)
     : undefined;
   return f ? Math.round(f) : f;
 }
 
-export function getFacilityFundraisingUsd(data: FacilityData): number {
-  return data.fundraisings.reduce(
-    (acc, fundraising) => acc + fundraising.amount,
-    0
-  );
+export function getFacilityFundraisingUsd(fundraisings: Fundraising[]): number {
+  return fundraisings.reduce((acc, fundraising) => acc + fundraising.amount, 0);
 }
 
 export function formatFacilityPowerWToMW(power: number): string {

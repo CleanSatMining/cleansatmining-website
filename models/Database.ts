@@ -39,6 +39,7 @@ export type CsmFees = {
 };
 
 export type Container = {
+  facilitySlug: string;
   asics: DocumentReference;
   cost: number;
   start: {

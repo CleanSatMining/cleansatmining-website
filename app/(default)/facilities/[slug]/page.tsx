@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Content from "@/components/features/facility/page-content";
-import { getfacilitiesShort, getfacility } from "@/database/facility";
+import { getFacilitiesModeShort, getFacility } from "@/database/facility";
 import Markdown from "@/components/ui/features/markdownStatic";
 import { downloadFile } from "@/database/facility";
 import { MenuFacilityOptionsFiles } from "@/constants/content";
@@ -13,7 +13,7 @@ interface Params {
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
-  const facilities = await getfacilitiesShort();
+  const facilities = await getFacilitiesModeShort();
 
   const params: Params[] = facilities.map((facilities) => ({
     slug: facilities.slug,
@@ -44,7 +44,7 @@ export default async function FacilityPage(facilityParams: { params: Params }) {
   console.log("FacilityPage", facilityParams, facilityParams.params.slug);
   const slug = facilityParams.params.slug;
   const image = "/images/facilities/csm-" + slug + ".jpg";
-  const facility = await getfacility(slug);
+  const facility = await getFacility(slug);
 
   const descriptionContent = await downloadFile(
     slug,

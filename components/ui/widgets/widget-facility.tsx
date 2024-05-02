@@ -22,8 +22,9 @@ interface SectionProps {
 }
 
 export default function Widget({ facility, slug }: SectionProps) {
-  const energiesIcon = getFacilityEnergiesIcon(facility);
-  const energiesLabel = getFacilityEnergiesLabel(facility);
+  const energieTypes = facility.data ? facility.data.powerPlant.energies : [];
+  const energiesIcon = getFacilityEnergiesIcon(energieTypes);
+  const energiesLabel = getFacilityEnergiesLabel(energieTypes);
   const power = getFacilityPower(facility);
   const hashrate = getFacilityHashrate(facility);
   const funds = getFacilityFundraising(facility);

@@ -6,7 +6,7 @@ import {
   Container as CleanSatMiningContainer,
 } from "@/models/Facility";
 
-import { getfacility } from "@/database/facility";
+import { getFacility } from "@/database/facility";
 
 const CACHE_DURATION_SECONDS = 8 * 60 * 60; // 8 heures
 /* eslint-disable */
@@ -39,7 +39,7 @@ export async function GET(request: Request, context: { params: Params }) {
       return new Response(JSON.stringify(cachedData));
     }
 
-    const facilityCSM: CleanSatMiningFacility = await getfacility(
+    const facilityCSM: CleanSatMiningFacility = await getFacility(
       context.params.slug
     );
 

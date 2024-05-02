@@ -1,5 +1,10 @@
 import "firebase/firestore";
-import { getfacilitiesShort, getFullDatafacilities } from "@/database/facility";
+import {
+  getFacilitiesModeShort,
+  getFacilitiesModeFull,
+  getFacilitiesModeMining,
+  getFacilitiesModeLocation,
+} from "@/database/facility";
 import { LRUCache } from "lru-cache";
 
 const CACHE_DURATION_SECONDS = 8 * 60 * 60; // 8 heures
@@ -14,29 +19,36 @@ export async function GET(request: Request) {
   try {
     // Utiliser req.query pour obtenir les paramètres de la requête
     const queryParams = new URLSearchParams(request.url.split("?")[1]);
-    const noCache = queryParams.get("noCache") === "true";
+    const cacheActivated = queryParams.get("cache") !== "false";
     const mode = queryParams.get("mode") ?? "short"; // short ou full ou location
 
-    console.log("queryParams", JSON.stringify(queryParams));
+    //console.log("queryParams", queryParams);
+    console.log("mode", mode);
+    console.log("cacheActivated", cacheActivated);
 
     const cacheKey = `facilities_${mode}`;
     const cachedData = cache.get(cacheKey);
 
-    if (cachedData && !noCache) {
+    if (cachedData && cacheActivated) {
+      console.log("Récupération des facilities depuis le cache.");
       return new Response(JSON.stringify(cachedData));
     }
+    console.log("Récupération des facilities depuis la base de données.");
 
     var data = undefined;
 
     switch (mode) {
       case "location":
-        data = await getfacilitiesShort(true);
+        data = await getFacilitiesModeLocation();
+        break;
+      case "mining":
+        data = await getFacilitiesModeMining();
         break;
       case "full":
-        data = await getFullDatafacilities();
+        data = await getFacilitiesModeFull();
         break;
       default:
-        data = await getfacilitiesShort();
+        data = await getFacilitiesModeShort();
         break;
     }
 

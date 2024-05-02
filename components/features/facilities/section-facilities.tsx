@@ -17,6 +17,9 @@ import {
   IconBolt,
   IconBrandSpeedtest,
   IconCurrencyDollar,
+  IconArrowRampRight,
+  IconArrowRampRight2,
+  IconArrowRampRight3,
 } from "@tabler/icons-react";
 import Swiper from "swiper";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -30,10 +33,10 @@ import {
 } from "@/models/Facility";
 import { formatNumber } from "@/utils/format";
 import { getFacilityEnergiesIcon } from "@/utils/facility";
-import { getFacilityPower } from "@/utils/facility";
-import { getFacilityHashrate } from "@/utils/facility";
+import { getFacilityPowerW } from "@/utils/facility";
+import { getFacilityHashrateTHs } from "@/utils/facility";
 import {
-  getFacilityFundraising,
+  getFacilityFundraisingUsd,
   formatFacilityPowerWToMW,
   formatFacilityHashrateTHsToPHs,
 } from "@/utils/facility";
@@ -41,7 +44,7 @@ import {
 Swiper.use([Autoplay, Navigation]);
 
 export interface FacilitiesProps {
-  data: CleanSatMiningFacility[];
+  facilities: CleanSatMiningFacility[];
 }
 
 const facilitiesInit: CleanSatMiningFacility[] = [
@@ -252,31 +255,9 @@ export default function FacilitesCarousel() {
   );
 }
 
-export function FacilitesGrid() {
+export function FacilitesGrid({ facilities }: FacilitiesProps) {
   const [category, setCategory] = useState<string>("");
   const [isMobile, setIsMobile] = useState(false);
-  const [facilities, setFacilities] =
-    useState<CleanSatMiningFacility[]>(facilitiesInit);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/facilities?mode=full");
-        const fetchedData: CleanSatMiningFacility[] = await res.json();
-        setFacilities(fetchedData);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des données :", error);
-        // Gérer les erreurs ici
-      }
-    };
-
-    fetchData();
-
-    // Nettoyage de l'effet
-    return () => {
-      // Nettoyer les ressources si nécessaire
-    };
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -508,19 +489,21 @@ export function FacilitesGrid() {
                         <div className="flex items-center">
                           <div className="">
                             <div className="relative flex justify-center">
-                              {getFacilityEnergiesIcon(facility)}
+                              {getFacilityEnergiesIcon(facility.energies ?? [])}
                             </div>
                             <div className="ml-1 text-xs text-white opacity-60 justify-center w-full items-center text-center">
                               Energie
                             </div>
                           </div>
-                          {facility.data && (
+                          {facility.mining && (
                             <div className="truncate ml-4 items-center">
                               <div className="relative flex justify-center">
                                 <IconBolt></IconBolt>
                                 <div className="whitespace-nowrap text-white ml-1">
                                   {formatFacilityPowerWToMW(
-                                    getFacilityPower(facility) ?? 0
+                                    facility.mining
+                                      ? getFacilityPowerW(facility.mining)
+                                      : 0
                                   )}
                                 </div>
                               </div>
@@ -529,13 +512,15 @@ export function FacilitesGrid() {
                               </div>
                             </div>
                           )}
-                          {facility.data && (
+                          {facility.mining && (
                             <div className="truncate ml-4 items-center">
                               <div className="relative flex justify-center">
                                 <IconBrandSpeedtest></IconBrandSpeedtest>
                                 <div className="ml-1 whitespace-nowrap text-white">
                                   {formatFacilityHashrateTHsToPHs(
-                                    getFacilityHashrate(facility) ?? 0
+                                    facility.mining
+                                      ? getFacilityHashrateTHs(facility.mining)
+                                      : 0
                                   )}
                                 </div>
                               </div>
@@ -546,7 +531,7 @@ export function FacilitesGrid() {
                           )}
                         </div>
                         {/* Right side */}
-                        {facility.data && (
+                        {facility.fundraisings && (
                           <div className="truncate ml-4 items-center">
                             <div className="flex flex-nowrap items-center ml-1">
                               <button className="text-brand-500 hover:text-brand-100 font-bold">
@@ -557,7 +542,9 @@ export function FacilitesGrid() {
                               </button>
                               <div className="whitespace-nowrap  text-lg md:text-2xl text-white font-bold opacity-90 ml-0">
                                 {formatNumber(
-                                  getFacilityFundraising(facility) ?? 0,
+                                  getFacilityFundraisingUsd(
+                                    facility.fundraisings
+                                  ),
                                   1,
                                   "M"
                                 )}

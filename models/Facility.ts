@@ -13,6 +13,8 @@ export type CleanSatMiningFacility = {
 
   // mode mining
   mining?: Mining;
+  fundraisings?: Fundraising[];
+  energies?: EnergyType[];
 
   // mode full
   data?: FacilityData;
@@ -137,6 +139,7 @@ export type Mining = {
 };
 
 export type Container = {
+  slug: string;
   asics: Asic;
   start: number;
   units: number;

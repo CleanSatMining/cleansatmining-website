@@ -90,7 +90,7 @@ export default function Section({ facility, slug }: SectionProps) {
             value: `${formatUsd(fundraising.amount)}`,
           })),
           description: formatFacilityFundraisingToM(
-            getFacilityFundraisingUsd(facilityData)
+            getFacilityFundraisingUsd(facilityData.fundraisings)
           ),
         },
       ]
@@ -244,7 +244,7 @@ export default function Section({ facility, slug }: SectionProps) {
           slug: "#0",
           title: "Containeurs",
           description: formatFacilityHashrateTHsToPHs(
-            getFacilityHashrateTHs(facilityData)
+            getFacilityHashrateTHs(facilityData.mining)
           ),
           data: [
             {
@@ -254,12 +254,14 @@ export default function Section({ facility, slug }: SectionProps) {
             {
               description: "Puissance de calcul",
               value: formatFacilityHashrateTHsToPHs(
-                getFacilityHashrateTHs(facilityData)
+                getFacilityHashrateTHs(facilityData.mining)
               ),
             },
             {
               description: "Puissance électrique",
-              value: formatFacilityPowerWToMW(getFacilityPowerW(facilityData)),
+              value: formatFacilityPowerWToMW(
+                getFacilityPowerW(facilityData.mining)
+              ),
             },
             {
               description: "Type de refroidissement",
