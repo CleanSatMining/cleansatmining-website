@@ -20,6 +20,7 @@ export type Facility = {
   society: DocumentReference;
   vault: DocumentReference;
   safety: string;
+  catchPhrases: string[];
 };
 export type Vault = {
   xpub: string;

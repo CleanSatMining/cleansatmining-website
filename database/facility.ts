@@ -51,6 +51,7 @@ export async function getFacilityId(slug: string): Promise<string | undefined> {
       image: facility.image as string,
       status: facility.status as FacilityStatus,
       mode: FacilityDataMode.Short,
+      catchPhrases: (facility.catchPhrases as string[]) ?? [],
     };
 
     return s;
@@ -77,6 +78,7 @@ export async function getFacilitiesModeShort(
       image: facility.image as string,
       status: facility.status as FacilityStatus,
       mode: FacilityDataMode.Short,
+      catchPhrases: (facility.catchPhrases as string[]) ?? [],
     };
 
     return s;
@@ -223,6 +225,7 @@ async function populateFacility(
     status: facilityDb.status as FacilityStatus,
     location: locationSnapshot.data() as Location,
     mode: FacilityDataMode.Full,
+    catchPhrases: (facilityDb.catchPhrases as string[]) ?? [],
     data: {
       operator: operatorSnapshot.data() as Operator,
       location: locationSnapshot.data() as Location,
@@ -287,6 +290,7 @@ async function populateFacilityLocation(
     status: facilityDb.status as FacilityStatus,
     location: location,
     mode: FacilityDataMode.Location,
+    catchPhrases: (facilityDb.catchPhrases as string[]) ?? [],
   };
   return facilityCSM;
 }
@@ -317,6 +321,7 @@ async function populateFacilitiesMining(
       location: location,
       fundraisings: fundings,
       energies: facilityDb.energies as EnergyType[],
+      catchPhrases: (facilityDb.catchPhrases as string[]) ?? [],
       mining: {
         cooling: facilityDb.cooling as COOLING,
         pool: {

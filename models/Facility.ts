@@ -7,6 +7,7 @@ export type CleanSatMiningFacility = {
   slug: string;
   status: FacilityStatus;
   mode: FacilityDataMode;
+  catchPhrases: string[];
 
   // mode location
   location?: Location;

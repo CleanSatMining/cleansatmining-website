@@ -60,6 +60,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
       country: "RDC",
       countryCode: "CD",
     },
+    catchPhrases: [],
   },
   {
     id: "2",
@@ -74,6 +75,7 @@ const facilitiesInit: CleanSatMiningFacility[] = [
       country: "Paraguay",
       countryCode: "PY",
     },
+    catchPhrases: [],
   },
 ];
 

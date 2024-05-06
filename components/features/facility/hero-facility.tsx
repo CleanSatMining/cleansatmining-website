@@ -73,14 +73,16 @@ export default function Section({ facility, image }: SectionProps) {
                       <p className="text-md md:text-xl text-grey-300">
                         {location}
                       </p>
-                      <div className="hidden sm:block flex items-center justify-center ml-6">
-                        <IconPointFilled
-                          width={20}
-                          className="items-center justify-center"
-                          color="#71DA80"
-                        />
-                        <div className="text-grey-200 font-light text-md ml-1 ">
-                          {facility.status}
+                      <div className="hidden sm:block">
+                        <div className="flex ml-6">
+                          <IconPointFilled
+                            width={20}
+                            className="items-center justify-center"
+                            color="#71DA80"
+                          />
+                          <div className="text-grey-200 font-light text-md ml-1 ">
+                            {facility.status}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -99,24 +101,19 @@ export default function Section({ facility, image }: SectionProps) {
                   {/* Article meta */}
                   <div className="hidden sm:block mt-5">
                     {/* Author meta */}
-                    <div className="flex items-center justify-center">
-                      <div>
-                        <a
-                          className="text-md md:text-md font-medium text-grey-200 hover:underline"
-                          href="#0"
-                        >
-                          <TypingAnimation
-                            phrase1={
-                              "Site classé au patrimoine mondial de l'UNESCO."
-                            }
-                            phrase2={
-                              '"Le minage de Bitcoin est une solution extraordinaire dans un endroit étonnant" (E. de Merode).'
-                            }
-                          ></TypingAnimation>
-                        </a>
-                        <span className="text-grey-400"> · </span>
+                    {facility.catchPhrases.length > 1 && (
+                      <div className="flex items-center justify-center">
+                        <div>
+                          <div className="text-md md:text-md font-medium text-grey-200 hover:underline">
+                            <TypingAnimation
+                              phrase1={facility.catchPhrases[0]}
+                              phrase2={facility.catchPhrases[1]}
+                            ></TypingAnimation>
+                          </div>
+                          <span className="text-grey-400"> · </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </header>
               </article>
