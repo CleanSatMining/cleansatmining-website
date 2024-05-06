@@ -139,7 +139,9 @@ export const formatNumber = (
     : digit;
   //new BigNumber(num.toFixed(digitSmallNumber)).toNumber();
 
-  return num.toFixed(digitSmallNumber) + unitToDisplay;
+  return shouldShowUnits
+    ? num.toFixed(digitSmallNumber) + unitToDisplay
+    : formatFullNumber(num);
 };
 
 export function formatBigNumber(num: number) {
@@ -185,7 +187,7 @@ export function formatFullNumber(
     value.toFormat(maxDp, roundMode, {
       prefix: "",
       decimalSeparator: ".",
-      groupSeparator: ",",
+      groupSeparator: " ",
       groupSize: 3,
       secondaryGroupSize: 0,
       fractionGroupSeparator: ".",
@@ -320,4 +322,27 @@ export function formatAddress(address: string): string {
   const maskedAddress = address.slice(0, 6) + "..." + address.slice(-4); // Garde les 6 premiers caractères et les 4 derniers caractères
 
   return maskedAddress;
+}
+
+export function formatMonthYear(timestamp: number): string {
+  const date = new Date(timestamp);
+  const moisEnLettres = [
+    "janvier",
+    "février",
+    "mars",
+    "avril",
+    "mai",
+    "juin",
+    "juillet",
+    "août",
+    "septembre",
+    "octobre",
+    "novembre",
+    "décembre",
+  ];
+
+  const mois = moisEnLettres[date.getMonth()];
+  const annee = date.getFullYear();
+
+  return `${mois} ${annee}`;
 }

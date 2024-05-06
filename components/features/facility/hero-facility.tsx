@@ -20,9 +20,7 @@ export default function Section({ facility, image }: SectionProps) {
       countryCode +
       ".svg"
     : undefined;
-  "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-    countryCode +
-    ".svg";
+
   const location = aera && country ? aera + ", " + country : undefined;
   //const imageHero = "/images/facilities/csm-" + slug + ".jpg";
 

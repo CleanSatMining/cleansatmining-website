@@ -14,6 +14,8 @@ import {
   formatUsd,
   formatAddress,
   formatNumber,
+  formatMonthYear,
+  formatFullNumber,
 } from "@/utils/format";
 import {
   getFacilityHashrateTHs,
@@ -52,7 +54,7 @@ export default function Section({ facility, slug }: SectionProps) {
         },
         {
           id: 1,
-          icon: Icon02,
+          icon: Icon01,
           slug: "#0",
           title: "Capital",
           data: [
@@ -74,7 +76,7 @@ export default function Section({ facility, slug }: SectionProps) {
               value: `${facilityData.society.csmSaShare * 100}%`,
             },
             {
-              description: "Adresse Bitcoin",
+              description: "Portefeuille Bitcoin",
               value: formatAddress(facilityData.vault.xpub),
               link: `https://www.blockchain.com/explorer/assets/btc/xpub/${facilityData.vault.xpub}`,
             },
@@ -82,11 +84,11 @@ export default function Section({ facility, slug }: SectionProps) {
         },
         {
           id: 2,
-          icon: Icon02,
+          icon: Icon01,
           slug: "#0",
           title: "Levée de fonds",
           data: facilityData.fundraisings.map((fundraising) => ({
-            description: formatTimestampDay(fundraising.date),
+            description: formatMonthYear(fundraising.date),
             value: `${formatUsd(fundraising.amount)}`,
           })),
           description: formatFacilityFundraisingToM(
@@ -105,7 +107,7 @@ export default function Section({ facility, slug }: SectionProps) {
           title: facilityData.token.name,
           data: [
             {
-              description: "symbole",
+              description: "Symbole",
               value: facilityData.token.symbol,
             },
             {
@@ -130,7 +132,7 @@ export default function Section({ facility, slug }: SectionProps) {
     ? [
         {
           id: 1,
-          icon: Icon05,
+          icon: Icon07,
           slug: "#0",
           title: "Exploitation",
           data: [
@@ -215,7 +217,7 @@ export default function Section({ facility, slug }: SectionProps) {
   if (facilityData && facilityData.mining.safety !== "") {
     itemsOperating.push({
       id: 4,
-      icon: Icon05,
+      icon: Icon07,
       slug: "#0",
       title: "Securité",
       data: [
@@ -281,9 +283,9 @@ export default function Section({ facility, slug }: SectionProps) {
           : container.start;
       itemsMining.push({
         id: 1,
-        icon: Icon04,
+        icon: Icon03,
         slug: "#0",
-        title: "Levée du " + formatTimestampDay(dateFunds),
+        title: "Levée " + formatMonthYear(dateFunds),
         description: formatUsd(container.intallationCosts.equipement),
         data: [
           {

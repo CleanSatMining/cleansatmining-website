@@ -17,10 +17,9 @@ import {
   IconBolt,
   IconBrandSpeedtest,
   IconCurrencyDollar,
-  IconArrowRampRight,
-  IconArrowRampRight2,
-  IconArrowRampRight3,
 } from "@tabler/icons-react";
+
+import { ArrowRight } from "@phosphor-icons/react";
 import Swiper from "swiper";
 import { Navigation, Autoplay } from "swiper/modules";
 import "@/app/css/image.css";
@@ -190,8 +189,24 @@ export default function FacilitesCarousel() {
                   }}
                 >
                   <div className="grow pt-40">
-                    <div className="font-hkgrotesk font-bold text-xl">
-                      {facility.name}
+                    <div className="flex items-center font-hkgrotesk font-bold text-xl">
+                      <div>{facility.name}</div>
+
+                      {facility?.location && (
+                        <div className="ml-2">
+                          <Image
+                            className="rounded-lg shrink-0"
+                            src={
+                              "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+                              facility.location.countryCode +
+                              ".svg"
+                            }
+                            width={24}
+                            height={24}
+                            alt={"featuredPost.author"}
+                          />
+                        </div>
+                      )}
                     </div>
                     <div className="flex items-center">
                       <IconMapPin width={16} className="mr-1 mb-3" />
@@ -218,7 +233,7 @@ export default function FacilitesCarousel() {
                     >
                       Plus d'informations{" "}
                       <span className="tracking-normal text-green group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
-                        -&gt;
+                        <ArrowRight size={16} weight="bold" />
                       </span>
                     </a>
                   </div>
@@ -296,7 +311,7 @@ export function FacilitesGrid({ facilities }: FacilitiesProps) {
                     <span>Tout voir</span>
                     <span
                       className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === EnergyType.hydro
+                        category === ""
                           ? "text-grey-800 bg-brand-500 hover:opacity-90"
                           : "text-green bg-grey-800 hover:bg-grey-700 shadow-sm border-0"
                       }`}
@@ -404,8 +419,8 @@ export function FacilitesGrid({ facilities }: FacilitiesProps) {
                     key={index + facility.name}
                     className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                     style={
-                      !facility.data?.powerPlant.energies
-                        .map((e) => e.toString())
+                      !facility.energies
+                        ?.map((e) => e.toString())
                         .includes(category) && category !== ""
                         ? { display: "none" }
                         : {}
@@ -440,8 +455,23 @@ export function FacilitesGrid({ facilities }: FacilitiesProps) {
                       <div>
                         {/* Up side */}
                         <div className="relative">
-                          <div className="font-hkgrotesk font-bold text-xl md:text-3xl">
-                            {facility.name}
+                          <div className="flex items-center font-hkgrotesk font-bold text-xl md:text-3xl">
+                            <div>{facility.name} </div>
+                            {facility?.location && (
+                              <div className="ml-2">
+                                <Image
+                                  className="rounded-lg shrink-0"
+                                  src={
+                                    "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+                                    facility.location.countryCode +
+                                    ".svg"
+                                  }
+                                  width={30}
+                                  height={30}
+                                  alt={"featuredPost.author"}
+                                />
+                              </div>
+                            )}
                           </div>
                           <div className="flex items-center">
                             <IconMapPin width={16} className="mr-1 mb-3" />
@@ -469,7 +499,7 @@ export function FacilitesGrid({ facilities }: FacilitiesProps) {
                           >
                             Plus d'informations{" "}
                             <span className="tracking-normal text-green group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
-                              -&gt;
+                              <ArrowRight size={16} weight="bold" />
                             </span>
                           </Link>
                         </div>
