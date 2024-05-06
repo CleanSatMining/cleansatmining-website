@@ -37,7 +37,7 @@ export default function Widget({ facility, slug }: SectionProps) {
           <li className="flex justify-between items-center w-full">
             <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
               <div className="grow inline-flex mr-1.5 truncate">
-                <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                <span className="font-aspekta font-[550] text-sm md:text-xs lg:text-sm truncate text-grey-300">
                   Energie
                 </span>
               </div>
@@ -55,7 +55,7 @@ export default function Widget({ facility, slug }: SectionProps) {
             <li className="flex justify-between items-center">
               <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
                 <div className="grow inline-flex mr-1.5 truncate">
-                  <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                  <span className="font-aspekta font-[550] text-sm md:text-xs lg:text-sm truncate text-grey-300">
                     Puissance
                   </span>
                 </div>
@@ -76,7 +76,7 @@ export default function Widget({ facility, slug }: SectionProps) {
             <li className="flex justify-between items-center">
               <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
                 <div className="grow inline-flex mr-1.5 truncate">
-                  <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                  <span className="font-aspekta font-[550] text-sm md:text-xs lg:text-sm truncate text-grey-300">
                     Hashrate
                   </span>
                 </div>
@@ -97,7 +97,7 @@ export default function Widget({ facility, slug }: SectionProps) {
             <li className="flex justify-between items-center">
               <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
                 <div className="grow inline-flex mr-1.5 truncate">
-                  <span className="font-aspekta font-[550] text-sm truncate text-grey-300">
+                  <span className="font-aspekta font-[550] text-sm md:text-xs lg:text-sm truncate text-grey-300">
                     Levée
                   </span>
                 </div>
