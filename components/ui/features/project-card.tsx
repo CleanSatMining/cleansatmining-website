@@ -23,27 +23,41 @@ export default function ProjectCard({ item }: ItemProps) {
   const link = item.link ? item.link : item.slug;
   return (
     <div
-      className="rounded-lg border  border-grey-500 hover:border-grey-400 bg-gradient-to-t from-grey-500 to-grey-600/30 transition-color ease-in-out p-5 group"
+      className="rounded-lg border  border-grey-500 hover:border-grey-400 bg-gradient-to-t from-grey-500 to-grey-600/30 transition-color ease-in-out p-4 sm:p-5 group"
       //href={""}
     >
       <div className="flex flex-col h-full">
         <div className="grow">
           <div className="flex items-center justify-between space-x-2">
-            <div className="h-10 w-10 flex items-center justify-center border border-brand-200 dark:border-brand-700 rounded-full mb-2">
-              <Image src={item.icon} width={18} alt={item.title} />
+            <div className="flex items-center justify-between space-x-2">
+              <div className="h-10 w-10 flex items-center justify-center border border-brand-200 dark:border-brand-700 rounded-full mb-2">
+                <Image src={item.icon} width={18} alt={item.title} />
+              </div>
+              <div className="block sm:hidden text-md font-aspekta font-[650] mb-1">
+                {item.title}
+              </div>
             </div>
+
             {item.description && (
-              <div className="font-bold text-md inline-flex items-center  text-center px-2 h-5">
+              <div className="hidden sm:block font-bold text-md inline-flex items-center  text-center px-2 h-5">
                 {item.description}
               </div>
             )}
           </div>
-          <div className="text-lg font-aspekta font-[650] mb-1">
+          <div className="hidden sm:block text-lg font-aspekta font-[650] mb-1">
             {item.title}
           </div>
-          <div className="text-sm text-grey-300">
+          {item.description && (
+            <div className="block sm:hidden text-md font-aspekta font-[650] mb-1">
+              {item.description}
+            </div>
+          )}
+          <div className="text-xs sm:text-sm text-grey-300">
             {item.data.map((data, index) => (
-              <div key={index} className="flex justify-between">
+              <div
+                key={index}
+                className="block mb-2 sm:flex sm:justify-between sm:mb-0"
+              >
                 <div className="flex">
                   <svg
                     className="w-3 h-3 shrink-0 fill-current text-gray-400 mt-1 mr-3"
@@ -59,12 +73,14 @@ export default function ProjectCard({ item }: ItemProps) {
                     href={data.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-brand-500 hover:underline"
+                    className="font-semibold text-brand-500 hover:underline ml-6 sm:ml-0"
                   >
                     {data.value}
                   </Link>
                 ) : (
-                  <span className="font-semibold">{data.value}</span>
+                  <span className="font-semibold ml-6 sm:ml-0">
+                    {data.value}
+                  </span>
                 )}
               </div>
             ))}

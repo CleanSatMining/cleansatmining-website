@@ -25,7 +25,7 @@ export default function Content({
       <Hero slug={slug} facility={facility} image={image} />
 
       <div className="">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[1600px] mx-auto pl-2 pr-0 sm:pl-6 sm:pr-6">
           {/* Main content */}
           <div className="flex">
             {/* Sidebar */}
@@ -50,7 +50,7 @@ export default function Content({
               </div>
 
               {/* Right sidebar */}
-              <aside className="md:w-[240px] lg:w-[300px] shrink-0 pl-6 md:pl-0">
+              <aside className="md:w-[240px] lg:w-[300px] shrink-0 px-4 md:px-0">
                 <div className="space-y-6">
                   <WidgetFacility slug={slug} facility={facility} />
                 </div>

@@ -84,8 +84,8 @@ export default function Herofacilities() {
               data-aos="fade-down"
               data-aos-delay="150"
             >
-              Our customers are building some of the world's most original,
-              useful and loved products.
+              Explorez nos sites de minage, leurs avantages pour vos
+              investissements et vos opportunités.
             </p>
           </div>
         </div>

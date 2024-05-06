@@ -23,14 +23,14 @@ export default function Markdown({ content }: MarkdownProps) {
           h2: ({ node, ...props }) => (
             <h2
               {...props}
-              className="text-4xl font-bold mb-10"
+              className="text-2xl sm:text-4xl font-bold mb-5 sm:mb-10"
               data-aos="fade-up"
             />
           ),
           h3: ({ node, ...props }) => (
             <h3
               {...props}
-              className="text-2xl font-semibold text-brand-500 mt-10"
+              className="text-xl sm:text-2xl font-semibold text-brand-500 mt-5 sm:mt-10"
               data-aos="fade-up"
             />
           ),
@@ -46,14 +46,14 @@ export default function Markdown({ content }: MarkdownProps) {
           p: ({ node, ...props }) => (
             <p
               {...props}
-              className="text-grey-200 items-center my-5 leading-7"
+              className="text-sm sm:text-lg text-grey-200 items-center my-5 leading-7"
               data-aos="fade-up"
             />
           ),
           img: ({ node, ...props }) => (
             <img
               {...props}
-              className="rounded-3xl max-w-[auto] w-full sm:max-w-[500px] mx-4 items-center"
+              className="rounded-3xl max-w-[auto] w-full sm:max-w-[500px] mx-0 sm:mx-4 items-center"
               data-aos="fade-up"
               data-aos-delay="200"
             />
@@ -61,7 +61,7 @@ export default function Markdown({ content }: MarkdownProps) {
           div: ({ node, ...props }) => (
             <div
               {...props}
-              className="flex justify-center text-center my-16"
+              className="flex justify-center text-center my-8 sm:my-16"
               data-aos="fade-up"
               data-aos-delay="200"
             />

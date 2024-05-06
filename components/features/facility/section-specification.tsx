@@ -329,12 +329,14 @@ export default function Section({ facility, slug }: SectionProps) {
   return (
     <section>
       {/* Page title */}
-      <h2 className="h2 font-aspekta mb-12">Spécifications</h2>
+      <h2 className="h2 font-aspekta mb-4 lg:mb-8">Spécifications</h2>
       {/* Page content */}
-      <div className="space-y-10">
+      <div className="space-y-5 sm:space-y-10">
         {/* Society cards */}
         <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-6">La société</h2>
+          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
+            La société
+          </h2>
           {/* Cards */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsSociety.map((item) => (
@@ -344,7 +346,9 @@ export default function Section({ facility, slug }: SectionProps) {
         </section>
         {/* Token cards */}
         <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-6">Le Token</h2>
+          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
+            Le Token
+          </h2>
           {/* Cards */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsToken.map((item) => (
@@ -354,7 +358,9 @@ export default function Section({ facility, slug }: SectionProps) {
         </section>
         {/* Mining cards */}
         <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-6">Le Mining</h2>
+          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
+            Le Mining
+          </h2>
           {/* Cards */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {itemsMining.map((item) => (
@@ -364,7 +370,7 @@ export default function Section({ facility, slug }: SectionProps) {
         </section>
         {/* Operating cards */}
         <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-6">
+          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
             L'exploitation
           </h2>
           {/* Cards */}

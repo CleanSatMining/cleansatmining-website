@@ -4,6 +4,7 @@ import Image from "next/image";
 import TypingAnimation from "@/components/ui/animations/typing-animation";
 import { CleanSatMiningFacility } from "@/models/Facility";
 import React from "react";
+import { IconPointFilled } from "@tabler/icons-react";
 
 interface SectionProps {
   slug: string;
@@ -55,29 +56,48 @@ export default function Section({ facility, image }: SectionProps) {
                   {/* Title and excerpt */}
                   <div className="text-center">
                     <Link href={`/facilities/${"alpha"}`}>
-                      <h1 className="h1 text-4xl md:text-6xl font-red-hat-display mb-4 font-semibold">
+                      <h1 className="h1  text-2xl sm:text-4xl md:text-6xl font-red-hat-display mb-4 font-semibold">
                         {facility.name}
                       </h1>
                     </Link>
                     <div className="flex items-center justify-center">
-                      <a href="#0">
-                        {flag && (
-                          <Image
-                            className="rounded-full shrink-0 mr-3"
-                            src={flag}
-                            width={32}
-                            height={32}
-                            alt={"featuredPost.author"}
-                          />
-                        )}
-                      </a>
+                      {flag && (
+                        <Image
+                          className="rounded-full shrink-0 mr-3"
+                          src={flag}
+                          width={32}
+                          height={32}
+                          alt={"featuredPost.author"}
+                        />
+                      )}
                       <p className="text-md md:text-xl text-grey-300">
                         {location}
                       </p>
+                      <div className="hidden sm:block flex items-center justify-center ml-6">
+                        <IconPointFilled
+                          width={20}
+                          className="items-center justify-center"
+                          color="#71DA80"
+                        />
+                        <div className="text-grey-200 font-light text-md ml-1 ">
+                          {facility.status}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="block sm:hidden flex items-center justify-center mt-2">
+                      <IconPointFilled
+                        width={20}
+                        className="items-center justify-center"
+                        color="#71DA80"
+                      />
+                      <div className="text-grey-200 font-light text-sm ml-1 ">
+                        {facility.status}
+                      </div>
                     </div>
                   </div>
+
                   {/* Article meta */}
-                  <div className="mt-5">
+                  <div className="hidden sm:block mt-5">
                     {/* Author meta */}
                     <div className="flex items-center justify-center">
                       <div>
