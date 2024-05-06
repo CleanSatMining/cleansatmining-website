@@ -214,7 +214,7 @@ export default function FacilitesCarousel() {
                   <div className="text-right w-[200px]">
                     <a
                       className="btn-round text-white bg-gradient-to-r from-grey-900/80 via-grey-900 to-grey-900/80 hover:bg-white w-full transition duration-150 ease-in-out group"
-                      href="#0"
+                      href={"/facilities/" + facility.slug}
                     >
                       Plus d'informations{" "}
                       <span className="tracking-normal text-green group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">

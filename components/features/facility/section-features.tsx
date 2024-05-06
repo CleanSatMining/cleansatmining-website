@@ -11,7 +11,7 @@ interface SectionProps {
   facility: CleanSatMiningFacility;
   description: React.ReactNode;
   installation: React.ReactNode;
-  team: React.ReactNode;
+  team: React.ReactNode | undefined;
 }
 
 export default function FacilitySections({
@@ -27,8 +27,10 @@ export default function FacilitySections({
     <section>
       <div className="w-full mx-auto px-4 sm:px-6">
         {menuFacility === MenuFacilityOptions.DESCRIPTION && <>{description}</>}
-        {menuFacility === MenuFacilityOptions.TEAM && <>{installation}</>}
-        {menuFacility === MenuFacilityOptions.INSTALLATION && <>{team}</>}
+        {menuFacility === MenuFacilityOptions.INSTALLATION && (
+          <>{installation}</>
+        )}
+        {menuFacility === MenuFacilityOptions.TEAM && <>{team}</>}
         {menuFacility === MenuFacilityOptions.SPECIFICATION && (
           <SpecificationSection
             facility={facility}

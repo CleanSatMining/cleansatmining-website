@@ -59,9 +59,15 @@ export default async function FacilityPage(facilityParams: { params: Params }) {
     MenuFacilityOptionsFiles[MenuFacilityOptions.TEAM]
   );
 
-  const markdownDescription = <Markdown content={descriptionContent} />;
-  const markdownInstallation = <Markdown content={installationContent} />;
-  const markdownTeam = <Markdown content={teamContent} />;
+  const markdownDescription = descriptionContent ? (
+    <Markdown content={descriptionContent} />
+  ) : undefined;
+  const markdownInstallation = installationContent ? (
+    <Markdown content={installationContent} />
+  ) : undefined;
+  const markdownTeam = teamContent ? (
+    <Markdown content={teamContent} />
+  ) : undefined;
 
   const HeroImage = (
     <Image

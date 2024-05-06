@@ -332,7 +332,10 @@ async function populateFacilitiesMining(
   return facilities;
 }
 
-export async function downloadFile(slug: string, file: string) {
+export async function downloadFile(
+  slug: string,
+  file: string
+): Promise<string | undefined> {
   const storage = getStorage(app);
   // Create a storage reference from our storage service
   const storageRef = ref(storage, "facilities/" + slug + "/" + file);
@@ -351,6 +354,6 @@ export async function downloadFile(slug: string, file: string) {
   } catch (error) {
     // Handle any errors
     console.error(error);
-    throw error;
+    return undefined;
   }
 }

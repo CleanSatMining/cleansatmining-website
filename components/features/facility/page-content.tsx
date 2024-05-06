@@ -16,9 +16,9 @@ export default function Content({
   slug: string;
   image: React.ReactNode;
   facility: CleanSatMiningFacility;
-  description: React.ReactNode;
-  installation: React.ReactNode;
-  team: React.ReactNode;
+  description: React.ReactNode | undefined;
+  installation: React.ReactNode | undefined;
+  team: React.ReactNode | undefined;
 }) {
   return (
     <>
@@ -29,11 +29,15 @@ export default function Content({
           {/* Main content */}
           <div className="flex">
             {/* Sidebar */}
-            <SideNavigation />
+            <SideNavigation
+              description={description !== undefined}
+              installation={installation !== undefined}
+              team={team !== undefined}
+            />
             {/* <Sidebar slug={params.slug} /> */}
 
             {/* Page container */}
-            <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
+            <div className="grow md:flex space-y-8 md:space-y-0 md:space-x-0 pb-16 md:pb-20 ">
               {/* Middle area */}
               <div className="grow">
                 <Facility
@@ -46,7 +50,7 @@ export default function Content({
               </div>
 
               {/* Right sidebar */}
-              <aside className="md:w-[240px] lg:w-[300px] shrink-0">
+              <aside className="w-full pl-6 md:pl-0">
                 <div className="space-y-6">
                   <WidgetFacility slug={slug} facility={facility} />
                 </div>
