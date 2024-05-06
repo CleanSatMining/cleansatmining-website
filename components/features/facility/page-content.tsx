@@ -50,7 +50,7 @@ export default function Content({
               </div>
 
               {/* Right sidebar */}
-              <aside className="w-full pl-6 md:pl-0">
+              <aside className="md:w-[240px] lg:w-[300px] shrink-0 pl-6 md:pl-0">
                 <div className="space-y-6">
                   <WidgetFacility slug={slug} facility={facility} />
                 </div>
