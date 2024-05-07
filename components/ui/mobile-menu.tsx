@@ -23,10 +23,10 @@ export default function MobileMenu() {
             {facilitiesNavLink.find((value) => {
               return value.parent === link.href;
             }) ? (
-              <li className="py-2 my-2 border-t border-b border-grey-200 dark:border-grey-800">
+              <li className="py-2 my-2 border-t border-b border-grey-800">
                 <Link
                   href={link.href}
-                  className="flex text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-white py-2"
+                  className="flex text-grey-300 hover:text-white py-2"
                   onClick={() => setMobileNavOpen(false)}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
@@ -55,7 +55,7 @@ export default function MobileMenu() {
                               : undefined
                           }
                           onClick={() => setMobileNavOpen(false)}
-                          className="text-sm flex font-medium text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 py-2"
+                          className="text-sm flex font-medium text-grey-300 hover:text-grey-100 py-2"
                         >
                           {site.label}
                         </Link>
@@ -69,7 +69,7 @@ export default function MobileMenu() {
                 <div className="flex items-center">
                   <Link
                     href={link.href}
-                    className={`flex text-grey-600 hover:text-grey-900 dark:text-grey-300 dark:hover:text-white py-2`}
+                    className={`flex text-grey-300 hover:text-white py-2`}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
                     title={
@@ -138,7 +138,7 @@ export default function MobileMenu() {
       >
         <span className="sr-only">Menu</span>
         <svg
-          className="w-6 h-6 fill-current text-grey-900 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 transition duration-150 ease-in-out"
+          className="w-6 h-6 fill-current text-grey-300 hover:text-grey-100 transition duration-150 ease-in-out"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -154,7 +154,7 @@ export default function MobileMenu() {
           show={mobileNavOpen}
           as="nav"
           id="mobile-nav"
-          className="fixed top-0 h-screen z-20 left-0 w-full max-w-sm -ml-16 overflow-scroll bg-white dark:bg-grey-900 shadow-lg no-scrollbar"
+          className="fixed top-0 h-screen z-20 left-0 w-full max-w-sm -ml-16 overflow-scroll bg-grey-900 shadow-lg no-scrollbar"
           enter="transition ease-out duration-200 transform"
           enterFrom="opacity-0 -translate-x-full"
           enterTo="opacity-100 translate-x-0"

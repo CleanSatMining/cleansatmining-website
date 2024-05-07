@@ -30,7 +30,7 @@ export default function ProjectCard({ item }: ItemProps) {
         <div className="grow">
           <div className="flex items-center justify-between space-x-2">
             <div className="flex items-center justify-between space-x-2">
-              <div className="h-10 w-10 flex items-center justify-center border border-brand-200 dark:border-brand-700 rounded-full mb-2">
+              <div className="h-10 w-10 flex items-center justify-center border border-grey-500 rounded-full mb-2">
                 <Image src={item.icon} width={18} alt={item.title} />
               </div>
               <div className="block sm:hidden text-md font-aspekta font-[650] mb-1">

@@ -80,7 +80,7 @@ export default function Herofacilities() {
               Nos sites CSM
             </h1>
             <p
-              className="text-xl text-grey-600 dark:text-grey-300"
+              className="text-xl text-grey-300"
               data-aos="fade-down"
               data-aos-delay="150"
             >
