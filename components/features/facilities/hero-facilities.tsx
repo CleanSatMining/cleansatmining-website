@@ -62,13 +62,13 @@ export default function Herofacilities() {
         <Image
           className="absolute inset-0 w-full h-full object-cover opacity-100"
           src={PageHero}
-          width={700}
-          height={300}
+          width={600}
+          height={280}
           priority
-          alt="Testimonials"
+          alt="Map"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-white dark:from-grey-700"
+          className="absolute inset-0 bg-gradient-to-t from-grey-700"
           aria-hidden="true"
         ></div>
       </div>

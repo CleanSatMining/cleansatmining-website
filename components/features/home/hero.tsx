@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "@/app/css/text.css";
 import Illustration from "@/public/images/hero-illustration.svg";
+//import Illustration from "@/public/images/hero-illustration-light.webp";
 import Logo from "@/public/logo.svg";
 
 export default function Hero() {
@@ -21,8 +22,8 @@ export default function Hero() {
         <Image
           src={Illustration}
           className="w-[600px] xl:w-auto  lg:w-[1000px] md:w-[800px] max-w-none md:transform "
-          width={700}
-          height={300}
+          width={500}
+          height={200}
           priority
           alt="Hero Illustration"
         />
