@@ -1,4 +1,42 @@
+"use client";
+
 export default function Cta() {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Empêche le comportement par défaut du formulaire (rechargement de la page)
+    console.log("Formulaire soumis");
+    const data = {
+      f: "19",
+      m: "0",
+      act: "sub",
+      v: "2",
+      jsonp: "2",
+      email: "email@test.fr",
+    };
+
+    try {
+      const response = await fetch(
+        "https://richarddetente.activehosted.com/proc.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: data.toString(),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la requête.");
+      }
+
+      // Traitez la réponse si nécessaire
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
+
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -50,7 +88,10 @@ export default function Cta() {
             <p className="text-sm sm:text-lg text-grey-300 mb-8">
               Nous vous enverons un mail lorsqu'un nouveau site est disponible
             </p>
-            <form className="inline-flex max-w-sm w-full">
+            <form
+              className="inline-flex max-w-sm w-full"
+              onSubmit={handleFormSubmit}
+            >
               <div className="w-full flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-none">
                 <input
                   type="email"
