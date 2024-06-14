@@ -72,7 +72,7 @@ export default function SupportSidebar({
       <div>
         {/* Backdrop */}
         <Transition
-          className="md:hidden fixed inset-0 z-10 bg-grey-900 bg-opacity-20 transition-opacity"
+          /* className="md:hidden fixed inset-0 z-10 bg-grey-900 bg-opacity-20 transition-opacity" */
           show={sidebarOpen}
           enter="transition ease-out duration-200"
           enterFrom="opacity-0"
