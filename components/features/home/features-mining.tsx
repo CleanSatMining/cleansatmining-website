@@ -16,6 +16,7 @@ export default function FeaturesMining() {
       <div
         className="flex justify-center items-center w-full mt-5 md:mt-10 min-h-[50px] sm:min-h-[100px]"
         data-aos="fade-up"
+        data-aos-delay="1000"
       >
         <Image
           src={PathRightToLeft}
@@ -154,7 +155,6 @@ export default function FeaturesMining() {
                     {/* Icons */}
                     <Transition
                       show={tab === 1}
-                      className="absolute"
                       enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
                       enterFrom="opacity-0 -rotate-[60deg]"
                       enterTo="opacity-100 rotate-0"
@@ -174,7 +174,6 @@ export default function FeaturesMining() {
                     </Transition>
                     <Transition
                       show={tab === 2}
-                      className="absolute"
                       enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
                       enterFrom="opacity-0 -rotate-[60deg]"
                       enterTo="opacity-100 rotate-0"
@@ -195,7 +194,6 @@ export default function FeaturesMining() {
                     </Transition>
                     <Transition
                       show={tab === 3}
-                      className="absolute"
                       enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
                       enterFrom="opacity-0 -rotate-[60deg]"
                       enterTo="opacity-100 rotate-0"

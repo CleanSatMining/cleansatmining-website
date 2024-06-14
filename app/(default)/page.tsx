@@ -13,6 +13,7 @@ import FeaturesHow from "@/components/features/home/features-how";
 import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
 import FeatureCSM from "@/components/features/home/features-csm";
+import Animation from "@/components/animation";
 
 export default function Home() {
   //const [statsMode, setStatsMode] = useState("counter");
@@ -42,7 +43,8 @@ export default function Home() {
         {statsMode === "counter" && <StatsCounter />}
       </div> */}
       <StatsCounter />
-      <FeatureCSM />
+      <Animation />
+      {/* <FeatureCSM /> */}
       <FeaturesMining />
       <FeaturesReasons />
       <FeaturesFacilities />
