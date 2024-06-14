@@ -15,6 +15,10 @@ const Animation: React.FC = () => {
   const imageRef3 = useRef<HTMLImageElement>(null);
   const [imageVisible, setImageVisible] = useState(1);
   const [opacityText1, setOpacityText1] = useState(0);
+  const [opacityImage1, setOpacityImage1] = useState(0);
+  const [opacityImage2, setOpacityImage2] = useState(0);
+  const [opacityImage3, setOpacityImage3] = useState(0);
+  const [imageTop, setImageTop] = useState(0);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -35,6 +39,7 @@ const Animation: React.FC = () => {
     const handleScroll = () => {
       const isSmall = window.innerWidth <= SMALL_SIZE;
       const middleRatio = isSmall ? 0.35 : 0.2;
+      const opacityGradiant = 0.01;
       let image = 1;
       if (imageRef1.current) {
         const textDisplayRatio = isSmall ? -4 : 20;
@@ -43,7 +48,16 @@ const Animation: React.FC = () => {
         const rect = imageRef1.current.getBoundingClientRect();
         const top1 = rect.top - offset;
         const middle = screenHeight * middleRatio;
-        image = top1 > middle ? 1 : 2;
+        image = top1 >= middle * 0.9 ? 1 : 2;
+
+        const toptext = top1 - screenHeight / textDisplayRatio;
+        const opacityImage =
+          middle * opacityGradiant > top1 - middle
+            ? Math.max(0, (top1 - middle) / (middle * opacityGradiant))
+            : 1;
+
+        const opacityImageFix = 1 - opacityImage;
+
         //console.log("top1", "image", image);
         // console.log(
         //   (isSmall ? "small " : "big ") +
@@ -53,16 +67,19 @@ const Animation: React.FC = () => {
         //     " middle " +
         //     middle +
         //     " image " +
-        //     image
+        //     image +
+        //     " opacityImage " +
+        //     opacityImage
         // );
-        const toptext = top1 - screenHeight / textDisplayRatio;
-
         setImageVisible(image);
         setOpacityText1(
           image === 1 || image === 2
             ? Math.min(1, (screenHeight - toptext) / (toptext - middle))
             : 0
         );
+        setOpacityImage1(0);
+        setOpacityImage2(opacityImageFix);
+        setImageTop(Math.max(top1, middle));
       }
 
       if (imageRef3.current && image > 1) {
@@ -75,21 +92,29 @@ const Animation: React.FC = () => {
         const rect = imageRef3.current.getBoundingClientRect();
         const top3 = rect.top - offset;
         const middle = screenHeight * middleRatio;
-        image = top3 > middle ? 2 : 3;
-        //console.log("top3", "image", image);
-        // console.log(
-        //   (isSmall ? "small " : "big ") +
-        //     top3 +
-        //     " over " +
-        //     screenHeight +
-        //     " middle " +
-        //     middle +
-        //     " image " +
-        //     image
-        // );
+        image = top3 >= middle * 0.9 ? 2 : 3;
+
         const topRevolution1 = top3 / screenHeight < r1;
         const topRevolution2 = top3 / screenHeight < r2;
         const topRevolution3 = top3 / screenHeight < r3;
+        const opacityImage =
+          middle * opacityGradiant > middle - top3
+            ? Math.max(0, (middle - top3) / (middle * opacityGradiant))
+            : 1;
+
+        const opacityImageFix = 1 - opacityImage;
+
+        //console.log("top3", "image", image);
+        console.log(
+          (isSmall ? "small " : "big ") +
+            top3 +
+            " over " +
+            screenHeight +
+            " middle " +
+            middle +
+            " image " +
+            image
+        );
 
         //setImageTop(rect.top); // Met à jour l'état avec la position de l'image par rapport au haut de l'écran
         //setImage1Middle(middle);
@@ -97,11 +122,15 @@ const Animation: React.FC = () => {
         setDisplayRevolution1(topRevolution1);
         setDisplayRevolution2(topRevolution2);
         setDisplayRevolution3(topRevolution3);
+        setOpacityImage3(opacityImage);
+        setOpacityImage2(opacityImageFix);
         // setOpacityText1(
         //   image === 3 || image === 2
         //     ? Math.min(1, (screenHeight - toptext) / (toptext - middle))
         //     : 0
         // );
+
+        setImageTop(Math.min(top3, middle));
       }
     };
 
@@ -144,13 +173,13 @@ const Animation: React.FC = () => {
               style={{
                 position: "sticky",
                 top: "auto",
-                willChange: "transform",
+                willChange: "opacity",
+                opacity: opacityImage1,
                 left: "auto",
-
                 backgroundColor: imageVisible === 1 ? "#98ce1a" : "transparent",
               }}
             >
-              {imageVisible === 1 && (
+              {imageVisible >= 1 && (
                 <Image
                   src="/logo.svg"
                   loading="lazy"
@@ -159,7 +188,8 @@ const Animation: React.FC = () => {
                   height={200}
                   className="coin-image"
                   style={{
-                    willChange: "transform",
+                    willChange: "opacity",
+                    opacity: opacityImage1,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(0.933532, 0.933532, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
@@ -167,12 +197,13 @@ const Animation: React.FC = () => {
                 />
               )}
 
-              {imageVisible === 1 && (
+              {imageVisible >= 1 && (
                 <div
                   className="coin-bg-blur"
                   style={{
                     boxShadow: `0 0 ${opacityText1 * 100}px 0 #98ce1a`,
-                    willChange: "transform",
+                    willChange: "opacity",
+                    opacity: opacityImage1,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
@@ -180,12 +211,13 @@ const Animation: React.FC = () => {
                 />
               )}
 
-              {imageVisible === 1 && (
+              {imageVisible >= 1 && (
                 <div
                   className="coin-circle"
                   style={{
                     backgroundImage: "url(/images/coin-circle.svg)",
-                    willChange: "transform",
+                    willChange: "opacity",
+                    opacity: opacityImage1,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
@@ -195,7 +227,7 @@ const Animation: React.FC = () => {
             </div>
           }
 
-          {imageVisible === 2 && (
+          {true && (
             <div
               className={
                 isSmallScreen ? "coin-image-holder-mobile" : `coin-image-holder`
@@ -204,8 +236,10 @@ const Animation: React.FC = () => {
                 position: "fixed",
                 top: "50%",
                 willChange: "transform",
+                opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
                 left: "50%",
-                transform: `translate(-50%, -${170}%)`,
+                transform: `translate(-50%, -${200}%)`,
+                backgroundColor: "transparent",
               }}
             >
               <Image
@@ -217,8 +251,8 @@ const Animation: React.FC = () => {
                 className="coin-image"
                 style={{
                   willChange: "transform",
-                  transform:
-                    "translate3d(0px, 0px, 0px) scale3d(0.933532, 0.933532, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                  opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
@@ -226,10 +260,11 @@ const Animation: React.FC = () => {
               <div
                 className="coin-bg-blur"
                 style={{
+                  backgroundColor: "#98ce1a",
                   boxShadow: "0 0 100px 0 #98ce1a",
                   willChange: "transform",
-                  transform:
-                    "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                  opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
@@ -239,11 +274,66 @@ const Animation: React.FC = () => {
                 style={{
                   backgroundImage: "url(/images/coin-circle.svg)",
                   willChange: "transform",
-                  transform:
-                    "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)",
+                  opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
+
+              <div
+                className={
+                  isSmallScreen
+                    ? "dark-container-text-wrapper-mobile"
+                    : "dark-container-text-wrapper "
+                }
+              >
+                <div className="flex flex-col justify-center items-center pb-0">
+                  <p
+                    className="text-lg sm:text-2xl text-grey-200 mb-4"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    Faites partie d'une révolution{" "}
+                  </p>
+                  {displayRevolution1 && (
+                    <p
+                      className="text-xl sm:text-3xl text-grey-200 mb-4"
+                      data-aos="fade-up"
+                      data-aos-delay="200"
+                    >
+                      <span className="font-bold text-green whitespace-nowrap">
+                        technologique
+                      </span>
+                    </p>
+                  )}
+                  {displayRevolution2 && (
+                    <p
+                      className="text-2xl sm:text-5xl text-grey-200 mb-6 sm:mb-8"
+                      data-aos="fade-up"
+                      data-aos-delay="200"
+                    >
+                      <span className="gradient-text font-bold text-green whitespace-nowrap">
+                        écologique
+                      </span>
+                    </p>
+                  )}
+
+                  {displayRevolution3 && (
+                    <>
+                      {/* <p className="text-lg sm:text-2xl text-grey-200 mr-1">et</p> */}
+                      <p
+                        className="text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px]"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
+                          monetaire!
+                        </span>
+                      </p>
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
@@ -258,13 +348,17 @@ const Animation: React.FC = () => {
               style={{
                 position: "sticky",
                 top: "auto",
-                willChange: "transform",
+                willChange: "opacity",
+                opacity: 0,
                 left: "auto",
                 transform: "none",
-                backgroundColor: imageVisible === 3 ? "#98ce1a" : "transparent",
+                backgroundColor:
+                  opacityImage3 > 0 || imageVisible === 3
+                    ? "#98ce1a"
+                    : "transparent",
               }}
             >
-              {imageVisible === 3 && (
+              {imageVisible <= 3 && (
                 <Image
                   src="/logo.svg"
                   loading="lazy"
@@ -286,7 +380,8 @@ const Animation: React.FC = () => {
                   className="coin-bg-blur"
                   style={{
                     boxShadow: "0 0 100px 0 #98ce1a",
-                    willChange: "transform",
+                    willChange: "opacity",
+                    opacity: 0,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
@@ -294,13 +389,14 @@ const Animation: React.FC = () => {
                 />
               )}
 
-              {imageVisible === 3 && (
+              {imageVisible <= 3 && (
                 <div
                   className="coin-circle"
                   style={{
                     marginTop: "0px",
                     backgroundImage: "url(/images/coin-circle.svg)",
-                    willChange: "transform",
+                    willChange: "opacity",
+                    opacity: 0,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
@@ -310,7 +406,7 @@ const Animation: React.FC = () => {
             </div>
           }
 
-          <div
+          {/* <div
             className={
               isSmallScreen
                 ? "dark-container-text-wrapper-mobile"
@@ -350,7 +446,7 @@ const Animation: React.FC = () => {
 
               {displayRevolution3 && (
                 <>
-                  {/* <p className="text-lg sm:text-2xl text-grey-200 mr-1">et</p> */}
+                  {/* <p className="text-lg sm:text-2xl text-grey-200 mr-1">et</p> *}
                   <p
                     className="text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px]"
                     data-aos="fade-up"
@@ -363,7 +459,7 @@ const Animation: React.FC = () => {
                 </>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
