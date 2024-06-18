@@ -83,7 +83,7 @@ const Animation: React.FC = () => {
       }
 
       if (imageRef3.current && image > 1) {
-        const r1 = isSmall ? 0.5 : 0.6;
+        const r1 = isSmall ? 0.5 : 0.4;
         const r2 = isSmall ? 0.3 : 0.01;
         const r3 = isSmall ? 0.1 : -0.2;
 
@@ -105,7 +105,7 @@ const Animation: React.FC = () => {
         const opacityImageFix = 1 - opacityImage;
 
         //console.log("top3", "image", image);
-        console.log(
+        /*      console.log(
           (isSmall ? "small " : "big ") +
             top3 +
             " over " +
@@ -114,7 +114,7 @@ const Animation: React.FC = () => {
             middle +
             " image " +
             image
-        );
+        ); */
 
         //setImageTop(rect.top); // Met à jour l'état avec la position de l'image par rapport au haut de l'écran
         //setImage1Middle(middle);
@@ -236,7 +236,7 @@ const Animation: React.FC = () => {
                 position: "fixed",
                 top: "50%",
                 willChange: "transform",
-                opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
+                opacity: imageVisible === 3 ? 0 : 1,
                 left: "50%",
                 transform: `translate(-50%, -${200}%)`,
                 backgroundColor: "transparent",
@@ -251,8 +251,8 @@ const Animation: React.FC = () => {
                 className="coin-image"
                 style={{
                   willChange: "transform",
-                  opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
-                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)`,
+                  opacity: imageVisible === 3 ? 0 : 1,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(0.933532, 0.933532, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
@@ -263,8 +263,8 @@ const Animation: React.FC = () => {
                   backgroundColor: "#98ce1a",
                   boxShadow: "0 0 100px 0 #98ce1a",
                   willChange: "transform",
-                  opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
-                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)`,
+                  opacity: imageVisible === 3 ? 0 : 1,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
@@ -274,66 +274,73 @@ const Animation: React.FC = () => {
                 style={{
                   backgroundImage: "url(/images/coin-circle.svg)",
                   willChange: "transform",
-                  opacity: opacityImage1 === 0 && opacityImage3 === 0 ? 1 : 1,
-                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)`,
+                  opacity: imageVisible === 3 ? 0 : 1,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
 
-              <div
-                className={
-                  isSmallScreen
-                    ? "dark-container-text-wrapper-mobile"
-                    : "dark-container-text-wrapper "
-                }
-              >
-                <div className="flex flex-col justify-center items-center pb-0">
-                  <p
-                    className="text-lg sm:text-2xl text-grey-200 mb-4"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                  >
-                    Faites partie d'une révolution{" "}
-                  </p>
-                  {displayRevolution1 && (
+              {/* {
+                <div
+                  className={
+                    isSmallScreen
+                      ? "dark-container-text-wrapper-mobile"
+                      : "dark-container-text-wrapper "
+                  }
+                  style={{
+                    marginTop: "850px",
+                    opacity: opacityImage3,
+                    willChange: "transform",
+                    transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
+                  }}
+                >
+                  <div className="flex flex-col justify-center items-center pb-0">
                     <p
-                      className="text-xl sm:text-3xl text-grey-200 mb-4"
+                      className="text-lg sm:text-2xl text-grey-200 mb-4"
                       data-aos="fade-up"
                       data-aos-delay="200"
                     >
-                      <span className="font-bold text-green whitespace-nowrap">
-                        technologique
-                      </span>
+                      Faites partie d'une révolution{" "}
                     </p>
-                  )}
-                  {displayRevolution2 && (
-                    <p
-                      className="text-2xl sm:text-5xl text-grey-200 mb-6 sm:mb-8"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      <span className="gradient-text font-bold text-green whitespace-nowrap">
-                        écologique
-                      </span>
-                    </p>
-                  )}
-
-                  {displayRevolution3 && (
-                    <>
-                      {/* <p className="text-lg sm:text-2xl text-grey-200 mr-1">et</p> */}
+                    {displayRevolution1 && (
                       <p
-                        className="text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px]"
+                        className="text-xl sm:text-3xl text-grey-200 mb-4"
                         data-aos="fade-up"
                         data-aos-delay="200"
                       >
-                        <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
-                          monetaire!
+                        <span className="font-bold text-green whitespace-nowrap">
+                          technologique
                         </span>
                       </p>
-                    </>
-                  )}
+                    )}
+                    {displayRevolution2 && (
+                      <p
+                        className="text-2xl sm:text-5xl text-grey-200 mb-6 sm:mb-8"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        <span className="gradient-text font-bold text-green whitespace-nowrap">
+                          écologique
+                        </span>
+                      </p>
+                    )}
+
+                    {displayRevolution3 && (
+                      <>
+                        <p
+                          className="text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px]"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
+                        >
+                          <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
+                            monetaire!
+                          </span>
+                        </p>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
+              } */}
             </div>
           )}
 
@@ -349,16 +356,13 @@ const Animation: React.FC = () => {
                 position: "sticky",
                 top: "auto",
                 willChange: "opacity",
-                opacity: 0,
+                opacity: 1,
                 left: "auto",
                 transform: "none",
-                backgroundColor:
-                  opacityImage3 > 0 || imageVisible === 3
-                    ? "#98ce1a"
-                    : "transparent",
+                backgroundColor: imageVisible === 3 ? "#98ce1a" : "transparent",
               }}
             >
-              {imageVisible <= 3 && (
+              {
                 <Image
                   src="/logo.svg"
                   loading="lazy"
@@ -367,99 +371,101 @@ const Animation: React.FC = () => {
                   height={200}
                   className="coin-image"
                   style={{
-                    willChange: "transform",
+                    willChange: "opacity",
+                    opacity: imageVisible === 3 ? 1 : 0,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(0.933532, 0.933532, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
-              )}
+              }
 
-              {imageVisible === 3 && (
+              {
                 <div
                   className="coin-bg-blur"
                   style={{
                     boxShadow: "0 0 100px 0 #98ce1a",
                     willChange: "opacity",
-                    opacity: 0,
+                    opacity: imageVisible === 3 ? 1 : 0,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
-              )}
+              }
 
-              {imageVisible <= 3 && (
+              {
                 <div
                   className="coin-circle"
                   style={{
                     marginTop: "0px",
                     backgroundImage: "url(/images/coin-circle.svg)",
                     willChange: "opacity",
-                    opacity: 0,
+                    opacity: imageVisible === 3 ? 1 : 0,
                     transform:
                       "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
-              )}
+              }
             </div>
           }
 
-          {/* <div
-            className={
-              isSmallScreen
-                ? "dark-container-text-wrapper-mobile"
-                : "dark-container-text-wrapper "
-            }
-          >
-            <div className="flex flex-col justify-center items-center pb-0">
-              <p
-                className="text-lg sm:text-2xl text-grey-200 mb-4"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                Faites partie d'une révolution{" "}
-              </p>
-              {displayRevolution1 && (
+          {
+            <div
+              className={
+                isSmallScreen
+                  ? "dark-container-text-wrapper-mobile"
+                  : "dark-container-text-wrapper "
+              }
+            >
+              <div className="flex flex-col justify-center items-center pb-0 w-full">
                 <p
-                  className="text-xl sm:text-3xl text-grey-200 mb-4"
+                  className="text-lg sm:text-2xl text-grey-200 mb-4"
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
-                  <span className="font-bold text-green whitespace-nowrap">
-                    technologique
-                  </span>
+                  Faites partie d'une révolution{" "}
                 </p>
-              )}
-              {displayRevolution2 && (
-                <p
-                  className="text-2xl sm:text-5xl text-grey-200 mb-6 sm:mb-8"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  <span className="gradient-text font-bold text-green whitespace-nowrap">
-                    écologique
-                  </span>
-                </p>
-              )}
-
-              {displayRevolution3 && (
-                <>
-                  {/* <p className="text-lg sm:text-2xl text-grey-200 mr-1">et</p> *}
+                {displayRevolution1 && (
                   <p
-                    className="text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px]"
+                    className="text-xl sm:text-3xl text-grey-200 mb-4"
                     data-aos="fade-up"
                     data-aos-delay="200"
                   >
-                    <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
-                      monetaire!
+                    <span className="font-bold text-green whitespace-nowrap">
+                      technologique
                     </span>
                   </p>
-                </>
-              )}
+                )}
+                {displayRevolution2 && (
+                  <p
+                    className="w-full text-left text-2xl sm:text-5xl text-grey-200 mb-6 sm:mb-8 sm:mt-[80px] sm:ml-[300px]"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    <span className="gradient-text font-bold text-green whitespace-nowrap">
+                      écologique
+                    </span>
+                  </p>
+                )}
+
+                {displayRevolution3 && (
+                  <>
+                    <p
+                      className="w-full text-right text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px] sm:mt-[-160px] sm:mr-[200px]"
+                      data-aos="fade-up"
+                      data-aos-delay="200"
+                    >
+                      <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
+                        monetaire
+                      </span>
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
-          </div> */}
+          }
         </div>
       </div>
     </div>
