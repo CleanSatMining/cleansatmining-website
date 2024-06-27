@@ -13,7 +13,7 @@ const Animation: React.FC = () => {
   const [displayRevolution3, setDisplayRevolution3] = useState(false);
   const imageRef1 = useRef<HTMLImageElement>(null);
   const imageRef3 = useRef<HTMLImageElement>(null);
-  const [imageVisible, setImageVisible] = useState(1);
+  const [imageVisible, setImageVisible] = useState(0);
   const [opacityText1, setOpacityText1] = useState(0);
   const [opacityImage1, setOpacityImage1] = useState(0);
   const [opacityImage2, setOpacityImage2] = useState(0);
@@ -40,7 +40,7 @@ const Animation: React.FC = () => {
       const isSmall = window.innerWidth <= SMALL_SIZE;
       const middleRatio = isSmall ? 0.35 : 0.2;
       const opacityGradiant = 0.01;
-      let image = 1;
+      let image = 0;
       if (imageRef1.current) {
         const textDisplayRatio = isSmall ? -4 : 20;
         const screenHeight = window.innerHeight;
@@ -149,20 +149,24 @@ const Animation: React.FC = () => {
   return (
     <div className="section dark-section">
       <div className="container coin-dark-cention">
-        <div className="dark-container">
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <h2
-              className="h2 font-title text-xl sm:text-4xl  text-white text-white text-center"
-              style={{
-                opacity: opacityText1,
-              }}
-            >
-              Mais, c'est bien plus qu'un banal investissement. <br />
-              <br />
-              <span className="text-green">CleanSat Mining,</span> c'est une
-              aventure!
-            </h2>
-          </div>
+        <div
+          className={isSmallScreen ? "dark-container-mobile" : "dark-container"}
+        >
+          {
+            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <h2
+                className="h2 font-title text-xl sm:text-4xl  text-white text-white text-center"
+                style={{
+                  opacity: opacityText1,
+                }}
+              >
+                Mais, c'est bien plus qu'un banal investissement. <br />
+                <br />
+                <span className="text-green">CleanSat Mining,</span> c'est une
+                aventure!
+              </h2>
+            </div>
+          }
 
           {
             <div
@@ -227,7 +231,7 @@ const Animation: React.FC = () => {
             </div>
           }
 
-          {true && (
+          {imageVisible >= 1 && (
             <div
               className={
                 isSmallScreen ? "coin-image-holder-mobile" : `coin-image-holder`
