@@ -11,6 +11,7 @@ enum ScreenSize {
 }
 
 export default function cards() {
+  console.log("load cards animation");
   const [screenSize, setScreenSize] = useState<ScreenSize>(ScreenSize.Large);
   const [showHalo, setShowHalo] = useState(false);
 
@@ -103,7 +104,11 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                style={{
+                  backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/1.jpg)`,
+                }}
               ></div>
               <h3 className="card__title">Choisir</h3>
               <h4 className="card__subtitle">
@@ -115,7 +120,11 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                style={{
+                  backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/2.jpg)`,
+                }}
               ></div>
               <h3 className="card__title">Investir</h3>
               <h4 className="card__subtitle">
@@ -127,7 +136,11 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                style={{
+                  backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/3.jpg)`,
+                }}
               ></div>
               <h3 className="card__title">Miner</h3>
               <h4 className="card__subtitle">Recevez vos Bitcoins</h4>
@@ -137,7 +150,11 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                style={{
+                  backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/4.jpg)`,
+                }}
               ></div>
               <h3 className="card__title">Revendre</h3>
               <h4 className="card__subtitle">Revendez vos tokens</h4>
@@ -148,7 +165,9 @@ export default function cards() {
             {/* <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                style={{ backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/5.jpg)`, }}
               ></div>
               <h3 className="card__title">AI Innovate</h3>
               <h4 className="card__subtitle">Pioneering Tomorrow</h4>
@@ -161,7 +180,9 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                style={{ backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/6.jpg)`, }}
               ></div>
               <h3 className="card__title">AI Horizons</h3>
               <h4 className="card__subtitle">Beyond Human Limits</h4>
@@ -173,7 +194,9 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                style={{ backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/7.jpg)`, }}
               ></div>
               <h3 className="card__title">AI Frontier</h3>
               <h4 className="card__subtitle">Exploring New Horizons</h4>
@@ -186,7 +209,9 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                style={{ backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/8.jpg)`, }}
               ></div>
               <h3 className="card__title">AI Visionary</h3>
               <h4 className="card__subtitle">Envisioning Tomorrow</h4>
@@ -199,7 +224,9 @@ export default function cards() {
             <div className="card">
               <div
                 className="card__img"
-                style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                style={{ backgroundImage: `url(${
+                    process.env.PUBLIC_URL ?? ""
+                  }/images/animations/9.jpg)`, }}
               ></div>
               <h3 className="card__title">AI Odyssey</h3>
               <h4 className="card__subtitle">Journey to Tomorrow</h4>
@@ -219,163 +246,271 @@ export default function cards() {
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
             </div>
@@ -388,163 +523,271 @@ export default function cards() {
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
             </div>
@@ -557,163 +800,271 @@ export default function cards() {
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/1.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/1.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/2.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/2.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/3.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/3.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/4.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/4.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/5.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/5.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/6.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/6.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/7.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/7.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/8.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/8.jpg)`,
+                  }}
                 ></div>
               </div>
               <div className="card">
                 <div
                   className="card__img"
-                  style={{ backgroundImage: "url(images/animations/9.jpg)" }}
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL ?? ""
+                    }/images/animations/9.jpg)`,
+                  }}
                 ></div>
               </div>
             </div>
