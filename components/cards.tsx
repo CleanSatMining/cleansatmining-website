@@ -1,10 +1,22 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import "@/app/css/animation.cards.css"; // Utilisez le chemin d'accès correct basé sur l'organisation de votre projet
-import { useEffect } from "react";
+import MarketplaceImage from "@/public/images/feature-mining-illustration.svg";
+import Image from "next/image";
+import { Transition } from "@headlessui/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+enum ScreenSize {
+  Mobile = "mobile",
+  Medium = "medium",
+  Large = "large",
+}
+
 export default function cards() {
+  const [screenSize, setScreenSize] = useState<ScreenSize>(ScreenSize.Large);
+  const [showHalo, setShowHalo] = useState(false);
+
   useEffect(() => {
     const scripts = [
       "scripts/js/gsap.min.js",
@@ -46,20 +58,50 @@ export default function cards() {
     };
   }, []); // Le tableau vide signifie que cet effet ne s'exécute qu'au montage et au démontage
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setScreenSize(ScreenSize.Mobile);
+      } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+        setScreenSize(ScreenSize.Medium);
+      } else {
+        setScreenSize(ScreenSize.Large);
+      }
+    };
+
+    // Définir la taille initiale
+    handleResize();
+
+    // Ajouter l'écouteur d'événements
+    window.addEventListener("resize", handleResize);
+
+    // Nettoyer l'écouteur d'événements
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <h2
-          className="section-title mb-12 h2 font-title text-green uppercase text-xl sm:text-4xl"
+          className="section-title h2 font-title text-green uppercase text-xl sm:text-4xl"
           data-aos="fade-up"
         >
           Investir dans le minage green du Bitcoin
         </h2>
+        <p className="mb-24"></p>
         {/* <h2 className="section-title">A New Frontier</h2> */}
         <div className="intro">
           {/* <h2 className="intro__title">The Next Evolution</h2>
           <p className="intro__hint">Scroll into the future</p> */}
-          <div className="grid_animation">
+          <div
+            className={
+              screenSize === ScreenSize.Mobile
+                ? "grid_animation_mobile"
+                : screenSize === ScreenSize.Medium
+                ? "grid_animation_medium"
+                : "grid_animation"
+            }
+          >
             <div className="card">
               <div
                 className="card__img"
@@ -170,6 +212,7 @@ export default function cards() {
             </div> */}
           </div>
         </div>
+        {screenSize === ScreenSize.Mobile && <div className="mt-[100vh]"></div>}
         <h2 className="section-subtitle">Investir</h2>
         <div className="wrap">
           <div data-stack-1 className="wrap__inner">
@@ -678,6 +721,71 @@ export default function cards() {
           </div>
         </div>
         <h2 className="section-subtitle ">Découvrir nos opportunités</h2>
+        <div className="relative w-full h-full flex justify-center items-center mt-[100px] cursor-pointer">
+          {/* Halo effect */}
+          {showHalo && (
+            <svg
+              className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 will-change-transform pointer-events-none blur-md"
+              width="480"
+              height="480"
+              viewBox="0 0 480 480"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient
+                  id="pulse-a"
+                  x1="50%"
+                  x2="50%"
+                  y1="100%"
+                  y2="0%"
+                >
+                  <stop offset="0%" stopColor="#FFF500" />
+                  <stop offset="76.382%" stopColor="#FAF5FF" />
+                  <stop offset="100%" stopColor="#B5CD30" />
+                </linearGradient>
+              </defs>
+              <g fillRule="evenodd">
+                <path
+                  className="pulse"
+                  fill="url(#pulse-a)"
+                  fillRule="evenodd"
+                  d="M240,0 C372.5484,0 480,107.4516 480,240 C480,372.5484 372.5484,480 240,480 C107.4516,480 0,372.5484 0,240 C0,107.4516 107.4516,0 240,0 Z M240,88.8 C156.4944,88.8 88.8,156.4944 88.8,240 C88.8,323.5056 156.4944,391.2 240,391.2 C323.5056,391.2 391.2,323.5056 391.2,240 C391.2,156.4944 323.5056,88.8 240,88.8 Z"
+                />
+                <path
+                  className="pulse pulse-1"
+                  fill="url(#pulse-a)"
+                  fillRule="evenodd"
+                  d="M240,0 C372.5484,0 480,107.4516 480,240 C480,372.5484 372.5484,480 240,480 C107.4516,480 0,372.5484 0,240 C0,107.4516 107.4516,0 240,0 Z M240,88.8 C156.4944,88.8 88.8,156.4944 88.8,240 C88.8,323.5056 156.4944,391.2 240,391.2 C323.5056,391.2 391.2,323.5056 391.2,240 C391.2,156.4944 323.5056,88.8 240,88.8 Z"
+                />
+                <path
+                  className="pulse pulse-2"
+                  fill="url(#pulse-a)"
+                  fillRule="evenodd"
+                  d="M240,0 C372.5484,0 480,107.4516 480,240 C480,372.5484 372.5484,480 240,480 C107.4516,480 0,372.5484 0,240 C0,107.4516 107.4516,0 240,0 Z M240,88.8 C156.4944,88.8 88.8,156.4944 88.8,240 C88.8,323.5056 156.4944,391.2 240,391.2 C323.5056,391.2 391.2,323.5056 391.2,240 C391.2,156.4944 323.5056,88.8 240,88.8 Z"
+                />
+              </g>
+            </svg>
+          )}
+
+          {/* Icons */}
+
+          <div
+            className="relative flex items-center justify-center cursor-pointer"
+            onMouseEnter={() => setShowHalo(true)}
+            onMouseLeave={() => setShowHalo(false)}
+            onClick={() =>
+              window.open("https://marketplace.cleansatmining.com", "_blank")
+            }
+          >
+            <Image
+              className="w-[200px] max-w-none sm:w-[350px]"
+              src={MarketplaceImage}
+              width={500}
+              height={400}
+              alt="Marketplace"
+            />
+          </div>
+        </div>
         <p className="mb-48"></p>
       </div>
     </section>
