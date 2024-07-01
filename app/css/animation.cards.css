@@ -242,7 +242,7 @@ main {
   display: grid;
   grid-template-columns: repeat(1,auto);
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
   filter: brightness(100%);
   margin-bottom: 50vh;
 }
