@@ -28,6 +28,17 @@
     margin-right: auto;
     display: flex;
   }
+
+  .dark-container-mobile {
+    min-height: 0vh;
+    grid-row-gap: 2em;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+  }
   
   .coin-dark-section-title {
     display: block;

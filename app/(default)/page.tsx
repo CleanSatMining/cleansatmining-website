@@ -14,6 +14,7 @@ import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
 import FeatureCSM from "@/components/features/home/features-csm";
 import Animation from "@/components/animation";
+import Cards from "@/components/cards";
 
 export default function Home() {
   //const [statsMode, setStatsMode] = useState("counter");
@@ -48,7 +49,8 @@ export default function Home() {
       <FeaturesMining />
       <FeaturesReasons />
       <FeaturesFacilities />
-      <FeaturesHow />
+      {/* <FeaturesHow /> */}
+      <Cards></Cards>
       <Cta />
     </>
   );
