@@ -391,7 +391,7 @@ main {
   /* font-size: clamp(2rem,6vw,6rem); */
   line-height: 1;
   /* font-weight: 400; */
-  margin: 25vh auto 0;
+  margin: 0 auto 0;
   /* max-width: 600px; */
   text-align: center;
   /* text-transform: uppercase; */
@@ -463,9 +463,9 @@ main {
     bottom: 50px;
     right: 50px;
   }
-  .intro {
+ /*  .intro {
     grid-template-rows: 60vh 40vh auto;
-  }
+  } */
   .intro__title {
     align-self: end;
   }

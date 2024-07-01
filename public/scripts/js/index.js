@@ -30,7 +30,7 @@ const init = () => {
       ease: 'power1.in',
       startAt: {
         transformOrigin: '100% 50%',
-        filter: 'brightness(70%)'
+        filter: 'brightness(100%)'
       },
       rotationX: () => -60,
       yPercent: () => gsap.utils.random(-100,0),
@@ -38,7 +38,7 @@ const init = () => {
       filter: 'brightness(0%)',
       scrollTrigger: {
         trigger: introCard,
-        start: 'clamp(top bottom)',
+        start: "top 60%",
         end: 'clamp(bottom top)',
         scrub: true,
       }

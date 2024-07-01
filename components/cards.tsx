@@ -1,11 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "@/app/css/animation.cards.css"; // Utilisez le chemin d'accès correct basé sur l'organisation de votre projet
 import MarketplaceImage from "@/public/images/feature-mining-illustration.svg";
 import Image from "next/image";
-import { Transition } from "@headlessui/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 enum ScreenSize {
   Mobile = "mobile",
@@ -90,7 +87,8 @@ export default function cards() {
         </h2>
         <p className="mb-24"></p>
         {/* <h2 className="section-title">A New Frontier</h2> */}
-        <div className="intro">
+
+        <div className={"intro"}>
           {/* <h2 className="intro__title">The Next Evolution</h2>
           <p className="intro__hint">Scroll into the future</p> */}
           <div
@@ -146,6 +144,7 @@ export default function cards() {
               <span className="card__meta">#4</span>
               <p className="card__description"></p>
             </div>
+
             {/* <div className="card">
               <div
                 className="card__img"
@@ -213,7 +212,7 @@ export default function cards() {
           </div>
         </div>
         {screenSize === ScreenSize.Mobile && <div className="mt-[100vh]"></div>}
-        <h2 className="section-subtitle">Investir</h2>
+        <h2 className="trigger section-subtitle">Investir</h2>
         <div className="wrap">
           <div data-stack-1 className="wrap__inner">
             <div className="content content--1">
@@ -721,7 +720,7 @@ export default function cards() {
           </div>
         </div>
         <h2 className="section-subtitle ">Découvrir nos opportunités</h2>
-        <div className="relative w-full h-full flex justify-center items-center mt-[100px] cursor-pointer">
+        <div className="relative w-full h-full flex justify-center items-center mt-[100px]">
           {/* Halo effect */}
           {showHalo && (
             <svg
@@ -769,20 +768,18 @@ export default function cards() {
 
           {/* Icons */}
 
-          <div
-            className="relative flex items-center justify-center cursor-pointer"
-            onMouseEnter={() => setShowHalo(true)}
-            onMouseLeave={() => setShowHalo(false)}
-            onClick={() =>
-              window.open("https://marketplace.cleansatmining.com", "_blank")
-            }
-          >
+          <div className="relative flex items-center justify-center cursor-pointer">
             <Image
               className="w-[200px] max-w-none sm:w-[350px]"
               src={MarketplaceImage}
               width={500}
               height={400}
               alt="Marketplace"
+              onMouseEnter={() => setShowHalo(true)}
+              onMouseLeave={() => setShowHalo(false)}
+              onClick={() =>
+                window.open("https://marketplace.cleansatmining.com", "_blank")
+              }
             />
           </div>
         </div>
