@@ -9,12 +9,10 @@ import FeaturesReasons from "@/components/features/home/features-reasons";
 import StatsCounter from "@/components/features/home/stats-counter";
 import FeaturesMining from "@/components/features/home/features-mining";
 import FeaturesFacilities from "@/components/features/facilities/section-facilities";
-import FeaturesHow from "@/components/features/home/features-how";
 import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
-import FeatureCSM from "@/components/features/home/features-csm";
-import Animation from "@/components/animation";
-import Cards from "@/components/cards";
+import AnimationLogo from "@/components/logo-animation";
+import CardsAnimation from "@/components/features/home/cards-animation";
 
 export default function Home() {
   //const [statsMode, setStatsMode] = useState("counter");
@@ -22,35 +20,12 @@ export default function Home() {
     <>
       <PageBlur />
       <Hero />
-      {/* <div
-        onClick={() =>
-          setStatsMode(
-            statsMode === "default"
-              ? "block"
-              : statsMode === "block"
-              ? "square"
-              : statsMode === "square"
-              ? "simple"
-              : statsMode === "simple"
-              ? "counter"
-              : "default"
-          )
-        }
-      >
-        {statsMode === "default" && <Stats />}
-        {statsMode === "block" && <StatsBlock />}
-        {statsMode === "square" && <StatsSquare />}
-        {statsMode === "simple" && <StatsSimple />}
-        {statsMode === "counter" && <StatsCounter />}
-      </div> */}
       <StatsCounter />
-      <Animation />
-      {/* <FeatureCSM /> */}
+      <AnimationLogo />
       <FeaturesMining />
       <FeaturesReasons />
       <FeaturesFacilities />
-      {/* <FeaturesHow /> */}
-      <Cards></Cards>
+      <CardsAnimation />
       <Cta />
     </>
   );

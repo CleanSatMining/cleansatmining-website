@@ -39,8 +39,18 @@ import {
   formatFacilityPowerWToMW,
   formatFacilityHashrateTHsToPHs,
 } from "@/utils/facility";
+import FacilityCard, {
+  WidgetFacilityFrame,
+} from "@/components/ui/widgets/widget-card";
 
 Swiper.use([Autoplay, Navigation]);
+
+enum DisplayMode {
+  Card = "card",
+  Frame = "frame",
+}
+
+const MODE: DisplayMode = DisplayMode.Card;
 
 export interface FacilitiesProps {
   facilities: CleanSatMiningFacility[];
@@ -106,20 +116,20 @@ export default function FacilitesCarousel() {
     const carousel = new Swiper(".carousel", {
       breakpoints: {
         320: {
-          slidesPerView: 1,
+          slidesPerView: MODE === DisplayMode.Card ? 2 : 1,
         },
         640: {
-          slidesPerView: 2,
+          slidesPerView: MODE === DisplayMode.Card ? 3 : 2,
         },
-        1024: {
-          slidesPerView: 3,
+        1150: {
+          slidesPerView: MODE === DisplayMode.Card ? 4 : 3,
         },
       },
       grabCursor: true,
       loop: false,
       centeredSlides: false,
       initialSlide: 0,
-      spaceBetween: 24,
+      spaceBetween: MODE === DisplayMode.Card ? 40 : 24,
       autoplay: {
         delay: 7000,
       },
@@ -183,62 +193,34 @@ export default function FacilitesCarousel() {
               {facilities.map((facility, index) => (
                 <div
                   key={index + facility.name}
-                  className="swiper-slide h-auto flex flex-col bg-grey-800 p-6 rounded"
-                  style={{
-                    backgroundImage: `linear-gradient(220deg, rgba(54, 61, 13, 0) 0, rgba(54, 61, 13, .7) 80%), url(${facility.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
+                  className="swiper-slide h-auto flex flex-col "
                 >
-                  <div className="grow pt-40">
-                    <div className="flex items-center font-hkgrotesk font-bold text-xl">
-                      <div>{facility.name}</div>
-
-                      {facility?.location && (
-                        <div className="ml-2">
-                          <Image
-                            className="rounded-lg shrink-0"
-                            src={
-                              "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-                              facility.location.countryCode +
-                              ".svg"
-                            }
-                            width={24}
-                            height={24}
-                            alt={"featuredPost.author"}
-                          />
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex items-center">
-                      <IconMapPin width={16} className="mr-1 mb-3" />
-                      <div className="text-white font-light mb-3 text-xs">
-                        {facility?.location?.aera +
-                          ", " +
-                          facility?.location?.country}
-                      </div>
-                      <IconPointFilled
-                        width={16}
-                        className="ml-2 mr-1 mb-3"
-                        color="#71DA80"
-                      />
-                      <div className="text-white font-light mb-3 text-xs">
-                        {facility.status}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="text-right w-[200px]">
-                    <a
-                      className="btn-round text-white bg-gradient-to-r from-grey-900/80 via-grey-900 to-grey-900/80 hover:bg-white w-full transition duration-150 ease-in-out group"
-                      href={"/facilities/" + facility.slug}
-                    >
-                      Plus d'informations{" "}
-                      <span className="tracking-normal text-green group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
-                        <ArrowRight size={16} weight="bold" />
-                      </span>
-                    </a>
-                  </div>
+                  {MODE === DisplayMode.Card && (
+                    <FacilityCard
+                      src={facility.image}
+                      location={{
+                        country: facility.location?.country ?? "",
+                        region: facility.location?.aera ?? "",
+                        countryCode: facility.location?.countryCode ?? "",
+                      }}
+                      status={facility.status}
+                      title={facility.name}
+                      slug={facility.slug}
+                    ></FacilityCard>
+                  )}
+                  {MODE === DisplayMode.Frame && (
+                    <WidgetFacilityFrame
+                      src={facility.image}
+                      location={{
+                        country: facility.location?.country ?? "",
+                        region: facility.location?.aera ?? "",
+                        countryCode: facility.location?.countryCode ?? "",
+                      }}
+                      status={facility.status}
+                      title={facility.name}
+                      slug={facility.slug}
+                    ></WidgetFacilityFrame>
+                  )}
                 </div>
               ))}
             </div>
@@ -295,11 +277,11 @@ export function FacilitesGrid({ facilities }: FacilitiesProps) {
           paddingRight: isMobile ? "10px" : "0%",
         }}
       >
-        <div className="py-12 md:pt-16 md:pb-20">
+        <div className="py-8 md:py-8">
           {/* Content */}
           <div>
             {/* Category buttons */}
-            <div className="mb-8 ">
+            <div className="mb-8">
               <div className="flex flex-wrap justify-center -m-1.5">
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${

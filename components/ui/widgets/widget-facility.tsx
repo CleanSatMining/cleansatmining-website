@@ -31,9 +31,9 @@ export default function Widget({ facility, slug }: SectionProps) {
 
   return (
     <div>
-      <div className="min-w-[250px] xl:min-w-[300px] rounded-lg border border-grey-500 bg-gradient-to-t from-grey-500 to-grey-500/30 odd:rotate-1 even:-rotate-1 p-4 md:p-5">
+      <div className="min-w-[250px] xl:min-w-[300px] rounded-lg border border-grey-500 bg-gradient-to-t from-grey-500 to-grey-500/60 odd:rotate-1 even:-rotate-1 p-4 md:p-5">
         <div className="font-aspekta font-[650] mb-3">En bref</div>
-        <ul className="space-y-3">
+        <ul className="space-y-0 sm:space-y-2">
           <li className="flex justify-between items-center w-full">
             <div className="grid grid-cols-[3fr,4fr,2fr] w-full">
               <div className="grow inline-flex mr-1.5 truncate">

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import ProjectCard, { Item } from "@/components/ui/features/project-card";
 import BigNumber from "bignumber.js";
 import Icon02 from "@/public/images/icons/project-icon-02.svg";
@@ -31,7 +32,17 @@ interface SectionProps {
   facility: CleanSatMiningFacility;
 }
 
+enum FacilitySection {
+  Society = "society",
+  Token = "token",
+  Mining = "mining",
+  Operating = "operating",
+}
+
 export default function Section({ facility, slug }: SectionProps) {
+  const [activeSection, setActiveSection] = useState<FacilitySection>(
+    FacilitySection.Society
+  );
   const facilityData = facility.data;
   const itemsSociety: Item[] = facilityData
     ? [
@@ -330,56 +341,123 @@ export default function Section({ facility, slug }: SectionProps) {
     <section>
       {/* Page title */}
       <h2 className="h2 font-aspekta mb-4 lg:mb-8">Spécifications</h2>
+      {/* Filters */}
+      <ul className="flex flex-wrap text-sm border-b border-grey-400">
+        <li className="px-3 -mb-px">
+          <a
+            className={`block py-3 font-medium text-grey-100 ${
+              activeSection === FacilitySection.Society
+                ? "border-b-2 border-green"
+                : ""
+            }`}
+            href="#0"
+            onClick={() => setActiveSection(FacilitySection.Society)}
+          >
+            Société
+          </a>
+        </li>
+        <li className="px-3 -mb-px">
+          <a
+            className={`block py-3 font-medium text-grey-1002 ${
+              activeSection === FacilitySection.Token
+                ? "border-b-2 border-green"
+                : ""
+            }`}
+            href="#0"
+            onClick={() => setActiveSection(FacilitySection.Token)}
+          >
+            Token
+          </a>
+        </li>
+        <li className="px-3 -mb-px">
+          <a
+            className={`block py-3 font-medium text-grey-100 ${
+              activeSection === FacilitySection.Mining
+                ? "border-b-2 border-green"
+                : ""
+            }`}
+            href="#0"
+            onClick={() => setActiveSection(FacilitySection.Mining)}
+          >
+            Mining
+          </a>
+        </li>
+        <li className="px-3 -mb-px">
+          <a
+            className={`block py-3 font-medium text-grey-100 ${
+              activeSection === FacilitySection.Operating
+                ? "border-b-2 border-green"
+                : ""
+            }`}
+            href="#0"
+            onClick={() => setActiveSection(FacilitySection.Operating)}
+          >
+            Exploitation
+          </a>
+        </li>
+      </ul>
       {/* Page content */}
-      <div className="space-y-5 sm:space-y-10">
+      <div className="space-y-5 sm:space-y-10 mt-8">
         {/* Society cards */}
-        <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
-            La société
-          </h2>
-          {/* Cards */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-            {itemsSociety.map((item) => (
-              <ProjectCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
+        {activeSection === FacilitySection.Society && (
+          <section>
+            {/* Cards */}
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+                itemsSociety.length > 2 ? 3 : 2
+              } gap-5`}
+            >
+              {itemsSociety.map((item) => (
+                <ProjectCard key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+        )}
         {/* Token cards */}
-        <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
-            Le Token
-          </h2>
-          {/* Cards */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-            {itemsToken.map((item) => (
-              <ProjectCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
+        {activeSection === FacilitySection.Token && (
+          <section>
+            {/* Cards */}
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+                itemsToken.length > 2 ? 3 : 2
+              } gap-5`}
+            >
+              {itemsToken.map((item) => (
+                <ProjectCard key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+        )}
         {/* Mining cards */}
-        <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
-            Le Mining
-          </h2>
-          {/* Cards */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-            {itemsMining.map((item) => (
-              <ProjectCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
+        {activeSection === FacilitySection.Mining && (
+          <section>
+            {/* Cards */}
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+                itemsMining.length > 2 ? 3 : 2
+              } gap-5`}
+            >
+              {itemsMining.map((item) => (
+                <ProjectCard key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+        )}
         {/* Operating cards */}
-        <section>
-          <h2 className="font-aspekta text-xl font-[650] mb-2 sm:mb-6">
-            L'exploitation
-          </h2>
-          {/* Cards */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-            {itemsOperating.map((item) => (
-              <ProjectCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
+        {activeSection === FacilitySection.Operating && (
+          <section>
+            {/* Cards */}
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+                itemsOperating.length > 2 ? 3 : 2
+              } gap-5`}
+            >
+              {itemsOperating.map((item) => (
+                <ProjectCard key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </section>
   );

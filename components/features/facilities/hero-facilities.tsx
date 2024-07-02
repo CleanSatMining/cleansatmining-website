@@ -68,7 +68,7 @@ export default function Herofacilities() {
           alt="Map"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-grey-700"
+          className="absolute inset-0 bg-gradient-to-t from-grey-600"
           aria-hidden="true"
         ></div>
       </div>
