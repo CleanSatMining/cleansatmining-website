@@ -32,7 +32,7 @@ const WidgetFacilityCard: React.FC<WidgetCardProps> = ({
         }}
       ></div>
 
-      <div className="card__title card_facility__title">
+      <div className="card__title card_facility__title card__background">
         <div className="flex items-center justify-between font-hkgrotesk font-bold text-[16px] w-full">
           <div>{title}</div>
 
@@ -53,7 +53,7 @@ const WidgetFacilityCard: React.FC<WidgetCardProps> = ({
       </div>
 
       {/* <span className="card__meta">{location.countryCode}</span> */}
-      <div className="card__description">
+      <div className="card__description card__background">
         <div className="flex items-center">
           <IconMapPin width={16} className="mr-1 " />
           <div className="text-white font-light  text-xs">
