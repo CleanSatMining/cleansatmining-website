@@ -3,6 +3,7 @@ import "@/app/css/animation.cards.css";
 import Image from "next/image";
 import { IconMapPin, IconPointFilled } from "@tabler/icons-react";
 import { ArrowRight } from "@phosphor-icons/react";
+import Link from "next/link";
 
 // Définition du type pour les props
 type WidgetCardProps = {
@@ -22,9 +23,10 @@ const WidgetFacilityCard: React.FC<WidgetCardProps> = ({
   title,
   location,
   status,
+  slug,
 }) => {
   return (
-    <div className="card card_facility">
+    <Link className="card card_facility" href={"/facilities/" + slug}>
       <div
         className="card__img"
         style={{
@@ -33,12 +35,12 @@ const WidgetFacilityCard: React.FC<WidgetCardProps> = ({
       ></div>
 
       <div className="card__title card_facility__title card__background">
-        <div className="flex items-center justify-between font-hkgrotesk font-bold text-[16px] w-full">
+        <div className="flex items-center justify-between font-hkgrotesk font-semibold text-[10px] sm:text-[16px] w-full">
           <div>{title}</div>
 
           <div className="">
             <Image
-              className="rounded-lg shrink-0"
+              className="rounded-sm shrink-0 w-[24px] h-[24px]"
               src={
                 "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
                 location.countryCode +
@@ -56,16 +58,18 @@ const WidgetFacilityCard: React.FC<WidgetCardProps> = ({
       <div className="card__description card__background">
         <div className="flex items-center">
           <IconMapPin width={16} className="mr-1 " />
-          <div className="text-white font-light  text-xs">
+          <div className="text-white font-light text-[10px] sm:text-xs">
             {location.region + ", " + location.country}
           </div>
         </div>
         <div className="flex items-center">
           <IconPointFilled width={16} className="mr-1" color="#71DA80" />
-          <div className="text-white font-light  text-xs">{status}</div>
+          <div className="text-white font-light text-[10px] sm:text-xs">
+            {status}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
