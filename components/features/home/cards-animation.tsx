@@ -3,12 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "@/app/css/animation.cards.css"; // Utilisez le chemin d'accès correct basé sur l'organisation de votre projet
 import MarketplaceImage from "@/public/images/feature-mining-illustration.svg";
 import Image from "next/image";
-import {
-  CleanSatMiningFacility,
-  FacilityStatus,
-  EnergyType,
-  FacilityDataMode,
-} from "@/models/Facility";
+import { CleanSatMiningFacility } from "@/models/Facility";
+import gsap from "gsap";
+import { ScrollTrigger, ScrollSmoother } from "gsap/all";
 
 enum ScreenSize {
   Mobile = "mobile",
@@ -53,11 +50,35 @@ export default function cards() {
   const [imageStack3, setImageStack3] = useState<string[]>(imageSet3);
 
   useEffect(() => {
+    // Sélectionnez l'élément cible
+    const target = document.querySelector(".target");
+
+    // Enregistrez les plugins nécessaires
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    // Configuration de GSAP pour désactiver les avertissements de version d'essai
+    gsap.config({});
+
+    // Animation ciblant ".target" avec ScrollTrigger
+    gsap.to(".target", {
+      scrollTrigger: {
+        trigger: ".target",
+        markers: false,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+      },
+      rotation: 360,
+      ease: "none",
+    });
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch("/api/facilities");
         const fetchedData: CleanSatMiningFacility[] = await res.json();
-        console.log("fetchedData", fetchedData);
+
         const stack1 = [
           process.env.PUBLIC_URL ?? "" + "/images/animations/2.jpg",
         ];
@@ -370,7 +391,7 @@ export default function cards() {
 
           <div className="relative flex items-center justify-center cursor-pointer">
             <Image
-              className="w-[200px] max-w-none sm:w-[350px]"
+              className="target box w-[200px] max-w-none sm:w-[350px]"
               src={MarketplaceImage}
               width={500}
               height={400}
