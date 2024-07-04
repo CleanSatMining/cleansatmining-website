@@ -342,17 +342,17 @@ export default function cards() {
           </div>
         </div>
         <Link
-          className="cursor-pointer"
+          className="relative cursor-pointer z-[99999]"
           href="https://marketplace.cleansatmining.com"
           target="_blank"
         >
-          <h2 className="section-subtitle cursor-pointer">
+          <h2 className="section-subtitle cursor-pointer z-[99999]">
             Découvrir nos opportunités
           </h2>
         </Link>
 
         <Link
-          className="w-full h-full flex justify-center items-center mt-[100px] z-[9999] cursor-pointer"
+          className="relative w-full h-full flex justify-center items-center mt-[100px] z-[9999] cursor-pointer"
           href="https://marketplace.cleansatmining.com"
           target="_blank"
           onMouseEnter={() => setShowHalo(true)}
@@ -407,7 +407,9 @@ export default function cards() {
 
           <div className="relative flex items-center justify-center cursor-pointer">
             <Image
-              className="target box w-[200px] max-w-none sm:w-[350px]"
+              className={`target box w-[200px] max-w-none sm:w-[350px] ${
+                showHalo ? "opacity-50" : ""
+              }`}
               src={MarketplaceImage}
               width={500}
               height={400}
