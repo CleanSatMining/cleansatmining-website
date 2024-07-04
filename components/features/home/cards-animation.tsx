@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CleanSatMiningFacility } from "@/models/Facility";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollSmoother } from "gsap/all";
+import Link from "next/link";
 
 enum ScreenSize {
   Mobile = "mobile",
@@ -340,10 +341,25 @@ export default function cards() {
             </div>
           </div>
         </div>
-        <h2 className="section-subtitle ">Découvrir nos opportunités</h2>
-        <div className="relative w-full h-full flex justify-center items-center mt-[100px]">
+        <Link
+          className="cursor-pointer"
+          href="https://marketplace.cleansatmining.com"
+          target="_blank"
+        >
+          <h2 className="section-subtitle cursor-pointer">
+            Découvrir nos opportunités
+          </h2>
+        </Link>
+
+        <Link
+          className="w-full h-full flex justify-center items-center mt-[100px] z-[9999] cursor-pointer"
+          href="https://marketplace.cleansatmining.com"
+          target="_blank"
+          onMouseEnter={() => setShowHalo(true)}
+          onMouseLeave={() => setShowHalo(false)}
+        >
           {/* Halo effect */}
-          {showHalo && (
+          {
             <svg
               className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 will-change-transform pointer-events-none blur-md"
               width="480"
@@ -385,7 +401,7 @@ export default function cards() {
                 />
               </g>
             </svg>
-          )}
+          }
 
           {/* Icons */}
 
@@ -396,14 +412,9 @@ export default function cards() {
               width={500}
               height={400}
               alt="Marketplace"
-              onMouseEnter={() => setShowHalo(true)}
-              onMouseLeave={() => setShowHalo(false)}
-              onClick={() =>
-                window.open("https://marketplace.cleansatmining.com", "_blank")
-              }
             />
           </div>
-        </div>
+        </Link>
         <p className="mb-48"></p>
       </div>
     </section>
