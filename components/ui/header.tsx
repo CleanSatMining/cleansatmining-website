@@ -95,13 +95,13 @@ export default function Header({ nav = true }: { nav?: boolean }) {
         setOpacity("90");
       }
     });
-    console.log("header path", path);
+    //console.log("header path", path);
   }, [setCurrentIndex, path, headerLinks]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchfacilitiesMenu();
-      console.log(facilitiesNavLink);
+      //console.log(facilitiesNavLink);
       setSiteNavLink(data);
     };
 

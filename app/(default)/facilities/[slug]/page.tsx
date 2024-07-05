@@ -28,7 +28,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string; image: string };
 }): Promise<Metadata | undefined> {
-  console.log("Metadata", params.slug);
+  //console.log("Metadata", params.slug);
   const { title, summary: description } = {
     title: "CSM - " + params.slug.toUpperCase(),
     summary: "CleanSat Mining - " + params.slug + " Facility",

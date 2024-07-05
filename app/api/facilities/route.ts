@@ -23,8 +23,8 @@ export async function GET(request: Request) {
     const mode = queryParams.get("mode") ?? "short"; // short ou full ou location
 
     //console.log("queryParams", queryParams);
-    console.log("mode", mode);
-    console.log("cacheActivated", cacheActivated);
+    //console.log("mode", mode);
+    //console.log("cacheActivated", cacheActivated);
 
     const cacheKey = `facilities_${mode}`;
     const cachedData = cache.get(cacheKey);

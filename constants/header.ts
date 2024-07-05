@@ -28,7 +28,7 @@ export const headerLinks: NavLink[] = [
 export async function fetchfacilitiesMenu(): Promise<NavLink[]> {
   try {
     const tokens: CleanSatMiningFacility[] = await fetchFacilities();
-    console.log("tokens", tokens);
+    //console.log("tokens", tokens);
     const navLink = tokens.map((token: CleanSatMiningFacility) => {
       const link: NavLink = {
         href: `/facilities/${token.slug

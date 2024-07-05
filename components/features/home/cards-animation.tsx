@@ -46,7 +46,7 @@ const imageSet3 = [
 ];
 
 export default function cards() {
-  console.log("load cards animation");
+  //console.log("load cards animation");
   const [screenSize, setScreenSize] = useState<ScreenSize>(ScreenSize.Large);
   const [showHalo, setShowHalo] = useState(false);
   // const [imageStack1, setImageStack1] = useState<string[]>(imageSet1);

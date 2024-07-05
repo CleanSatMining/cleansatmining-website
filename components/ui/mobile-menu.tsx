@@ -119,7 +119,7 @@ export default function MobileMenu() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchfacilitiesMenu();
-      console.log(facilitiesNavLink);
+      //console.log(facilitiesNavLink);
       setSiteNavLink(data);
     };
 

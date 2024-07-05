@@ -51,9 +51,9 @@ export default function SupportSidebar({
       // Obtenez la position de défilement actuelle
       const scrollTop = document.documentElement.scrollTop;
 
-      console.log("scrollTop", scrollTop);
+      //console.log("scrollTop", scrollTop);
 
-      console.log("top", top);
+      //console.log("top", top);
 
       // Définissez top en fonction de la position de défilement, mais ne descendez pas en dessous de 100
       setTop(() => scrollTop);
