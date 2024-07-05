@@ -54,6 +54,9 @@ export default function cards() {
   // const [imageStack3, setImageStack3] = useState<string[]>(imageSet3);
 
   useEffect(() => {
+    // Enregistrez les plugins nécessaires
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
     // Apply the first stack motion effect to all elements with a specific data attribute
     document.querySelectorAll("[data-stack-1]").forEach((stackEl) => {
       new StackMotionEffect1(stackEl);
@@ -91,9 +94,6 @@ export default function cards() {
 
     // Sélectionnez l'élément cible
     const target = document.querySelector(".target");
-
-    // Enregistrez les plugins nécessaires
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
     // Configuration de GSAP pour désactiver les avertissements de version d'essai
     gsap.config({});

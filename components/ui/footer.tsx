@@ -121,7 +121,7 @@ export default function Footer() {
   return (
     <footer className="flex flex-col gap-16 rounded-t-[48px] border-t-[1px] border-green/20 px-12 py-8">
       <div className="flex flex-wrap items-center justify-between gap-8 lg:gap-4">
-        <Link href={"csmHome"}>
+        <Link href={"/"}>
           <Image src="/logo.svg" width={80} height={80} alt={"logo"} />
         </Link>
         <nav aria-label={"nav"}>
