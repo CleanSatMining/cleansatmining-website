@@ -19,6 +19,7 @@ const Animation: React.FC = () => {
   const [opacityImage2, setOpacityImage2] = useState(0);
   const [opacityImage3, setOpacityImage3] = useState(0);
   const [imageTop, setImageTop] = useState(0);
+  const [outOfScreen, setOutOfScreen] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -105,17 +106,20 @@ const Animation: React.FC = () => {
         const opacityImageFix = 1 - opacityImage;
 
         //console.log("top3", "image", image);
-        /*      console.log(
-          (isSmall ? "small " : "big ") +
-            top3 +
-            " over " +
-            screenHeight +
-            " middle " +
-            middle +
-            " image " +
-            image
-        ); */
-
+        // console.log(
+        //   (isSmall ? "small " : "big ") +
+        //     top3 +
+        //     " over " +
+        //     screenHeight +
+        //     " middle " +
+        //     middle +
+        //     " image " +
+        //     image +
+        //     " opacity image 3 " +
+        //     opacityImage +
+        //     (-top3 > screenHeight)
+        // );
+        setOutOfScreen(-top3 > screenHeight);
         //setImageTop(rect.top); // Met à jour l'état avec la position de l'image par rapport au haut de l'écran
         //setImage1Middle(middle);
         setImageVisible(image);
@@ -152,7 +156,7 @@ const Animation: React.FC = () => {
         <div
           className={isSmallScreen ? "dark-container-mobile" : "dark-container"}
         >
-          {
+          {imageVisible < 3 && (
             <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <h2
                 className="h2 font-title text-xl sm:text-4xl  text-white text-white text-center"
@@ -166,7 +170,7 @@ const Animation: React.FC = () => {
                 aventure!
               </h2>
             </div>
-          }
+          )}
 
           {
             <div
@@ -231,7 +235,7 @@ const Animation: React.FC = () => {
             </div>
           }
 
-          {imageVisible >= 1 && (
+          {imageVisible >= 1 && !outOfScreen && (
             <div
               className={
                 isSmallScreen ? "coin-image-holder-mobile" : `coin-image-holder`
@@ -283,68 +287,6 @@ const Animation: React.FC = () => {
                   transformStyle: "preserve-3d",
                 }}
               />
-
-              {/* {
-                <div
-                  className={
-                    isSmallScreen
-                      ? "dark-container-text-wrapper-mobile"
-                      : "dark-container-text-wrapper "
-                  }
-                  style={{
-                    marginTop: "850px",
-                    opacity: opacityImage3,
-                    willChange: "transform",
-                    transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
-                  }}
-                >
-                  <div className="flex flex-col justify-center items-center pb-0">
-                    <p
-                      className="text-lg sm:text-2xl text-grey-200 mb-4"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      Faites partie d'une révolution{" "}
-                    </p>
-                    {displayRevolution1 && (
-                      <p
-                        className="text-xl sm:text-3xl text-grey-200 mb-4"
-                        data-aos="fade-up"
-                        data-aos-delay="200"
-                      >
-                        <span className="font-bold text-green whitespace-nowrap">
-                          technologique
-                        </span>
-                      </p>
-                    )}
-                    {displayRevolution2 && (
-                      <p
-                        className="text-2xl sm:text-5xl text-grey-200 mb-6 sm:mb-8"
-                        data-aos="fade-up"
-                        data-aos-delay="200"
-                      >
-                        <span className="gradient-text font-bold text-green whitespace-nowrap">
-                          écologique
-                        </span>
-                      </p>
-                    )}
-
-                    {displayRevolution3 && (
-                      <>
-                        <p
-                          className="text-3xl sm:text-6xl text-grey-200 mb-[-40px] sm:mb-[-84px]"
-                          data-aos="fade-up"
-                          data-aos-delay="200"
-                        >
-                          <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
-                            monetaire!
-                          </span>
-                        </p>
-                      </>
-                    )}
-                  </div>
-                </div>
-              } */}
             </div>
           )}
 
