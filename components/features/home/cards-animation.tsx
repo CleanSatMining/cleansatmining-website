@@ -7,6 +7,9 @@ import { CleanSatMiningFacility } from "@/models/Facility";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollSmoother } from "gsap/all";
 import Link from "next/link";
+import { StackMotionEffect as StackMotionEffect1 } from "@/scripts/js/effect-1/stackMotionEffect";
+import { StackMotionEffect as StackMotionEffect2 } from "@/scripts/js/effect-2/stackMotionEffect";
+import { StackMotionEffect as StackMotionEffect3 } from "@/scripts/js/effect-3/stackMotionEffect";
 
 enum ScreenSize {
   Mobile = "mobile",
@@ -51,6 +54,41 @@ export default function cards() {
   const [imageStack3, setImageStack3] = useState<string[]>(imageSet3);
 
   useEffect(() => {
+    // Apply the first stack motion effect to all elements with a specific data attribute
+    document.querySelectorAll("[data-stack-1]").forEach((stackEl) => {
+      new StackMotionEffect1(stackEl);
+    });
+    // Apply the second stack motion effect to all elements with a different specific data attribute
+    document.querySelectorAll("[data-stack-2]").forEach((stackEl) => {
+      new StackMotionEffect2(stackEl);
+    });
+    // Apply the third stack motion effect to all elements with yet another specific data attribute
+    document.querySelectorAll("[data-stack-3]").forEach((stackEl) => {
+      new StackMotionEffect3(stackEl);
+    });
+
+    // Select all grid intro card elements and apply animations on scroll
+    const introCards = document.querySelectorAll(".intro .card");
+    introCards.forEach((introCard) => {
+      gsap.to(introCard, {
+        ease: "power1.in",
+        startAt: {
+          transformOrigin: "100% 50%",
+          filter: "brightness(100%)",
+        },
+        rotationX: () => -60,
+        yPercent: () => gsap.utils.random(-100, 0),
+        z: () => gsap.utils.random(-100, 0),
+        filter: "brightness(0%)",
+        scrollTrigger: {
+          trigger: introCard,
+          start: "top 60%",
+          end: "clamp(bottom top)",
+          scrub: true,
+        },
+      });
+    });
+
     // Sélectionnez l'élément cible
     const target = document.querySelector(".target");
 
@@ -120,7 +158,7 @@ export default function cards() {
     };
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const scripts = [
       "scripts/js/gsap.min.js",
       "scripts/js/ScrollTrigger.min.js",
@@ -147,7 +185,7 @@ export default function cards() {
 
         // Nettoyage: Supprime le script du DOM lors du démontage du composant
         return () => {
-          document.body.removeChild(script);
+          //document.body.removeChild(script);
         };
       }
     });
@@ -155,12 +193,12 @@ export default function cards() {
     // Assurez-vous de nettoyer tous les scripts pour éviter des effets secondaires
     return () => {
       scripts.forEach((src) => {
-        const scriptTags = document.querySelectorAll(`script[src="${src}"]`);
-        scriptTags.forEach((scriptTag) => document.body.removeChild(scriptTag));
+        //const scriptTags = document.querySelectorAll(`script[src="${src}"]`);
+        //scriptTags.forEach((scriptTag) => document.body.removeChild(scriptTag));
       });
     };
   }, []); // Le tableau vide signifie que cet effet ne s'exécute qu'au montage et au démontage
-
+ */
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {

@@ -1,6 +1,10 @@
 import { throttle } from '../utils.js';
+import gsap from 'gsap';
 
-let winsize = {width: window.innerWidth, height: window.innerHeight};
+let winsize;
+if (typeof window !== 'undefined') {
+    winsize = {width: window.innerWidth, height: window.innerHeight};
+}
 
 export class StackMotionEffect {
   constructor(stackEl) {
@@ -32,7 +36,7 @@ export class StackMotionEffect {
 
   scroll() {
     // Let's set the initial rotation for the content element
-    this.contentElement.style.transform = 'rotate3d(1, 0, 0, 55deg) rotate3d(0, 1, 0, 30deg)';
+    this.contentElement.style.transform = 'rotate3d(1, 0, 0, 25deg) rotate3d(0, 1, 0, -50deg) rotate3d(0, 0, 1, 25deg)';
     this.contentElement.style.opacity = 0;
 
     if (this.tl) {
@@ -41,7 +45,7 @@ export class StackMotionEffect {
 
     this.tl = gsap.timeline({
       defaults: {
-        ease: 'sine.inOut',
+        ease: 'power1',
       },
       scrollTrigger: {
         trigger: this.wrapElement,
@@ -55,20 +59,22 @@ export class StackMotionEffect {
       },
     })
     .fromTo(this.imageElements, {
-      z: (pos) => -1.2 * winsize.height - pos * 0.08 * winsize.height,
+      z: (pos) => -2.5 * winsize.width/2 - pos * 0.07 * winsize.width,
     }, {
-      z: (pos) => 3 * winsize.height + (this.imagesTotal - pos - 1) * 0.08 * winsize.height,
+      z: (pos) => 2.5 * winsize.width + (this.imagesTotal - pos - 1) * 0.07 * winsize.width,
     }, 0)
     .fromTo(this.imageElements, {
-      rotationZ: -130,
+      rotationZ: 10,
     }, {
-      rotationZ: 360,
-      stagger: 0.006,
+      rotationX: 20,
+      rotationZ: 280,
+      yPercent: -100,
+      stagger: 0.005,
     }, 0)
     /*.fromTo(this.imageElements, {
-      filter: 'brightness(10%)',
+      filter: 'brightness(20%)',
     }, {
-      filter: 'brightness(400%)',
+      filter: 'brightness(350%)',
       stagger: 0.005,
     }, 0);*/
   }

@@ -1,7 +1,11 @@
 import { throttle } from '../utils.js';
+import gsap from 'gsap';
 
 // Keeps track of the window's size for responsive adjustments.
-let winsize = {width: window.innerWidth, height: window.innerHeight};
+let winsize;
+if (typeof window !== 'undefined') {
+    winsize = {width: window.innerWidth, height: window.innerHeight};
+}
 
 export class StackMotionEffect {
   constructor(stackEl) {
