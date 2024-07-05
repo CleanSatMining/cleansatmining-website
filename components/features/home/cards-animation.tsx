@@ -49,9 +49,9 @@ export default function cards() {
   console.log("load cards animation");
   const [screenSize, setScreenSize] = useState<ScreenSize>(ScreenSize.Large);
   const [showHalo, setShowHalo] = useState(false);
-  const [imageStack1, setImageStack1] = useState<string[]>(imageSet1);
-  const [imageStack2, setImageStack2] = useState<string[]>(imageSet2);
-  const [imageStack3, setImageStack3] = useState<string[]>(imageSet3);
+  // const [imageStack1, setImageStack1] = useState<string[]>(imageSet1);
+  // const [imageStack2, setImageStack2] = useState<string[]>(imageSet2);
+  // const [imageStack3, setImageStack3] = useState<string[]>(imageSet3);
 
   useEffect(() => {
     // Apply the first stack motion effect to all elements with a specific data attribute
@@ -112,7 +112,7 @@ export default function cards() {
     });
   }, []);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch("/api/facilities");
@@ -156,7 +156,7 @@ export default function cards() {
     return () => {
       // Nettoyer les ressources si nécessaire
     };
-  }, []);
+  }, []); */
 
   /* useEffect(() => {
     const scripts = [
@@ -312,7 +312,7 @@ export default function cards() {
           <div data-stack-1 className="wrap__inner">
             <div className="content content--1">
               {Array.from({ length: STACK_REPEATING }).map((_, stackIndex) =>
-                imageStack1.map((image, index) => {
+                imageSet1.map((image, index) => {
                   return (
                     <div
                       className="card"
@@ -336,7 +336,7 @@ export default function cards() {
           <div data-stack-2 className="wrap__inner">
             <div className="content content--2">
               {Array.from({ length: STACK_REPEATING }).map((_, stackIndex) =>
-                imageStack2.map((image, index) => {
+                imageSet2.map((image, index) => {
                   return (
                     <div
                       className="card"
@@ -360,7 +360,7 @@ export default function cards() {
           <div data-stack-3 className="wrap__inner">
             <div className="content content--3">
               {Array.from({ length: STACK_REPEATING }).map((_, stackIndex) =>
-                imageStack3.map((image, index) => {
+                imageSet3.map((image, index) => {
                   return (
                     <div
                       className="card"
