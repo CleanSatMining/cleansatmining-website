@@ -216,7 +216,7 @@ export default function cards() {
                   }/images/animations/4.jpg)`,
                 }}
               ></div>
-              <h3 className="card__title">Revendre</h3>
+              <h3 className="card__title z-[9999]">Revendre</h3>
               <h4 className="card__subtitle">Revendez vos tokens</h4>
               <span className="card__meta">#4</span>
               <p className="card__description"></p>

@@ -13,9 +13,7 @@ import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
 import AnimationLogo from "@/components/logo-animation";
 import CardsAnimation from "@/components/features/home/cards-animation";
-import ScrollHorizontal, {
-  ScrollSection,
-} from "@/components/features/home/scroll-horizontal";
+import { ScrollSection } from "@/components/features/home/scroll-horizontal";
 
 export default function Home() {
   //const [statsMode, setStatsMode] = useState("counter");
