@@ -89,7 +89,13 @@ const facilitiesInit: CleanSatMiningFacility[] = [
   },
 ];
 
-export default function FacilitesCarousel() {
+interface FeaturesProps {
+  withTransition?: boolean;
+}
+
+export default function FacilitesCarousel({
+  withTransition = true,
+}: FeaturesProps) {
   const [facilities, setFacilities] = useState<CleanSatMiningFacility[]>([]);
 
   useEffect(() => {
@@ -143,21 +149,23 @@ export default function FacilitesCarousel() {
   return (
     <section className="relative">
       {/* Transition */}
-      <div
-        className="hidden md:block flex justify-center items-center w-full mt-5 md:mt-10 -mb-[110px] w-100"
-        data-aos="fade-up"
-        style={{ paddingLeft: "25%", paddingRight: "25%" }}
-      >
-        <div className="xl:px-20">
-          <Image
-            src={PathLeft}
-            className=" w-full h-full"
-            //layout="fill"
-            objectFit="fill"
-            alt="path Illustration"
-          />
+      {withTransition && (
+        <div
+          className="hidden md:block flex justify-center items-center w-full mt-5 md:mt-10 -mb-[110px] w-100"
+          data-aos="fade-up"
+          style={{ paddingLeft: "25%", paddingRight: "25%" }}
+        >
+          <div className="xl:px-20">
+            <Image
+              src={PathLeft}
+              className=" w-full h-full"
+              //layout="fill"
+              objectFit="fill"
+              alt="path Illustration"
+            />
+          </div>
         </div>
-      </div>
+      )}
       {/* Bg illustration */}
       <div
         className="absolute left-1/2 -translate-x-1/2 translate-y-1/4 pointer-events-none -mt-20 -z-10"

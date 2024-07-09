@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import "@/app/css/animation.css"; // Assurez-vous d'inclure les styles CSS nécessaires
 
@@ -166,8 +165,13 @@ const Animation: React.FC = () => {
               >
                 Mais, c'est bien plus qu'un banal investissement. <br />
                 <br />
-                <span className="text-green">CleanSat Mining,</span> c'est une
-                aventure!
+                <span
+                  className="text-green"
+                  style={{ textShadow: "0px 0px 20px #B5CD30" }}
+                >
+                  CleanSat Mining,
+                </span>{" "}
+                c'est une aventure!
               </h2>
             </div>
           )}
@@ -379,7 +383,10 @@ const Animation: React.FC = () => {
                     data-aos="fade-up"
                     data-aos-delay="200"
                   >
-                    <span className="font-bold text-green whitespace-nowrap">
+                    <span
+                      className="font-bold text-green whitespace-nowrap"
+                      style={{ textShadow: "0px 0px 20px #B5CD30" }}
+                    >
                       technologique
                     </span>
                   </p>
@@ -390,7 +397,10 @@ const Animation: React.FC = () => {
                     data-aos="fade-up"
                     data-aos-delay="200"
                   >
-                    <span className="gradient-text font-bold text-green whitespace-nowrap">
+                    <span
+                      className="font-bold text-brand-400 whitespace-nowrap"
+                      style={{ textShadow: "0px 0px 30px #B5CD30" }}
+                    >
                       écologique
                     </span>
                   </p>
@@ -403,7 +413,10 @@ const Animation: React.FC = () => {
                       data-aos="fade-up"
                       data-aos-delay="200"
                     >
-                      <span className="gradient-text-orange font-bold text-green whitespace-nowrap">
+                      <span
+                        className="font-bold text-brand-500 whitespace-nowrap"
+                        style={{ textShadow: "0px 0px 40px #B5CD30" }}
+                      >
                         monetaire
                       </span>
                     </p>

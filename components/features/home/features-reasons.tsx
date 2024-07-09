@@ -5,21 +5,27 @@ import EcoImage from "@/public/images/icons/ECOLOGY.webp";
 import MoneyImage from "@/public/images/icons/MONEY.webp";
 import MessageImage from "@/public/images/icons/MESSAGE.webp";
 
-export default function Features() {
+interface FeaturesProps {
+  withTransition?: boolean;
+}
+
+export default function Features({ withTransition = true }: FeaturesProps) {
   return (
     <section className="relative overflow-hidden">
       {/* Transition */}
-      <div
-        className="flex justify-center items-center w-full mt-5 md:mt-10"
-        data-aos="fade-up"
-      >
-        <Image
-          src={PathLeftToRight}
-          className="hidden md:block"
-          priority
-          alt="path Illustration"
-        />
-      </div>
+      {withTransition && (
+        <div
+          className="flex justify-center items-center w-full mt-5 md:mt-10"
+          data-aos="fade-up"
+        >
+          <Image
+            src={PathLeftToRight}
+            className="hidden md:block"
+            priority
+            alt="path Illustration"
+          />
+        </div>
+      )}
       {/* Blurred shape */}
       <div
         className="absolute top-0  left-20 -translate-x blur-2xl opacity-50 pointer-events-none -z-10"

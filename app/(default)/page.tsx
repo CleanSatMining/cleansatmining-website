@@ -13,6 +13,9 @@ import Cta from "@/components/cta";
 import PageBlur from "@/components/ui/PageBlur";
 import AnimationLogo from "@/components/logo-animation";
 import CardsAnimation from "@/components/features/home/cards-animation";
+import ScrollHorizontal, {
+  ScrollSection,
+} from "@/components/features/home/scroll-horizontal";
 
 export default function Home() {
   //const [statsMode, setStatsMode] = useState("counter");
@@ -22,9 +25,13 @@ export default function Home() {
       <Hero />
       <StatsCounter />
       <AnimationLogo />
-      <FeaturesMining />
-      <FeaturesReasons />
-      <FeaturesFacilities />
+      <ScrollSection
+        components={[
+          <FeaturesMining withTransition={false} />,
+          <FeaturesReasons withTransition={false} />,
+        ]}
+      />
+      <FeaturesFacilities withTransition={false} />
       <CardsAnimation />
       <Cta />
     </>

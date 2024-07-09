@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "@/app/css/animation.cards.css"; // Utilisez le chemin d'accès correct basé sur l'organisation de votre projet
 import MarketplaceImage from "@/public/images/feature-mining-illustration.svg";
 import Image from "next/image";
-import { CleanSatMiningFacility } from "@/models/Facility";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollSmoother } from "gsap/all";
 import Link from "next/link";

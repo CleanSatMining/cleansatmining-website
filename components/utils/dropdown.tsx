@@ -25,9 +25,8 @@ export default function Dropdown({
       onFocus={() => setDropdownOpen(true)}
       onBlur={() => setDropdownOpen(false)}
     >
-      <a
+      <div
         className={`${className} text-grey-100 hover:text-green px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out`}
-        href="#0"
         aria-expanded={dropdownOpen}
         onClick={(e) => e.preventDefault()}
       >
@@ -42,7 +41,7 @@ export default function Dropdown({
         >
           <path d="M10.28 4.305L5.989 8.598 1.695 4.305A1 1 0 00.28 5.72l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z" />
         </svg>
-      </a>
+      </div>
       <Transition
         show={dropdownOpen}
         as="ul"

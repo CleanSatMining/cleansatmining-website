@@ -92,7 +92,10 @@ export default function Cta() {
           {/* Content */}
           <div className="max-w-3xl mx-auto text-center">
             <div>
-              <div className="text-sm sm:text-[16px] inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-200 pb-3">
+              <div
+                className="text-sm sm:text-[16px] inline-flex font-medium bg-clip-text text-green pb-3"
+                style={{ textShadow: "0px 0px 15px #B5CD30" }}
+              >
                 Ne manquez pas les dernières nouvelles.
               </div>
             </div>

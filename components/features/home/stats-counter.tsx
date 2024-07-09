@@ -51,7 +51,10 @@ export default function Stats() {
                 key={index + stat.number}
                 className="relative text-center md:px-5"
               >
-                <h4 className="font-inter-tight text-xl sm:text-2xl md:text-3xl font-bold tabular-nums mb-2">
+                <h4
+                  className="font-inter-tight text-xl sm:text-2xl md:text-3xl font-bold tabular-nums mb-2"
+                  style={{ textShadow: "0px 0px 10px #459420" }}
+                >
                   {stat.prefix}
                   <Counter number={stat.number} />
                   {stat.suffix}
