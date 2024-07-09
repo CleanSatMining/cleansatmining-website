@@ -5,6 +5,8 @@ import MarketplaceImage from "@/public/images/feature-mining-illustration.svg";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollSmoother } from "gsap/all";
+import { RoughEase } from "gsap/EasePack";
+
 import Link from "next/link";
 import { StackMotionEffect as StackMotionEffect1 } from "@/scripts/js/effect-1/stackMotionEffect";
 import { StackMotionEffect as StackMotionEffect2 } from "@/scripts/js/effect-2/stackMotionEffect";
@@ -49,6 +51,7 @@ export default function cards() {
   const [screenSize, setScreenSize] = useState<ScreenSize>(ScreenSize.Large);
   const [showHalo, setShowHalo] = useState(false);
   const bounceRef = useRef<HTMLDivElement>(null);
+  const hoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Enregistrez les plugins nécessaires
@@ -114,6 +117,94 @@ export default function cards() {
         .to(bounceRef.current, { duration: 0.2, y: 8, ease: "power1.inOut" })
         .to(bounceRef.current, { duration: 0.4, y: 0, ease: "power1.out" });
     }
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(RoughEase);
+
+    var timelineOptions = { repeat: -1, paused: true };
+    var tl = gsap.timeline(timelineOptions);
+
+    tl.fromTo(
+      hoverRef.current,
+      { x: -1, y: 1 },
+      {
+        x: 1,
+        y: -1,
+        duration: 0.3,
+        ease: RoughEase.ease.config({
+          strength: 8,
+          points: 20,
+          template: "Linear.easeNone",
+          randomize: true,
+        }),
+      }
+    )
+      .fromTo(
+        hoverRef.current,
+        { x: 1, y: -1 },
+        {
+          x: 1,
+          y: 1,
+          duration: 0.3,
+          ease: RoughEase.ease.config({
+            strength: 8,
+            points: 20,
+            template: "Linear.easeNone",
+            randomize: true,
+          }),
+        }
+      )
+      .fromTo(
+        hoverRef.current,
+        { x: 1, y: 1 },
+        {
+          x: -1,
+          y: -1,
+          duration: 0.3,
+          ease: RoughEase.ease.config({
+            strength: 8,
+            points: 20,
+            template: "Linear.easeNone",
+            randomize: true,
+          }),
+        }
+      )
+      .fromTo(
+        hoverRef.current,
+        { x: -1, y: -1 },
+        {
+          x: -1,
+          y: 1,
+          duration: 0.3,
+          ease: RoughEase.ease.config({
+            strength: 8,
+            points: 20,
+            template: "Linear.easeNone",
+            randomize: true,
+          }),
+        }
+      );
+
+    const hoverElement = hoverRef.current;
+    const onMouseEnter = () => tl.resume();
+    const onMouseLeave = () => tl.pause();
+    const onClick = () => tl.pause();
+
+    if (hoverElement) {
+      hoverElement.addEventListener("mouseenter", onMouseEnter);
+      hoverElement.addEventListener("mouseleave", onMouseLeave);
+      hoverElement.addEventListener("click", onClick);
+    }
+
+    // Cleanup function
+    return () => {
+      if (hoverElement) {
+        hoverElement.removeEventListener("mouseenter", onMouseEnter);
+        hoverElement.removeEventListener("mouseleave", onMouseLeave);
+        hoverElement.removeEventListener("click", onClick);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -296,12 +387,18 @@ export default function cards() {
             </div>
           </div>
         </div>
+
         <Link
           className="relative cursor-pointer z-[99999]"
           href="https://marketplace.cleansatmining.com"
           target="_blank"
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
-          <h2 className="section-subtitle cursor-pointer z-[99999]">
+          <h2
+            ref={hoverRef}
+            className="section-subtitle cursor-pointer z-[99999]"
+          >
             Découvrir nos opportunités
           </h2>
         </Link>
