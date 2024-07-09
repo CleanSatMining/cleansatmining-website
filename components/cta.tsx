@@ -1,5 +1,5 @@
 "use client";
-import { set } from "date-fns";
+import { ArrowRight } from "@phosphor-icons/react";
 import React, { useState } from "react";
 
 export default function Cta() {
@@ -126,13 +126,22 @@ export default function Cta() {
                   >
                     Rester informé{" "}
                     <span className="tracking-normal text-brand-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
-                      -&gt;
+                      <ArrowRight size={16} weight="bold" />
                     </span>
                   </button>
                 </div>
               )}
               {!displayForm && (
                 <div className="w-full flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-none text-2xl">
+                  <div className="flex items-center justify-center h-full">
+                    <svg
+                      className="w-5 h-5 fill-current text-emerald-500 mb-1 mr-3 shrink-0"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                    </svg>
+                  </div>
                   <h2 className="">Merci pour votre confiance</h2>
                 </div>
               )}

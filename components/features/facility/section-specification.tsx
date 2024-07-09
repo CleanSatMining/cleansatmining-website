@@ -340,10 +340,12 @@ export default function Section({ facility, slug }: SectionProps) {
   return (
     <section>
       {/* Page title */}
-      <h2 className="h2 font-aspekta mb-4 lg:mb-8">Spécifications</h2>
+      <h2 className="h2 font-aspekta mb-4 lg:mb-8 text-2xl sm:text-4xl">
+        Spécifications
+      </h2>
       {/* Filters */}
-      <ul className="flex flex-wrap text-sm border-b border-grey-400">
-        <li className="px-3 -mb-px">
+      <ul className="flex flex-wrap text-xs sm:text-sm border-b border-grey-400">
+        <li className="px-2 sm:px-3 -mb-px">
           <a
             className={`block py-3 font-medium text-grey-100 ${
               activeSection === FacilitySection.Society
@@ -356,7 +358,7 @@ export default function Section({ facility, slug }: SectionProps) {
             Société
           </a>
         </li>
-        <li className="px-3 -mb-px">
+        <li className="px-2 sm:px-3 -mb-px">
           <a
             className={`block py-3 font-medium text-grey-1002 ${
               activeSection === FacilitySection.Token
@@ -369,7 +371,7 @@ export default function Section({ facility, slug }: SectionProps) {
             Token
           </a>
         </li>
-        <li className="px-3 -mb-px">
+        <li className="px-2 sm:px-3 -mb-px">
           <a
             className={`block py-3 font-medium text-grey-100 ${
               activeSection === FacilitySection.Mining
@@ -382,7 +384,7 @@ export default function Section({ facility, slug }: SectionProps) {
             Mining
           </a>
         </li>
-        <li className="px-3 -mb-px">
+        <li className="px-2 sm:px-3 -mb-px">
           <a
             className={`block py-3 font-medium text-grey-100 ${
               activeSection === FacilitySection.Operating
@@ -403,7 +405,7 @@ export default function Section({ facility, slug }: SectionProps) {
           <section>
             {/* Cards */}
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${
                 itemsSociety.length > 2 ? 3 : 2
               } gap-5`}
             >
@@ -418,7 +420,7 @@ export default function Section({ facility, slug }: SectionProps) {
           <section>
             {/* Cards */}
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${
                 itemsToken.length > 2 ? 3 : 2
               } gap-5`}
             >
@@ -433,7 +435,7 @@ export default function Section({ facility, slug }: SectionProps) {
           <section>
             {/* Cards */}
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${
                 itemsMining.length > 2 ? 3 : 2
               } gap-5`}
             >
@@ -448,7 +450,7 @@ export default function Section({ facility, slug }: SectionProps) {
           <section>
             {/* Cards */}
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${
                 itemsOperating.length > 2 ? 3 : 2
               } gap-5`}
             >

@@ -48,9 +48,7 @@ export default function cards() {
   //console.log("load cards animation");
   const [screenSize, setScreenSize] = useState<ScreenSize>(ScreenSize.Large);
   const [showHalo, setShowHalo] = useState(false);
-  // const [imageStack1, setImageStack1] = useState<string[]>(imageSet1);
-  // const [imageStack2, setImageStack2] = useState<string[]>(imageSet2);
-  // const [imageStack3, setImageStack3] = useState<string[]>(imageSet3);
+  const bounceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Enregistrez les plugins nécessaires
@@ -91,9 +89,6 @@ export default function cards() {
       });
     });
 
-    // Sélectionnez l'élément cible
-    const target = document.querySelector(".target");
-
     // Configuration de GSAP pour désactiver les avertissements de version d'essai
     gsap.config({});
 
@@ -109,95 +104,18 @@ export default function cards() {
       rotation: 360,
       ease: "none",
     });
+
+    // Assurez-vous que l'élément est bien chargé
+    if (bounceRef.current) {
+      const tl = gsap.timeline({ repeat: 1000, repeatDelay: 0.5 });
+
+      tl.to(bounceRef.current, { duration: 0.4, y: 12, ease: "power1.inOut" })
+        .to(bounceRef.current, { duration: 0.2, y: 0, ease: "power1.out" })
+        .to(bounceRef.current, { duration: 0.2, y: 8, ease: "power1.inOut" })
+        .to(bounceRef.current, { duration: 0.4, y: 0, ease: "power1.out" });
+    }
   }, []);
 
-  /*  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/facilities");
-        const fetchedData: CleanSatMiningFacility[] = await res.json();
-
-        const stack1 = [
-          process.env.PUBLIC_URL ?? "" + "/images/animations/2.jpg",
-        ];
-        const stack2 = [
-          process.env.PUBLIC_URL ?? "" + "/images/animations/3.jpg",
-        ];
-        const stack3 = [
-          process.env.PUBLIC_URL ?? "" + "/images/animations/4.jpg",
-        ];
-        for (const facility of fetchedData) {
-          stack1.push(
-            process.env.PUBLIC_URL ??
-              "" + "/images/facilities/csm-" + facility.slug + "-square.png"
-          );
-          stack2.push(
-            process.env.PUBLIC_URL ??
-              "" + "/images/facilities/csm-" + facility.slug + "-square.png"
-          );
-          stack3.push(
-            process.env.PUBLIC_URL ??
-              "" + "/images/facilities/csm-" + facility.slug + "-square.png"
-          );
-        }
-        setImageStack1(stack1);
-        setImageStack2(stack2);
-        setImageStack3(stack3);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des données :", error);
-        // Gérer les erreurs ici
-      }
-    };
-
-    fetchData();
-
-    // Nettoyage de l'effet
-    return () => {
-      // Nettoyer les ressources si nécessaire
-    };
-  }, []); */
-
-  /* useEffect(() => {
-    const scripts = [
-      "scripts/js/gsap.min.js",
-      "scripts/js/ScrollTrigger.min.js",
-      "scripts/js/imagesloaded.pkgd.min.js",
-      "scripts/js/lenis.js",
-      //"scripts/js/smoothscroll.js",
-      "scripts/js/index.js", // Assurez-vous que ce script est un module si nécessaire
-    ];
-
-    scripts.forEach((src) => {
-      // Vérifie si le script est déjà présent dans le document
-      if (!document.querySelector(`script[src="${src}"]`)) {
-        const script = document.createElement("script");
-
-        // Pour le dernier script qui est un module
-        if (src === "scripts/js/index.js") {
-          script.type = "module";
-        }
-
-        script.src = src;
-        script.async = false; // Pour charger les scripts dans l'ordre
-
-        document.body.appendChild(script);
-
-        // Nettoyage: Supprime le script du DOM lors du démontage du composant
-        return () => {
-          //document.body.removeChild(script);
-        };
-      }
-    });
-
-    // Assurez-vous de nettoyer tous les scripts pour éviter des effets secondaires
-    return () => {
-      scripts.forEach((src) => {
-        //const scriptTags = document.querySelectorAll(`script[src="${src}"]`);
-        //scriptTags.forEach((scriptTag) => document.body.removeChild(scriptTag));
-      });
-    };
-  }, []); // Le tableau vide signifie que cet effet ne s'exécute qu'au montage et au démontage
- */
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -442,7 +360,10 @@ export default function cards() {
 
           {/* Icons */}
 
-          <div className="relative flex items-center justify-center cursor-pointer">
+          <div
+            ref={bounceRef}
+            className="relative flex items-center justify-center cursor-pointer"
+          >
             <Image
               className={`target box w-[200px] max-w-none sm:w-[350px] ${
                 showHalo ? "opacity-50" : ""
