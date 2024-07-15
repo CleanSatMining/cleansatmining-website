@@ -34,7 +34,7 @@
     "framer-motion": "^11.3.2",
     "gsap": "^3.12.5",
     "jotai": "^2.9.0",
-    "lru-cache": "^11.0.0",
+    "lru-cache": "^10.4.3",
     "next": "^14.2.5",
     "next-contentlayer": "^0.3.4",
     "next-intl": "^3.17.1",

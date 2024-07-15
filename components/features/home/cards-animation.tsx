@@ -397,7 +397,7 @@ export default function cards() {
         >
           <h2
             ref={hoverRef}
-            className="section-subtitle cursor-pointer z-[99999] text-xl"
+            className="section-subtitle cursor-pointer z-[99999]"
           >
             Découvrir nos opportunités
           </h2>
