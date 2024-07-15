@@ -1,9 +1,9 @@
 import Image from "next/image";
 import PathLeftToRight from "@/public/images/path/path-down-left-to-right.svg";
-import SocialImage from "@/public/images/icons/SOCIAL.webp";
+import SocialImage from "@/public/images/icons/SOCIAL.png";
 import EcoImage from "@/public/images/icons/ECOLOGY.webp";
-import MoneyImage from "@/public/images/icons/MONEY.webp";
-import MessageImage from "@/public/images/icons/MESSAGE.webp";
+import MoneyImage from "@/public/images/icons/MONEY.png";
+import LiquidityImage from "@/public/images/icons/INCOME.png";
 
 interface FeaturesProps {
   withTransition?: boolean;
@@ -72,7 +72,7 @@ export default function Features({ withTransition = true }: FeaturesProps) {
                 <div className="inline-flex items-center justify-center h-16 w-16  mb-3">
                   <Image
                     src={MoneyImage}
-                    className="w-128 h-128 object-cover scale-[300%]"
+                    className="object-cover scale-[200%]"
                     alt="path Illustration"
                   ></Image>
                   {/* <svg
@@ -103,8 +103,8 @@ export default function Features({ withTransition = true }: FeaturesProps) {
               <div className="mb-4">
                 <div className="inline-flex items-center justify-center h-16 w-16 mb-3">
                   <Image
-                    src={MessageImage}
-                    className="w-128 h-128 object-cover scale-[300%]"
+                    src={LiquidityImage}
+                    className="object-cover scale-[200%]"
                     alt="path Illustration"
                   ></Image>
                   {/* <svg
@@ -178,7 +178,7 @@ export default function Features({ withTransition = true }: FeaturesProps) {
                 <div className="inline-flex items-center justify-center h-16 w-16 mb-3">
                   <Image
                     src={SocialImage}
-                    className="w-128 h-128 object-cover scale-[300%]"
+                    className="object-cover scale-[200%]"
                     alt="path Illustration"
                   ></Image>
                   {/* <svg
