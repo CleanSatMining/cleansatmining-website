@@ -3,7 +3,7 @@
 import { Transition } from "@headlessui/react";
 import PathRightToLeft from "@/public/images/path/path-down-right-to-left.svg";
 import Image from "next/image";
-import FeaturesImage from "@/public/images/feature-mining-illustration.svg";
+//import FeaturesImage from "@/public/images/icons/btc-anim.webm";
 
 interface FeaturesMiningProps {
   withTransition?: boolean;
@@ -42,7 +42,7 @@ export default function FeaturesMining({
           <div className="max-w-xl mx-auto md:max-w-none flex flex-col md:flex-row md:items-center md:space-x-8 lg:space-x-16 xl:space-x-18 space-y-8 space-y-reverse md:space-y-0">
             {/* Content */}
             <div
-              className="md:w-7/12 lg:w-1/2 order-1 md:order-none"
+              className="z-10 md:w-7/12 lg:w-1/2 order-1 md:order-none"
               data-aos="zoom-out"
               data-aos-delay="200"
             >
@@ -61,7 +61,7 @@ export default function FeaturesMining({
                   d'une part d'une société Suisse détenant des ASICs en
                   exploitation sur un site bien particulier !
                 </p>
-                <ul className="inline-flex flex-col text-sm sm:text-lg text-grey-100 space-y-3">
+                {/* <ul className="inline-flex flex-col text-sm sm:text-lg text-grey-100 space-y-3">
                   <li className="flex items-center">
                     <svg
                       className="w-3 h-3 fill-current text-emerald-500 mr-3 shrink-0"
@@ -92,7 +92,7 @@ export default function FeaturesMining({
                     </svg>
                     <span>Manager check-ins</span>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
             {/* Image */}
@@ -104,9 +104,9 @@ export default function FeaturesMining({
             >
               <div className="relative py-24 -mt-12">
                 <div className="flex items-center justify-center">
-                  <div className="relative w-24 h-24 flex justify-center items-center">
+                  <div className="relative flex justify-center items-center">
                     {/* Halo effect */}
-                    <svg
+                    {/*   <svg
                       className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 will-change-transform pointer-events-none blur-md"
                       width="480"
                       height="480"
@@ -146,79 +146,45 @@ export default function FeaturesMining({
                           d="M240,0 C372.5484,0 480,107.4516 480,240 C480,372.5484 372.5484,480 240,480 C107.4516,480 0,372.5484 0,240 C0,107.4516 107.4516,0 240,0 Z M240,88.8 C156.4944,88.8 88.8,156.4944 88.8,240 C88.8,323.5056 156.4944,391.2 240,391.2 C323.5056,391.2 391.2,323.5056 391.2,240 C391.2,156.4944 323.5056,88.8 240,88.8 Z"
                         />
                       </g>
-                    </svg>
+                    </svg> */}
                     {/* Grid */}
-                    <div className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[500px] h-[500px] rounded-full overflow-hidden [mask-image:_radial-gradient(black,_transparent_60%)]">
+                    {/*  <div className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[500px] h-[500px] rounded-full overflow-hidden [mask-image:_radial-gradient(black,_transparent_60%)]">
                       <div className="h-[200%] animate-endless">
                         <div className="absolute inset-0 [background:_repeating-linear-gradient(transparent,_transparent_48px,_theme(colors.white)_48px,_theme(colors.white)_49px)] blur-[2px] opacity-20" />
                         <div className="absolute inset-0 [background:_repeating-linear-gradient(transparent,_transparent_48px,_theme(colors.brand.500)_48px,_theme(colors.brand.500)_49px)]" />
                         <div className="absolute inset-0 [background:_repeating-linear-gradient(90deg,transparent,_transparent_48px,_theme(colors.white)_48px,_theme(colors.white)_49px)] blur-[2px] opacity-20" />
                         <div className="absolute inset-0 [background:_repeating-linear-gradient(90deg,transparent,_transparent_48px,_theme(colors.brand.500)_48px,_theme(colors.brand.500)_49px)]" />
                       </div>
-                    </div>
+                    </div> */}
                     {/* Icons */}
-                    <Transition
-                      show={true}
-                      enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
-                      enterFrom="opacity-0 -rotate-[60deg]"
-                      enterTo="opacity-100 rotate-0"
-                      leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700"
-                      leaveFrom="opacity-100 rotate-0"
-                      leaveTo="opacity-0 rotate-[60deg]"
+
+                    <div
+                      className="relative flex items-center justify-center inset-0"
+                      style={{
+                        boxShadow: "0 0 200px 200px #333333",
+                      }}
                     >
-                      <div className="relative flex items-center justify-center -rotate-[14deg] transform -tr">
-                        <Image
-                          className="w-[200px] max-w-none sm:w-[350px]"
-                          src={FeaturesImage}
-                          width={500}
-                          height={400}
-                          alt="Features"
+                      {/*      <Image
+                        className="w-[200px] max-w-none sm:w-[350px]"
+                        src={"/images/icons/btc-anim.webm"}
+                        width={500}
+                        height={400}
+                        alt="Features"
+                      /> */}
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="inset-0 w-[200px] max-w-none sm:w-[700px]"
+                      >
+                        <source
+                          src="/images/icons/btc-anim.webm"
+                          type="video/webm"
                         />
-                      </div>
-                    </Transition>
-                    <Transition
-                      show={false}
-                      enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
-                      enterFrom="opacity-0 -rotate-[60deg]"
-                      enterTo="opacity-100 rotate-0"
-                      leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700"
-                      leaveFrom="opacity-100 rotate-0"
-                      leaveTo="opacity-0 rotate-[60deg]"
-                    >
-                      <div className="relative flex items-center justify-center w-16 h-16 border border-transparent rounded-2xl shadow-2xl -rotate-[14deg] [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-2xl">
-                        <svg
-                          className="relative fill-slate-200"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="22"
-                          height="22"
-                        >
-                          <path d="M18 14h-2V8h2c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4v2H8V4c0-2.2-1.8-4-4-4S0 1.8 0 4s1.8 4 4 4h2v6H4c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4v-2h6v2c0 2.2 1.8 4 4 4s4-1.8 4-4-1.8-4-4-4ZM16 4c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2h-2V4ZM2 4c0-1.1.9-2 2-2s2 .9 2 2v2H4c-1.1 0-2-.9-2-2Zm4 14c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2h2v2ZM8 8h6v6H8V8Zm10 12c-1.1 0-2-.9-2-2v-2h2c1.1 0 2 .9 2 2s-.9 2-2 2Z" />
-                        </svg>
-                      </div>
-                    </Transition>
-                    <Transition
-                      show={false}
-                      enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
-                      enterFrom="opacity-0 -rotate-[60deg]"
-                      enterTo="opacity-100 rotate-0"
-                      leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700"
-                      leaveFrom="opacity-100 rotate-0"
-                      leaveTo="opacity-0 rotate-[60deg]"
-                    >
-                      <div className="relative flex items-center justify-center w-16 h-16 border border-transparent rounded-2xl shadow-2xl -rotate-[14deg] [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-2xl">
-                        <svg
-                          className="relative fill-slate-200"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="26"
-                          height="14"
-                        >
-                          <path
-                            fillRule="nonzero"
-                            d="m10 5.414-8 8L.586 12 10 2.586l6 6 8-8L25.414 2 16 11.414z"
-                          />
-                        </svg>
-                      </div>
-                    </Transition>
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </div>
                 </div>
               </div>

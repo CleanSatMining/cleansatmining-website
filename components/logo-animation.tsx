@@ -166,8 +166,11 @@ const Animation: React.FC = () => {
                 Mais, c'est bien plus qu'un banal investissement. <br />
                 <br />
                 <span
-                  className="text-green"
-                  style={{ textShadow: "0px 0px 20px #B5CD30" }}
+                  className=""
+                  style={{
+                    textShadow: "0px 0px 20px #459420aa",
+                    color: "#459420",
+                  }}
                 >
                   CleanSat Mining,
                 </span>{" "}
@@ -188,12 +191,13 @@ const Animation: React.FC = () => {
                 willChange: "opacity",
                 opacity: opacityImage1,
                 left: "auto",
-                backgroundColor: imageVisible === 1 ? "#98ce1a" : "transparent",
+                backgroundColor:
+                  imageVisible === 1 ? "transparent" : "transparent",
               }}
             >
-              {imageVisible >= 1 && (
+              {/*   {imageVisible >= 1 && (
                 <Image
-                  src="/logo.svg"
+                  src="/images/logo-3d.png"
                   loading="lazy"
                   alt=""
                   width={200}
@@ -207,17 +211,17 @@ const Animation: React.FC = () => {
                     transformStyle: "preserve-3d",
                   }}
                 />
-              )}
+              )} */}
 
               {imageVisible >= 1 && (
                 <div
                   className="coin-bg-blur"
                   style={{
-                    boxShadow: `0 0 ${opacityText1 * 100}px 0 #98ce1a`,
+                    boxShadow: `0 0 ${opacityText1 * 200}px 0 #459420`,
                     willChange: "opacity",
                     opacity: opacityImage1,
                     transform:
-                      "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                      "translate3d(-5px, 10px, 0px) scale3d(0.77, 0.77, 0.77) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
@@ -227,11 +231,11 @@ const Animation: React.FC = () => {
                 <div
                   className="coin-circle"
                   style={{
-                    backgroundImage: "url(/images/coin-circle.svg)",
+                    backgroundImage: "url(/images/logo-3d.png)",
                     willChange: "opacity",
                     opacity: opacityImage1,
                     transform:
-                      "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)",
+                      "translate3d(0px, 0px, 0px) scale3d(1.5, 1.5, 1.5) rotateX(0deg) rotateY(0deg) rotateZ(258.59deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
@@ -254,8 +258,8 @@ const Animation: React.FC = () => {
                 backgroundColor: "transparent",
               }}
             >
-              <Image
-                src="/logo.svg"
+              {/*   <Image
+                src="/images/logo-3d.png"
                 loading="lazy"
                 alt=""
                 width={200}
@@ -267,16 +271,17 @@ const Animation: React.FC = () => {
                   transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(0.933532, 0.933532, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
-              />
+              /> */}
 
               <div
                 className="coin-bg-blur"
                 style={{
-                  backgroundColor: "#98ce1a",
-                  boxShadow: "0 0 100px 0 #98ce1a",
+                  boxShadow: "0 0 200px 0 #459420",
                   willChange: "transform",
                   opacity: imageVisible === 3 ? 0 : 1,
-                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
+                  transform: `translate3d(-5px, ${
+                    imageTop + 10
+                  }px, 0px) scale3d(0.77, 0.77, 0.77) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
@@ -284,10 +289,10 @@ const Animation: React.FC = () => {
               <div
                 className="coin-circle"
                 style={{
-                  backgroundImage: "url(/images/coin-circle.svg)",
+                  backgroundImage: "url(/images/logo-3d.png)",
                   willChange: "transform",
                   opacity: imageVisible === 3 ? 0 : 1,
-                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
+                  transform: `translate3d(0px, ${imageTop}px, 0px) scale3d(1.5, 1.5, 1.5) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
                   transformStyle: "preserve-3d",
                 }}
               />
@@ -309,12 +314,13 @@ const Animation: React.FC = () => {
                 opacity: 1,
                 left: "auto",
                 transform: "none",
-                backgroundColor: imageVisible === 3 ? "#98ce1a" : "transparent",
+                backgroundColor:
+                  imageVisible === 3 ? "transparent" : "transparent",
               }}
             >
-              {
+              {/* {
                 <Image
-                  src="/logo.svg"
+                  src="/images/logo-3d.png"
                   loading="lazy"
                   alt=""
                   width={200}
@@ -328,17 +334,17 @@ const Animation: React.FC = () => {
                     transformStyle: "preserve-3d",
                   }}
                 />
-              }
+              } */}
 
               {
                 <div
                   className="coin-bg-blur"
                   style={{
-                    boxShadow: "0 0 100px 0 #98ce1a",
+                    boxShadow: "0 0 200px 0 #459420",
                     willChange: "opacity",
                     opacity: imageVisible === 3 ? 1 : 0,
                     transform:
-                      "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                      "translate3d(-5px, 10px, 0px) scale3d(0.77, 0.77, 0.77) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
@@ -349,11 +355,11 @@ const Animation: React.FC = () => {
                   className="coin-circle"
                   style={{
                     marginTop: "0px",
-                    backgroundImage: "url(/images/coin-circle.svg)",
+                    backgroundImage: "url(/images/logo-3d.png)",
                     willChange: "opacity",
                     opacity: imageVisible === 3 ? 1 : 0,
                     transform:
-                      "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                      "translate3d(0px, 0px, 0px) scale3d(1.5, 1.5, 1.5) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
                     transformStyle: "preserve-3d",
                   }}
                 />
@@ -384,8 +390,8 @@ const Animation: React.FC = () => {
                     data-aos-delay="200"
                   >
                     <span
-                      className="font-bold text-green whitespace-nowrap"
-                      style={{ textShadow: "0px 0px 20px #B5CD30" }}
+                      className="font-bold whitespace-nowrap"
+                      style={{ textShadow: "0px 0px 20px #459420" }}
                     >
                       technologique
                     </span>
@@ -398,8 +404,8 @@ const Animation: React.FC = () => {
                     data-aos-delay="200"
                   >
                     <span
-                      className="font-bold text-brand-400 whitespace-nowrap"
-                      style={{ textShadow: "0px 0px 30px #B5CD30" }}
+                      className="font-bold  whitespace-nowrap"
+                      style={{ textShadow: "0px 0px 20px #459420" }}
                     >
                       écologique
                     </span>
@@ -414,8 +420,8 @@ const Animation: React.FC = () => {
                       data-aos-delay="200"
                     >
                       <span
-                        className="font-bold text-brand-500 whitespace-nowrap"
-                        style={{ textShadow: "0px 0px 40px #B5CD30" }}
+                        className="font-bold  whitespace-nowrap"
+                        style={{ textShadow: "0px 0px 20px #459420" }}
                       >
                         monetaire
                       </span>
