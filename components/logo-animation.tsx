@@ -160,7 +160,9 @@ const Animation: React.FC = () => {
               <h2
                 className="h2 font-title text-xl sm:text-4xl  text-white text-white text-center"
                 style={{
-                  opacity: opacityText1,
+                  opacity:
+                    opacityText1 *
+                    (isSmallScreen && opacityText1 > 0.9 ? 0 : 1),
                 }}
               >
                 Mais, c'est bien plus qu'un banal investissement. <br />

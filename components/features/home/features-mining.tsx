@@ -176,7 +176,7 @@ export default function FeaturesMining({
                         loop
                         muted
                         playsInline
-                        className="inset-0 w-[200px] max-w-none sm:w-[700px]"
+                        className="inset-0 w-[400px] max-w-none sm:w-[700px]"
                       >
                         <source
                           src="/images/icons/btc-anim.webm"
